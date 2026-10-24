@@ -1,15 +1,17 @@
-# ResearchBridge
+# ResearchBridge — 歷史 Streamlit 介面
+
+> 目前展示版使用 FastAPI。請參閱 `README.md`，或執行 `run.cmd` 後開啟 http://127.0.0.1:8000 。以下保留舊版 Streamlit 功能說明。
 
 數位健康與照護銜接的本機研究證據探索原型。原始 `pubmed/`、`openalex/` 與規劃 PDF 均保留。
 
 ## 啟動
 
-此工作區已安裝獨立 `.venv`，已保存公開來源快照，可離線搜尋。
+舊版介面需另行安裝 Streamlit（`python -m pip install streamlit`）。已保存公開來源快照，可離線搜尋。
 
-雙擊 **run.cmd**，或在 PowerShell 執行：
+若要啟動歷史 Streamlit 介面，在 PowerShell 執行：
 
 ```powershell
-.\.venv\Scripts\python.exe -m streamlit run app.py
+.\.venv\Scripts\python.exe -m streamlit run streamlit_app.py
 ```
 
 在瀏覽器開啟 http://127.0.0.1:8501 。服務只綁定本機。關閉服務時在終端按 Ctrl+C。
@@ -20,7 +22,7 @@
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m researchbridge.ingest
-.\.venv\Scripts\python.exe -m streamlit run app.py
+.\.venv\Scripts\python.exe -m streamlit run streamlit_app.py
 ```
 
 ## 目前功能
@@ -73,7 +75,7 @@ OpenAlex API key 可由執行環境變數 `OPENALEX_API_KEY` 提供（選用）�
 ## 架構與檔案
 
 ```text
-app.py                         Streamlit 三語介面、範圍控制與探索流程
+streamlit_app.py               Streamlit 三語介面、範圍控制與探索流程
 researchbridge/core.py         XML 解析、SQLite、來源關聯、TF-IDF／LSA、原文摘錄
 researchbridge/discovery.py    方法、Bridges、字面來源核對、簡報範本
 researchbridge/i18n.py         中英西介面文字與主題標籤

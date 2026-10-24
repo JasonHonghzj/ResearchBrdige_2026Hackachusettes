@@ -10,6 +10,14 @@
   const $ = id => document.getElementById(id);
   const MAX_SAVED = 4;
   const EXAMPLES = ['example_medication', 'example_care', 'example_privacy', 'example_protein'];
+  const WEB_TEXT = {
+    en: { empty: 'No matching papers in this starter set. Try a suggested keyword or another query.',
+      compare_note: 'Compare up to four saved papers using their titles and abstracts. Your saved list stays available when you search again.' },
+    zh: { empty: '此入門資料集中沒有符合的文獻。請嘗試建議關鍵字或其他查詢。',
+      compare_note: '依題名及摘要比較最多四篇已儲存文獻。再次搜尋會保留比較清單。' },
+    es: { empty: 'No hay artículos coincidentes en este conjunto inicial. Prueba una palabra sugerida u otra consulta.',
+      compare_note: 'Compara hasta cuatro artículos guardados por sus títulos y resúmenes. La selección se conserva al buscar de nuevo.' },
+  };
 
   const state = {
     ready: false, lang: 'en', text: {}, meta: null,
@@ -64,12 +72,14 @@
   async function loadMeta(lang) {
     const prev = state.text;
     state.meta = await getJSON('/api/bridge/meta', { lang });
-    state.lang = lang; state.text = state.meta.text;
+    state.lang = lang; state.text = { ...state.meta.text, ...WEB_TEXT[lang] };
     // Translate a built-in example query; user-authored goals are left untouched.
     const ex = EXAMPLES.find(k => prev[k] && prev[k] === state.q);
     if (ex) { state.q = state.text[ex]; $('b-q').value = state.q; }
     const s = state.meta.stats;
-    $('b-stats').textContent = `${s.papers} ${t('metric_papers').toLowerCase()} · ${s.abstracts} ${t('metric_abstracts').toLowerCase()} · ${s.institutions} ${t('metric_institutions').toLowerCase()}.`;
+    $('b-stats').textContent = state.lang === 'en'
+      ? `${s.papers} records · ${s.abstracts} official abstracts · ${s.institutions} institutions.`
+      : `${s.papers} ${t('metric_papers').toLowerCase()} · ${s.abstracts} ${t('metric_abstracts').toLowerCase()} · ${s.institutions} ${t('metric_institutions').toLowerCase()}.`;
     $('b-method').innerHTML = `<option value="auto">${esc(t('auto_method'))}</option>` +
       state.meta.methods.map(m => `<option value="${esc(m.id)}">${esc(m.label)}</option>`).join('');
     $('b-method').value = state.method;
@@ -159,21 +169,28 @@
     }));
   }
 
+  let searchRequest = 0;
   async function search() {
+    const request = ++searchRequest;
     state.q = $('b-q').value.trim(); state.mode = $('b-mode').value;
+    const q = state.q, mode = state.mode;
+    state.lastResults = [];
+    $('b-search-export').hidden = true;
+    $('b-results').innerHTML = '';
     if (!state.q) { setStatus('b-search-status', t('enter_goal')); $('b-results').innerHTML = ''; $('b-search-export').hidden = true; return; }
-    setStatus('b-search-status', '…');
+    setStatus('b-search-status', state.lang === 'en' ? 'Searching the starter set…' : '…');
     try {
-      const r = await getJSON('/api/bridge/search', { q: state.q, mode: state.mode, limit: 20 });
+      const r = await getJSON('/api/bridge/search', { q, mode, limit: 20 });
+      if (request !== searchRequest) return;
       state.lastResults = r.results;
-      let msg = r.count ? t('results', { total: r.count, shown: r.count }) : t('empty');
+      let msg = r.count ? (state.lang === 'en' ? `${r.count} ${r.count === 1 ? 'paper matches' : 'papers match'}; showing ${r.results.length}.` : t('results', { total: r.count, shown: r.results.length })) : t('empty');
       if (r.lexicon_matches.length || r.effective_query !== r.query) msg += ' ' + t('expansion', { query: r.expanded_query });
       setStatus('b-search-status', msg);
       $('b-results').innerHTML = r.results.map((p, i) => paperCard(p, i + 1)).join('');
       bindSaves($('b-results'));
-      if (r.count) exportControls('b-search-export', 'search', () => ({ q: state.q, mode: state.mode }));
+      if (r.count) exportControls('b-search-export', 'search', () => ({ q, mode }));
       else $('b-search-export').hidden = true;
-    } catch (e) { setStatus('b-search-status', e.message, true); }
+    } catch (e) { if (request === searchRequest) setStatus('b-search-status', e.message, true); }
   }
 
   /* ---------- 02 bridges ---------- */

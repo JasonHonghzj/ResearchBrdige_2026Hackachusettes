@@ -1,22 +1,64 @@
 # ResearchBridge
 
-Finds the experiment nobody has run yet, and names the Massachusetts labs who could run it.
+Explore early-detection research, check disease–method pairings against PubMed,
+and take a reproducible literature brief into a research discussion.
 
 Hackachusetts 2026 · Track H4, Accelerating Biotechnology Innovation
 
----
+## Run the demo
 
-## What it does
+Use Python 3.12 or newer. From the repository root:
 
-Maps a research field as a grid of **diseases × lab methods**, finds the combinations no
-paper has tried, and ranks them by whether the two literatures share underlying biology.
-For the top candidates it produces a one-page brief — evidence with every claim checked
-against the source abstract and unsupported claims deleted — plus the Massachusetts
-institutions holding each half of the idea.
+```powershell
+python -m pip install -r requirements.txt
+python -m uvicorn app:app --host 127.0.0.1 --port 8000
+```
 
-Sharpest use case: a researcher needs a defensible **novelty statement** for a grant
-("no prior work applies method X to disease Y"). Proving that absence rigorously is the
-one thing this does well.
+Open [ResearchBridge](http://127.0.0.1:8000). On Windows, `run.cmd` runs the same
+FastAPI app, preferring `.venv` when present and otherwise using `python` on PATH.
+The app binds to localhost. No API key or corpus rebuild is required for the demo.
+
+## What is implemented
+
+- **Check:** enter exact MeSH disease and method names, or choose a saved example.
+  New checks query PubMed; repeated checks can use a saved result. A fresh check
+  displays its recorded timestamp. Unknown terms are rejected rather than called gaps.
+- **Map:** saved counts over 79,940 deduplicated PubMed papers (2005–2026), with
+  50 disease × 32 method axes. A shortlist shows the highest overall paper counts
+  across distinct diseases. Ringed cells have ≤2 results in the saved full-PubMed
+  early-detection search; that threshold does not establish scientific novelty.
+- **Brief:** the exact selected pairing, counts, evidence source, reproducible
+  PubMed searches and limitations. Download Markdown or print / save as PDF.
+  Editing the inputs clears the previous checked selection until another check succeeds.
+- **Library:** a separate 60-paper starter set, 56 official abstracts and 135
+  institutions. Search, save up to four papers, compare, check literal source text,
+  and export a discussion brief. These relevance scores are text similarity.
+- **Method:** corpus coverage, the withdrawn historical lift, the negative result
+  for bridge ranking, and a clearly labeled illustrative claim-check walkthrough.
+
+The saved map, examples, briefs and Library work offline once the local server
+is running. New or refreshed PubMed checks require Internet access. External PubMed
+links also require a connection. No claim-checking model is called by the walkthrough.
+
+**Future work:** verified Massachusetts collaborator matching, a general claim
+verification gate, and corrected historical validation. The earlier 2× lift was
+withdrawn. Paper counts indicate indexed use, not effectiveness or feasibility.
+
+See [DEMO.md](DEMO.md) for the three-minute walkthrough and rehearsal checks.
+The historical Streamlit interface is retained as `streamlit_app.py`; its older
+notes in `README_RESEARCHBRIDGE.md` do not describe the primary demo UI.
+
+## Verify
+
+```powershell
+python -m pytest tests --ignore=tests/test_app.py -q -p no:cacheprovider
+node --check static/gap.js
+node --check static/bridge.js
+```
+
+`tests/test_app.py` covers the retained Streamlit interface and additionally
+requires `streamlit`. The FastAPI demo does not use Streamlit. Browser rehearsal
+is necessary: API tests alone do not verify navigation, responsive layout or brief selection.
 
 ---
 
@@ -138,22 +180,17 @@ Use both as seeds and as the demo's entry point. Fetch live. Say so openly.
 
 ## Layout
 
-```
-gapfinder/fetch.py    PubMed retrieval, provenance, integrity spot check   [done]
-gapfinder/mesh.py     tree resolution (+RDF fallback), axis rules          [done]
-gapfinder/phrases.py  MeSH name -> OpenAlex search phrase                  [done]
-gapfinder/grid.py     co-occurrence, bridges, IDF ranking                  [phase 1]
-gapfinder/labs.py     OpenAlex MA institution lookup                       [phase 1]
-gapfinder/verify.py   the four-step claim gate                             [phase 3]
-gapfinder/brief.py    assembles the one-pager                              [phase 4]
-app.py            FastAPI: static/index.html + 6 endpoints             [phase 2]
-
-data/             caches + provenance; corpus_*.json gitignored,
-                  rebuild with `python -m gapfinder.fetch` (~12 min)
-probes/           the 11 exploratory scripts behind every number above
-static/           index.html (the designed frontend), pipeline.html (diagrams)
-starter/          the two provided datasets, extracted
-DESIGN.md         full design document
+```text
+app.py                  FastAPI app; /api/gap/* and /api/bridge/*
+gapfinder/              PubMed fetch, MeSH axes, grid and query confirmation
+researchbridge/         Starter-set retrieval, comparison, reports and exports
+static/index.html       Responsive UI, no framework or build step
+static/gap.js           Pairing selection, checks, map and novelty brief
+static/bridge.js        Starter-set Library UI
+data/                   Saved map / checks and Bridge database / snapshots
+starter/                Original Hackachusetts datasets
+streamlit_app.py        Retained earlier interface
+probes/                 Exploratory measurement scripts
 ```
 
 ## Reproduce any number here

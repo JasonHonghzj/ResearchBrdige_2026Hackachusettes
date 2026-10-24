@@ -140,8 +140,8 @@ h3.sec{
   font:inherit;font-weight:500;font-size:13.5px;padding:11px 16px;border-radius:5px;
   border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;
 }
-:root[data-theme="dark"] .btn, :root:not([data-theme="light"]) .btn{color:#08121f}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .btn{color:#fff}}
+:root[data-theme="dark"] .btn:not(.ghost){color:#08121f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn:not(.ghost){color:#08121f}}
 .btn.ghost{background:transparent;color:var(--accent)}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pipe{display:flex;flex-direction:column;gap:0;margin-top:4px}
@@ -351,7 +351,7 @@ h3.sec{
 .paper a,.bmd a{color:var(--accent)}
 .insts{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:11.5px;color:var(--ink-3)}
 .exp{display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end;margin-top:14px}
-.tbl-wrap{overflow-x:auto}
+.tbl-wrap{position:relative;max-width:100%;overflow-x:auto}
 .tbl{border-collapse:collapse;width:100%;font-size:12.5px}
 .tbl th{text-align:left;font-weight:600;color:var(--ink-2);padding:7px 10px;border-bottom:1px solid var(--line-strong)}
 .tbl td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -409,7 +409,7 @@ h3.sec{
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:600px){
   .shell{padding:18px 16px 40px}.topbar{gap:12px}.brand{width:100%}.nav{width:100%;justify-content:space-between;gap:0}.nav button{padding:8px 10px;font-size:13px}
-  .phead h2{font-size:25px}.phead{margin-top:22px}.card{padding:16px}.shortlist{grid-template-columns:1fr}.goalbox .btn{width:100%}
+  .phead h2{font-size:25px}.phead{margin-top:22px}.card{padding:16px}.shortlist{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:8px}.pick-card{flex:0 0 245px;scroll-snap-align:start}.goalbox .btn{width:100%}
   .field-grow{flex-basis:100%}.brief{padding:22px 18px}.brief .bh h3{font-size:23px}.sel-v{overflow-wrap:anywhere}.selbar{gap:6px}
   .pipe li{flex-wrap:wrap}.pipe .num{margin-left:25px}.pipe .lbl{min-width:180px}.bar{grid-template-columns:105px 1fr auto;gap:8px}.bar .bv{min-width:48px}.bar .bl{font-size:11.5px}
   .scope label{margin-left:0}.kv{gap:8px 12px}.kv dt{white-space:normal}.map th.row{max-width:140px}.paper .ph{flex-wrap:wrap}
@@ -532,6 +532,48 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
+  <!-- ============ 05 ============ -->
+  <section class="panel" id="p5" role="tabpanel">
+    <div class="phead">
+      <h2>What is measured</h2>
+      <p>And what we withdrew.</p>
+    </div>
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="card">
+        <h3 class="sec">Saved corpus</h3>
+        <dl class="kv" id="corpuskv"><dt>loading…</dt><dd>—</dd></dl>
+        <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
+        <p style="margin:0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E01</span> Diagnosis procedures — colonoscopy, mammography and colposcopy are defined by the organ they examine, so they can never transfer to another one. Leaving them in produced “breast cancer × colonoscopy” as a top result.
+        </p>
+        <p style="margin:10px 0 0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
+        </p>
+      </div>
+      <div class="card">
+        <h3 class="sec">Reading the results</h3>
+        <p style="margin:0 0 10px;color:var(--ink-2);font-size:13px">A pairing is a candidate when its MeSH search returns at most two early-detection papers. A paper count shows indexed use, not that a method is effective. MeSH coverage, indexing delays, synonyms and the search definition can all affect these counts.</p>
+        <p style="margin:0 0 14px;color:var(--ink-2);font-size:13px">The map uses saved counts; Check can query PubMed. The Library searches a separate 60-paper starter set and includes a functional literal source checker.</p>
+        <button class="btn ghost" id="gotoGate">Open the walkthrough</button>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="sec">Pairings meeting the search threshold · saved analysis</h3>
+        <div class="bars" id="bars"></div>
+        <div class="axisnote" id="barnote">loading…</div>
+      </div>
+      <div class="card">
+        <h3 class="sec">What was measured</h3>
+        <dl class="kv" id="valkv"><dt>loading…</dt><dd>—</dd></dl>
+        <div class="caveat" id="valcaveat"></div>
+        <p style="margin:14px 0 0;font-size:12.5px;color:var(--ink-2)">
+          Prior art: Swanson &amp; Smalheiser’s <span class="mono">Arrowsmith</span> has explored literature-based discovery since the 1990s. This prototype focuses on reproducible searches and a portable brief. Massachusetts collaborator matching remains future work.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 04 ============ -->
   <section class="panel" id="p4" role="tabpanel">
     <div class="phead">
@@ -571,48 +613,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="src" style="margin-top:10px">Second illustrative source: Polyamines were elevated in pancreatic ductal adenocarcinoma versus chronic pancreatitis.</div>
         <p style="margin:11px 0 0;font-size:12px;color:var(--ink-3)">
           The third claim fails on two counts: the cohort contains no pancreatic cases, and the abstract states explicitly that no multi-centre validation exists. Nothing in either source supports it.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 05 ============ -->
-  <section class="panel" id="p5" role="tabpanel">
-    <div class="phead">
-      <h2>What is measured</h2>
-      <p>And what we withdrew.</p>
-    </div>
-    <div class="grid2" style="margin-bottom:16px">
-      <div class="card">
-        <h3 class="sec">Saved corpus</h3>
-        <dl class="kv" id="corpuskv"><dt>loading…</dt><dd>—</dd></dl>
-        <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
-        <p style="margin:0;color:var(--ink-2);font-size:12.5px">
-          <span class="chip n">E01</span> Diagnosis procedures — colonoscopy, mammography and colposcopy are defined by the organ they examine, so they can never transfer to another one. Leaving them in produced “breast cancer × colonoscopy” as a top result.
-        </p>
-        <p style="margin:10px 0 0;color:var(--ink-2);font-size:12.5px">
-          <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
-        </p>
-      </div>
-      <div class="card">
-        <h3 class="sec">Reading the results</h3>
-        <p style="margin:0 0 10px;color:var(--ink-2);font-size:13px">A pairing is a candidate when its MeSH search returns at most two early-detection papers. A paper count shows indexed use, not that a method is effective. MeSH coverage, indexing delays, synonyms and the search definition can all affect these counts.</p>
-        <p style="margin:0 0 14px;color:var(--ink-2);font-size:13px">The map uses saved counts; Check can query PubMed. The Library searches a separate 60-paper starter set and includes a functional literal source checker.</p>
-        <button class="btn ghost" id="gotoGate">Open the walkthrough</button>
-      </div>
-    </div>
-    <div class="grid2">
-      <div class="card">
-        <h3 class="sec">Pairings meeting the search threshold · saved analysis</h3>
-        <div class="bars" id="bars"></div>
-        <div class="axisnote" id="barnote">loading…</div>
-      </div>
-      <div class="card">
-        <h3 class="sec">What was measured</h3>
-        <dl class="kv" id="valkv"><dt>loading…</dt><dd>—</dd></dl>
-        <div class="caveat" id="valcaveat"></div>
-        <p style="margin:14px 0 0;font-size:12.5px;color:var(--ink-2)">
-          Prior art: Swanson &amp; Smalheiser’s <span class="mono">Arrowsmith</span> has explored literature-based discovery since the 1990s. This prototype focuses on reproducible searches and a portable brief. Massachusetts collaborator matching remains future work.
         </p>
       </div>
     </div>
@@ -722,7 +722,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="card">
           <h3 class="sec" data-t="check_sources">Sources to check</h3>
           <div class="srcpick" id="b-check-src"></div>
-          <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Draws on your comparison list plus the current search results. This literal check is Bridge’s tool; the gap checker’s gate, under Method, is a separate and stricter one.</p>
+          <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Uses your comparison list and current search results. A literal match locates source text; statements without a match need human review.</p>
         </div>
       </div>
     </section>

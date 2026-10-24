@@ -35,6 +35,7 @@ function showDest(id, replace = false){
   if (d.bridge && window.Bridge) window.Bridge.init();
   renderSelbar();
   if (location.hash !== '#' + id) history[replace ? 'replaceState' : 'pushState'](null, '', '#' + id);
+  window.scrollTo({top:0,behavior:'instant'});
 }
 navBtns.forEach((b, i) => {
   b.id = 'nav-' + b.dataset.dest;
@@ -276,7 +277,7 @@ for (const id of ['ckProblem','ckMethod']){
 }
 document.addEventListener('click', e => {
   const nav = e.target.closest('[data-nav]');
-  if (nav) {showDest(nav.dataset.nav); window.scrollTo({top:0,behavior:reducedMotion() ? 'instant':'smooth'});}
+  if (nav) showDest(nav.dataset.nav);
   const pick = e.target.closest('[data-pick]');
   if (pick && S.gaps[+pick.dataset.pick]){
     selectPair(S.gaps[+pick.dataset.pick],'map');
@@ -338,7 +339,7 @@ async function boot(){
     renderCorpus(); renderSelection(); renderValidation();
     const examples = [['Obesity','Polymerase Chain Reaction'],['Sepsis','Metabolomics'],['Parkinson Disease','Mass Spectrometry']];
     let indices = examples.map(([p,m]) => S.gaps.findIndex(x => x.problem===p && x.method===m)).filter(i => i>=0);
-    if (!indices.length) indices=curated().slice(0,3).map(x=>x.index);
+    for (const x of curated()) if (indices.length < 3 && !indices.some(i => S.gaps[i].problem === x.problem)) indices.push(x.index);
     $('checkExamples').innerHTML = '<span class="source-note" style="margin:0;align-self:center">Try saved evidence:</span>'+indices.map(i=>`<button data-pick="${i}">${esc(S.gaps[i].problem)} × ${esc(S.gaps[i].method)}</button>`).join('');
     const options = (id,terms) => $(id).innerHTML=terms.map(x=>`<option value="${esc(x.name)}"></option>`).join('');
     options('dlProblems',grid.problems); options('dlMethods',grid.methods);
