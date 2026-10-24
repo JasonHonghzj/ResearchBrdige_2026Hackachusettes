@@ -46,7 +46,7 @@ withdrawn. Paper counts indicate indexed use, not effectiveness or feasibility.
 
 See [DEMO.md](DEMO.md) for the three-minute walkthrough and rehearsal checks.
 The historical Streamlit interface is retained as `streamlit_app.py`; its older
-notes in `README_RESEARCHBRIDGE.md` do not describe the primary demo UI.
+notes in `STREAMLIT.md` do not describe the primary demo UI.
 
 ## Verify
 
@@ -190,7 +190,7 @@ static/bridge.js        Starter-set Library UI
 data/                   Saved map / checks and Bridge database / snapshots
 starter/                Original Hackachusetts datasets
 streamlit_app.py        Retained earlier interface
-probes/                 Exploratory measurement scripts
+STREAMLIT.md            The retained earlier Streamlit interface
 ```
 
 ## Reproduce any number here

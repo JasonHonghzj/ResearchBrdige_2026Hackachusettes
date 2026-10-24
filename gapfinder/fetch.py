@@ -1,6 +1,6 @@
 """PubMed retrieval for ResearchBridge.
 
-Stores title, journal, year, MeSH descriptors AND abstract text — the probes
+Stores title, journal, year, MeSH descriptors AND abstract text — the first pass
 only kept year+mesh, which left claim verification and evidence quotes dead.
 
 Uses ElementTree rather than regex: abstracts arrive as several <AbstractText>
@@ -75,7 +75,7 @@ def _year(article: ET.Element) -> int | None:
 
     Scoped to Journal/JournalIssue/PubDate on purpose — a loose search picks up
     other PubDate elements and leaks later years into an earlier window. That
-    bug put 802 post-2018 records inside a '2005:2018' fetch during the probes.
+    bug put 802 post-2018 records inside a '2005:2018' fetch.
     """
     for path in (".//Article/Journal/JournalIssue/PubDate/Year",
                  ".//Article/ArticleDate/Year"):

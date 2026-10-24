@@ -47,14 +47,14 @@ fully-gated role. Everything load-bearing is deterministic and reproducible.
 │ phrases.py DONE  │          │                                          │
 │ grid.py    P1    │          │ OpenAlex  /works, /institutions          │
 │ labs.py    P1    │◄────────►│                                          │
-│ verify.py  P3    │          │ LLM provider (OPTIONAL, drafting only)   │
-│ brief.py   P4    │◄────────►│   Anthropic — behind a thin interface    │
+│ verify.py  P3    │          │                                          │
+│ brief.py   P4    │          │ no LLM provider — see 4.2                 │
 └───────┬──────────┘          └──────────────────────────────────────────┘
         │
 ┌───────▼──────────────────────────────────────────────────────────────┐
 │ data/  — caches + committed precomputed JSON                           │
 │ corpus_{past,future}.json  grid.json  gaps.json  validation.json       │
-│ phrases.json  mesh_trees.json  provenance.json  inst_region.json │
+│ phrases.json  mesh_trees.json  provenance.json  confirmed.json  │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -106,7 +106,7 @@ build_axes(corpus)  in mesh.py
 Why the exclusions exist is documented in `mesh.py` and `tech.md`; do not simplify
 them. E01 made "Breast Neoplasms × Colonoscopy" the top gap three times.
 
-### 3.3 Grid + gap ranking (Phase 1 — `grid.py`, port of `probes/timeslice.py`)
+### 3.3 Grid + gap ranking (Phase 1 — `gapfinder/grid.py`)
 
 **Two grids, built by the same code on different corpus slices. Do not confuse them.**
 
@@ -221,7 +221,7 @@ candidates ~2× better than chance; we do **not** predict breakthroughs.
 | "no prior work" sounds absolute | brief shows the query + corpus date window + provenance timestamp |
 | flagged gap never gets filled | expected — we rank candidates ~2×, we do NOT predict; the reject pile is shown |
 
-### 3.5 Labs (Phase 1/4 — `labs.py`, port of `probes/openalex4.py`, LIVE)
+### 3.5 Labs (Phase 1/4 — `labs.py`, not built)
 
 ```
 grid term → search phrase (phrases.json; OpenAlex has NO MeSH filter)
@@ -279,9 +279,14 @@ the brief's claim sentences. It proposes; code disposes. Specifically:
 - The LLM never decides whether a claim is true. It never scores novelty. It never
   ranks gaps. It never touches the validation numbers.
 
-It is also **optional**. The app ships with precomputed draft claims in JSON and runs
-with no API key at all. Live drafting is behind a thin provider interface; the default
-provider reads the JSON. (`requirements.txt` keeps `anthropic` commented out.)
+**As shipped there is no LLM at all.** No provider is wired, no API key is read, and
+`requirements.txt` carries no model client. The brief is composed from the gap data
+and the two PubMed counts; the claim walkthrough in Method uses claims fixed in the
+page. That is the stronger position anyway — every number on screen comes from a
+query a reviewer can re-run, and nothing on the critical path can fabricate text.
+
+If live drafting is added later it belongs behind a thin provider interface whose
+default reads JSON, so the app keeps running with no key.
 
 ### 4.3 Optional, OFF the critical path: embeddings and a learned ranker
 

@@ -6,14 +6,15 @@ gapfinder/
   mesh.py       tree numbers, axis rules, build_axes()                   [DONE]
   phrases.py    MeSH name -> OpenAlex search phrase                      [DONE]
   grid.py       co-occurrence, mechanistic bridges, IDF ranking          [phase 1]
-  labs.py       OpenAlex MA institution lookup (port probes/openalex4) [phase 1]
+  labs.py       OpenAlex MA institution lookup [phase 1]
   verify.py     the four-step claim gate                                 [phase 3]
   brief.py      assembles the one-pager                                  [phase 4]
 app.py          FastAPI: serves static/index.html + 6 endpoints          [phase 2]
 
 data/           caches + committed precomputed JSON (corpus_*.json gitignored,
                 regenerate with `python -m gapfinder.fetch`, ~3 min)
-probes/         the 11 exploratory scripts behind every number in README.md
+                the exploratory scripts that produced the measurements in
+                README.md were removed once superseded; they are in git history
 static/         index.html — the designed frontend, already working as a mockup
 starter/        the two provided Hackachusetts datasets, extracted
 ```

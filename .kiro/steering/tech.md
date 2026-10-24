@@ -1,7 +1,8 @@
 # Technical rules — each one earned by a failed experiment
 
 Do not "simplify" any rule below. Every one replaced something that was tried
-and produced wrong output. The probe scripts in `probes/` are the evidence.
+and produced wrong output. README.md records each measurement; the scripts that
+produced them are in git history.
 
 ## Stack
 
