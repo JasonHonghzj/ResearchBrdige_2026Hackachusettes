@@ -17,8 +17,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
 
 ROOT = Path(__file__).resolve().parents[1]
-DB_PATH = ROOT / "data" / "bridge" / "researchbridge.sqlite"
-SNAPSHOTS = ROOT / "data" / "bridge" / "snapshots"
+DB_PATH = ROOT / "data" / "researchbridge.sqlite"
+SNAPSHOTS = ROOT / "data" / "snapshots"
 
 TOPICS = {
     "數位健康與照護": r"\b(chatbot|caregiver|care transition|nursing|mobile application|medication literacy|digital|web-based|long-term care)\b",
@@ -143,11 +143,11 @@ def connect(path: Path = DB_PATH):
 
 
 def build_database(path: Path = DB_PATH, root: Path = ROOT) -> dict:
-    seeds = read_csv(root / "starter" / "pubmed" / "data.csv")
-    directory = read_csv(root / "starter" / "openalex" / "data.csv")
+    seeds = read_csv(root / "pubmed" / "data.csv")
+    directory = read_csv(root / "openalex" / "data.csv")
     if len({r["pmid"] for r in seeds}) != len(seeds):
         raise ValueError("Duplicate PMID in starter CSV")
-    snapshot_dir = root / "data" / "bridge" / "snapshots"
+    snapshot_dir = root / "data" / "snapshots"
     enriched_file = snapshot_dir / "pubmed.json"
     snapshot = json.loads(enriched_file.read_text(encoding="utf-8")) if enriched_file.exists() else {}
     enriched = snapshot.get("records", {})
@@ -190,7 +190,7 @@ def build_database(path: Path = DB_PATH, root: Path = ROOT) -> dict:
         conn.executemany("INSERT INTO institutions VALUES (?,?,?,?)", [(r["institution"], r["city"], int(r["works"]), int(r["cited_by"])) for r in directory])
         for link in links:
             conn.execute("INSERT OR REPLACE INTO paper_institutions VALUES (?,?,?)", (link["pmid"], link["institution_id"], json.dumps(link, ensure_ascii=False)))
-        for source in ["starter/pubmed/data.csv", "starter/openalex/data.csv"]:
+        for source in ["pubmed/data.csv", "openalex/data.csv"]:
             conn.execute("INSERT INTO provenance VALUES (?,?)", (source, hashlib.sha256((root / source).read_bytes()).hexdigest()))
     temporary.replace(path)
     return {"papers": len(papers), "abstracts": sum(p["has_abstract"] for p in papers), "institutions": len(directory), "affiliation_links": len(links), "papers_with_links": sum(p["institution_count"] > 0 for p in papers), "directory_links": sum(bool(x["directory_name"]) for x in links)}

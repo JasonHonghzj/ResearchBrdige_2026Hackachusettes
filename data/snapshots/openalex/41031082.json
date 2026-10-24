@@ -1,0 +1,1794 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41031082",
+  "retrieved_at": "2026-10-24T17:45:32+00:00",
+  "record": {
+    "id": "https://openalex.org/W7084163390",
+    "doi": null,
+    "title": "Language Enhanced Model for Eye (LEME): An Open-Source Ophthalmology-Specific Large Language Model.",
+    "display_name": "Language Enhanced Model for Eye (LEME): An Open-Source Ophthalmology-Specific Large Language Model.",
+    "publication_year": 2024,
+    "publication_date": "2024-10-01",
+    "ids": {
+      "openalex": "https://openalex.org/W7084163390",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41031082"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "pmid:41031082",
+      "doi": null,
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41031082",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "ArXiv",
+      "raw_type": "Journal Article"
+    },
+    "volume": null,
+    "type": "preprint",
+    "indexed_in": [
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "green",
+      "oa_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12478424",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5019426692",
+          "display_name": "Aidan Gilson",
+          "orcid": "https://orcid.org/0000-0002-4770-4705",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-4770-4705"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1287163989",
+            "display_name": "Massachusetts Eye and Ear Infirmary",
+            "ror": "https://ror.org/04g3dn724",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1287163989"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Aidan Gilson",
+        "raw_affiliation_strings": [
+          "Department of Ophthalmology, Massachusetts Eye and Ear, Harvard Medical School, Boston, Massachusetts"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Ophthalmology, Massachusetts Eye and Ear, Harvard Medical School, Boston, Massachusetts",
+            "institution_ids": [
+              "https://openalex.org/I1287163989",
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5053812672",
+          "display_name": "Xuguang Ai",
+          "orcid": "https://orcid.org/0009-0000-2432-8316",
+          "observed_orcids": [
+            "https://orcid.org/0009-0000-2432-8316"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Xuguang Ai",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5101868563",
+          "display_name": "Qianqian Xie",
+          "orcid": "https://orcid.org/0000-0002-9588-7454",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-9588-7454",
+            "https://orcid.org/0009-0004-0629-7260"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Qianqian Xie",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": null,
+          "display_name": "Sahana Srinivasan",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I2799299286",
+            "display_name": "Singapore National Eye Center",
+            "ror": "https://ror.org/029nvrb94",
+            "country_code": "SG",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I2799299286"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210116917",
+            "display_name": "Singapore Eye Research Institute",
+            "ror": "https://ror.org/02crz6e12",
+            "country_code": "SG",
+            "type": "facility",
+            "lineage": [
+              "https://openalex.org/I4210116917"
+            ]
+          }
+        ],
+        "countries": [
+          "SG"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Sahana Srinivasan",
+        "raw_affiliation_strings": [
+          "Singapore Eye Research Institute, Singapore National Eye Centre, Singapore"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Singapore Eye Research Institute, Singapore National Eye Centre, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I2799299286",
+              "https://openalex.org/I4210116917"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5075448224",
+          "display_name": "Krithi Pushpanathan",
+          "orcid": "https://orcid.org/0000-0001-6263-8489",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-6263-8489"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I165932596",
+            "display_name": "National University of Singapore",
+            "ror": "https://ror.org/01tgyzw49",
+            "country_code": "SG",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I165932596"
+            ]
+          }
+        ],
+        "countries": [
+          "SG"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Krithi Pushpanathan",
+        "raw_affiliation_strings": [
+          "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I165932596"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5024140931",
+          "display_name": "Maxwell Singer",
+          "orcid": "https://orcid.org/0000-0001-9583-3846",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-9583-3846"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Maxwell B Singer",
+        "raw_affiliation_strings": [
+          "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": null,
+          "display_name": "Jimin Huang",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jimin Huang",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5113326488",
+          "display_name": "Hyunjae Kim",
+          "orcid": "https://orcid.org/0009-0007-4831-127X",
+          "observed_orcids": [
+            "https://orcid.org/0009-0007-4831-127X"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I197347611",
+            "display_name": "Korea University",
+            "ror": "https://ror.org/047dqcg40",
+            "country_code": "KR",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I197347611"
+            ]
+          }
+        ],
+        "countries": [
+          "KR"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Hyunjae Kim",
+        "raw_affiliation_strings": [
+          "Department of Computer Science, Korea University, 145 Anam-ro, Seongbuk-gu, Seoul, 02841, Republic of Korea"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Computer Science, Korea University, 145 Anam-ro, Seongbuk-gu, Seoul, 02841, Republic of Korea",
+            "institution_ids": [
+              "https://openalex.org/I197347611"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5137091212",
+          "display_name": "Erping Long",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1299303238",
+            "display_name": "National Institutes of Health",
+            "ror": "https://ror.org/01cwqze88",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4391012607",
+            "display_name": "Division of Cancer Epidemiology and Genetics",
+            "ror": "https://ror.org/00vkwep27",
+            "country_code": null,
+            "type": "facility",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I4391012607"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Erping Long",
+        "raw_affiliation_strings": [
+          "Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Bethesda, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Bethesda, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4391012607"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5112340170",
+          "display_name": "Peixing Wan",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1299303238",
+            "display_name": "National Institutes of Health",
+            "ror": "https://ror.org/01cwqze88",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210149717",
+            "display_name": "Center for Cancer Research",
+            "ror": "https://ror.org/05bjen692",
+            "country_code": "US",
+            "type": "facility",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I4210149717"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Peixing Wan",
+        "raw_affiliation_strings": [
+          "Center for Cancer Research, National Cancer Institute, National Institutes of Health, Bethesda, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Center for Cancer Research, National Cancer Institute, National Institutes of Health, Bethesda, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I4210149717"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5113429312",
+          "display_name": "Luciano V. Del Priore",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Luciano V Del Priore",
+        "raw_affiliation_strings": [
+          "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5084415954",
+          "display_name": "Lucila Ohno-machado A",
+          "orcid": "https://orcid.org/0000-0002-8005-7327",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-8005-7327"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Lucila Ohno-Machado",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": null,
+          "display_name": "Hua Xu",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Hua Xu",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5014407399",
+          "display_name": "Dianbo Liu",
+          "orcid": "https://orcid.org/0000-0002-3042-9161",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-3042-9161",
+            "https://orcid.org/0000-0003-3844-4865"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I165932596",
+            "display_name": "National University of Singapore",
+            "ror": "https://ror.org/01tgyzw49",
+            "country_code": "SG",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I165932596"
+            ]
+          }
+        ],
+        "countries": [
+          "SG"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Dianbo Liu",
+        "raw_affiliation_strings": [
+          "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I165932596"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5067288250",
+          "display_name": "Ron Afshari Adelman",
+          "orcid": "https://orcid.org/0000-0003-4049-3551",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-4049-3551"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Ron A Adelman",
+        "raw_affiliation_strings": [
+          "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Ophthalmology and Visual Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": null,
+          "display_name": "Yih-Chung Tham",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I165932596",
+            "display_name": "National University of Singapore",
+            "ror": "https://ror.org/01tgyzw49",
+            "country_code": "SG",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I165932596"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I2799299286",
+            "display_name": "Singapore National Eye Center",
+            "ror": "https://ror.org/029nvrb94",
+            "country_code": "SG",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I2799299286"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210116917",
+            "display_name": "Singapore Eye Research Institute",
+            "ror": "https://ror.org/02crz6e12",
+            "country_code": "SG",
+            "type": "facility",
+            "lineage": [
+              "https://openalex.org/I4210116917"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210126319",
+            "display_name": "Duke-NUS Medical School",
+            "ror": "https://ror.org/02j1m6098",
+            "country_code": "SG",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I165932596",
+              "https://openalex.org/I170897317",
+              "https://openalex.org/I4210126319"
+            ]
+          }
+        ],
+        "countries": [
+          "SG"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Yih-Chung Tham",
+        "raw_affiliation_strings": [
+          "Singapore Eye Research Institute, Singapore National Eye Centre, Singapore",
+          "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore",
+          "Ophthalmology and Visual Science Academic Clinical Program, Duke-NUS Medical School, Singapore, Singapore"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Singapore Eye Research Institute, Singapore National Eye Centre, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I2799299286",
+              "https://openalex.org/I4210116917"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Centre for Innovation and Precision Eye Health, Department of Ophthalmology, Yong Loo Lin School of Medicine, National University of Singapore, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I165932596"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Ophthalmology and Visual Science Academic Clinical Program, Duke-NUS Medical School, Singapore, Singapore",
+            "institution_ids": [
+              "https://openalex.org/I4210126319"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": null,
+          "display_name": "Qingyu Chen",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I32971472",
+            "display_name": "Yale University",
+            "ror": "https://ror.org/03v76x132",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Qingyu Chen",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Informatics and Data Science, Yale School of Medicine, Yale University, New Haven, USA",
+            "institution_ids": [
+              "https://openalex.org/I32971472"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 3,
+    "institutions_distinct_count": 12,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": null,
+    "has_fulltext": true,
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "cited_by_percentile_year": null,
+    "biblio": {
+      "volume": null,
+      "issue": null,
+      "first_page": null,
+      "last_page": null
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": true,
+    "primary_topic": {
+      "id": "https://openalex.org/T11636",
+      "display_name": "Artificial Intelligence in Healthcare and Education",
+      "score": 0.9804999828338623,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2718",
+        "display_name": "Health Informatics"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T11636",
+        "display_name": "Artificial Intelligence in Healthcare and Education",
+        "score": 0.9804999828338623,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2718",
+          "display_name": "Health Informatics"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10028",
+        "display_name": "Topic Modeling",
+        "score": 0.009700000286102295,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T13702",
+        "display_name": "Machine Learning in Healthcare",
+        "score": 0.0031999999191612005,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/leme",
+        "display_name": "Leme",
+        "score": 0.800000011920929
+      },
+      {
+        "id": "https://openalex.org/keywords/medical-question-answering",
+        "display_name": "medical question answering",
+        "score": 0.6930000185966492
+      },
+      {
+        "id": "https://openalex.org/keywords/multiple-choice-question-answering",
+        "display_name": "multiple-choice question answering",
+        "score": 0.6949999928474426
+      },
+      {
+        "id": "https://openalex.org/keywords/medical-text-generation",
+        "display_name": "clinical text generation",
+        "score": 0.4350000023841858
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C41008148",
+        "wikidata": "https://www.wikidata.org/wiki/Q21198",
+        "display_name": "Computer science",
+        "level": 0,
+        "score": 0.6446999907493591
+      },
+      {
+        "id": "https://openalex.org/C170858558",
+        "wikidata": "https://www.wikidata.org/wiki/Q1394144",
+        "display_name": "Automatic summarization",
+        "level": 2,
+        "score": 0.5557000041007996
+      },
+      {
+        "id": "https://openalex.org/C204321447",
+        "wikidata": "https://www.wikidata.org/wiki/Q30642",
+        "display_name": "Natural language processing",
+        "level": 1,
+        "score": 0.5479999780654907
+      },
+      {
+        "id": "https://openalex.org/C154945302",
+        "wikidata": "https://www.wikidata.org/wiki/Q11660",
+        "display_name": "Artificial intelligence",
+        "level": 1,
+        "score": 0.5203999876976013
+      },
+      {
+        "id": "https://openalex.org/C137293760",
+        "wikidata": "https://www.wikidata.org/wiki/Q3621696",
+        "display_name": "Language model",
+        "level": 2,
+        "score": 0.43970000743865967
+      },
+      {
+        "id": "https://openalex.org/C2776502983",
+        "wikidata": "https://www.wikidata.org/wiki/Q690182",
+        "display_name": "Contrast (vision)",
+        "level": 2,
+        "score": 0.3001999855041504
+      },
+      {
+        "id": "https://openalex.org/C119857082",
+        "wikidata": "https://www.wikidata.org/wiki/Q2539",
+        "display_name": "Machine learning",
+        "level": 1,
+        "score": 0.2727999985218048
+      },
+      {
+        "id": "https://openalex.org/C3019813237",
+        "wikidata": "https://www.wikidata.org/wiki/Q65089264",
+        "display_name": "Model validation",
+        "level": 2,
+        "score": 0.2694000005722046
+      },
+      {
+        "id": "https://openalex.org/C36464697",
+        "wikidata": "https://www.wikidata.org/wiki/Q451553",
+        "display_name": "Visualization",
+        "level": 2,
+        "score": 0.2635999917984009
+      },
+      {
+        "id": "https://openalex.org/C2778883600",
+        "wikidata": "https://www.wikidata.org/wiki/Q2390977",
+        "display_name": "Language proficiency",
+        "level": 2,
+        "score": 0.26010000705718994
+      },
+      {
+        "id": "https://openalex.org/C51632099",
+        "wikidata": "https://www.wikidata.org/wiki/Q3985153",
+        "display_name": "Training set",
+        "level": 2,
+        "score": 0.257099986076355
+      }
+    ],
+    "mesh": [],
+    "locations_count": 2,
+    "locations": [
+      {
+        "id": "pmid:41031082",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41031082",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "ArXiv",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11289129",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12478424",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "pmh:oai:europepmc.org:11289129",
+      "doi": null,
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12478424",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306400806",
+        "display_name": "Europe PMC (PubMed Central)",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1303153112",
+        "host_organization_name": "European Bioinformatics Institute",
+        "host_organization_lineage": [
+          "https://openalex.org/I1303153112"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "submittedVersion",
+      "is_accepted": false,
+      "is_published": false,
+      "raw_source_name": null,
+      "raw_type": "Text"
+    },
+    "sustainable_development_goals": [
+      {
+        "id": "https://metadata.un.org/sdg/3",
+        "score": 0.6240000128746033,
+        "display_name": "Good health and well-being"
+      }
+    ],
+    "sustainable_development_goals_aurora": [
+      {
+        "id": "https://metadata.un.org/sdg/4",
+        "score": 0.7261331081390381,
+        "display_name": "Quality education"
+      }
+    ],
+    "study_designs": [],
+    "awards": [
+      {
+        "id": "https://openalex.org/G2068575792",
+        "display_name": "Natural language processing and medical imaging analysis for multi-modality computer assisted diagnosis of ophthalmic diseases",
+        "funder_award_id": "7k99lm014024-02",
+        "funder_id": "https://openalex.org/F4320332161",
+        "funder_display_name": "National Institutes of Health"
+      },
+      {
+        "id": "https://openalex.org/G30712838",
+        "display_name": null,
+        "funder_award_id": "NMRC/MOH/HCSAINV21nov-0001",
+        "funder_id": "https://openalex.org/F4320334737",
+        "funder_display_name": "National Medical Research Council"
+      },
+      {
+        "id": "https://openalex.org/G4950536974",
+        "display_name": null,
+        "funder_award_id": "-0001",
+        "funder_id": "https://openalex.org/F4320332161",
+        "funder_display_name": "National Institutes of Health"
+      },
+      {
+        "id": "https://openalex.org/G9000335984",
+        "display_name": null,
+        "funder_award_id": "1K99LM014024",
+        "funder_id": "https://openalex.org/F4320332161",
+        "funder_display_name": "National Institutes of Health"
+      }
+    ],
+    "funders": [
+      {
+        "id": "https://openalex.org/F4320332161",
+        "display_name": "National Institutes of Health",
+        "ror": "https://ror.org/01cwqze88"
+      },
+      {
+        "id": "https://openalex.org/F4320334626",
+        "display_name": "Medical Research Council",
+        "ror": "https://ror.org/03x94j517"
+      },
+      {
+        "id": "https://openalex.org/F4320334737",
+        "display_name": "National Medical Research Council",
+        "ror": "https://ror.org/04x3cxs03"
+      },
+      {
+        "id": "https://openalex.org/F4320337372",
+        "display_name": "U.S. National Library of Medicine",
+        "ror": "https://ror.org/0060t0j89"
+      }
+    ],
+    "has_content": {
+      "pdf": false,
+      "grobid_xml": false
+    },
+    "content_urls": null,
+    "referenced_works_count": 0,
+    "referenced_works": [],
+    "related_works": [],
+    "abstract_inverted_index": {
+      "Large": [
+        0
+      ],
+      "Language": [
+        1,
+        24
+      ],
+      "Models": [
+        2
+      ],
+      "(LLMs)": [
+        3
+      ],
+      "are": [
+        4
+      ],
+      "poised": [
+        5
+      ],
+      "to": [
+        6,
+        205,
+        236
+      ],
+      "revolutionize": [
+        7,
+        237
+      ],
+      "healthcare.": [
+        8
+      ],
+      "Ophthalmology-specific": [
+        9
+      ],
+      "LLMs": [
+        10
+      ],
+      "remain": [
+        11
+      ],
+      "scarce": [
+        12
+      ],
+      "and": [
+        13,
+        39,
+        56,
+        80,
+        97,
+        110,
+        119,
+        125,
+        154,
+        193,
+        199,
+        213,
+        220
+      ],
+      "underexplored.": [
+        14
+      ],
+      "We": [
+        15,
+        60
+      ],
+      "introduced": [
+        16
+      ],
+      "an": [
+        17
+      ],
+      "open-source,": [
+        18
+      ],
+      "specialized": [
+        19
+      ],
+      "LLM": [
+        20
+      ],
+      "for": [
+        21,
+        27,
+        210
+      ],
+      "ophthalmology,": [
+        22
+      ],
+      "termed": [
+        23
+      ],
+      "Enhanced": [
+        25
+      ],
+      "Model": [
+        26
+      ],
+      "Eye": [
+        28
+      ],
+      "(LEME).": [
+        29
+      ],
+      "LEME": [
+        30,
+        62,
+        130,
+        169
+      ],
+      "was": [
+        31
+      ],
+      "initially": [
+        32
+      ],
+      "pre-trained": [
+        33
+      ],
+      "on": [
+        34,
+        217
+      ],
+      "the": [
+        35,
+        221,
+        234
+      ],
+      "Llama2": [
+        36,
+        71
+      ],
+      "70B": [
+        37
+      ],
+      "framework": [
+        38
+      ],
+      "further": [
+        40
+      ],
+      "fine-tuned": [
+        41
+      ],
+      "with": [
+        42,
+        174
+      ],
+      "a": [
+        43,
+        175,
+        227
+      ],
+      "corpus": [
+        44
+      ],
+      "of": [
+        45,
+        122,
+        138,
+        177,
+        208,
+        223,
+        239
+      ],
+      "~127,000": [
+        46
+      ],
+      "non-copyrighted": [
+        47,
+        224
+      ],
+      "training": [
+        48
+      ],
+      "instances": [
+        49
+      ],
+      "curated": [
+        50
+      ],
+      "from": [
+        51,
+        203
+      ],
+      "ophthalmology-specific": [
+        52,
+        83,
+        231
+      ],
+      "case": [
+        53
+      ],
+      "reports,": [
+        54
+      ],
+      "abstracts,": [
+        55
+      ],
+      "open-source": [
+        57,
+        230
+      ],
+      "study": [
+        58
+      ],
+      "materials.": [
+        59
+      ],
+      "benchmarked": [
+        61
+      ],
+      "against": [
+        63
+      ],
+      "eight": [
+        64
+      ],
+      "other": [
+        65
+      ],
+      "LLMs,": [
+        66,
+        232
+      ],
+      "namely,": [
+        67
+      ],
+      "GPT-3.5,": [
+        68
+      ],
+      "GPT-4,": [
+        69
+      ],
+      "three": [
+        70
+      ],
+      "models": [
+        72
+      ],
+      "(7B,": [
+        73
+      ],
+      "13B,": [
+        74,
+        77
+      ],
+      "70B),": [
+        75
+      ],
+      "PMC-LLAMA": [
+        76
+      ],
+      "Meditron": [
+        78
+      ],
+      "70B,": [
+        79
+      ],
+      "EYE-Llama": [
+        81
+      ],
+      "(another": [
+        82
+      ],
+      "LLM).": [
+        84
+      ],
+      "Evaluations": [
+        85
+      ],
+      "included": [
+        86,
+        115
+      ],
+      "four": [
+        87
+      ],
+      "internal": [
+        88,
+        128
+      ],
+      "validation": [
+        89,
+        101
+      ],
+      "tasks:": [
+        90
+      ],
+      "abstract": [
+        91,
+        143
+      ],
+      "completion,": [
+        92
+      ],
+      "fill-in-the-blank,": [
+        93
+      ],
+      "multiple-choice": [
+        94
+      ],
+      "questions": [
+        95
+      ],
+      "(MCQ),": [
+        96
+      ],
+      "short-answer": [
+        98,
+        159
+      ],
+      "QA.": [
+        99,
+        112
+      ],
+      "External": [
+        100
+      ],
+      "tasks": [
+        102,
+        241
+      ],
+      "encompassed": [
+        103
+      ],
+      "long-form": [
+        104,
+        172
+      ],
+      "QA,": [
+        105
+      ],
+      "MCQ,": [
+        106
+      ],
+      "patient": [
+        107
+      ],
+      "EHR": [
+        108,
+        197
+      ],
+      "summarization,": [
+        109
+      ],
+      "clinical": [
+        111,
+        200,
+        240
+      ],
+      "Evaluation": [
+        113
+      ],
+      "metrics": [
+        114
+      ],
+      "Rouge-L": [
+        116,
+        136,
+        176
+      ],
+      "scores,": [
+        117
+      ],
+      "accuracy,": [
+        118
+      ],
+      "expert": [
+        120
+      ],
+      "evaluation": [
+        121
+      ],
+      "correctness,": [
+        123,
+        211
+      ],
+      "completeness,": [
+        124,
+        212
+      ],
+      "readability.": [
+        126
+      ],
+      "In": [
+        127,
+        166
+      ],
+      "validations,": [
+        129,
+        168
+      ],
+      "consistently": [
+        131
+      ],
+      "outperformed": [
+        132
+      ],
+      "its": [
+        133
+      ],
+      "counterparts,": [
+        134
+      ],
+      "achieving": [
+        135
+      ],
+      "scores": [
+        137
+      ],
+      "0.20": [
+        139
+      ],
+      "±": [
+        140,
+        148,
+        156,
+        179,
+        189
+      ],
+      "0.03": [
+        141
+      ],
+      "in": [
+        142,
+        150,
+        158,
+        171,
+        185,
+        196,
+        229
+      ],
+      "completion": [
+        144
+      ],
+      "(all": [
+        145,
+        152,
+        161,
+        181
+      ],
+      "p<0.05),": [
+        146
+      ],
+      "0.82": [
+        147
+      ],
+      "0.04": [
+        149
+      ],
+      "fill-in-the-blank": [
+        151
+      ],
+      "p<0.0001),": [
+        153,
+        182,
+        192
+      ],
+      "0.22": [
+        155
+      ],
+      "0.05": [
+        157
+      ],
+      "QA": [
+        160,
+        173,
+        201
+      ],
+      "p<0.0001,": [
+        162
+      ],
+      "except": [
+        163
+      ],
+      "versus": [
+        164
+      ],
+      "GPT-4).": [
+        165
+      ],
+      "external": [
+        167
+      ],
+      "excelled": [
+        170
+      ],
+      "0.19": [
+        178
+      ],
+      "0.01": [
+        180
+      ],
+      "ranked": [
+        183
+      ],
+      "second": [
+        184
+      ],
+      "MCQ": [
+        186
+      ],
+      "accuracy": [
+        187
+      ],
+      "(0.68": [
+        188
+      ],
+      "0.09;": [
+        190
+      ],
+      "all": [
+        191
+      ],
+      "scored": [
+        194
+      ],
+      "highest": [
+        195
+      ],
+      "summarization": [
+        198
+      ],
+      "(ranging": [
+        202
+      ],
+      "4.24": [
+        204
+      ],
+      "4.83": [
+        206
+      ],
+      "out": [
+        207
+      ],
+      "5": [
+        209
+      ],
+      "readability).": [
+        214
+      ],
+      "LEME's": [
+        215
+      ],
+      "emphasis": [
+        216
+      ],
+      "robust": [
+        218
+      ],
+      "fine-tuning": [
+        219
+      ],
+      "use": [
+        222
+      ],
+      "data": [
+        225
+      ],
+      "represents": [
+        226
+      ],
+      "breakthrough": [
+        228
+      ],
+      "offering": [
+        233
+      ],
+      "potential": [
+        235
+      ],
+      "execution": [
+        238
+      ],
+      "while": [
+        242
+      ],
+      "democratizing": [
+        243
+      ],
+      "research": [
+        244
+      ],
+      "collaboration.": [
+        245
+      ]
+    },
+    "counts_by_year": [],
+    "updated_date": "2026-10-17T09:40:24.721904",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}

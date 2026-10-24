@@ -3,7 +3,7 @@ from researchbridge.core import ROOT
 
 
 def launch():
-    return AppTest.from_file(ROOT / "streamlit_app.py", default_timeout=45).run()
+    return AppTest.from_file(ROOT / "app.py", default_timeout=45).run()
 
 
 def test_app_boots_with_real_data():
@@ -145,7 +145,7 @@ def test_bridge_page_and_choices_survive_language_change():
     assert app.selectbox(key="bridge_choice_en").value=="privacy"
 
 def test_legacy_privacy_query_translates_through_all_languages_without_resetting_page():
-    app=AppTest.from_file(ROOT / "streamlit_app.py",default_timeout=45)
+    app=AppTest.from_file(ROOT / "app.py",default_timeout=45)
     app.query_params["q"]="大型語言模型 隱私"
     app.run()
     app.session_state["active_tab"]="tab_bridges"

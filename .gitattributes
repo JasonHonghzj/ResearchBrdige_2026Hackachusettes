@@ -1,6 +1,0 @@
-# Provenance is a SHA-256 of the source bytes, so git must never rewrite them.
-# Checking out with autocrlf turned starter/pubmed/data.csv from LF into CRLF,
-# which changed its hash and broke the reproducible-rebuild guarantee. Disable
-# end-of-line conversion for the whole tree: no file here benefits from it, and
-# a data-provenance tool cannot afford bytes that differ per machine.
-* -text

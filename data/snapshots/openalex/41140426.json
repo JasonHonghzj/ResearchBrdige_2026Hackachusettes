@@ -1,0 +1,2915 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41140426",
+  "retrieved_at": "2026-10-24T17:45:31+00:00",
+  "record": {
+    "id": "https://openalex.org/W4404476742",
+    "doi": "https://doi.org/10.1055/a-2454-7429",
+    "title": "How Accessible are Clinical Trials for Skull Base Disorders within the United States?",
+    "display_name": "How Accessible are Clinical Trials for Skull Base Disorders within the United States?",
+    "publication_year": 2024,
+    "publication_date": "2024-11-18",
+    "ids": {
+      "openalex": "https://openalex.org/W4404476742",
+      "doi": "https://doi.org/10.1055/a-2454-7429",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41140426"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "doi:10.1055/a-2454-7429",
+      "doi": "https://doi.org/10.1055/a-2454-7429",
+      "is_oa": false,
+      "landing_page_url": "https://doi.org/10.1055/a-2454-7429",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4210197100",
+        "display_name": "Journal of Neurological Surgery Part B Skull Base",
+        "issn_l": "2193-6331",
+        "issn": [
+          "2193-6331",
+          "2193-634X"
+        ],
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": true,
+        "listed_in": [
+          "cwts-core",
+          "dongbi-c",
+          "doyens",
+          "jufo-1",
+          "norway-1",
+          "poland-70",
+          "russia-white-list-3"
+        ],
+        "host_organization": "https://openalex.org/P4310320000",
+        "host_organization_name": "Thieme Medical Publishers (Germany)",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310320000"
+        ],
+        "host_organization_lineage_names": [
+          "Thieme Medical Publishers (Germany)"
+        ],
+        "type": "journal"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "Journal of Neurological Surgery Part B: Skull Base",
+      "raw_type": "journal-article"
+    },
+    "volume": null,
+    "type": "article",
+    "indexed_in": [
+      "crossref",
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "green",
+      "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12552037/pdf/10-1055-a-2454-7429.pdf",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5114690678",
+          "display_name": "Dany Alkurdi",
+          "orcid": "https://orcid.org/0000-0002-9495-1450",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-9495-1450"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I98704320",
+            "display_name": "Icahn School of Medicine at Mount Sinai",
+            "ror": "https://ror.org/04a9tmd77",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I1320796813",
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Dany Alkurdi",
+        "raw_affiliation_strings": [
+          "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States",
+            "institution_ids": [
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5025839695",
+          "display_name": "Shiven Sharma",
+          "orcid": "https://orcid.org/0009-0006-8607-7966",
+          "observed_orcids": [
+            "https://orcid.org/0009-0006-8607-7966"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I98704320",
+            "display_name": "Icahn School of Medicine at Mount Sinai",
+            "ror": "https://ror.org/04a9tmd77",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I1320796813",
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": true,
+        "raw_author_name": "Shiven Sharma",
+        "raw_affiliation_strings": [
+          "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States",
+            "institution_ids": [
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5114690679",
+          "display_name": "Ezdean Alkurdi",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I166722992",
+            "display_name": "University of Massachusetts Chan Medical School",
+            "ror": "https://ror.org/0464eyp60",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I166722992"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Ezdean Alkurdi",
+        "raw_affiliation_strings": [
+          "Department of Radiology, UMass Chan Medical School, Worcester, Massachusetts, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Radiology, UMass Chan Medical School, Worcester, Massachusetts, United States",
+            "institution_ids": [
+              "https://openalex.org/I166722992"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5111356190",
+          "display_name": "Dev Patel",
+          "orcid": "https://orcid.org/0000-0001-9242-5177",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-9242-5177"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I98704320",
+            "display_name": "Icahn School of Medicine at Mount Sinai",
+            "ror": "https://ror.org/04a9tmd77",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I1320796813",
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Dev Patel",
+        "raw_affiliation_strings": [
+          "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States",
+            "institution_ids": [
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5111008454",
+          "display_name": "Omar Alani",
+          "orcid": "https://orcid.org/0009-0002-9890-0367",
+          "observed_orcids": [
+            "https://orcid.org/0009-0002-9890-0367"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I98704320",
+            "display_name": "Icahn School of Medicine at Mount Sinai",
+            "ror": "https://ror.org/04a9tmd77",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I1320796813",
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Omar Alani",
+        "raw_affiliation_strings": [
+          "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Otolaryngology–Head and Neck Surgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States",
+            "institution_ids": [
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5093908438",
+          "display_name": "George Nassief",
+          "orcid": "https://orcid.org/0009-0000-4271-7868",
+          "observed_orcids": [
+            "https://orcid.org/0009-0000-4271-7868"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I204465549",
+            "display_name": "Washington University in St. Louis",
+            "ror": "https://ror.org/01yc7t268",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I204465549"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "George Nassief",
+        "raw_affiliation_strings": [
+          "Department of Computer Science, Washington University in St. Louis, St. Louis, Missouri, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Computer Science, Washington University in St. Louis, St. Louis, Missouri, United States",
+            "institution_ids": [
+              "https://openalex.org/I204465549"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5048689357",
+          "display_name": "Raj K. Shrivastava",
+          "orcid": "https://orcid.org/0000-0002-7454-8525",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-7454-8525"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I98704320",
+            "display_name": "Icahn School of Medicine at Mount Sinai",
+            "ror": "https://ror.org/04a9tmd77",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I1320796813",
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Raj K. Shrivastava",
+        "raw_affiliation_strings": [
+          "Department of Neurosurgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Neurosurgery, Icahn School of Medicine at Mount Sinai, New York, New York, United States",
+            "institution_ids": [
+              "https://openalex.org/I98704320"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 1,
+    "institutions_distinct_count": 3,
+    "corresponding_author_ids": [
+      "https://openalex.org/A5025839695"
+    ],
+    "corresponding_institution_ids": [
+      "https://openalex.org/I98704320"
+    ],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 0.0,
+    "has_fulltext": true,
+    "cited_by_count": 0,
+    "citation_normalized_percentile": {
+      "value": 0.33619301,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": null,
+    "biblio": {
+      "volume": "86",
+      "issue": "06",
+      "first_page": "740",
+      "last_page": "742"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T11669",
+      "display_name": "Head and Neck Surgical Oncology",
+      "score": 0.4507000148296356,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2746",
+        "display_name": "Surgery"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T11669",
+        "display_name": "Head and Neck Surgical Oncology",
+        "score": 0.4507000148296356,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2746",
+          "display_name": "Surgery"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10582",
+        "display_name": "Ethics in Clinical Research",
+        "score": 0.1581999957561493,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2739",
+          "display_name": "Public Health, Environmental and Occupational Health"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T12168",
+        "display_name": "Health and Medical Research Impacts",
+        "score": 0.048500001430511475,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2739",
+          "display_name": "Public Health, Environmental and Occupational Health"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/geographic-access-to-care",
+        "display_name": "geographic access to care",
+        "score": 0.9070000052452087
+      },
+      {
+        "id": "https://openalex.org/keywords/socioeconomic-inequality",
+        "display_name": "socioeconomic disparities",
+        "score": 0.5989999771118164
+      },
+      {
+        "id": "https://openalex.org/keywords/population-coverage",
+        "display_name": "population coverage",
+        "score": 0.6629999876022339
+      },
+      {
+        "id": "https://openalex.org/keywords/health-care-disparities",
+        "display_name": "health care disparities",
+        "score": 0.5109999775886536
+      },
+      {
+        "id": "https://openalex.org/keywords/research-funding",
+        "display_name": "research funding",
+        "score": 0.3190000057220459
+      },
+      {
+        "id": "https://openalex.org/keywords/clinicaltrials-gov",
+        "display_name": "ClinicalTrials.gov",
+        "score": 0.7450000047683716
+      },
+      {
+        "id": "https://openalex.org/keywords/census-data",
+        "display_name": "census data",
+        "score": 0.35199999809265137
+      },
+      {
+        "id": "https://openalex.org/keywords/temporal-trends",
+        "display_name": "temporal trends",
+        "score": 0.3490000069141388
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C2779300802",
+        "wikidata": "https://www.wikidata.org/wiki/Q13147",
+        "display_name": "Skull",
+        "level": 2,
+        "score": 0.6732076406478882
+      },
+      {
+        "id": "https://openalex.org/C42058472",
+        "wikidata": "https://www.wikidata.org/wiki/Q810214",
+        "display_name": "Base (topology)",
+        "level": 2,
+        "score": 0.4742107689380646
+      },
+      {
+        "id": "https://openalex.org/C71924100",
+        "wikidata": "https://www.wikidata.org/wiki/Q11190",
+        "display_name": "Medicine",
+        "level": 0,
+        "score": 0.4525444507598877
+      },
+      {
+        "id": "https://openalex.org/C535046627",
+        "wikidata": "https://www.wikidata.org/wiki/Q30612",
+        "display_name": "Clinical trial",
+        "level": 2,
+        "score": 0.42021802067756653
+      },
+      {
+        "id": "https://openalex.org/C141071460",
+        "wikidata": "https://www.wikidata.org/wiki/Q40821",
+        "display_name": "Surgery",
+        "level": 1,
+        "score": 0.16338804364204407
+      },
+      {
+        "id": "https://openalex.org/C142724271",
+        "wikidata": "https://www.wikidata.org/wiki/Q7208",
+        "display_name": "Pathology",
+        "level": 1,
+        "score": 0.10968378186225891
+      },
+      {
+        "id": "https://openalex.org/C33923547",
+        "wikidata": "https://www.wikidata.org/wiki/Q395",
+        "display_name": "Mathematics",
+        "level": 0,
+        "score": 0.06267482042312622
+      },
+      {
+        "id": "https://openalex.org/C134306372",
+        "wikidata": "https://www.wikidata.org/wiki/Q7754",
+        "display_name": "Mathematical analysis",
+        "level": 1,
+        "score": 0.0
+      }
+    ],
+    "mesh": [],
+    "locations_count": 3,
+    "locations": [
+      {
+        "id": "doi:10.1055/a-2454-7429",
+        "doi": "https://doi.org/10.1055/a-2454-7429",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1055/a-2454-7429",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4210197100",
+          "display_name": "Journal of Neurological Surgery Part B Skull Base",
+          "issn_l": "2193-6331",
+          "issn": [
+            "2193-6331",
+            "2193-634X"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "dongbi-c",
+            "doyens",
+            "jufo-1",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-3"
+          ],
+          "host_organization": "https://openalex.org/P4310320000",
+          "host_organization_name": "Thieme Medical Publishers (Germany)",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320000"
+          ],
+          "host_organization_lineage_names": [
+            "Thieme Medical Publishers (Germany)"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Neurological Surgery Part B: Skull Base",
+        "raw_type": "journal-article"
+      },
+      {
+        "id": "pmid:41140426",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41140426",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of neurological surgery. Part B, Skull base",
+        "raw_type": "Letter"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11428523",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12552037",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12552037/pdf/10-1055-a-2454-7429.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "pmh:oai:europepmc.org:11428523",
+      "doi": null,
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12552037",
+      "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12552037/pdf/10-1055-a-2454-7429.pdf",
+      "source": {
+        "id": "https://openalex.org/S4306400806",
+        "display_name": "Europe PMC (PubMed Central)",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1303153112",
+        "host_organization_name": "European Bioinformatics Institute",
+        "host_organization_lineage": [
+          "https://openalex.org/I1303153112"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "submittedVersion",
+      "is_accepted": false,
+      "is_published": false,
+      "raw_source_name": null,
+      "raw_type": "Text"
+    },
+    "sustainable_development_goals": [
+      {
+        "display_name": "Good health and well-being",
+        "score": 0.9763000011444092,
+        "id": "https://metadata.un.org/sdg/3"
+      },
+      {
+        "display_name": "Reduced inequalities",
+        "score": 0.7578999996185303,
+        "id": "https://metadata.un.org/sdg/10"
+      }
+    ],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [],
+    "awards": [],
+    "funders": [],
+    "has_content": {
+      "grobid_xml": true,
+      "pdf": true
+    },
+    "content_urls": {
+      "pdf": "https://content.openalex.org/works/W4404476742.pdf",
+      "grobid_xml": "https://content.openalex.org/works/W4404476742.grobid-xml"
+    },
+    "referenced_works_count": 7,
+    "referenced_works": [
+      "https://openalex.org/W2092107286",
+      "https://openalex.org/W2158742424",
+      "https://openalex.org/W3024949945",
+      "https://openalex.org/W3116015957",
+      "https://openalex.org/W3178909201",
+      "https://openalex.org/W4200505594",
+      "https://openalex.org/W4389608803"
+    ],
+    "related_works": [
+      "https://openalex.org/W2899084033",
+      "https://openalex.org/W2748952813",
+      "https://openalex.org/W3031052312",
+      "https://openalex.org/W4389568370",
+      "https://openalex.org/W3032375762",
+      "https://openalex.org/W1995515455",
+      "https://openalex.org/W2080531066",
+      "https://openalex.org/W3108674512",
+      "https://openalex.org/W1506200166",
+      "https://openalex.org/W2599882147"
+    ],
+    "abstract_inverted_index": {
+      "Skull": [
+        0
+      ],
+      "base": [
+        1,
+        844,
+        898
+      ],
+      "disorders": [
+        2
+      ],
+      "(SBDs)": [
+        3
+      ],
+      "have": [
+        4,
+        326,
+        839
+      ],
+      "gained": [
+        5
+      ],
+      "attention": [
+        6
+      ],
+      "within": [
+        7,
+        73,
+        364,
+        647
+      ],
+      "the": [
+        8,
+        13,
+        60,
+        68,
+        89,
+        105,
+        128,
+        145,
+        211,
+        215,
+        287,
+        320,
+        668,
+        671,
+        681,
+        692,
+        695,
+        700,
+        703,
+        720,
+        727,
+        757,
+        797,
+        875,
+        905,
+        911
+      ],
+      "medical": [
+        9
+      ],
+      "community": [
+        10
+      ],
+      "due": [
+        11,
+        318
+      ],
+      "to": [
+        12,
+        43,
+        47,
+        84,
+        119,
+        214,
+        296,
+        319,
+        612,
+        643,
+        674,
+        725,
+        748,
+        767,
+        790,
+        817,
+        832,
+        849,
+        858,
+        874,
+        891
+      ],
+      "rising": [
+        14,
+        332
+      ],
+      "incidence": [
+        15
+      ],
+      "and": [
+        16,
+        140,
+        150,
+        176,
+        266,
+        303,
+        630,
+        652,
+        733,
+        795,
+        863,
+        881
+      ],
+      "complexity": [
+        17
+      ],
+      "of": [
+        18,
+        70,
+        95,
+        170,
+        194,
+        199,
+        289,
+        667,
+        684,
+        694,
+        702,
+        710,
+        730,
+        740,
+        760,
+        827,
+        878,
+        907
+      ],
+      "treatment.": [
+        19
+      ],
+      "SBD": [
+        20,
+        85,
+        124,
+        166,
+        675,
+        749
+      ],
+      "risk": [
+        21
+      ],
+      "has": [
+        22
+      ],
+      "been": [
+        23
+      ],
+      "correlated": [
+        24
+      ],
+      "with": [
+        25,
+        191,
+        225,
+        298,
+        621,
+        689,
+        781,
+        856,
+        920
+      ],
+      "low": [
+        26,
+        39
+      ],
+      "socioeconomic": [
+        27
+      ],
+      "status": [
+        28
+      ],
+      "(SES),": [
+        29
+      ],
+      "among": [
+        30
+      ],
+      "other": [
+        31,
+        322,
+        892
+      ],
+      "factors.[": [
+        32
+      ],
+      "1": [
+        33,
+        243,
+        259,
+        360,
+        609
+      ],
+      "]": [
+        34,
+        37,
+        52,
+        149,
+        636,
+        707,
+        836
+      ],
+      "[": [
+        35,
+        241
+      ],
+      "2": [
+        36
+      ],
+      "Importantly,": [
+        38
+      ],
+      "SES": [
+        40
+      ],
+      "is": [
+        41,
+        678,
+        687,
+        852
+      ],
+      "linked": [
+        42
+      ],
+      "reduced": [
+        44
+      ],
+      "geographic": [
+        45,
+        71,
+        82,
+        628,
+        728,
+        820,
+        866,
+        889
+      ],
+      "accessibility": [
+        46,
+        72,
+        155,
+        273,
+        629,
+        642,
+        867,
+        890
+      ],
+      "health": [
+        48,
+        336,
+        631,
+        783,
+        893,
+        915
+      ],
+      "care": [
+        49,
+        337,
+        632,
+        784,
+        894,
+        916
+      ],
+      "services,[": [
+        50
+      ],
+      "3": [
+        51
+      ],
+      "including": [
+        53
+      ],
+      "clinical": [
+        54,
+        86,
+        99,
+        141,
+        167,
+        182,
+        217,
+        290,
+        333,
+        341,
+        613,
+        676,
+        696,
+        731,
+        750,
+        792,
+        801,
+        850,
+        883
+      ],
+      "trials,": [
+        55,
+        168
+      ],
+      "a": [
+        56,
+        77,
+        93,
+        113,
+        207,
+        313,
+        328,
+        625,
+        664,
+        824
+      ],
+      "disparity": [
+        57
+      ],
+      "accentuated": [
+        58
+      ],
+      "by": [
+        59,
+        111,
+        306
+      ],
+      "coronavirus": [
+        61
+      ],
+      "disease": [
+        62
+      ],
+      "2019": [
+        63,
+        302,
+        542
+      ],
+      "(COVID-19)": [
+        64
+      ],
+      "pandemic.": [
+        65
+      ],
+      "To": [
+        66
+      ],
+      "elucidate": [
+        67
+      ],
+      "concept": [
+        69
+      ],
+      "SBDs,": [
+        74,
+        808
+      ],
+      "we": [
+        75,
+        122,
+        132
+      ],
+      "performed": [
+        76
+      ],
+      "retrospective": [
+        78
+      ],
+      "trend": [
+        79,
+        232
+      ],
+      "analysis,": [
+        80
+      ],
+      "evaluating": [
+        81
+      ],
+      "access": [
+        83,
+        789,
+        821,
+        848,
+        917
+      ],
+      "trials": [
+        87,
+        196,
+        291,
+        300,
+        355,
+        614,
+        677,
+        686,
+        732,
+        751,
+        802,
+        851
+      ],
+      "across": [
+        88
+      ],
+      "United": [
+        90
+      ],
+      "States": [
+        91
+      ],
+      "for": [
+        92,
+        354,
+        663,
+        722,
+        842,
+        854,
+        918
+      ],
+      "period": [
+        94
+      ],
+      "20": [
+        96,
+        370,
+        653
+      ],
+      "years.": [
+        97
+      ],
+      "The": [
+        98,
+        245,
+        617,
+        637
+      ],
+      "trial": [
+        100,
+        142,
+        183,
+        218,
+        342,
+        644,
+        697,
+        793,
+        833
+      ],
+      "data": [
+        101
+      ],
+      "were": [
+        102,
+        172
+      ],
+      "obtained": [
+        103
+      ],
+      "from": [
+        104,
+        127,
+        159,
+        228,
+        294,
+        340,
+        752,
+        860
+      ],
+      "ClinicalTrials.gov": [
+        106
+      ],
+      "Application": [
+        107
+      ],
+      "Programming": [
+        108
+      ],
+      "Interface": [
+        109
+      ],
+      "(API)": [
+        110
+      ],
+      "using": [
+        112,
+        144
+      ],
+      "comprehensive": [
+        114
+      ],
+      "keyword": [
+        115
+      ],
+      "search": [
+        116
+      ],
+      "strategy": [
+        117
+      ],
+      "related": [
+        118
+      ],
+      "SBDs.": [
+        120,
+        921
+      ],
+      "Next,": [
+        121
+      ],
+      "measured": [
+        123
+      ],
+      "population": [
+        125,
+        138,
+        246,
+        263,
+        362
+      ],
+      "demographics": [
+        126
+      ],
+      "Census.gov": [
+        129
+      ],
+      "API.": [
+        130
+      ],
+      "Lastly,": [
+        131
+      ],
+      "calculated": [
+        133
+      ],
+      "distances": [
+        134,
+        649
+      ],
+      "between": [
+        135,
+        627
+      ],
+      "ZIP": [
+        136,
+        189
+      ],
+      "code": [
+        137
+      ],
+      "centers": [
+        139
+      ],
+      "locations": [
+        143,
+        658
+      ],
+      "Haversine": [
+        146
+      ],
+      "formula[": [
+        147
+      ],
+      "4": [
+        148
+      ],
+      "then": [
+        151
+      ],
+      "assessed": [
+        152
+      ],
+      "changes": [
+        153
+      ],
+      "in": [
+        154,
+        210,
+        272,
+        301,
+        315,
+        345,
+        699,
+        770,
+        896,
+        914
+      ],
+      "over": [
+        156,
+        219,
+        252,
+        615
+      ],
+      "time": [
+        157,
+        220,
+        253
+      ],
+      "starting": [
+        158
+      ],
+      "2005": [
+        160,
+        388
+      ],
+      "until": [
+        161
+      ],
+      "2024.": [
+        162,
+        931
+      ],
+      "We": [
+        163
+      ],
+      "identified": [
+        164
+      ],
+      "18,750": [
+        165
+      ],
+      "12,044": [
+        169
+      ],
+      "which": [
+        171,
+        762,
+        786
+      ],
+      "initiated": [
+        173
+      ],
+      "before": [
+        174,
+        265
+      ],
+      "2020": [
+        175,
+        553
+      ],
+      "6,706": [
+        177
+      ],
+      "after.": [
+        178
+      ],
+      "At": [
+        179
+      ],
+      "least": [
+        180
+      ],
+      "one": [
+        181
+      ],
+      "was": [
+        184,
+        233,
+        254,
+        275
+      ],
+      "hosted": [
+        185
+      ],
+      "at": [
+        186,
+        248
+      ],
+      "2,442": [
+        187
+      ],
+      "unique": [
+        188
+      ],
+      "codes,": [
+        190
+      ],
+      "an": [
+        192
+      ],
+      "average": [
+        193,
+        212,
+        672
+      ],
+      "7.86": [
+        195
+      ],
+      "per": [
+        197
+      ],
+      "each": [
+        198
+      ],
+      "these": [
+        200,
+        657,
+        711,
+        741
+      ],
+      "zip": [
+        201
+      ],
+      "codes.": [
+        202
+      ],
+      "Linear": [
+        203
+      ],
+      "regression": [
+        204
+      ],
+      "analysis": [
+        205,
+        639
+      ],
+      "demonstrated": [
+        206
+      ],
+      "slight": [
+        208
+      ],
+      "increase": [
+        209
+      ],
+      "distance": [
+        213,
+        250,
+        365,
+        611,
+        673
+      ],
+      "nearest": [
+        216
+      ],
+      "(slope": [
+        221
+      ],
+      "=": [
+        222,
+        239,
+        281,
+        284
+      ],
+      "1.87": [
+        223
+      ],
+      "km/year),": [
+        224
+      ],
+      "substantial": [
+        226
+      ],
+      "increases": [
+        227
+      ],
+      "post-COVID,": [
+        229,
+        297
+      ],
+      "although": [
+        230
+      ],
+      "this": [
+        231,
+        309,
+        357
+      ],
+      "not": [
+        234,
+        714
+      ],
+      "statistically": [
+        235
+      ],
+      "significant": [
+        236,
+        270
+      ],
+      "(": [
+        237,
+        277
+      ],
+      "p": [
+        238,
+        283
+      ],
+      "0.0739;": [
+        240
+      ],
+      "Fig.": [
+        242,
+        608
+      ],
+      "]).": [
+        244,
+        260
+      ],
+      "coverage": [
+        247,
+        264,
+        363,
+        638
+      ],
+      "various": [
+        249
+      ],
+      "thresholds": [
+        251,
+        366
+      ],
+      "also": [
+        255,
+        325
+      ],
+      "evaluated": [
+        256
+      ],
+      "([": [
+        257
+      ],
+      "Table": [
+        258,
+        359
+      ],
+      "When": [
+        261
+      ],
+      "assessing": [
+        262
+      ],
+      "after": [
+        267
+      ],
+      "2020,": [
+        268
+      ],
+      "no": [
+        269
+      ],
+      "reduction": [
+        271,
+        310
+      ],
+      "postpandemic": [
+        274
+      ],
+      "found": [
+        276
+      ],
+      "t": [
+        278
+      ],
+      "-test": [
+        279
+      ],
+      "statistic": [
+        280
+      ],
+      "1.47,": [
+        282
+      ],
+      "0.205).": [
+        285
+      ],
+      "However,": [
+        286
+      ],
+      "number": [
+        288,
+        683,
+        826
+      ],
+      "decreased": [
+        292,
+        349
+      ],
+      "consistently": [
+        293
+      ],
+      "pre-": [
+        295
+      ],
+      "2,997": [
+        299
+      ],
+      "just": [
+        304
+      ],
+      "586": [
+        305
+      ],
+      "2023.": [
+        307
+      ],
+      "While": [
+        308
+      ],
+      "may": [
+        311,
+        324,
+        743,
+        777,
+        868
+      ],
+      "reflect": [
+        312
+      ],
+      "disruption": [
+        314
+      ],
+      "research": [
+        316,
+        346,
+        886
+      ],
+      "activities": [
+        317
+      ],
+      "pandemic,": [
+        321
+      ],
+      "factors": [
+        323
+      ],
+      "played": [
+        327
+      ],
+      "role,": [
+        329
+      ],
+      "such": [
+        330,
+        685,
+        755,
+        809
+      ],
+      "as": [
+        331,
+        756,
+        810,
+        823,
+        846
+      ],
+      "demands": [
+        334
+      ],
+      "on": [
+        335,
+        805
+      ],
+      "providers": [
+        338
+      ],
+      "detracting": [
+        339
+      ],
+      "initiation,": [
+        343
+      ],
+      "shifts": [
+        344
+      ],
+      "priorities,": [
+        347
+      ],
+      "or": [
+        348,
+        351,
+        772,
+        812
+      ],
+      "governmental": [
+        350
+      ],
+      "private": [
+        352
+      ],
+      "funding": [
+        353,
+        746
+      ],
+      "during": [
+        356,
+        901
+      ],
+      "period.": [
+        358
+      ],
+      "Percent": [
+        361
+      ],
+      "Year": [
+        367
+      ],
+      "10": [
+        368,
+        651
+      ],
+      "miles": [
+        369,
+        371,
+        373,
+        375,
+        377,
+        379,
+        381,
+        383,
+        385,
+        387
+      ],
+      "30": [
+        372
+      ],
+      "40": [
+        374
+      ],
+      "50": [
+        376
+      ],
+      "60": [
+        378
+      ],
+      "70": [
+        380
+      ],
+      "80": [
+        382
+      ],
+      "90": [
+        384
+      ],
+      "100": [
+        386
+      ],
+      "54.04": [
+        389
+      ],
+      "72.8": [
+        390
+      ],
+      "81.1": [
+        391
+      ],
+      "85.9": [
+        392
+      ],
+      "88.97": [
+        393
+      ],
+      "91.19": [
+        394
+      ],
+      "93.1": [
+        395
+      ],
+      "94.77": [
+        396
+      ],
+      "95.9": [
+        397
+      ],
+      "96.89": [
+        398
+      ],
+      "2006": [
+        399
+      ],
+      "53.24": [
+        400
+      ],
+      "71.48": [
+        401
+      ],
+      "79.56": [
+        402
+      ],
+      "84.7": [
+        403
+      ],
+      "88.11": [
+        404
+      ],
+      "90.65": [
+        405
+      ],
+      "92.81": [
+        406
+      ],
+      "94.24": [
+        407,
+        486
+      ],
+      "95.59": [
+        408
+      ],
+      "96.41": [
+        409
+      ],
+      "2007": [
+        410
+      ],
+      "54.53": [
+        411
+      ],
+      "70.86": [
+        412
+      ],
+      "78.96": [
+        413
+      ],
+      "84.01": [
+        414
+      ],
+      "87.74": [
+        415
+      ],
+      "90.34": [
+        416
+      ],
+      "92.75": [
+        417
+      ],
+      "94.42": [
+        418,
+        548
+      ],
+      "95.68": [
+        419
+      ],
+      "96.81": [
+        420
+      ],
+      "2008": [
+        421
+      ],
+      "63.85": [
+        422
+      ],
+      "78.88": [
+        423
+      ],
+      "85.62": [
+        424
+      ],
+      "89.78": [
+        425
+      ],
+      "92.52": [
+        426
+      ],
+      "94.55": [
+        427
+      ],
+      "95.7": [
+        428,
+        475
+      ],
+      "96.72": [
+        429,
+        574
+      ],
+      "97.46": [
+        430
+      ],
+      "97.97": [
+        431
+      ],
+      "2009": [
+        432
+      ],
+      "55.01": [
+        433
+      ],
+      "72.64": [
+        434
+      ],
+      "80.45": [
+        435
+      ],
+      "85.39": [
+        436
+      ],
+      "88.72": [
+        437
+      ],
+      "91.34": [
+        438
+      ],
+      "93.12": [
+        439
+      ],
+      "94.62": [
+        440,
+        464
+      ],
+      "95.76": [
+        441
+      ],
+      "96.54": [
+        442
+      ],
+      "2010": [
+        443
+      ],
+      "53.62": [
+        444
+      ],
+      "71.29": [
+        445
+      ],
+      "79.64": [
+        446
+      ],
+      "84.58": [
+        447
+      ],
+      "88.2": [
+        448
+      ],
+      "90.77": [
+        449
+      ],
+      "92.93": [
+        450
+      ],
+      "95.11": [
+        451
+      ],
+      "96.98": [
+        452
+      ],
+      "98.07": [
+        453
+      ],
+      "2011": [
+        454
+      ],
+      "49.35": [
+        455
+      ],
+      "67.55": [
+        456
+      ],
+      "75.68": [
+        457
+      ],
+      "81.27": [
+        458
+      ],
+      "84.93": [
+        459
+      ],
+      "87.55": [
+        460
+      ],
+      "89.76": [
+        461
+      ],
+      "91.96": [
+        462
+      ],
+      "93.45": [
+        463
+      ],
+      "2012": [
+        465
+      ],
+      "51.32": [
+        466
+      ],
+      "68.34": [
+        467
+      ],
+      "76.17": [
+        468
+      ],
+      "81.86": [
+        469
+      ],
+      "85.69": [
+        470
+      ],
+      "88.58": [
+        471
+      ],
+      "90.96": [
+        472
+      ],
+      "92.68": [
+        473
+      ],
+      "94.25": [
+        474
+      ],
+      "2013": [
+        476
+      ],
+      "47.93": [
+        477
+      ],
+      "66.21": [
+        478
+      ],
+      "74.3": [
+        479
+      ],
+      "79.51": [
+        480
+      ],
+      "83.33": [
+        481
+      ],
+      "86.73": [
+        482
+      ],
+      "89.43": [
+        483
+      ],
+      "91.08": [
+        484
+      ],
+      "92.96": [
+        485
+      ],
+      "2014": [
+        487
+      ],
+      "67.97": [
+        488
+      ],
+      "82.59": [
+        489
+      ],
+      "88.85": [
+        490
+      ],
+      "92.78": [
+        491
+      ],
+      "94.96": [
+        492
+      ],
+      "96.56": [
+        493
+      ],
+      "97.44": [
+        494
+      ],
+      "98.08": [
+        495
+      ],
+      "98.58": [
+        496
+      ],
+      "98.83": [
+        497
+      ],
+      "2015": [
+        498
+      ],
+      "71.87": [
+        499
+      ],
+      "85.02": [
+        500
+      ],
+      "90.72": [
+        501
+      ],
+      "94.15": [
+        502
+      ],
+      "95.96": [
+        503
+      ],
+      "97.28": [
+        504
+      ],
+      "98.03": [
+        505
+      ],
+      "98.6": [
+        506
+      ],
+      "98.98": [
+        507
+      ],
+      "99.21": [
+        508
+      ],
+      "2016": [
+        509
+      ],
+      "56.26": [
+        510
+      ],
+      "73.92": [
+        511
+      ],
+      "81.07": [
+        512
+      ],
+      "86.48": [
+        513
+      ],
+      "89.85": [
+        514
+      ],
+      "92.24": [
+        515
+      ],
+      "94.06": [
+        516
+      ],
+      "95.31": [
+        517
+      ],
+      "96.15": [
+        518
+      ],
+      "96.79": [
+        519
+      ],
+      "2017": [
+        520
+      ],
+      "67.54": [
+        521
+      ],
+      "81.06": [
+        522
+      ],
+      "86.85": [
+        523
+      ],
+      "90.91": [
+        524
+      ],
+      "93.33": [
+        525
+      ],
+      "95.15": [
+        526
+      ],
+      "96.38": [
+        527
+      ],
+      "97.16": [
+        528
+      ],
+      "97.69": [
+        529
+      ],
+      "98.17": [
+        530
+      ],
+      "2018": [
+        531
+      ],
+      "51.84": [
+        532
+      ],
+      "68.88": [
+        533
+      ],
+      "76.54": [
+        534
+      ],
+      "80.96": [
+        535
+      ],
+      "84.23": [
+        536
+      ],
+      "86.82": [
+        537
+      ],
+      "89.11": [
+        538
+      ],
+      "90.93": [
+        539
+      ],
+      "92.83": [
+        540
+      ],
+      "94.33": [
+        541
+      ],
+      "66.22": [
+        543
+      ],
+      "79.74": [
+        544
+      ],
+      "85.8": [
+        545
+      ],
+      "89.53": [
+        546,
+        594
+      ],
+      "92.25": [
+        547
+      ],
+      "96.13": [
+        549
+      ],
+      "97.27": [
+        550
+      ],
+      "98.2": [
+        551
+      ],
+      "98.68": [
+        552
+      ],
+      "70.7": [
+        554
+      ],
+      "82.97": [
+        555
+      ],
+      "88.76": [
+        556
+      ],
+      "92.43": [
+        557
+      ],
+      "94.73": [
+        558
+      ],
+      "96.2": [
+        559
+      ],
+      "97.24": [
+        560
+      ],
+      "97.91": [
+        561
+      ],
+      "98.49": [
+        562
+      ],
+      "98.97": [
+        563
+      ],
+      "2021": [
+        564
+      ],
+      "58.59": [
+        565
+      ],
+      "72.61": [
+        566
+      ],
+      "80.23": [
+        567
+      ],
+      "84.64": [
+        568
+      ],
+      "87.87": [
+        569
+      ],
+      "90.09": [
+        570
+      ],
+      "92.13": [
+        571
+      ],
+      "93.88": [
+        572
+      ],
+      "95.46": [
+        573
+      ],
+      "2022": [
+        575
+      ],
+      "44.39": [
+        576
+      ],
+      "60.61": [
+        577
+      ],
+      "68.57": [
+        578
+      ],
+      "73.37": [
+        579
+      ],
+      "77.34": [
+        580
+      ],
+      "80.46": [
+        581
+      ],
+      "82.8": [
+        582
+      ],
+      "84.77": [
+        583
+      ],
+      "86.93": [
+        584
+      ],
+      "89.35": [
+        585
+      ],
+      "2023": [
+        586
+      ],
+      "49.41": [
+        587
+      ],
+      "65.33": [
+        588
+      ],
+      "72.08": [
+        589
+      ],
+      "77.44": [
+        590
+      ],
+      "81.22": [
+        591
+      ],
+      "84.3": [
+        592
+      ],
+      "87.02": [
+        593
+      ],
+      "91.39": [
+        595
+      ],
+      "93.18": [
+        596
+      ],
+      "2024": [
+        597,
+        929
+      ],
+      "33.23": [
+        598
+      ],
+      "48.45": [
+        599
+      ],
+      "56.74": [
+        600
+      ],
+      "61.86": [
+        601
+      ],
+      "66.56": [
+        602
+      ],
+      "70.29": [
+        603
+      ],
+      "73.96": [
+        604
+      ],
+      "78.11": [
+        605
+      ],
+      "81.01": [
+        606
+      ],
+      "83.79": [
+        607
+      ],
+      "Average": [
+        610
+      ],
+      "time.": [
+        616
+      ],
+      "results": [
+        618
+      ],
+      "are": [
+        619,
+        659,
+        815
+      ],
+      "consistent": [
+        620
+      ],
+      "previous": [
+        622
+      ],
+      "studies": [
+        623,
+        769
+      ],
+      "demonstrating": [
+        624
+      ],
+      "correlation": [
+        626
+      ],
+      "facility": [
+        633
+      ],
+      "use.[": [
+        634
+      ],
+      "5": [
+        635
+      ],
+      "shows": [
+        640
+      ],
+      "decreasing": [
+        641,
+        688
+      ],
+      "sites,": [
+        645
+      ],
+      "particularly": [
+        646,
+        900
+      ],
+      "shorter": [
+        648
+      ],
+      "(i.e.,": [
+        650
+      ],
+      "miles),": [
+        654
+      ],
+      "suggesting": [
+        655
+      ],
+      "that": [
+        656,
+        803,
+        909
+      ],
+      "becoming": [
+        660
+      ],
+      "less": [
+        661
+      ],
+      "accessible": [
+        662
+      ],
+      "larger": [
+        665,
+        825
+      ],
+      "portion": [
+        666
+      ],
+      "population.": [
+        669,
+        799
+      ],
+      "Additionally,": [
+        670
+      ],
+      "increasing": [
+        679
+      ],
+      "while": [
+        680
+      ],
+      "total": [
+        682
+      ],
+      "time,": [
+        690
+      ],
+      "reflecting": [
+        691
+      ],
+      "fragility": [
+        693
+      ],
+      "infrastructure": [
+        698
+      ],
+      "wake": [
+        701
+      ],
+      "COVID-19": [
+        704
+      ],
+      "pandemic.[": [
+        705
+      ],
+      "6": [
+        706
+      ],
+      "Although": [
+        708
+      ],
+      "many": [
+        709
+      ],
+      "trends": [
+        712
+      ],
+      "did": [
+        713
+      ],
+      "reach": [
+        715
+      ],
+      "statistical": [
+        716
+      ],
+      "significance,": [
+        717
+      ],
+      "they": [
+        718
+      ],
+      "suggest": [
+        719
+      ],
+      "need": [
+        721
+      ],
+      "ongoing": [
+        723
+      ],
+      "efforts": [
+        724,
+        742
+      ],
+      "expand": [
+        726
+      ],
+      "footprint": [
+        729
+      ],
+      "ultimately": [
+        734
+      ],
+      "alleviate": [
+        735,
+        910
+      ],
+      "patient": [
+        736,
+        798,
+        870
+      ],
+      "travel": [
+        737
+      ],
+      "burdens.": [
+        738
+      ],
+      "One": [
+        739
+      ],
+      "include": [
+        744
+      ],
+      "increased": [
+        745
+      ],
+      "dedicated": [
+        747
+      ],
+      "public": [
+        753
+      ],
+      "sources,": [
+        754
+      ],
+      "National": [
+        758
+      ],
+      "Institute": [
+        759
+      ],
+      "Health,": [
+        761
+      ],
+      "would": [
+        763,
+        829
+      ],
+      "provide": [
+        764
+      ],
+      "greater": [
+        765
+      ],
+      "resources": [
+        766
+      ],
+      "establish": [
+        768
+      ],
+      "underserved": [
+        771
+      ],
+      "rural": [
+        773
+      ],
+      "areas.": [
+        774
+      ],
+      "Another": [
+        775
+      ],
+      "effort": [
+        776
+      ],
+      "be": [
+        778
+      ],
+      "stronger": [
+        779
+      ],
+      "collaborations": [
+        780
+      ],
+      "local": [
+        782
+      ],
+      "institutions,": [
+        785
+      ],
+      "could": [
+        787
+      ],
+      "facilitate": [
+        788
+      ],
+      "more": [
+        791,
+        806
+      ],
+      "sites": [
+        794
+      ],
+      "diversify": [
+        796
+      ],
+      "Relatedly,": [
+        800
+      ],
+      "focus": [
+        804
+      ],
+      "common": [
+        807
+      ],
+      "meningiomas": [
+        811
+      ],
+      "vestibular": [
+        813
+      ],
+      "schwannomas,": [
+        814
+      ],
+      "likely": [
+        816
+      ],
+      "face": [
+        818
+      ],
+      "fewer": [
+        819
+      ],
+      "disparities,": [
+        822
+      ],
+      "patients": [
+        828,
+        855,
+        919
+      ],
+      "reside": [
+        830
+      ],
+      "closer": [
+        831
+      ],
+      "sites.[": [
+        834
+      ],
+      "7": [
+        835
+      ],
+      "These": [
+        837
+      ],
+      "findings": [
+        838
+      ],
+      "critical": [
+        840
+      ],
+      "implications": [
+        841
+      ],
+      "skull": [
+        843,
+        897
+      ],
+      "surgery,": [
+        845,
+        899
+      ],
+      "enhanced": [
+        847
+      ],
+      "essential": [
+        853
+      ],
+      "SBDs": [
+        857
+      ],
+      "benefit": [
+        859
+      ],
+      "novel": [
+        861
+      ],
+      "therapies": [
+        862
+      ],
+      "techniques.": [
+        864
+      ],
+      "Improved": [
+        865
+      ],
+      "boost": [
+        869
+      ],
+      "participation,": [
+        871
+      ],
+      "potentially": [
+        872
+      ],
+      "leading": [
+        873
+      ],
+      "earlier": [
+        876
+      ],
+      "adoption": [
+        877
+      ],
+      "innovative": [
+        879
+      ],
+      "procedures": [
+        880
+      ],
+      "improved": [
+        882
+      ],
+      "outcomes.": [
+        884
+      ],
+      "Future": [
+        885
+      ],
+      "should": [
+        887
+      ],
+      "explore": [
+        888
+      ],
+      "services": [
+        895
+      ],
+      "challenging": [
+        902
+      ],
+      "circumstances,": [
+        903
+      ],
+      "emphasizing": [
+        904
+      ],
+      "exploration": [
+        906
+      ],
+      "strategies": [
+        908
+      ],
+      "disparities": [
+        912
+      ],
+      "present": [
+        913
+      ],
+      "Publication": [
+        922
+      ],
+      "History": [
+        923
+      ],
+      "Article": [
+        924
+      ],
+      "published": [
+        925
+      ],
+      "online:": [
+        926
+      ],
+      "18": [
+        927
+      ],
+      "November": [
+        928
+      ],
+      "©": [
+        930
+      ],
+      "Thieme.": [
+        932
+      ],
+      "All": [
+        933
+      ],
+      "rights": [
+        934
+      ],
+      "reserved.": [
+        935
+      ],
+      "Georg": [
+        936
+      ],
+      "Thieme": [
+        937
+      ],
+      "Verlag": [
+        938
+      ],
+      "KG": [
+        939
+      ],
+      "Rüdigerstraße": [
+        940
+      ],
+      "14,": [
+        941
+      ],
+      "70469": [
+        942
+      ],
+      "Stuttgart,": [
+        943
+      ],
+      "Germany": [
+        944
+      ]
+    },
+    "counts_by_year": [],
+    "updated_date": "2026-10-16T09:59:22.235173",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}

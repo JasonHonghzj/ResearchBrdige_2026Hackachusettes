@@ -1,0 +1,2664 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41001228",
+  "retrieved_at": "2026-10-24T17:45:36+00:00",
+  "record": {
+    "id": "https://openalex.org/W4402911396",
+    "doi": "https://doi.org/10.1097/og9.0000000000000032",
+    "title": "Accessibility of Criteria to Exit Cervical Cancer Screening at Age 65 Years in the Electronic Health Record",
+    "display_name": "Accessibility of Criteria to Exit Cervical Cancer Screening at Age 65 Years in the Electronic Health Record",
+    "publication_year": 2024,
+    "publication_date": "2024-09-01",
+    "ids": {
+      "openalex": "https://openalex.org/W4402911396",
+      "doi": "https://doi.org/10.1097/og9.0000000000000032",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41001228"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "doi:10.1097/og9.0000000000000032",
+      "doi": "https://doi.org/10.1097/og9.0000000000000032",
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1097/og9.0000000000000032",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S5407042404",
+        "display_name": "O&G Open",
+        "issn_l": "2994-9726",
+        "issn": [
+          "2994-9726"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_core": false,
+        "listed_in": [
+          "doaj",
+          "ki-jl-1"
+        ],
+        "host_organization": null,
+        "host_organization_name": null,
+        "host_organization_lineage": [],
+        "host_organization_lineage_names": [],
+        "type": "journal"
+      },
+      "license": "cc-by-nc-nd",
+      "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "O&amp;G Open",
+      "raw_type": "journal-article"
+    },
+    "volume": null,
+    "type": "article",
+    "indexed_in": [
+      "crossref",
+      "doaj",
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "diamond",
+      "oa_url": "https://doi.org/10.1097/og9.0000000000000032",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5015732636",
+          "display_name": "Stephanie Alimena",
+          "orcid": "https://orcid.org/0000-0001-9130-4904",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-9130-4904"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Stephanie Alimena",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5031642335",
+          "display_name": "Jacquelyn M. Lykken",
+          "orcid": "https://orcid.org/0000-0003-0872-0873",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-0872-0873"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jacquelyn M. Lykken",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5091351028",
+          "display_name": "Jasmin A. Tiro",
+          "orcid": "https://orcid.org/0000-0001-8300-0441",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-8300-0441"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jasmin A. Tiro",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5034251151",
+          "display_name": "Jessica Chubak",
+          "orcid": "https://orcid.org/0000-0003-1630-9021",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-1630-9021"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jessica Chubak",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5080203947",
+          "display_name": "Jennifer S. Haas",
+          "orcid": "https://orcid.org/0000-0001-7227-851X",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-7227-851X"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jennifer S. Haas",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5035869167",
+          "display_name": "Claudia L. Werner",
+          "orcid": "https://orcid.org/0000-0003-0457-5269",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-0457-5269"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Claudia Werner",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5079371649",
+          "display_name": "Sarah C. Kobrin",
+          "orcid": "https://orcid.org/0000-0002-1391-6048",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-1391-6048"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Sarah C. Kobrin",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5033444828",
+          "display_name": "Michelle I. Silver",
+          "orcid": "https://orcid.org/0000-0002-2678-3539",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-2678-3539"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Michelle I. Silver",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5060612886",
+          "display_name": "Rebecca B. Perkins",
+          "orcid": "https://orcid.org/0000-0002-7054-3014",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-7054-3014"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Rebecca B. Perkins",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5002522260",
+          "display_name": "Sarah Feldman",
+          "orcid": "https://orcid.org/0000-0002-5582-9401",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-5582-9401"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I111088046",
+            "display_name": "Boston University",
+            "ror": "https://ror.org/05qwgg493",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I111088046"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286490081",
+            "display_name": "Boston Medical Center",
+            "ror": "https://ror.org/010b9wj87",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286490081"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I1286960001",
+            "display_name": "Parkland Health & Hospital System",
+            "ror": "https://ror.org/04rt7ps04",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1286960001"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I40347166",
+            "display_name": "University of Chicago",
+            "ror": "https://ror.org/024mw5h28",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I40347166"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210087915",
+            "display_name": "Massachusetts General Hospital",
+            "ror": "https://ror.org/002pd6e78",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210140884",
+            "display_name": "National Cancer Institute",
+            "ror": "https://ror.org/040gcmg81",
+            "country_code": "US",
+            "type": "government",
+            "lineage": [
+              "https://openalex.org/I1299022934",
+              "https://openalex.org/I1299303238",
+              "https://openalex.org/I4210140884"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I867280407",
+            "display_name": "The University of Texas Southwestern Medical Center",
+            "ror": "https://ror.org/05byvp690",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Sarah Feldman",
+        "raw_affiliation_strings": [
+          "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Gynecologic Oncology, Brigham and Women's Hospital, Harvard Medical School, the Division of General Internal Medicine, Massachusetts General Hospital, Harvard Medical School, the Department of Obstetrics and Gynecology, Boston Medical Center, and Boston University Chobanian and Avedisian School of Medicine, Boston, Massachusetts; the Peter O'Donnell Jr. School of Public Health and the Department of Obstetrics and Gynecology, University of Texas Southwestern Medical Center, and Parkland Health and Hospital System, Dallas, Texas; the Department of Public Health Sciences, University of Chicago Biological Sciences Division, Chicago, Illinois; Kaiser Permanente Washington Health Research Institute, Seattle, Washington; the Department of Surgery, Washington University School of Medicine in St. Louis, St. Louis, Missouri; and the Division of Cancer Control and Population Sciences, National Cancer Institute, Bethesda, Maryland",
+            "institution_ids": [
+              "https://openalex.org/I111088046",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I1286490081",
+              "https://openalex.org/I1286960001",
+              "https://openalex.org/I136199984",
+              "https://openalex.org/I40347166",
+              "https://openalex.org/I4210087915",
+              "https://openalex.org/I4210140884",
+              "https://openalex.org/I867280407"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 1,
+    "institutions_distinct_count": 9,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 2.1192,
+    "has_fulltext": true,
+    "cited_by_count": 8,
+    "citation_normalized_percentile": {
+      "value": 0.88525222,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": {
+      "min": 96,
+      "max": 99
+    },
+    "biblio": {
+      "volume": "1",
+      "issue": "3",
+      "first_page": "032",
+      "last_page": "032"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T10146",
+      "display_name": "Cervical Cancer and HPV Research",
+      "score": 0.9843999743461609,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2713",
+        "display_name": "Epidemiology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T10146",
+        "display_name": "Cervical Cancer and HPV Research",
+        "score": 0.9843999743461609,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2713",
+          "display_name": "Epidemiology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T13544",
+        "display_name": "Women's cancer prevention and management",
+        "score": 0.00930000003427267,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2739",
+          "display_name": "Public Health, Environmental and Occupational Health"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10556",
+        "display_name": "Global Cancer Incidence and Screening",
+        "score": 0.0027000000700354576,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2730",
+          "display_name": "Oncology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/cervical-cancer-screening",
+        "display_name": "cervical cancer screening",
+        "score": 0.9539999961853027
+      },
+      {
+        "id": "https://openalex.org/keywords/electronic-health-record-documentation",
+        "display_name": "electronic health record documentation",
+        "score": 0.7409999966621399
+      },
+      {
+        "id": "https://openalex.org/keywords/hpv-testing",
+        "display_name": "HPV testing",
+        "score": 0.7799999713897705
+      },
+      {
+        "id": "https://openalex.org/keywords/cytology",
+        "display_name": "cytology",
+        "score": 0.4830000102519989
+      },
+      {
+        "id": "https://openalex.org/keywords/cervical-cancer-incidence",
+        "display_name": "cervical cancer incidence",
+        "score": 0.6069999933242798
+      },
+      {
+        "id": "https://openalex.org/keywords/health-information-exchange",
+        "display_name": "health information exchange",
+        "score": 0.31200000643730164
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C3020144179",
+        "wikidata": "https://www.wikidata.org/wiki/Q10871684",
+        "display_name": "Electronic health record",
+        "level": 3,
+        "score": 0.6328167915344238
+      },
+      {
+        "id": "https://openalex.org/C2778220009",
+        "wikidata": "https://www.wikidata.org/wiki/Q160105",
+        "display_name": "Cervical cancer",
+        "level": 3,
+        "score": 0.6076279282569885
+      },
+      {
+        "id": "https://openalex.org/C71924100",
+        "wikidata": "https://www.wikidata.org/wiki/Q11190",
+        "display_name": "Medicine",
+        "level": 0,
+        "score": 0.5121557712554932
+      },
+      {
+        "id": "https://openalex.org/C121608353",
+        "wikidata": "https://www.wikidata.org/wiki/Q12078",
+        "display_name": "Cancer",
+        "level": 2,
+        "score": 0.4483661353588104
+      },
+      {
+        "id": "https://openalex.org/C2993522905",
+        "wikidata": "https://www.wikidata.org/wiki/Q5065348",
+        "display_name": "Cervical cancer screening",
+        "level": 4,
+        "score": 0.44732236862182617
+      },
+      {
+        "id": "https://openalex.org/C512399662",
+        "wikidata": "https://www.wikidata.org/wiki/Q3505712",
+        "display_name": "Family medicine",
+        "level": 1,
+        "score": 0.3750877380371094
+      },
+      {
+        "id": "https://openalex.org/C17744445",
+        "wikidata": "https://www.wikidata.org/wiki/Q36442",
+        "display_name": "Political science",
+        "level": 0,
+        "score": 0.15016457438468933
+      },
+      {
+        "id": "https://openalex.org/C160735492",
+        "wikidata": "https://www.wikidata.org/wiki/Q31207",
+        "display_name": "Health care",
+        "level": 2,
+        "score": 0.10686492919921875
+      },
+      {
+        "id": "https://openalex.org/C126322002",
+        "wikidata": "https://www.wikidata.org/wiki/Q11180",
+        "display_name": "Internal medicine",
+        "level": 1,
+        "score": 0.10468199849128723
+      },
+      {
+        "id": "https://openalex.org/C199539241",
+        "wikidata": "https://www.wikidata.org/wiki/Q7748",
+        "display_name": "Law",
+        "level": 1,
+        "score": 0.07088515162467957
+      }
+    ],
+    "mesh": [],
+    "locations_count": 4,
+    "locations": [
+      {
+        "id": "doi:10.1097/og9.0000000000000032",
+        "doi": "https://doi.org/10.1097/og9.0000000000000032",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1097/og9.0000000000000032",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S5407042404",
+          "display_name": "O&G Open",
+          "issn_l": "2994-9726",
+          "issn": [
+            "2994-9726"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": false,
+          "listed_in": [
+            "doaj",
+            "ki-jl-1"
+          ],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "O&amp;G Open",
+        "raw_type": "journal-article"
+      },
+      {
+        "id": "pmid:41001228",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41001228",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "O&G open",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:pubmedcentral.nih.gov:12456487",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41001228/",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12456487/pdf/og9-1-032.pdf",
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "O G Open",
+        "raw_type": "Text"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11265830",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12456487",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "doi:10.1097/og9.0000000000000032",
+      "doi": "https://doi.org/10.1097/og9.0000000000000032",
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1097/og9.0000000000000032",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S5407042404",
+        "display_name": "O&G Open",
+        "issn_l": "2994-9726",
+        "issn": [
+          "2994-9726"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_core": false,
+        "listed_in": [
+          "doaj",
+          "ki-jl-1"
+        ],
+        "host_organization": null,
+        "host_organization_name": null,
+        "host_organization_lineage": [],
+        "host_organization_lineage_names": [],
+        "type": "journal"
+      },
+      "license": "cc-by-nc-nd",
+      "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "O&amp;G Open",
+      "raw_type": "journal-article"
+    },
+    "sustainable_development_goals": [
+      {
+        "id": "https://metadata.un.org/sdg/3",
+        "display_name": "Good health and well-being",
+        "score": 1.0
+      }
+    ],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [
+      {
+        "id": "https://openalex.org/study-designs/observational-study",
+        "display_name": "Observational Study"
+      }
+    ],
+    "awards": [
+      {
+        "id": "https://openalex.org/G1258827260",
+        "display_name": "Interventions to Promote Equity Across the Cancer Care Continuum",
+        "funder_award_id": "CRP-22-080-01-CTPS",
+        "funder_id": "https://openalex.org/F4320306095",
+        "funder_display_name": "American Cancer Society"
+      }
+    ],
+    "funders": [
+      {
+        "id": "https://openalex.org/F4320306095",
+        "display_name": "American Cancer Society",
+        "ror": "https://ror.org/02e463172"
+      },
+      {
+        "id": "https://openalex.org/F4320332161",
+        "display_name": "National Institutes of Health",
+        "ror": "https://ror.org/01cwqze88"
+      },
+      {
+        "id": "https://openalex.org/F4320337351",
+        "display_name": "National Cancer Institute",
+        "ror": "https://ror.org/040gcmg81"
+      }
+    ],
+    "has_content": {
+      "pdf": false,
+      "grobid_xml": false
+    },
+    "content_urls": null,
+    "referenced_works_count": 24,
+    "referenced_works": [
+      "https://openalex.org/W1523791896",
+      "https://openalex.org/W1591554783",
+      "https://openalex.org/W2066104246",
+      "https://openalex.org/W2133953143",
+      "https://openalex.org/W2146363044",
+      "https://openalex.org/W2611486545",
+      "https://openalex.org/W2769997284",
+      "https://openalex.org/W2771083393",
+      "https://openalex.org/W2898522439",
+      "https://openalex.org/W2981716375",
+      "https://openalex.org/W3015112546",
+      "https://openalex.org/W3121804728",
+      "https://openalex.org/W3157185707",
+      "https://openalex.org/W3164321708",
+      "https://openalex.org/W3172756423",
+      "https://openalex.org/W4289533628",
+      "https://openalex.org/W4306742489",
+      "https://openalex.org/W4309517389",
+      "https://openalex.org/W4309519306",
+      "https://openalex.org/W4309764910",
+      "https://openalex.org/W4313824162",
+      "https://openalex.org/W4323044081",
+      "https://openalex.org/W4388460842",
+      "https://openalex.org/W6746719453"
+    ],
+    "related_works": [
+      "https://openalex.org/W2029893235",
+      "https://openalex.org/W4389633922",
+      "https://openalex.org/W4389608864",
+      "https://openalex.org/W3031896451",
+      "https://openalex.org/W2046368707",
+      "https://openalex.org/W2787276373",
+      "https://openalex.org/W2062266138",
+      "https://openalex.org/W2013018107",
+      "https://openalex.org/W2305002968",
+      "https://openalex.org/W3184301908"
+    ],
+    "abstract_inverted_index": {
+      "OBJECTIVE:": [
+        0
+      ],
+      "To": [
+        1
+      ],
+      "describe": [
+        2
+      ],
+      "the": [
+        3,
+        17,
+        23,
+        37,
+        40,
+        78,
+        83,
+        97,
+        104,
+        113,
+        155,
+        161,
+        169,
+        186,
+        229,
+        255,
+        260,
+        302,
+        366
+      ],
+      "proportion": [
+        4
+      ],
+      "of": [
+        5,
+        9,
+        25,
+        39,
+        53,
+        82,
+        96,
+        115,
+        212,
+        225,
+        254
+      ],
+      "patients": [
+        6,
+        54,
+        116,
+        218,
+        329
+      ],
+      "with": [
+        7,
+        311,
+        323,
+        333
+      ],
+      "documentation": [
+        8
+      ],
+      "meeting": [
+        10
+      ],
+      "cervical": [
+        11,
+        324,
+        354,
+        377
+      ],
+      "cancer": [
+        12,
+        26,
+        312,
+        355,
+        378
+      ],
+      "screening": [
+        13,
+        44,
+        121,
+        131,
+        197,
+        206,
+        294,
+        335
+      ],
+      "exit": [
+        14,
+        45,
+        122,
+        196,
+        248,
+        290,
+        332
+      ],
+      "criteria": [
+        15
+      ],
+      "in": [
+        16,
+        71,
+        88,
+        168,
+        185,
+        259,
+        358,
+        365
+      ],
+      "medical": [
+        18,
+        367
+      ],
+      "record": [
+        19,
+        368
+      ],
+      "and": [
+        20,
+        27,
+        62,
+        74,
+        159,
+        237,
+        275,
+        349
+      ],
+      "to": [
+        21,
+        102,
+        195,
+        246,
+        289,
+        292,
+        331,
+        372
+      ],
+      "estimate": [
+        22
+      ],
+      "incidence": [
+        24
+      ],
+      "high-grade": [
+        28,
+        314,
+        350
+      ],
+      "precancerous": [
+        29,
+        315,
+        351
+      ],
+      "lesions": [
+        30,
+        352
+      ],
+      "after": [
+        31,
+        127,
+        171,
+        262,
+        282
+      ],
+      "age": [
+        32,
+        124,
+        172,
+        199
+      ],
+      "65": [
+        33,
+        173
+      ],
+      "years": [
+        34,
+        58,
+        126,
+        182,
+        224,
+        270
+      ],
+      "detected": [
+        35
+      ],
+      "by": [
+        36,
+        43
+      ],
+      "end": [
+        38
+      ],
+      "study": [
+        41
+      ],
+      "period,": [
+        42
+      ],
+      "eligibility.": [
+        46
+      ],
+      "METHODS:": [
+        47
+      ],
+      "We": [
+        48
+      ],
+      "conducted": [
+        49
+      ],
+      "a": [
+        50
+      ],
+      "retrospective": [
+        51
+      ],
+      "analysis": [
+        52
+      ],
+      "who": [
+        55,
+        117,
+        179,
+        304,
+        320
+      ],
+      "turned": [
+        56,
+        180
+      ],
+      "66": [
+        57,
+        125,
+        181,
+        200
+      ],
+      "old": [
+        59,
+        183
+      ],
+      "between": [
+        60
+      ],
+      "2010": [
+        61
+      ],
+      "2019": [
+        63
+      ],
+      "at": [
+        64,
+        123,
+        198,
+        219,
+        339
+      ],
+      "two": [
+        65,
+        142
+      ],
+      "large": [
+        66
+      ],
+      "health": [
+        67,
+        230,
+        239
+      ],
+      "care": [
+        68,
+        231,
+        240
+      ],
+      "systems": [
+        69
+      ],
+      "located": [
+        70
+      ],
+      "Dallas,": [
+        72
+      ],
+      "Texas,": [
+        73
+      ],
+      "Boston,": [
+        75
+      ],
+      "Massachusetts,": [
+        76
+      ],
+      "from": [
+        77,
+        235
+      ],
+      "METRICS": [
+        79,
+        187
+      ],
+      "(MultilEvel": [
+        80
+      ],
+      "opTimization": [
+        81
+      ],
+      "ceRvIcal": [
+        84
+      ],
+      "Cancer": [
+        85
+      ],
+      "Screening": [
+        86,
+        105
+      ],
+      "process": [
+        87
+      ],
+      "diverse": [
+        89
+      ],
+      "Settings": [
+        90
+      ],
+      "&": [
+        91
+      ],
+      "populations)": [
+        92
+      ],
+      "Research": [
+        93,
+        101
+      ],
+      "Center,": [
+        94
+      ],
+      "part": [
+        95
+      ],
+      "PROSPR": [
+        98
+      ],
+      "II": [
+        99
+      ],
+      "(Population-based": [
+        100
+      ],
+      "Optimize": [
+        103
+      ],
+      "Process)": [
+        106
+      ],
+      "consortium.": [
+        107
+      ],
+      "The": [
+        108
+      ],
+      "primary": [
+        109
+      ],
+      "outcomes": [
+        110
+      ],
+      "were": [
+        111,
+        118,
+        192,
+        208,
+        297,
+        305,
+        309,
+        321,
+        356
+      ],
+      "1)": [
+        112
+      ],
+      "percentage": [
+        114
+      ],
+      "eligible": [
+        119,
+        194,
+        330
+      ],
+      "for": [
+        120,
+        250,
+        268,
+        375
+      ],
+      "adequate": [
+        128
+      ],
+      "documented": [
+        129,
+        167,
+        209,
+        364
+      ],
+      "negative": [
+        130,
+        137,
+        144
+      ],
+      "history": [
+        132
+      ],
+      "(at": [
+        133
+      ],
+      "least": [
+        134,
+        340
+      ],
+      "three": [
+        135
+      ],
+      "consecutive": [
+        136,
+        143
+      ],
+      "cytology": [
+        138,
+        165,
+        343
+      ],
+      "test": [
+        139,
+        148
+      ],
+      "results": [
+        140,
+        151
+      ],
+      "or": [
+        141,
+        149,
+        164,
+        313,
+        344,
+        347,
+        353
+      ],
+      "human": [
+        145
+      ],
+      "papillomavirus": [
+        146
+      ],
+      "[HPV]": [
+        147
+      ],
+      "co-test": [
+        150
+      ],
+      "[cytology+HPV": [
+        152
+      ],
+      "testing]": [
+        153
+      ],
+      "within": [
+        154,
+        228
+      ],
+      "prior": [
+        156,
+        226,
+        238
+      ],
+      "10": [
+        157,
+        223
+      ],
+      "years)": [
+        158
+      ],
+      "2)": [
+        160
+      ],
+      "worst": [
+        162
+      ],
+      "pathology": [
+        163,
+        345
+      ],
+      "outcome": [
+        166
+      ],
+      "cohort": [
+        170,
+        261
+      ],
+      "years.": [
+        174
+      ],
+      "RESULTS:": [
+        175
+      ],
+      "Among": [
+        176,
+        286
+      ],
+      "42,393": [
+        177
+      ],
+      "people": [
+        178
+      ],
+      "while": [
+        184
+      ],
+      "cohort,": [
+        188
+      ],
+      "approximately": [
+        189
+      ],
+      "75.7%": [
+        190
+      ],
+      "(n=32,094)": [
+        191
+      ],
+      "not": [
+        193,
+        298
+      ],
+      "years,": [
+        201
+      ],
+      "primarily": [
+        202
+      ],
+      "because": [
+        203
+      ],
+      "too": [
+        204
+      ],
+      "few": [
+        205
+      ],
+      "tests": [
+        207
+      ],
+      "(n=29,354,": [
+        210
+      ],
+      "91.5%": [
+        211
+      ],
+      "those": [
+        213,
+        287
+      ],
+      "ineligible).": [
+        214
+      ],
+      "Furthermore,": [
+        215
+      ],
+      "only": [
+        216,
+        359
+      ],
+      "4,037": [
+        217
+      ],
+      "both": [
+        220
+      ],
+      "sites": [
+        221,
+        242
+      ],
+      "had": [
+        222,
+        278,
+        338
+      ],
+      "observation": [
+        227
+      ],
+      "system,": [
+        232
+      ],
+      "meaning": [
+        233
+      ],
+      "data": [
+        234
+      ],
+      "current": [
+        236
+      ],
+      "delivery": [
+        241
+      ],
+      "would": [
+        243
+      ],
+      "be": [
+        244
+      ],
+      "needed": [
+        245
+      ],
+      "assess": [
+        247
+      ],
+      "eligibility": [
+        249
+      ],
+      "more": [
+        251
+      ],
+      "than": [
+        252
+      ],
+      "90%": [
+        253
+      ],
+      "cohort.": [
+        256
+      ],
+      "Patients": [
+        257
+      ],
+      "remained": [
+        258
+      ],
+      "their": [
+        263,
+        283
+      ],
+      "66th": [
+        264,
+        284
+      ],
+      "birthday": [
+        265
+      ],
+      "on": [
+        266
+      ],
+      "average": [
+        267
+      ],
+      "3.8": [
+        269
+      ],
+      "(interquartile": [
+        271
+      ],
+      "range": [
+        272
+      ],
+      "2.0–6.5": [
+        273
+      ],
+      "years),": [
+        274
+      ],
+      "most": [
+        276
+      ],
+      "(79.3%)": [
+        277
+      ],
+      "no": [
+        279
+      ],
+      "subsequent": [
+        280,
+        342
+      ],
+      "evaluation": [
+        281
+      ],
+      "birthday.": [
+        285
+      ],
+      "ineligible": [
+        288
+      ],
+      "due": [
+        291
+      ],
+      "insufficient": [
+        293,
+        371
+      ],
+      "history,": [
+        295,
+        336
+      ],
+      "83.7%": [
+        296
+      ],
+      "subsequently": [
+        299
+      ],
+      "screened.": [
+        300
+      ],
+      "Of": [
+        301
+      ],
+      "16.3%": [
+        303
+      ],
+      "screened,": [
+        306
+      ],
+      "90": [
+        307
+      ],
+      "(1.9%)": [
+        308
+      ],
+      "diagnosed": [
+        310,
+        322,
+        357
+      ],
+      "lesions,": [
+        316
+      ],
+      "including": [
+        317
+      ],
+      "34": [
+        318
+      ],
+      "(0.7%)": [
+        319
+      ],
+      "cancer.": [
+        325
+      ],
+      "By": [
+        326
+      ],
+      "contrast,": [
+        327
+      ],
+      "among": [
+        328
+      ],
+      "sufficient": [
+        334
+      ],
+      "34.3%": [
+        337
+      ],
+      "one": [
+        341
+      ],
+      "result": [
+        346
+      ],
+      "both,": [
+        348
+      ],
+      "0.6%": [
+        360
+      ],
+      "(n=16).": [
+        361
+      ],
+      "CONCLUSION:": [
+        362
+      ],
+      "Data": [
+        363
+      ],
+      "are": [
+        369
+      ],
+      "often": [
+        370
+      ],
+      "meet": [
+        373
+      ],
+      "guidelines": [
+        374
+      ],
+      "exiting": [
+        376
+      ],
+      "screening.": [
+        379
+      ]
+    },
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 6
+      }
+    ],
+    "updated_date": "2026-10-08T09:06:37.294493",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}

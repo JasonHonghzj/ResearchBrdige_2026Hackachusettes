@@ -1,13 +1,9 @@
-__pycache__/
-*.pyc
 .venv/
-venv/
+.cache/
+__pycache__/
+.pytest_cache/
+*.pyc
 .env
-.env.local
-!.env.example
-.DS_Store
-.ipynb_checkpoints/
-*.log
+data/*.sqlite*
+.streamlit/secrets.toml
 
-# large regenerable corpora (python -m scout.fetch rebuilds in ~3 min)
-data/corpus_*.json

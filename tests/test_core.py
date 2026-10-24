@@ -29,12 +29,12 @@ def test_all_starter_records_preserved(data):
 
 
 def test_rebuild_is_repeatable_and_original_csv_unchanged(tmp_path):
-    before = (ROOT / "starter" / "pubmed" / "data.csv").read_bytes()
+    before = (ROOT / "pubmed" / "data.csv").read_bytes()
     target = tmp_path / "test.sqlite"
     first = build_database(target)
     second = build_database(target)
     assert first == second
-    assert (ROOT / "starter" / "pubmed" / "data.csv").read_bytes() == before
+    assert (ROOT / "pubmed" / "data.csv").read_bytes() == before
     assert len(load_data(target)[0]) == 60
 
 
@@ -113,7 +113,7 @@ def test_pubmed_parser_preserves_multiple_dates():
 def test_all_cached_links_have_an_exact_pmid(data):
     for p in data[0]:
         for link in p["institutions"]:
-            snapshot = ROOT / "data" / "bridge" / "snapshots" / "openalex" / f"{p['pmid']}.json"
+            snapshot = ROOT / "data" / "snapshots" / "openalex" / f"{p['pmid']}.json"
             work = json.loads(snapshot.read_text(encoding="utf-8"))["record"]
             assert verified_work(work, p["pmid"])
             assert link["verification"] == "exact_pmid_openalex_affiliation"
