@@ -352,4 +352,6 @@
       }
     },
   };
+  // Opened directly at #explorer: the view was shown before this script loaded.
+  if (!$('view-bridge').hidden) window.Bridge.init();
 })();

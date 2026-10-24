@@ -45,7 +45,7 @@ def get(url, params=None):
 
 def enrich(refresh=False, openalex_limit=20):
     SNAPSHOTS.mkdir(parents=True, exist_ok=True)
-    seeds = read_csv(ROOT / "pubmed" / "data.csv")
+    seeds = read_csv(ROOT / "starter" / "pubmed" / "data.csv")
     errors = []
     pubmed_file = SNAPSHOTS / "pubmed.json"
     if refresh or not pubmed_file.exists():
