@@ -513,11 +513,29 @@ def scout_check(problem: str = Query(..., min_length=2, max_length=100),
     return {"scope": SCOUT_SCOPE, **out}
 
 
+# The pages change often during development and a browser that caches one shows
+# a UI whose controls do not exist in the script it already has - which looks
+# exactly like a hardcoded mockup. With no Cache-Control header browsers apply a
+# heuristic freshness lifetime and may not revalidate at all, so say it
+# explicitly for the HTML and for the mounted JS.
+NO_STORE = {"Cache-Control": "no-store, must-revalidate", "Pragma": "no-cache"}
+
+
+@app.middleware("http")
+async def _no_cache_frontend(request, call_next):
+    response = await call_next(request)
+    path = request.url.path
+    if path == "/" or path == "/pipeline" or path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+    return response
+
+
 @app.get("/", include_in_schema=False)
 def index_page() -> FileResponse:
-    return FileResponse(STATIC / "index.html")
+    return FileResponse(STATIC / "index.html", headers=NO_STORE)
 
 
 @app.get("/pipeline", include_in_schema=False)
 def pipeline_page() -> FileResponse:
-    return FileResponse(STATIC / "pipeline.html")
+    return FileResponse(STATIC / "pipeline.html", headers=NO_STORE)
