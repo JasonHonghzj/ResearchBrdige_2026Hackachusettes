@@ -841,7 +841,7 @@ async function boot(){
   try {
     const [grid, gaps, rej, val, scope] = await Promise.all([
       get('/api/scout/grid'),
-      get('/api/scout/gaps?limit=200&min_maturity=1'),
+      get('/api/scout/gaps?limit=500&min_maturity=0'),
       get('/api/scout/gaps/rejected?limit=20'),
       get('/api/scout/validation').catch(() => ({ status:'unavailable' })),
       get('/api/scout/scope')
