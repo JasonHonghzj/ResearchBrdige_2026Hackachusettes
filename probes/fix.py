@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Probe 4: rank holes by shared neighbours (Swanson ABC) instead of popularity."""
 import json, itertools
 from collections import Counter, defaultdict

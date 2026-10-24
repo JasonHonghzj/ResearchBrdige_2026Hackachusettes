@@ -47,7 +47,7 @@ def coverage(axis_names, kind: str = "problem"):
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    from scout.mesh import build_axes, DATA as MDATA
+    from gapfinder.mesh import build_axes, DATA as MDATA
 
     corpus = json.loads((MDATA / "corpus_past.json").read_text(encoding="utf-8"))
     corpus = {k: v for k, v in corpus.items() if v["year"] and v["year"] <= 2018}

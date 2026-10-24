@@ -1,4 +1,4 @@
-# Research Scout — what it is and what it must not claim
+# ResearchBridge — what it is and what it must not claim
 
 Hackachusetts 2026, track H4 (Accelerating Biotechnology Innovation).
 Two data-science students, 8-hour build.

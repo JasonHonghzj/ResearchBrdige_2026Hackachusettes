@@ -1,5 +1,5 @@
 {
-  "_comment": "MeSH descriptor name -> OpenAlex title_and_abstract.search phrase. OpenAlex has no MeSH filter (225 filterable fields, none for MeSH), so grid terms cannot carry over directly. Hand-mapped because MeSH names are often inverted ('Neoplasms, Breast') or clinical where the literature is colloquial ('Uterine Cervical Neoplasms' vs 'cervical cancer'). Unmapped terms fall back to scout.phrases.normalize().",
+  "_comment": "MeSH descriptor name -> OpenAlex title_and_abstract.search phrase. OpenAlex has no MeSH filter (225 filterable fields, none for MeSH), so grid terms cannot carry over directly. Hand-mapped because MeSH names are often inverted ('Neoplasms, Breast') or clinical where the literature is colloquial ('Uterine Cervical Neoplasms' vs 'cervical cancer'). Unmapped terms fall back to gapfinder.phrases.normalize().",
 
   "methods": {
     "Polymerase Chain Reaction": "polymerase chain reaction",

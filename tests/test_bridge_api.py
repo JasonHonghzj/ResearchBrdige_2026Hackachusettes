@@ -1,4 +1,4 @@
-"""Proof that the vendored ResearchBridge engine runs inside Scout's FastAPI app.
+"""Proof that the vendored ResearchBridge engine runs inside the ResearchBridge FastAPI app.
 
 Expected PMIDs come from the teammate's own fixed development cases
 (researchbridge/evaluate.py), so these tests check the merge did not change

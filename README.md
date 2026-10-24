@@ -1,4 +1,4 @@
-# Research Scout
+# ResearchBridge
 
 Finds the experiment nobody has run yet, and names the Massachusetts labs who could run it.
 
@@ -139,17 +139,17 @@ Use both as seeds and as the demo's entry point. Fetch live. Say so openly.
 ## Layout
 
 ```
-scout/fetch.py    PubMed retrieval, provenance, integrity spot check   [done]
-scout/mesh.py     tree resolution (+RDF fallback), axis rules          [done]
-scout/phrases.py  MeSH name -> OpenAlex search phrase                  [done]
-scout/grid.py     co-occurrence, bridges, IDF ranking                  [phase 1]
-scout/labs.py     OpenAlex MA institution lookup                       [phase 1]
-scout/verify.py   the four-step claim gate                             [phase 3]
-scout/brief.py    assembles the one-pager                              [phase 4]
+gapfinder/fetch.py    PubMed retrieval, provenance, integrity spot check   [done]
+gapfinder/mesh.py     tree resolution (+RDF fallback), axis rules          [done]
+gapfinder/phrases.py  MeSH name -> OpenAlex search phrase                  [done]
+gapfinder/grid.py     co-occurrence, bridges, IDF ranking                  [phase 1]
+gapfinder/labs.py     OpenAlex MA institution lookup                       [phase 1]
+gapfinder/verify.py   the four-step claim gate                             [phase 3]
+gapfinder/brief.py    assembles the one-pager                              [phase 4]
 app.py            FastAPI: static/index.html + 6 endpoints             [phase 2]
 
 data/             caches + provenance; corpus_*.json gitignored,
-                  rebuild with `python -m scout.fetch` (~12 min)
+                  rebuild with `python -m gapfinder.fetch` (~12 min)
 probes/           the 11 exploratory scripts behind every number above
 static/           index.html (the designed frontend), pipeline.html (diagrams)
 starter/          the two provided datasets, extracted
@@ -158,10 +158,10 @@ DESIGN.md         full design document
 
 ## Reproduce any number here
 ```bash
-python -m scout.fetch        # rebuild both corpora via year slicing
-python -m scout.mesh         # print the axes
-python -m scout.phrases      # phrase-map coverage
-python -c "from scout.fetch import spot_check; print(spot_check('past', 30))"
+python -m gapfinder.fetch        # rebuild both corpora via year slicing
+python -m gapfinder.mesh         # print the axes
+python -m gapfinder.phrases      # phrase-map coverage
+python -c "from gapfinder.fetch import spot_check; print(spot_check('past', 30))"
 ```
 
 ## Prior art to acknowledge

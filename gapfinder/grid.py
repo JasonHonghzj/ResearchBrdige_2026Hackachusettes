@@ -24,7 +24,7 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from scout import mesh
+from gapfinder import mesh
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 
@@ -166,7 +166,7 @@ def validate(cutoff: int = 2018, *, seed: int = 0, verbose: bool = True) -> dict
     reason the lift is a measurement rather than a claim.
     """
     import random
-    from scout.fetch import load_corpus
+    from gapfinder.fetch import load_corpus
 
     rng = random.Random(seed)
     past = load_corpus("past", cutoff=cutoff)
@@ -233,7 +233,7 @@ def validate(cutoff: int = 2018, *, seed: int = 0, verbose: bool = True) -> dict
 
 def emit(outdir: Path = DATA, verbose: bool = True) -> dict:
     """Write what the app serves: the production grid, its gaps, the validation."""
-    from scout.fetch import load_production
+    from gapfinder.fetch import load_production
 
     prod = rank_gaps(build(load_production(), verbose=verbose))
     grid_json = {
@@ -261,7 +261,7 @@ def emit(outdir: Path = DATA, verbose: bool = True) -> dict:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    from scout.fetch import load_production
+    from gapfinder.fetch import load_production
 
     g = rank_gaps(build(load_production()))
     print(f"\ngrid: {g.n_cells} cells | {g.n_filled} filled "

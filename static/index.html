@@ -1,4 +1,12 @@
-<title>Research Scout</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore early-detection research, check disease–method pairings against PubMed, and build a reproducible research brief.">
+<meta name="theme-color" content="#1c5cab">
+<title>ResearchBridge · From question to evidence</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
 :root{
@@ -63,6 +71,7 @@
 
 *{box-sizing:border-box}
 body{
+  margin:0;
   background:var(--plane);
   color:var(--ink);
   font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -216,6 +225,13 @@ h3.sec{
 }
 .scope.verified{color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
 .scope.unvalidated{color:var(--warn);background:var(--warn-soft)}
+.mapctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.gin{
+  flex:1 1 240px;max-width:340px;font:inherit;font-size:13px;padding:7px 10px;
+  border:1px solid var(--line-strong);border-radius:5px;background:var(--surface);color:var(--ink)
+}
+.gtog{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.gcount{font-size:11.5px;color:var(--ink-3);margin-left:auto}
 #tip{
   position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
   background:var(--ink);color:var(--plane);padding:7px 9px;border-radius:4px;
@@ -346,12 +362,71 @@ h3.sec{
 .bmd .ev{margin:6px 0 12px}
 .bmd ul{margin:0 0 10px;padding-left:18px;font-size:13.5px}
 .bmd .mail{white-space:pre-wrap}
+/* Demo flow: one question, readable evidence, a portable brief. */
+.shell{padding-top:28px}
+.topbar{align-items:center}
+.brand{font-size:19px}
+.topnote{flex-basis:100%;margin:0;font-size:12px}
+.phead{margin-top:26px}
+.phead h2{font-size:28px;line-height:1.2;margin-bottom:9px}
+.eyebrow{font:500 10.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.intro-card{background:var(--accent-soft);border-color:transparent}
+.intro-card h3{font-size:17px;line-height:1.35;margin:0 0 10px}
+.intro-card p{color:var(--ink-2);font-size:13px;margin:0 0 16px}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}
+.metrics strong{display:block;font:600 24px "IBM Plex Mono",monospace;color:var(--ink)}
+.metrics span{display:block;font-size:12px;color:var(--ink-2);margin-top:4px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.actions a.btn{text-decoration:none;display:inline-block}
+.field-grow{flex:1 1 210px;min-width:0;color:var(--ink-2);font-weight:500}
+.field-grow .goalin{width:100%;flex:auto;font-weight:400}
+.goalbox .btn{align-self:flex-end}
+.source-details{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;min-width:0}
+.source-details summary{cursor:pointer;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.pipe{padding-left:0}.pipe .sub,.src,.ev cite{overflow-wrap:anywhere}
+.source-note{font-size:12px;color:var(--ink-2);margin:12px 0 0}
+.scope-badge{display:inline-block;font:500 10px "IBM Plex Mono",monospace;letter-spacing:.04em;padding:4px 7px;border-radius:4px;color:var(--accent);background:var(--accent-soft)}
+.shortlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0 22px}
+.pick-card{font:inherit;display:flex;flex-direction:column;gap:5px;padding:13px 15px;border:1px solid var(--line);border-radius:6px;text-align:left;background:var(--surface);color:var(--ink);cursor:pointer}
+.pick-card:hover,.pick-card[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.pick-card strong{font-size:13px}.pick-card span{font-size:12px;color:var(--ink-2)}
+.pick-card small{font:10.5px "IBM Plex Mono",monospace;color:var(--accent);margin-top:auto;padding-top:6px}
+.panel + .panel.on{margin-top:24px}
+.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.result-head strong{font-size:17px}
+.query-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.query-links a{color:var(--accent);font-size:12.5px}
+.brief .query-links{margin:10px 0 14px}
+.empty-state{padding:28px 22px;border:1px dashed var(--line-strong);border-radius:6px;background:var(--surface);color:var(--ink-2);font-size:14px}
+.empty-state p{margin:0 0 14px}
+.brief-toolbar{margin-bottom:16px}
+.brief{max-width:800px;width:100%}.brief a{color:var(--accent)}
+.mapwrap{max-height:560px}.map th.row{position:sticky;left:0;background:var(--surface);z-index:1}
+.card,.grid2>*{min-width:0}
+.scope{white-space:normal}.scope-badge{white-space:normal}
+.loading{color:var(--ink-2);font-size:13px}.loading::before{content:"";display:inline-block;width:10px;height:10px;border:2px solid var(--line-strong);border-top-color:var(--accent);border-radius:50%;margin-right:8px;vertical-align:-2px;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){
+  .shell{padding:18px 16px 40px}.topbar{gap:12px}.brand{width:100%}.nav{width:100%;justify-content:space-between;gap:0}.nav button{padding:8px 10px;font-size:13px}
+  .phead h2{font-size:25px}.phead{margin-top:22px}.card{padding:16px}.shortlist{grid-template-columns:1fr}.goalbox .btn{width:100%}
+  .field-grow{flex-basis:100%}.brief{padding:22px 18px}.brief .bh h3{font-size:23px}.sel-v{overflow-wrap:anywhere}.selbar{gap:6px}
+  .pipe li{flex-wrap:wrap}.pipe .num{margin-left:25px}.pipe .lbl{min-width:180px}.bar{grid-template-columns:105px 1fr auto;gap:8px}.bar .bv{min-width:48px}.bar .bl{font-size:11.5px}
+  .scope label{margin-left:0}.kv{gap:8px 12px}.kv dt{white-space:normal}.map th.row{max-width:140px}.paper .ph{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.loading::before{animation:none}html{scroll-behavior:auto}}
+@media print{
+  body{background:#fff;color:#111}.shell{max-width:none;padding:0}.topbar,.selbar,.foot,#view-bridge,#view-gap>.panel:not(#p6),.brief-toolbar,#tip{display:none!important}
+  #view-gap,#p6{display:block!important}.brief{border:0;box-shadow:none;max-width:none;padding:0}.brief p,.brief h4,.brief a{color:#111}.brief a::after{content:" (" attr(href) ")";font-size:10px;overflow-wrap:anywhere}
+}
 </style>
+</head>
+<body>
 
 <div class="shell">
 
   <div class="topbar">
-    <span class="brand">Research Scout<span class="dot">.</span></span>
+    <span class="brand">ResearchBridge<span class="dot">.</span></span>
     <nav class="nav" role="tablist" aria-label="Sections">
       <button role="tab" aria-selected="true"  data-dest="check">Check</button>
       <button role="tab" aria-selected="false" data-dest="map">Map</button>
@@ -362,7 +437,7 @@ h3.sec{
     <span class="topnote" id="destnote">Verify a pairing against PubMed in about a second.</span>
   </div>
 
-  <div id="view-scout">
+  <div id="view-gap">
   <div class="selbar" id="selbar" hidden>
     <span class="sel-l">Selected</span>
     <span class="sel-v" id="selval">nothing yet</span>
@@ -372,36 +447,55 @@ h3.sec{
   <!-- ============ 01 ============ -->
   <section class="panel" id="p1" role="tabpanel">
     <div class="phead">
-      <h2>Check any pairing against PubMed</h2>
-      <p>Name a disease and a method. Four live queries come back in about a second: how often that method is already applied to that disease, and how often for detecting it early. Both are single PubMed searches you can re-run yourself.</p>
+      <h2>Is this pairing new?</h2>
+      <p>Check a disease and a method against PubMed. See what is already studied, then build a brief with the exact searches behind it.</p>
     </div>
     <div class="grid2">
       <div class="card">
-        <h3 class="sec">Novelty check <span class="live">live</span></h3>
+        <h3 class="sec">Check the literature</h3>
         <div class="goalbox">
-          <input class="goalin" id="ckProblem" list="dlProblems" placeholder="Disease — e.g. Parkinson Disease" aria-label="Disease, as a MeSH descriptor">
-          <input class="goalin" id="ckMethod" list="dlMethods" placeholder="Method — e.g. Mass Spectrometry" aria-label="Method, as a MeSH descriptor">
-          <button class="btn" id="ckRun">Check</button>
+          <label class="field field-grow">Disease<input class="goalin" id="ckProblem" list="dlProblems" maxlength="100" placeholder="e.g. Parkinson Disease" aria-label="Disease, as a MeSH descriptor"></label>
+          <label class="field field-grow">Method<input class="goalin" id="ckMethod" list="dlMethods" maxlength="100" placeholder="e.g. Mass Spectrometry" aria-label="Method, as a MeSH descriptor"></label>
+          <button class="btn" id="ckRun">Check PubMed</button>
         </div>
         <datalist id="dlProblems"></datalist>
         <datalist id="dlMethods"></datalist>
-        <p style="margin:9px 0 0;font-size:11.5px;color:var(--ink-3)">
-          Terms are MeSH descriptor names — start typing for the 82 on the grid. MeSH inverts some of
-          them: it is <span class="mono">Spectrum Analysis, Raman</span>, not “Raman Spectrum Analysis”.
+        <p style="margin:9px 0 0;font-size:11.5px;color:var(--ink-3)"
+           title="MeSH inverts some names: Spectrum Analysis, Raman — not Raman Spectrum Analysis.">
+          MeSH terms. Start typing for suggestions.
         </p>
-        <div id="ckOut" style="margin-top:14px"></div>
-        <h3 class="sec" style="margin-top:22px">Retrieval log <span class="live">live</span></h3>
+        <div class="chips" id="checkExamples" aria-label="Saved example pairings"></div>
+        <div id="ckOut" role="status" aria-live="polite" style="margin-top:14px"></div>
+        <details class="source-details"><summary>Corpus retrieval history</summary>
         <ul class="pipe" id="plog"><li><span class="lbl">loading…</span></li></ul>
+        </details>
       </div>
+      <aside class="card intro-card">
+        <div class="eyebrow">From question to evidence</div>
+        <h3>A starting point for your next research discussion.</h3>
+        <p>Compare how often a method appears with a disease, then narrow that search to early detection. A low count is a lead to investigate with a specialist.</p>
+        <div class="metrics"><div><strong id="heroPapers">—</strong><span>papers in the field map</span></div><div><strong id="heroCandidates">—</strong><span>pairings with ≤2 results</span></div></div>
+        <button class="btn ghost" data-nav="map">Explore saved pairings →</button>
+        <p class="source-note">The map and its briefs work from saved PubMed counts. New checks need a connection; repeated checks may use a saved result.</p>
+      </aside>
+    </div>
   </section>
 
   <!-- ============ 02 ============ -->
   <section class="panel on" id="p2" role="tabpanel">
     <div class="phead">
-      <h2>A map of what the field has and hasn’t tried</h2>
-      <p>Every cell is a problem crossed with a method, shaded by how many papers do both. Empty cells are candidates; the ringed cells are the few that survive the bridge test. Hover any cell.</p>
+      <h2>Field map</h2>
+      <p>Explore diseases × methods in the early-detection corpus. Ringed cells have at most two results in the saved full-PubMed search.</p>
     </div>
+    <h3 class="sec">Start with a pairing · highest overall paper counts</h3>
+    <div class="shortlist" id="shortlist" aria-label="Suggested pairings"><p class="loading">Loading saved pairings…</p></div>
     <div class="card">
+      <div class="mapctl">
+        <input id="gFilter" class="gin" placeholder="Filter terms — e.g. cancer, spectro, learning"
+               aria-label="Filter grid terms">
+        <label class="gtog"><input type="checkbox" id="gAll"> <span id="gAllLabel">Show full map</span></label>
+        <span class="gcount mono" id="gCount"></span>
+      </div>
       <div class="mapwrap">
         <table class="map" id="map"></table>
       </div>
@@ -412,10 +506,10 @@ h3.sec{
           <span class="mono">1 → 400+</span>
         </span>
         <span class="lgi"><i class="swatch e"></i> no papers</span>
-        <span class="lgi"><i class="swatch f"></i> flagged gap — shares ≥2 mechanistic bridges</span>
+        <span class="lgi"><i class="swatch f"></i> ≤2 results in saved PubMed search</span>
       </div>
       <div class="axisnote">
-        Showing 12 × 10 of the full 50 × 30 grid. Of 1,500 cells, <b class="mono">569</b> are empty and <b class="mono">328</b> carry at least two shared mechanistic bridge terms.
+        Loading field map…
       </div>
     </div>
   </section>
@@ -424,15 +518,15 @@ h3.sec{
   <section class="panel" id="p3" role="tabpanel">
     <div class="phead">
       <h2>The selected pairing</h2>
-      <p>An empty cell on its own means nothing — checked against full PubMed, our first eight ranked “gaps” had up to 1,485 papers each. So every candidate below passed two live queries, and carries the count of how often the method is already used on that disease. A high count is the point: the capability demonstrably works, and nobody has aimed it at early detection.</p>
+      <p>Overall research beside early-detection results. Open either PubMed search to inspect the evidence.</p>
     </div>
     <div class="grid2">
       <div class="card" id="gapcard"><p style="color:var(--ink-3)">loading…</p></div>
       <div class="card">
-        <h3 class="sec">Ranking <span class="live">live</span></h3>
+        <h3 class="sec">Pairing details</h3>
         <dl class="kv" id="gapmeta"><dt>loading…</dt><dd>—</dd></dl>
-        <h3 class="sec" style="margin-top:22px">Rejected by live verification</h3>
-        <p style="margin:0 0 10px;color:var(--ink-2);font-size:12.5px">The reject pile is shown because it is the only honest way to read a shortlist. These looked empty in our corpus and are not gaps in PubMed.</p>
+        <h3 class="sec" style="margin-top:22px">Pairings already studied</h3>
+        <p style="margin:0 0 10px;color:var(--ink-2);font-size:12.5px">Looked empty here; not gaps in PubMed.</p>
         <div id="rejects" style="display:flex;flex-direction:column;gap:9px"></div>
       </div>
     </div>
@@ -441,12 +535,13 @@ h3.sec{
   <!-- ============ 04 ============ -->
   <section class="panel" id="p4" role="tabpanel">
     <div class="phead">
-      <h2>Walkthrough: the verification gate</h2>
-      <p>A general-purpose model wrote the three claims below from the same two abstracts. The scout checks each one against the source text and deletes what isn’t supported. This runs in code, not in the model.</p>
+      <h2>How a source check could work</h2>
+      <p><span class="scope-badge">Illustrative walkthrough · scripted outcomes</span></p>
+      <p class="source-note">This fixed example illustrates accepting and removing claims. Its text and results are predefined; it does not run a verifier or feed the research brief.</p>
     </div>
     <div class="grid2">
       <div class="card">
-        <h3 class="sec">Draft claims — unverified model output</h3>
+        <h3 class="sec">Example claims</h3>
         <div id="claims">
           <div class="claim" data-state="pending" data-v="pass">
             <span class="mk">·</span>
@@ -462,17 +557,18 @@ h3.sec{
           </div>
         </div>
         <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
-          <button class="btn" id="runv">Check against sources</button>
+          <button class="btn" id="runv">Play walkthrough</button>
           <button class="btn ghost" id="resetv">Reset</button>
         </div>
         <div class="verdict" id="verdict" hidden>
           <span><b>2</b> of <b>3</b> claims supported.</span>
-          <span style="color:var(--ink-3)">1 deleted before it reached the brief.</span>
+          <span style="color:var(--ink-3)">Illustration complete · 1 claim removed.</span>
         </div>
       </div>
       <div class="card">
-        <h3 class="sec">Source abstract — method half</h3>
+        <h3 class="sec">Illustrative source text</h3>
         <div class="src" id="srcbox">Patients undergoing upper gastrointestinal endoscopy provided exhaled breath samples analysed by selected-ion flow-tube mass spectrometry. <span data-hl>Exhaled volatile organic compound profiles discriminated gastric and oesophageal cancer from benign disease with an area under the curve of 0.85.</span> No pancreatic cases were included in this cohort, and no multi-centre validation has been undertaken.</div>
+        <div class="src" style="margin-top:10px">Second illustrative source: Polyamines were elevated in pancreatic ductal adenocarcinoma versus chronic pancreatitis.</div>
         <p style="margin:11px 0 0;font-size:12px;color:var(--ink-3)">
           The third claim fails on two counts: the cohort contains no pancreatic cases, and the abstract states explicitly that no multi-centre validation exists. Nothing in either source supports it.
         </p>
@@ -483,12 +579,12 @@ h3.sec{
   <!-- ============ 05 ============ -->
   <section class="panel" id="p5" role="tabpanel">
     <div class="phead">
-      <h2>What is measured, and what we withdrew</h2>
-      <p>The grid was built from papers up to 2018 only. We then asked which flagged gaps appear in 2019–2026 papers — a window the ranking never saw.</p>
+      <h2>What is measured</h2>
+      <p>And what we withdrew.</p>
     </div>
     <div class="grid2" style="margin-bottom:16px">
       <div class="card">
-        <h3 class="sec">Corpus held <span class="live">live</span></h3>
+        <h3 class="sec">Saved corpus</h3>
         <dl class="kv" id="corpuskv"><dt>loading…</dt><dd>—</dd></dl>
         <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
         <p style="margin:0;color:var(--ink-2);font-size:12.5px">
@@ -498,25 +594,25 @@ h3.sec{
           <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
         </p>
       </div>
-    </div>
       <div class="card">
-        <h3 class="sec">Verification gate</h3>
-        <p style="margin:0 0 10px;color:var(--ink-2);font-size:12.5px">Step through the claim check on a fixed example in <b>Walkthrough</b> below. The gate is code: a quoted sentence must be findable in the abstract and every numeral in the claim must appear in the source. Accepting arbitrary input is not built yet, so this one example is scripted and labelled as such.</p>
+        <h3 class="sec">Reading the results</h3>
+        <p style="margin:0 0 10px;color:var(--ink-2);font-size:13px">A pairing is a candidate when its MeSH search returns at most two early-detection papers. A paper count shows indexed use, not that a method is effective. MeSH coverage, indexing delays, synonyms and the search definition can all affect these counts.</p>
+        <p style="margin:0 0 14px;color:var(--ink-2);font-size:13px">The map uses saved counts; Check can query PubMed. The Library searches a separate 60-paper starter set and includes a functional literal source checker.</p>
         <button class="btn ghost" id="gotoGate">Open the walkthrough</button>
       </div>
     </div>
     <div class="grid2">
       <div class="card">
-        <h3 class="sec">Share of candidates that are real gaps in PubMed <span class="live">live</span></h3>
+        <h3 class="sec">Pairings meeting the search threshold · saved analysis</h3>
         <div class="bars" id="bars"></div>
         <div class="axisnote" id="barnote">loading…</div>
       </div>
       <div class="card">
-        <h3 class="sec">What is established <span class="live">live</span></h3>
+        <h3 class="sec">What was measured</h3>
         <dl class="kv" id="valkv"><dt>loading…</dt><dd>—</dd></dl>
         <div class="caveat" id="valcaveat"></div>
         <p style="margin:14px 0 0;font-size:12.5px;color:var(--ink-2)">
-          Prior art worth naming: Swanson &amp; Smalheiser’s <span class="mono">Arrowsmith</span> has done literature-based discovery since the 1990s. What is new here is the live verification and the handoff to named local labs — not the bridge method, which we measured and dropped.
+          Prior art: Swanson &amp; Smalheiser’s <span class="mono">Arrowsmith</span> has explored literature-based discovery since the 1990s. This prototype focuses on reproducible searches and a portable brief. Massachusetts collaborator matching remains future work.
         </p>
       </div>
     </div>
@@ -525,25 +621,20 @@ h3.sec{
   <!-- ============ 06 ============ -->
   <section class="panel" id="p6" role="tabpanel">
     <div class="phead">
-      <h2>Opportunity brief</h2>
-      <p>One page a researcher can act on: the gap, the evidence that survived checking, who holds each half in Massachusetts, and a first message.</p>
+      <h2>Your research brief</h2>
+      <p>One page, with queries anyone can re-run.</p>
     </div>
-    <div class="brief" id="brief"><p style="color:var(--ink-3)">loading…</p></div>
+    <div class="actions brief-toolbar" id="briefToolbar" hidden><button class="btn" id="downloadBrief">Download Markdown</button><button class="btn ghost" id="printBrief">Print / save PDF</button><span class="source-note" id="briefStatus" role="status"></span></div>
+    <div class="brief" id="brief"><p class="loading">Loading saved evidence…</p></div>
   </section>
 
-  <p class="foot" id="foot">
-    <b>Everything in this view is served live</b> from the Scout API — the grid, the confirmed gaps,
-    their maturity counts and the reject pile all come from <span class="mono">/api/scout/*</span> over
-    79,940 PubMed papers, so the figures change if the data does. The verification gate under
-    Method is a scripted walkthrough on a fixed example; accepting arbitrary claim text is still to
-    build, as is the Massachusetts lab lookup.
-  </p>
-  </div><!-- /view-scout -->
+  <p class="foot" id="foot">ResearchBridge · Hackachusetts 2026 · PubMed / MeSH. Low search counts identify leads for specialist review. They do not establish worldwide novelty, feasibility or clinical effectiveness.</p>
+  </div><!-- /view-gap -->
 
   <!-- ================= Evidence explorer: ResearchBridge engine ================= -->
   <div id="view-bridge" hidden>
     <div class="scope" role="note">
-      <span><b>Separate engine, separate claims.</b>
+      <span><b>Starter-set library.</b>
         <span id="b-stats">Loading…</span>
         Scores are text relevance (TF-IDF), not probability, evidence quality, or a validated research gap.</span>
       <label><span data-t="language">Language</span>
@@ -563,7 +654,8 @@ h3.sec{
 
     <!-- 01 search -->
     <section class="panel on" id="b1" role="tabpanel">
-      <div class="phead"><h2 data-t="start">Start with a research goal</h2><p data-t="score_explained"></p></div>
+      <div class="phead"><h2 data-t="start">Start with a research goal</h2></div>
+      <details class="source-details" style="margin-bottom:16px"><summary>How results are ranked</summary><p class="source-note" data-t="score_explained"></p></details>
       <div class="card">
         <form class="goalbox" id="b-search-form">
           <input class="goalin" id="b-q" maxlength="200" data-tp="query_placeholder" aria-label="Research goal or keywords">
@@ -663,479 +755,7 @@ h3.sec{
 
 <div id="tip" role="status" aria-live="polite"></div>
 
-<script>
-/* ---------- destinations ----------
-   Five flat destinations instead of two engines x thirteen tabs. Each one owns a
-   set of existing panels, so the DOM did not have to be rebuilt. Scope badges on
-   the data carry the engine distinction, which means a user never has to learn
-   there are two of them. */
-const DEST = {
-  check:   { panels:['p1'], note:'Verify a pairing against PubMed in about a second.' },
-  map:     { panels:['p2','p3'], note:'50 diseases x 32 transferable methods. Ringed cells are verified gaps.' },
-  library: { panels:[], bridge:true, note:'Retrieval over the 60-paper starter set. Not a validated ranking.' },
-  brief:   { panels:['p6'], note:'One page for the selected pairing, with queries anyone can re-run.' },
-  method:  { panels:['p5','p4'], note:'Where the data comes from, what is measured, and what we withdrew.' },
-};
-const navBtns = [...document.querySelectorAll('.nav button')];
-let dest = 'check';
-
-function showDest(id){
-  if (!DEST[id]) id = 'check';
-  dest = id;
-  const d = DEST[id];
-  navBtns.forEach(b => b.setAttribute('aria-selected', String(b.dataset.dest === id)));
-  document.getElementById('view-scout').hidden = !!d.bridge;
-  document.getElementById('view-bridge').hidden = !d.bridge;
-  document.querySelectorAll('#view-scout .panel').forEach(pn =>
-    pn.classList.toggle('on', d.panels.includes(pn.id)));
-  document.getElementById('destnote').textContent = d.note;
-  if (d.panels.includes('p5')) drawBars();
-  if (d.bridge && window.Bridge) window.Bridge.init();
-  renderSelbar();
-  history.replaceState(null, '', '#' + id);
-}
-navBtns.forEach(b => b.addEventListener('click', () => showDest(b.dataset.dest)));
-
-/* kept so existing callers keep working: a panel id resolves to its destination */
-function goto(panelId){
-  const hit = Object.keys(DEST).find(k => DEST[k].panels.includes(panelId));
-  showDest(hit || 'check');
-}
-
-/* ---------- selection bar ----------
-   Brief and Map both act on "the current pairing". Without showing it, Brief
-   looks arbitrary and the grid selection is invisible once you navigate away. */
-function selection(){
-  const pr = document.getElementById('ckProblem').value.trim();
-  const me = document.getElementById('ckMethod').value.trim();
-  if (pr && me) return { problem: pr, method: me, source: 'typed' };
-  const g = S.gaps && S.gaps[S.pick];
-  return g ? { problem: g.problem, method: g.method, source: 'map' } : null;
-}
-function renderSelbar(){
-  const bar = document.getElementById('selbar');
-  const sel = selection();
-  const show = !!sel && (dest === 'map' || dest === 'brief' || dest === 'check');
-  bar.hidden = !show;
-  if (!show) return;
-  document.getElementById('selval').textContent = sel.problem + '  ×  ' + sel.method;
-  bar.querySelector('.sel-l').textContent = sel.source === 'typed' ? 'You typed' : 'From the map';
-  /* 'clear' only clears what was typed. Showing it when the selection comes from
-     the map made it a dead click: the inputs emptied and the bar stayed, because
-     the grid pick is still a selection. */
-  document.getElementById('selclear').hidden = sel.source !== 'typed';
-}
-document.getElementById('selclear').addEventListener('click', () => {
-  document.getElementById('ckProblem').value = '';
-  document.getElementById('ckMethod').value = '';
-  ckRender('');
-  renderSelbar();
-});
-
-/* ---------- example chips ----------
-   A first-time user should get a real answer before understanding the product,
-   so the landing offers three verified pairings as one click each. */
-const EXAMPLES = [
-  ['Obesity', 'Polymerase Chain Reaction'],
-  ['Sepsis', 'Metabolomics'],
-  ['Parkinson Disease', 'Mass Spectrometry'],
-];
-(function chips(){
-  const host = document.getElementById('ckOut');
-  if (!host) return;
-  const box = document.createElement('div');
-  box.className = 'chips';
-  box.innerHTML = '<span style="font-size:11.5px;color:var(--ink-3);align-self:center">' +
-    'try:</span>' + EXAMPLES.map((e, i) =>
-    '<button data-ex="' + i + '">' + e[0] + ' × ' + e[1] + '</button>').join('');
-  host.parentNode.insertBefore(box, host);
-  box.addEventListener('click', e => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    const [pr, me] = EXAMPLES[+b.dataset.ex];
-    document.getElementById('ckProblem').value = pr;
-    document.getElementById('ckMethod').value = me;
-    renderSelbar();
-    runCheck();
-  });
-})();
-
-/* ---------- live data from the Scout API ---------- */
-const S = { grid:null, gaps:null, rejects:null, val:null, scope:null, pick:0 };
-const fmt = n => (n ?? 0).toLocaleString('en-US');
-const esc = t => String(t ?? '').replace(/[&<>"]/g, c =>
-  ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
-
-async function get(path){
-  const r = await fetch(path);
-  if (!r.ok) throw new Error(path + ' -> HTTP ' + r.status);
-  return r.json();
-}
-
-function bucket(n){
-  if (n <= 0) return 0;
-  if (n < 10) return 1;
-  if (n < 40) return 2;
-  if (n < 100) return 3;
-  if (n < 400) return 4;
-  return 5;
-}
-
-/* ---------- 01 corpus ---------- */
-function renderCorpus(){
-  const prov = S.scope.provenance || [];
-  document.getElementById('plog').innerHTML = prov.map(e => {
-    const uniq = e.retrieved_unique ?? e.retrieved ?? 0;
-    const avail = e.per_year_sum ?? e.available_total ?? 0;
-    const span = e.date_range || (e.years || []).join('-');
-    return '<li><span class="ok">&check;</span><span class="lbl">' + esc(span) +
-      '<span class="sub mono">' + esc(e.query) + '</span>' +
-      '<span class="sub">' + esc(e.strategy || 'range query') +
-      ' &middot; abstract ' + Math.round((e.abstract_coverage || 0) * 100) + '%' +
-      ' &middot; MeSH ' + Math.round((e.mesh_coverage || 0) * 100) + '%</span></span>' +
-      '<span class="num">' + fmt(uniq) + ' of ' + fmt(avail) + '</span></li>';
-  }).join('') +
-  '<li><span class="ok">&check;</span><span class="lbl">Empty cells verified against full PubMed' +
-  '<span class="sub">two live queries each: how often the method is used on that disease, then the ' +
-  'same pair restricted to early detection</span></span><span class="num">' +
-  fmt(S.scope.cells_checked) + '</span></li>';
-
-  const g = S.grid, ic = S.scope.integrity_check;
-  document.getElementById('corpuskv').innerHTML =
-    '<dt>Papers</dt><dd>' + fmt(g.n_papers) + '</dd>' +
-    '<dt>Problem terms</dt><dd>' + g.problems.length +
-      ' <span style="color:var(--ink-3)">&middot; MeSH tree C</span></dd>' +
-    '<dt>Method terms</dt><dd>' + g.methods.length +
-      ' <span style="color:var(--ink-3)">&middot; E05.393 + E05.196 + L01.224.050</span></dd>' +
-    '<dt>Grid filled</dt><dd>' + g.filled + ' / ' + g.cells +
-      ' <span style="color:var(--ink-3)">&middot; ' + Math.round(g.filled / g.cells * 100) + '%</span></dd>' +
-    '<dt>Confirmed gaps</dt><dd>' + fmt(S.scope.confirmed_gaps) + ' of ' + fmt(S.scope.cells_checked) + '</dd>' +
-    (ic ? '<dt>Integrity check</dt><dd>' + ic.titles_match + '/' + ic.checked + ' titles, ' +
-          ic.mesh_match + '/' + ic.checked + ' MeSH</dd>' : '');
-}
-
-/* ---------- 02 grid ---------- */
-function renderGrid(){
-  const g = S.grid, P = g.problems, M = g.methods;
-  const counts = new Map(g.counts.map(c => [c[0] + '|' + c[1], c[2]]));
-  /* ringed only where LIVE verification confirmed it; absence here is not enough */
-  const confirmed = new Map(S.gaps.map(x => [x.problem + '|' + x.method, x]));
-  const cur = S.gaps[S.pick];
-  let h = '<thead><tr><th></th>' +
-    M.map(m => '<th class="col" scope="col"><span>' + esc(m.name) + '</span></th>').join('') +
-    '</tr></thead><tbody>';
-  P.forEach((pr, i) => {
-    h += '<tr><th class="row" scope="row" title="' + esc(pr.name) + '">' + esc(pr.name) + '</th>';
-    M.forEach((me, j) => {
-      const n = counts.get(i + '|' + j) || 0;
-      const gap = n === 0 ? confirmed.get(pr.name + '|' + me.name) : null;
-      const pick = gap && cur && gap.problem === cur.problem && gap.method === cur.method;
-      const cls = ['cell', 'c' + bucket(n), gap ? (pick ? 'pick' : 'flag') : ''].join(' ');
-      const label = gap
-        ? pr.name + ' x ' + me.name + ' - confirmed gap, method already used ' +
-          gap.maturity + ' times on this disease'
-        : pr.name + ' x ' + me.name + (n === 0 ? ' - no papers' : ' - ' + n + ' papers');
-      h += '<td><button class="' + cls + '" data-p="' + esc(pr.name) + '" data-m="' + esc(me.name) +
-        '" data-n="' + n + '" data-f="' + (gap ? 1 : 0) + '" data-mat="' + (gap ? gap.maturity : 0) +
-        '" data-gp="' + (gap ? gap.gap_papers : 0) + '" aria-label="' + esc(label) + '"></button></td>';
-    });
-    h += '</tr>';
-  });
-  document.getElementById('map').innerHTML = h + '</tbody>';
-  const note = document.querySelector('#p2 .axisnote');
-  if (note) note.innerHTML = 'Full grid: ' + P.length + ' &times; ' + M.length +
-    ' = <b class="mono">' + g.cells + '</b> cells, <b class="mono">' + g.filled +
-    '</b> already studied, <b class="mono">' + (g.cells - g.filled) + '</b> empty. Of those, ' +
-    '<b class="mono">' + S.gaps.length + '</b> are ringed &mdash; confirmed against full PubMed, ' +
-    'not merely absent here. Click a ringed cell.';
-}
-
-/* ---------- 03 gap card ---------- */
-function renderGap(){
-  const x = S.gaps[S.pick];
-  if (!x) return;
-  const bridges = (x.bridges || []).slice(0, 6);
-  const col = x.gap_papers === 0 ? 'var(--good)' : 'var(--warn)';
-  document.getElementById('gapcard').innerHTML =
-    '<div class="gaphead"><b>' + esc(x.problem) + '</b><span class="x">&times;</span><b>' +
-      esc(x.method) + '</b><span class="scope verified">PubMed 79,940 &middot; verified</span></div>' +
-    '<p style="color:var(--ink-2);margin:2px 0 16px;font-size:13px"><span class="mono">' +
-      fmt(x.problem_papers) + '</span> papers on the problem &middot; <span class="mono">' +
-      fmt(x.method_papers) + '</span> on the method, within our corpus.</p>' +
-    '<div class="chain">' +
-      '<div class="node"><span class="role">Method</span><span class="val">' + esc(x.method) + '</span></div>' +
-      '<div class="link"></div>' +
-      '<div class="node"><span class="role">Proven on</span><span class="val">' +
-        '<b class="mono" style="font-size:15px">' + fmt(x.maturity) + '</b> papers apply it to ' +
-        esc(x.problem) + '<span style="display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px">' +
-        'live PubMed count, any purpose &mdash; this is why the gap is tractable</span></span></div>' +
-      '<div class="link"></div>' +
-      '<div class="node"><span class="role">For early<br>detection</span><span class="val">' +
-        '<b class="mono" style="font-size:15px;color:' + col + '">' + x.gap_papers + '</b> papers' +
-        '<span style="display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px">' +
-        'the same pair restricted to the early-detection topic</span></span></div>' +
-    '</div>' +
-    (bridges.length ? '<p style="margin:14px 0 4px;font-size:12px;color:var(--ink-3)">Shared ' +
-      'mechanistic terms, shown for inspection only &mdash; measured, and they do not predict a real ' +
-      'gap:</p><div class="bridges">' +
-      bridges.map(b => '<span class="chip n">' + esc(b) + '</span>').join('') + '</div>' : '') +
-    '<div class="ev" style="margin-top:16px"><q>' + esc(x.method) + ' has been applied to ' +
-      esc(x.problem) + ' ' + fmt(x.maturity) + ' times, and ' +
-      (x.gap_papers === 0 ? 'never' : 'only ' + x.gap_papers + ' times') +
-      ' for detecting it early.</q><cite>reproducible in one query &middot; "' + esc(x.problem) +
-      '"[MeSH Terms] AND "' + esc(x.method) + '"[MeSH Terms]</cite></div>';
-
-  document.getElementById('gapmeta').innerHTML =
-    '<dt>Maturity</dt><dd>' + fmt(x.maturity) + ' papers</dd>' +
-    '<dt>Early-detection papers</dt><dd>' + x.gap_papers + '</dd>' +
-    '<dt>Rank by maturity</dt><dd>' + (S.pick + 1) + ' / ' + S.gaps.length + '</dd>' +
-    '<dt>Shared bridges</dt><dd>' + (x.n_bridges ?? 0) + '</dd>' +
-    '<dt>Verified</dt><dd>live, two queries</dd>';
-
-  document.getElementById('rejects').innerHTML = S.rejects.slice(0, 4).map(r =>
-    '<div style="font-size:12.5px;color:var(--ink-2)"><b style="color:var(--ink)">' +
-    esc(r.problem) + ' &times; ' + esc(r.method) + '</b><br><span style="color:var(--ink-3)">' +
-    fmt(r.gap_papers) + ' early-detection papers already exist &mdash; not a gap</span></div>').join('');
-}
-
-/* ---------- 05 validation ---------- */
-function renderValidation(){
-  const v = S.val || {}, neg = v.established_negative_result;
-  const rows = neg
-    ? [{ label:'Flagged by bridge score', sub:'n = 475', pct:77, txt:'77%', note:'368 real' },
-       { label:'Rejected by bridge score', sub:'n = 58', pct:97, txt:'97%', note:'56 real', key:true }]
-    : [];
-  document.getElementById('bars').innerHTML = rows.map(r =>
-    '<div class="bar' + (r.key ? ' key' : '') + '" data-w="' + r.pct + '">' +
-    '<span class="bl">' + r.label + '<br><span style="color:var(--ink-3);font-size:11.5px">' +
-    r.sub + '</span></span><span class="track"><span class="fill" style="width:0"></span></span>' +
-    '<span class="bv">' + r.txt + '<br><small>' + r.note + '</small></span></div>').join('');
-  document.getElementById('barnote').innerHTML =
-    'Scale 0&ndash;100%. The cells the bridge score <b>rejected</b> turned out to be real gaps more ' +
-    'often than the ones it flagged &mdash; a lift of <b class="mono">0.80&times;</b>. Many shared ' +
-    'mechanistic terms means the two literatures are already connected, so the pairing is more likely ' +
-    'to have been done.';
-
-  document.getElementById('valkv').innerHTML =
-    '<dt>Candidates checked</dt><dd>' + fmt(S.scope.cells_checked) + '</dd>' +
-    '<dt>Confirmed real gaps</dt><dd>' + fmt(S.scope.confirmed_gaps) +
-      ' <span style="color:var(--ink-3)">&middot; ' +
-      Math.round(S.scope.confirmed_gaps / S.scope.cells_checked * 100) + '%</span></dd>' +
-    '<dt>Bridge score predicts?</dt><dd>no &middot; lift ' + (neg ? neg.lift : '&mdash;') + '&times;</dd>' +
-    '<dt>Ranking used</dt><dd>maturity</dd>';
-
-  document.getElementById('valcaveat').innerHTML = v.status === 'pending_remeasurement'
-    ? '<b>A withdrawn claim.</b> We previously measured a ' + esc(v.withdrawn_claim) +
-      '. It appears nowhere in this app, because ' +
-      (v.withdrawn_because || []).map(esc).join('; ') +
-      '. Re-measuring on the corrected definition is pending, and until then we quote nothing.'
-    : '<b>Measured on the corrected gap definition.</b>';
-  drawn = false;
-  drawBars();
-}
-
-/* ---------- 06 brief ---------- */
-function renderBrief(){
-  const x = S.gaps[S.pick];
-  if (!x) return;
-  const low = x.problem.toLowerCase();
-  document.getElementById('brief').innerHTML =
-    '<div class="bh"><span class="el">Opportunity brief &middot; early diagnostics &middot; ' +
-      '<span class="mono">generated from live data</span></span><h3>' + esc(x.method) +
-      ' for early detection of ' + esc(low) + '</h3></div>' +
-    '<h4>The novelty statement</h4><p>' + esc(x.method) + ' has been applied to ' + esc(low) +
-      ' in <b>' + fmt(x.maturity) + '</b> indexed papers. Restricted to early detection, the same ' +
-      'pair returns <b>' + x.gap_papers + '</b>. The method is established on this disease and has ' +
-      (x.gap_papers === 0 ? 'not been' : 'barely been') + ' turned toward detecting it early.</p>' +
-    '<h4>Why it is checkable</h4><p>Both figures are single PubMed queries, run live rather than read ' +
-      'from our corpus &mdash; <span class="mono" style="font-size:12px">"' + esc(x.problem) +
-      '"[MeSH Terms] AND "' + esc(x.method) + '"[MeSH Terms]</span>, then the same conjunction with ' +
-      'the early-detection topic. A reviewer can reproduce either in a browser.</p>' +
-    '<h4>Confidence</h4><p>' + fmt(S.scope.confirmed_gaps) + ' of ' + fmt(S.scope.cells_checked) +
-      ' candidates survived this check. We do not claim a gap will be filled, and the ' +
-      'mechanistic-bridge ranking we first built was measured and dropped &mdash; it does not predict ' +
-      'a real gap. Treat this as a prioritised starting hypothesis to take to a specialist.</p>' +
-    '<h4>Who holds each half &mdash; Massachusetts</h4><div class="labs"><div class="lab">' +
-      '<span class="ln" style="color:var(--ink-3);font-weight:400">Not yet wired. The OpenAlex topic ' +
-      'lookup with its per-institution region verification is built and tested in ' +
-      '<span class="mono">probes/scout_openalex4.py</span>, but is not behind an endpoint yet.</span>' +
-      '</div></div>' +
-    '<h4>Draft first message</h4><div class="email">Subject: ' + esc(x.method) +
-      ' for early detection of ' + esc(low) + '\n\nDear Dr. ---,\n\nWhile mapping the ' +
-      'early-diagnostics literature I found something I wanted to put to you. ' + esc(x.method) +
-      ' appears in ' + fmt(x.maturity) + ' papers on ' + esc(low) + ', so the method clearly works ' +
-      'in this disease. But restricted to early detection, that pairing returns ' + x.gap_papers +
-      ' papers.\n\nIf that absence reflects an untried combination rather than a known dead end, I ' +
-      'would value fifteen minutes to hear why.\n\nBoth counts are single PubMed queries and I am ' +
-      'happy to share them.</div>';
-}
-
-/* ---------- boot ---------- */
-async function boot(){
-  try {
-    const [grid, gaps, rej, val, scope] = await Promise.all([
-      get('/api/scout/grid'),
-      get('/api/scout/gaps?limit=500&min_maturity=0'),
-      get('/api/scout/gaps/rejected?limit=20'),
-      get('/api/scout/validation').catch(() => ({ status:'unavailable' })),
-      get('/api/scout/scope')
-    ]);
-    S.grid = grid; S.gaps = gaps.gaps; S.rejects = rej.rejected;
-    S.val = val; S.scope = scope;
-    renderCorpus(); renderGrid(); renderGap(); renderValidation(); renderBrief();
-  } catch (e) {
-    const box = document.getElementById('gapcard');
-    if (box) box.innerHTML = '<div class="err"><b>Scout API unreachable.</b> ' + esc(e.message) +
-      '<br>Start the server with <span class="mono">python -m uvicorn app:app --port 8000</span> ' +
-      'and open <span class="mono">http://127.0.0.1:8000</span>. Opening this file from disk cannot ' +
-      'reach the API.</div>';
-    console.error(e);
-  }
-}
-boot();
-
-/* ---------- tooltip ---------- */
-const tip = document.getElementById('tip');
-function showTip(el, ev){
-  const n = +el.dataset.n, f = el.dataset.f === '1';
-  tip.innerHTML = `<strong>${el.dataset.p}</strong><br>× ${el.dataset.m}<br>`
-    + (f ? `<span class="tv">confirmed gap</span><br>used <span class="tv">`
-           + (+el.dataset.mat).toLocaleString('en-US') + `×</span> on this disease,`
-           + `<br><span class="tv">${el.dataset.gp}</span> for early detection`
-         : `<span class="tv">${n}</span> paper${n === 1 ? '' : 's'}`);
-  tip.style.opacity = '1';
-  const r = el.getBoundingClientRect();
-  let x = r.left + r.width / 2 - 115, y = r.top - 8;
-  x = Math.max(8, Math.min(x, innerWidth - 246));
-  tip.style.left = x + 'px';
-  tip.style.top = y + 'px';
-  tip.style.transform = 'translateY(-100%)';
-}
-document.getElementById('map').addEventListener('mouseover', e => {
-  const c = e.target.closest('.cell'); if (c) showTip(c, e);
-});
-document.getElementById('map').addEventListener('focusin', e => {
-  const c = e.target.closest('.cell'); if (c) showTip(c, e);
-});
-document.getElementById('map').addEventListener('mouseout', () => tip.style.opacity = '0');
-document.getElementById('map').addEventListener('focusout', () => tip.style.opacity = '0');
-document.getElementById('map').addEventListener('click', e => {
-  const c = e.target.closest('.cell');
-  if (!c || c.dataset.f !== '1') return;
-  const i = S.gaps.findIndex(x => x.problem === c.dataset.p && x.method === c.dataset.m);
-  if (i >= 0) { S.pick = i; renderGrid(); renderGap(); renderBrief();
-    document.getElementById('ckProblem').value = c.dataset.p;
-    document.getElementById('ckMethod').value = c.dataset.m; }
-  goto('p3');
-});
-
-/* ---------- claim verification ---------- */
-const claims = [...document.querySelectorAll('.claim')];
-const WHY = {
-  pass: 'Matched to source sentence · quote verified',
-  fail: 'No supporting sentence in either source · claim removed'
-};
-document.getElementById('runv').addEventListener('click', () => {
-  const hl = document.querySelector('#srcbox [data-hl]');
-  claims.forEach((c, i) => setTimeout(() => {
-    const v = c.dataset.v;
-    c.dataset.state = v;
-    c.querySelector('.mk').textContent = v === 'pass' ? '✓' : '✕';
-    c.querySelector('.why').textContent = WHY[v];
-    if (i === 0 && hl) hl.outerHTML = '<mark>' + hl.innerHTML + '</mark>';
-    if (i === claims.length - 1) document.getElementById('verdict').hidden = false;
-  }, 420 * (i + 1)));
-});
-document.getElementById('resetv').addEventListener('click', () => {
-  claims.forEach(c => {
-    c.dataset.state = 'pending';
-    c.querySelector('.mk').textContent = '·';
-    c.querySelector('.why').textContent = '';
-  });
-  document.getElementById('verdict').hidden = true;
-  const m = document.querySelector('#srcbox mark');
-  if (m) m.outerHTML = '<span data-hl>' + m.innerHTML + '</span>';
-});
-
-/* ---------- bars ---------- */
-let drawn = false;
-function drawBars(){
-  if (drawn) return; drawn = true;
-  document.querySelectorAll('#bars .bar').forEach((b, i) => {
-    const pct = +b.dataset.w;
-    setTimeout(() => b.querySelector('.fill').style.width = pct + '%', 90 * i);
-  });
-}
-
-/* ---------- goal box ---------- */
-/* ---------- 01 live novelty check ---------- */
-function ckRender(html){ document.getElementById('ckOut').innerHTML = html; }
-
-async function runCheck(){
-  const problem = document.getElementById('ckProblem').value.trim();
-  const method  = document.getElementById('ckMethod').value.trim();
-  if (problem.length < 2 || method.length < 2){
-    return ckRender('<div class="err">Enter both a disease and a method.</div>');
-  }
-  const btn = document.getElementById('ckRun');
-  btn.disabled = true;
-  ckRender('<p style="color:var(--ink-3);font-size:13px">querying PubMed…</p>');
-  const qs = '?problem=' + encodeURIComponent(problem) + '&method=' + encodeURIComponent(method);
-  try {
-    const r = await fetch('/api/scout/check' + qs);
-    const d = await r.json();
-    if (!r.ok){
-      /* 422 carries the engine's own reason in detail - show that, not a generic error */
-      const det = d.detail || {};
-      ckRender('<div class="err"><b>' + esc(det.error || 'Rejected.') + '</b>' +
-        (det.detail ? '<br>' + esc(det.detail) : '') + '</div>');
-      return;
-    }
-    const col = d.real_gap ? 'var(--good)' : 'var(--critical)';
-    ckRender(
-      '<div class="ev" style="border-left-color:' + col + '"><q style="font-style:normal">' +
-        esc(d.verdict) + '</q><cite>' + (d.cached ? 'cached' : 'live, ' + d.elapsed_s + 's') +
-        ' &middot; checked ' + esc(d.checked_utc) + '</cite></div>' +
-      '<dl class="kv" style="margin-top:14px">' +
-        '<dt>Applied to this disease</dt><dd>' + fmt(d.maturity) + ' papers</dd>' +
-        '<dt>…for early detection</dt><dd><b style="color:' + col + '">' + d.gap_papers +
-          '</b> <span style="color:var(--ink-3)">· tolerance ' + d.tolerance + '</span></dd>' +
-        '<dt>Verdict</dt><dd>' + (d.real_gap ? 'unexplored for early detection' : 'already studied') +
-          '</dd></dl>' +
-      '<p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Reproduce it:</p>' +
-      '<div class="src mono" style="font-size:11.5px;margin-top:5px">' +
-        esc(d.queries.maturity) + '<br><br>' + esc(d.queries.gap) + '</div>');
-  } catch (e) {
-    ckRender('<div class="err"><b>Could not reach the API.</b> ' + esc(e.message) + '</div>');
-  } finally {
-    btn.disabled = false;
-  }
-}
-document.getElementById('ckRun').addEventListener('click', runCheck);
-['ckProblem', 'ckMethod'].forEach(id =>
-  document.getElementById(id).addEventListener('keydown', e => {
-    if (e.key === 'Enter') runCheck();
-  }));
-['ckProblem', 'ckMethod'].forEach(id =>
-  document.getElementById(id).addEventListener('input', renderSelbar));
-
-async function loadTerms(){
-  try {
-    const t = await get('/api/scout/terms');
-    const fill = (el, xs) => el.innerHTML =
-      xs.map(x => '<option value="' + esc(x) + '"></option>').join('');
-    fill(document.getElementById('dlProblems'), t.problems);
-    fill(document.getElementById('dlMethods'), t.methods);
-  } catch (e) { console.error(e); }
-}
-loadTerms();
-
-/* ---------- open on the hash, else on Check ----------
-   #explorer kept so links made before the redesign still land somewhere sane. */
-document.getElementById('gotoGate').addEventListener('click', () => {
-  document.getElementById('p4').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-const h = location.hash.replace('#', '');
-showDest(h === 'explorer' ? 'library' : (DEST[h] ? h : 'check'));
-</script>
+<script src="/static/gap.js"></script>
 <script src="/static/bridge.js"></script>
+</body>
+</html>

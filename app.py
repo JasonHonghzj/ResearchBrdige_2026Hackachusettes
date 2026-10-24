@@ -1,7 +1,7 @@
-"""Research Scout web server.
+"""ResearchBridge web server.
 
 One FastAPI backend for both engines:
-  - Scout (scout/)                     gap finding on the large MeSH-indexed PubMed corpus
+  - gap finder (gapfinder/)                     gap finding on the large MeSH-indexed PubMed corpus
   - ResearchBridge (researchbridge/)   search / bridges / compare / brief / export over
                                        the 60-paper curated starter set (teammate's engine)
 
@@ -40,7 +40,7 @@ from researchbridge.reports import (bridge_relations_report, comparison_report,
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
 
-app = FastAPI(title="Research Scout", docs_url="/api/docs", redoc_url=None)
+app = FastAPI(title="ResearchBridge", docs_url="/api/docs", redoc_url=None)
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
 
 Lang = Literal["en", "zh", "es"]
@@ -240,7 +240,7 @@ class CheckBody(BaseModel):
 def bridge_check(body: CheckBody) -> dict:
     """Bridge's conservative literal check: a statement passes only if it appears
     verbatim (after Unicode/case/space normalisation) in a selected abstract.
-    No match means 'human review required', never 'false'. Scout's own claim gate
+    No match means 'human review required', never 'false'. the gap finder's own claim gate
     (verify.py: fuzzy sentence match + numeral check) is a separate, stricter tool."""
     reports = check_claims(body.claims, _papers_for(body.pmids))
     return {"scope": _scope(), "method": "literal_normalised_substring", "reports": [
@@ -345,13 +345,13 @@ def bridge_export(body: ExportBody) -> Response:
                     headers={"Content-Disposition": f'attachment; filename="{filename}"'})
 
 
-# ------------------------------------------------------------------ scout engine
+# ----------------------------------------------------------------- gap finder
 #
 # The second engine. The boundary between them is the whole point.
 #
 #   Bridge  60 curated papers, TF-IDF retrieval, validated: False.
 #           Answers "what work EXISTS on this?"
-#   Scout   79,940 PubMed papers, MeSH axes, gaps verified against FULL PubMed.
+#   Gap     79,940 PubMed papers, MeSH axes, gaps verified against FULL PubMed.
 #           Answers "what work DOESN'T exist?"
 #
 # A gap found only inside a corpus is not a research gap. Ranking empty cells of
@@ -364,8 +364,8 @@ import json as _json
 
 DATA = ROOT / "data"
 
-SCOUT_SCOPE = {
-    "engine": "scout",
+GAP_SCOPE = {
+    "engine": "gapfinder",
     "corpus": "79,940 PubMed papers, 2005-2026, complete per-year retrieval",
     "vocabulary": "MeSH descriptors; 50 disease x 32 transferable-method axes",
     "gap_test": ("live PubMed: maturity = problem AND method for any purpose; "
@@ -375,35 +375,35 @@ SCOUT_SCOPE = {
 }
 
 
-def _scout_file(name: str):
+def _gap_file(name: str):
     path = DATA / name
     if not path.exists():
-        raise HTTPException(503, f"{name} not generated - run `python -m scout.grid`")
+        raise HTTPException(503, f"{name} not generated - run `python -m gapfinder.grid`")
     return _json.loads(path.read_text(encoding="utf-8"))
 
 
 @lru_cache(maxsize=1)
 def _confirmed() -> tuple:
-    return tuple(_scout_file("confirmed.json"))
+    return tuple(_gap_file("confirmed.json"))
 
 
-@app.get("/api/scout/scope")
-def scout_scope() -> dict:
+@app.get("/api/gap/scope")
+def gap_scope() -> dict:
     rows = _confirmed()
-    return {**SCOUT_SCOPE,
+    return {**GAP_SCOPE,
             "cells_checked": len(rows),
             "confirmed_gaps": sum(1 for r in rows if r.get("real_gap")),
-            "provenance": _scout_file("provenance.json")}
+            "provenance": _gap_file("provenance.json")}
 
 
-@app.get("/api/scout/grid")
-def scout_grid() -> dict:
+@app.get("/api/gap/grid")
+def gap_grid() -> dict:
     """The field map: diseases against transferable methods, cells are paper counts."""
-    return {"scope": SCOUT_SCOPE, **_scout_file("grid.json")}
+    return {"scope": GAP_SCOPE, **_gap_file("grid.json")}
 
 
-@app.get("/api/scout/gaps")
-def scout_gaps(limit: int = Query(50, ge=1, le=500),
+@app.get("/api/gap/gaps")
+def gap_list(limit: int = Query(50, ge=1, le=500),
                min_maturity: int = Query(0, ge=0),
                order: Literal["maturity", "bridges"] = "maturity") -> dict:
     """Confirmed gaps, ranked by how proven the method already is.
@@ -424,24 +424,24 @@ def scout_gaps(limit: int = Query(50, ge=1, le=500),
             if r.get("real_gap") and r.get("maturity", 0) >= min_maturity]
     field = "maturity" if order == "maturity" else "score"
     rows.sort(key=lambda r: -r.get(field, 0))
-    return {"scope": SCOUT_SCOPE, "ranking": order,
+    return {"scope": GAP_SCOPE, "ranking": order,
             "total_confirmed": sum(1 for r in _confirmed() if r.get("real_gap")),
             "total_checked": len(_confirmed()),
             "count": min(len(rows), limit), "gaps": rows[:limit]}
 
 
-@app.get("/api/scout/gaps/rejected")
-def scout_gaps_rejected(limit: int = Query(50, ge=1, le=500)) -> dict:
+@app.get("/api/gap/gaps/rejected")
+def gap_rejected(limit: int = Query(50, ge=1, le=500)) -> dict:
     """Candidates that failed live verification. A shortlist is only readable
     next to what was discarded, and a judge will ask for it."""
     rows = [dict(r) for r in _confirmed() if not r.get("real_gap")]
     rows.sort(key=lambda r: -r.get("gap_papers", 0))
-    return {"scope": SCOUT_SCOPE, "count": min(len(rows), limit),
+    return {"scope": GAP_SCOPE, "count": min(len(rows), limit),
             "rejected": rows[:limit]}
 
 
-@app.get("/api/scout/validation")
-def scout_validation() -> dict:
+@app.get("/api/gap/validation")
+def gap_validation() -> dict:
     """Holdout validation state.
 
     The earlier 2.0x lift is deliberately not served. It was measured on a
@@ -466,18 +466,18 @@ def scout_validation() -> dict:
                 "lift": 0.80}}
 
 
-@app.get("/api/scout/integrity")
-def scout_integrity() -> dict:
+@app.get("/api/gap/integrity")
+def gap_integrity() -> dict:
     """Random records re-fetched live and compared against the local cache."""
     path = DATA / "integrity_check.json"
     if not path.exists():
         raise HTTPException(503, "no integrity check recorded - run "
-                                 "scout.fetch.spot_check()")
+                                 "gapfinder.fetch.spot_check()")
     return _json.loads(path.read_text(encoding="utf-8"))
 
 
-@app.get("/api/scout/terms")
-def scout_terms() -> dict:
+@app.get("/api/gap/terms")
+def gap_terms() -> dict:
     """The exact MeSH descriptor names the axes use, for input suggestions.
 
     Nobody should be expected to guess that the descriptor is
@@ -485,13 +485,13 @@ def scout_terms() -> dict:
     inverts names for alphabetisation. Serving the real strings turns a
     rejection that looks like a bug into an autocomplete.
     """
-    g = _scout_file("grid.json")
+    g = _gap_file("grid.json")
     return {"problems": [p["name"] for p in g["problems"]],
             "methods": [m["name"] for m in g["methods"]]}
 
 
-@app.get("/api/scout/check")
-def scout_check(problem: str = Query(..., min_length=2, max_length=100),
+@app.get("/api/gap/check")
+def gap_check(problem: str = Query(..., min_length=2, max_length=100),
                 method: str = Query(..., min_length=2, max_length=100),
                 fresh: bool = False) -> dict:
     """Verify ANY problem/method pairing live against full PubMed, in ~1.5s.
@@ -506,11 +506,11 @@ def scout_check(problem: str = Query(..., min_length=2, max_length=100),
     return 0 and the verdict reads like a pristine gap for something that does
     not exist.
     """
-    from scout.confirm import check_pair
+    from gapfinder.confirm import check_pair
     out = check_pair(problem, method, use_cache=not fresh)
     if not out.get("ok"):
         raise HTTPException(422, detail=out)
-    return {"scope": SCOUT_SCOPE, **out}
+    return {"scope": GAP_SCOPE, **out}
 
 
 # The pages change often during development and a browser that caches one shows

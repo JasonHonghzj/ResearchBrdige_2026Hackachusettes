@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Time-sliced validation, strict date hygiene. Reads caches written by scout_timeslice.py."""
 import json, math, random, os, requests, time
 from collections import Counter, defaultdict
@@ -5,7 +11,7 @@ from collections import Counter, defaultdict
 random.seed(0)
 SPLIT = 2018                      # past = year <= SPLIT, future = year > SPLIT
 S = requests.Session()
-S.headers.update({"User-Agent": "research-scout-probe (dang2002991@gmail.com)"})
+S.headers.update({"User-Agent": "researchbridge-probe (dang2002991@gmail.com)"})
 BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
 raw_past = json.load(open("scout_past.json"))

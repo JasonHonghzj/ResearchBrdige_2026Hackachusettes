@@ -1,4 +1,4 @@
-"""PubMed retrieval for Research Scout.
+"""PubMed retrieval for ResearchBridge.
 
 Stores title, journal, year, MeSH descriptors AND abstract text — the probes
 only kept year+mesh, which left claim verification and evidence quotes dead.
@@ -27,12 +27,12 @@ NCBI_KEY = os.environ.get("NCBI_API_KEY", "").strip()
 THROTTLE = 0.11 if NCBI_KEY else 0.36
 
 _session = requests.Session()
-_session.headers.update({"User-Agent": f"ResearchScout ({CONTACT})"})
+_session.headers.update({"User-Agent": f"ResearchBridge ({CONTACT})"})
 
 
 def _params(**kw) -> dict:
     kw["email"] = CONTACT
-    kw["tool"] = "ResearchScout"
+    kw["tool"] = "ResearchBridge"
     if NCBI_KEY:
         kw["api_key"] = NCBI_KEY
     return kw
@@ -151,7 +151,7 @@ def _read(window: str) -> dict:
         return json.loads(full.read_text(encoding="utf-8"))
     if part.exists():
         print(f"[fetch] WARNING: using {part.name}, which is capped at ~22% of "
-              f"the result set. Run scout.fetch.fetch_years() for the full span.")
+              f"the result set. Run gapfinder.fetch.fetch_years() for the full span.")
         return json.loads(part.read_text(encoding="utf-8"))
     raise FileNotFoundError(f"no corpus for window {window!r}")
 
@@ -284,7 +284,7 @@ def fetch_window(topic_query: str, date_range: str, cap: int = 9800,
         "reproduce": (f"{BASE}/esearch.fcgi?db=pubmed&retmode=json&usehistory=y"
                       f"&term={requests.utils.quote(query)}"),
         "note": ("Raw window output. PubMed [dp] leaks across the boundary "
-                 "(print vs electronic dates) — use scout.fetch.load_corpus(), "
+                 "(print vs electronic dates) — use gapfinder.fetch.load_corpus(), "
                  "which applies the strict year filter."),
     })
 

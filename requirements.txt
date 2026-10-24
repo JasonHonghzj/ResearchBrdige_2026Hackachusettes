@@ -4,7 +4,7 @@ uvicorn[standard]>=0.32
 rapidfuzz>=3.10
 
 # ResearchBridge engine (researchbridge/). Pinned to the teammate's tested lockfile.
-# Used ONLY by Bridge's TF-IDF/LSA search and PDF export, never by Scout's grid
+# Used ONLY by Bridge's TF-IDF/LSA search and PDF export, never by the gap-finder grid
 # (the "no pandas for the grid" rule still holds: Bridge does not use pandas).
 numpy==2.5.4
 scikit-learn==1.9.1
@@ -15,12 +15,11 @@ pypdf==6.10.0
 pytest>=8
 httpx>=0.27       # FastAPI TestClient
 
-# Optional. The app runs with no API key: draft claims are precomputed to JSON
-# and the verification gate is pure code. Install only if you want live drafting.
+# Optional. The demo runs without an API key. The claim walkthrough is scripted;
+# the Library has a separate functional literal source checker.
 # anthropic>=0.40
 
 # Optional, OFF the critical path. System install fails with WinError 206;
-# use the venv at C:
-s\.venv, write cosines to JSON, read the file in app code.
+# Precompute cosines in a separate environment and read the JSON in app code.
 # sentence-transformers
 # scikit-learn>=1.5     # learned gap ranker (phase 1 stretch)

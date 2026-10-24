@@ -45,7 +45,7 @@ NCBI_KEY = os.environ.get("NCBI_API_KEY", "").strip()
 THROTTLE = 0.11 if NCBI_KEY else 0.36
 
 _session = requests.Session()
-_session.headers.update({"User-Agent": f"ResearchScout ({CONTACT})"})
+_session.headers.update({"User-Agent": f"ResearchBridge ({CONTACT})"})
 
 
 def _load_cache() -> dict:
@@ -109,7 +109,7 @@ def resolve_trees(uis, verbose: bool = True) -> dict:
         chunk = todo[i:i + 150]
         uids = ",".join("68" + u[1:] for u in chunk)
         payload = {"db": "mesh", "id": uids, "retmode": "json",
-                   "email": CONTACT, "tool": "ResearchScout"}
+                   "email": CONTACT, "tool": "ResearchBridge"}
         if NCBI_KEY:
             payload["api_key"] = NCBI_KEY
         try:

@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Probe 5: bridges restricted to mechanistic MeSH branches (D=substances, G=processes), IDF-weighted."""
 import json, math
 from collections import Counter, defaultdict

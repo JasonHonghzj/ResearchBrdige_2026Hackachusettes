@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Probe 6d: collaborator lookup by TOPIC SEARCH (not corpus PMIDs) -> real counts."""
 import requests, json, time
 from collections import Counter
@@ -5,9 +11,9 @@ from collections import Counter
 MAILTO = "dang2002991@gmail.com"
 API = "https://api.openalex.org"
 S = requests.Session()
-S.headers.update({"User-Agent": f"research-scout-probe (mailto:{MAILTO})"})
+S.headers.update({"User-Agent": f"researchbridge-probe (mailto:{MAILTO})"})
 try:
-    REG = json.load(open("scout_inst_region.json"))
+    REG = json.load(open("inst_region.json"))
 except Exception:
     REG = {}
 
@@ -40,7 +46,7 @@ def verify(oids):
         for o in ch:
             REG.setdefault(o, {"region": None, "city": None, "name": "?", "type": None, "lineage": 1})
         time.sleep(0.15)
-    json.dump(REG, open("scout_inst_region.json", "w"))
+    json.dump(REG, open("inst_region.json", "w"))
 
 
 def ma_labs(phrase, years="2015-", keep_parents=False):

@@ -1,10 +1,16 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Feasibility probe 1: can we get a big MeSH-annotated corpus fast?"""
 import requests, time, re
 
 EMAIL = "dang2002991@gmail.com"
 BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 S = requests.Session()
-S.headers.update({"User-Agent": f"research-scout-probe ({EMAIL})"})
+S.headers.update({"User-Agent": f"researchbridge-probe ({EMAIL})"})
 
 QUERY = '("Early Detection of Cancer"[MeSH Terms] OR "Early Diagnosis"[MeSH Terms]) AND 2010:2026[dp]'
 

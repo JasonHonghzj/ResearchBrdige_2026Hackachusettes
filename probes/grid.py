@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Probe 3: build the problem x method grid and measure whether holes are meaningful."""
 import requests, time, re, json, os, itertools
 from collections import Counter, defaultdict
@@ -5,7 +11,7 @@ from collections import Counter, defaultdict
 EMAIL = "dang2002991@gmail.com"
 BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 S = requests.Session()
-S.headers.update({"User-Agent": f"research-scout-probe ({EMAIL})"})
+S.headers.update({"User-Agent": f"researchbridge-probe ({EMAIL})"})
 
 QUERY = '("Early Detection of Cancer"[MeSH Terms] OR "Early Diagnosis"[MeSH Terms]) AND 2010:2026[dp]'
 N_WANT = 6000

@@ -1,3 +1,9 @@
+"""HISTORICAL. Kept as the record of what was tried and rejected - the
+measurements in README.md came from these. They no longer run: the
+intermediate caches they read (scout_past.json, scout_cache.json,
+scout_results.json) were deleted once superseded by the full corpus and
+data/confirmed.json. Read them, do not expect to execute them.
+"""
 """Probe 6b: join PubMed MeSH -> PMIDs -> OpenAlex institutions, filtered to Massachusetts."""
 import requests, json, time
 from collections import Counter, defaultdict
@@ -5,7 +11,7 @@ from collections import Counter, defaultdict
 MAILTO = "dang2002991@gmail.com"
 API = "https://api.openalex.org"
 S = requests.Session()
-S.headers.update({"User-Agent": f"research-scout-probe (mailto:{MAILTO})"})
+S.headers.update({"User-Agent": f"researchbridge-probe (mailto:{MAILTO})"})
 
 
 def get(path, **p):

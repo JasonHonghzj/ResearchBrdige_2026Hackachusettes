@@ -50,12 +50,12 @@ THROTTLE = 0.11 if NCBI_KEY else 0.36
 GAP_TOLERANCE = 2
 
 _session = requests.Session()
-_session.headers.update({"User-Agent": f"ResearchScout ({CONTACT})"})
+_session.headers.update({"User-Agent": f"ResearchBridge ({CONTACT})"})
 
 
 def _count(term: str) -> int | None:
     params = {"db": "pubmed", "term": term, "retmode": "json", "retmax": 0,
-              "email": CONTACT, "tool": "ResearchScout"}
+              "email": CONTACT, "tool": "ResearchBridge"}
     if NCBI_KEY:
         params["api_key"] = NCBI_KEY
     for attempt in range(3):

@@ -1,14 +1,14 @@
-# Research Scout — Design
+# ResearchBridge — Design
 
 Hackachusetts 2026 · Track H4, Accelerating Biotechnology Innovation
 Status: design for the 8-hour build. Reflects the rules in `.kiro/steering/` and
-the finished modules (`scout/fetch.py`, `scout/mesh.py`, `scout/phrases.py`).
+the finished modules (`gapfinder/fetch.py`, `gapfinder/mesh.py`, `gapfinder/phrases.py`).
 
 ---
 
 ## 1. One-paragraph summary
 
-Research Scout maps a research field as a grid of **diseases × lab methods**, finds the
+ResearchBridge maps a research field as a grid of **diseases × lab methods**, finds the
 combinations no paper has tried, ranks them by whether the two literatures share
 underlying biology, and produces a **one-page brief**: a defensible novelty statement,
 evidence with every claim checked against its source abstract, and the Massachusetts
@@ -40,7 +40,7 @@ fully-gated role. Everything load-bearing is deterministic and reproducible.
 └───────┬───────────────────────────────┬────────────────────────────────┘
         │                               │
 ┌───────▼──────────┐          ┌─────────▼───────────────────────────────┐
-│ scout/ pipeline  │          │ external services                        │
+│ gapfinder/       │          │ external services                        │
 │                  │          │                                          │
 │ fetch.py   DONE  │◄────────►│ NCBI E-utilities (PubMed)                │
 │ mesh.py    DONE  │          │   esearch / efetch / esummary(mesh)      │
@@ -54,7 +54,7 @@ fully-gated role. Everything load-bearing is deterministic and reproducible.
 ┌───────▼──────────────────────────────────────────────────────────────┐
 │ data/  — caches + committed precomputed JSON                           │
 │ corpus_{past,future}.json  grid.json  gaps.json  validation.json       │
-│ phrases.json  mesh_trees.json  provenance.json  scout_inst_region.json │
+│ phrases.json  mesh_trees.json  provenance.json  inst_region.json │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -106,7 +106,7 @@ build_axes(corpus)  in mesh.py
 Why the exclusions exist is documented in `mesh.py` and `tech.md`; do not simplify
 them. E01 made "Breast Neoplasms × Colonoscopy" the top gap three times.
 
-### 3.3 Grid + gap ranking (Phase 1 — `grid.py`, port of `scout_timeslice.py`)
+### 3.3 Grid + gap ranking (Phase 1 — `grid.py`, port of `probes/timeslice.py`)
 
 **Two grids, built by the same code on different corpus slices. Do not confuse them.**
 
@@ -184,7 +184,7 @@ So 2018 is kept for validation deliberately, with the reasoning shown, not hidde
 
 #### Corpus completeness fix (prerequisite for any later cutoff)
 
-`scout.fetch.fetch_years()` already exists for exactly this: it slices the span into
+`gapfinder.fetch.fetch_years()` already exists for exactly this: it slices the span into
 per-year queries (each well under the 10k cap) and dedupes by PMID, recovering the
 truncated middle years. Running it rebuilds a complete 2005–2026 corpus. This feeds
 the **serving grid** regardless of validation, because the serving grid must be
@@ -221,7 +221,7 @@ candidates ~2× better than chance; we do **not** predict breakthroughs.
 | "no prior work" sounds absolute | brief shows the query + corpus date window + provenance timestamp |
 | flagged gap never gets filled | expected — we rank candidates ~2×, we do NOT predict; the reject pile is shown |
 
-### 3.5 Labs (Phase 1/4 — `labs.py`, port of `scout_openalex4.py`, LIVE)
+### 3.5 Labs (Phase 1/4 — `labs.py`, port of `probes/openalex4.py`, LIVE)
 
 ```
 grid term → search phrase (phrases.json; OpenAlex has NO MeSH filter)
@@ -367,7 +367,7 @@ An evidence tool must prove its inputs are real.
   every fetch: source, endpoints, exact query, date window, available total, retrieved
   count, coverage, UTC timestamp, and a reproducible URL. The UI's "retrieval log"
   reads from this, not from hardcoded text.
-- `scout.fetch.spot_check(window, n)` re-fetches n random records live and compares
+- `gapfinder.fetch.spot_check(window, n)` re-fetches n random records live and compares
   titles and MeSH UIs against the cache (30/30 matched on 2026-10-24). Re-run before
   the demo — it is the answer to "how do we know your data is real."
 - Every paper is citable at `https://pubmed.ncbi.nlm.nih.gov/<pmid>/`; the PMID shows

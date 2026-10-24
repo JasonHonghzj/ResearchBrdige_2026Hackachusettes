@@ -18,7 +18,7 @@ exceed Windows' 260-char path limit under the WindowsApps Python prefix). If use
 generate embeddings with that interpreter, write cosines to JSON, and let the main
 app read the file. Never import it in app code.
 
-## MeSH axis rules — `scout/mesh.py`
+## MeSH axis rules — `gapfinder/mesh.py`
 
 ```
 problem axis   C*                               minus NONSPECIFIC_PROBLEM
@@ -34,7 +34,7 @@ list for **500 descriptors, 6% of the vocabulary and the most modern 6%**:
 Machine Learning (1,034 papers), Deep Learning (711), Liquid Biopsy (507),
 COVID-19 (1,106), Circulating Tumor DNA (304), Cell-Free Nucleic Acids (327).
 All were dropped from every axis *and* from the bridge vocabulary, and the rules
-were never at fault. `scout.mesh._trees_from_rdf()` falls back to
+were never at fault. `gapfinder.mesh._trees_from_rdf()` falls back to
 `https://id.nlm.nih.gov/mesh/<UI>.json`, which returns `treeNumber` directly —
 500/500 recovered. **Never remove that fallback.**
 
@@ -44,7 +44,7 @@ which corrupted 183 descriptors. Normalise `str` to `[str]` and validate the
 shape. Both bugs were invisible: an empty list just classifies as nothing, and a
 stray `'D'` character still satisfies `is_mechanistic()`.
 
-`scout.mesh.audit_trees()` now runs after every resolution and reports empty or
+`gapfinder.mesh.audit_trees()` now runs after every resolution and reports empty or
 malformed entries. **Silence is the failure mode here, not exceptions** — call the
 audit, do not assume a successful fetch means correct data.
 
@@ -116,7 +116,7 @@ middle. So 2018 is the only split with a dense 2024–2026 holdout to score agai
 the cutoff forward REQUIRES fixing corpus completeness first.
 
 Corpus completeness is a prerequisite for the serving grid regardless of validation.
-Use `scout.fetch.fetch_years()` — it slices the span into per-year queries (each well
+Use `gapfinder.fetch.fetch_years()` — it slices the span into per-year queries (each well
 under the 10k cap) and dedupes by PMID, recovering the truncated middle years. A
 single range query returns ~22% of a large result set; per-year retrieval gets the
 whole span.
@@ -125,7 +125,7 @@ Freshness: even the full corpus is a snapshot. The brief states its corpus date 
 and the `provenance.json` timestamp, so "no prior work" always means "none in PubMed as
 of \<date\>, within this query" — never an absolute, unbounded claim.
 
-## PubMed — `scout/fetch.py`
+## PubMed — `gapfinder/fetch.py`
 
 - Parse with ElementTree, not regex. Abstracts arrive as several labelled
   `<AbstractText>` sections; regex concatenates them wrongly or misses them.
@@ -164,7 +164,7 @@ of \<date\>, within this query" — never an absolute, unbounded claim.
   collaborators. Joining on corpus PMIDs yields counts of 1–3 and is useless.
 - Always send `mailto` for the polite pool.
 
-## Claim verification — `scout/verify.py`
+## Claim verification — `gapfinder/verify.py`
 
 The model must return the **supporting sentence verbatim**; code decides:
 
@@ -195,7 +195,7 @@ show the retrieval log instead.
 
 - `data/provenance.json` is an append-only retrieval log: source, endpoints, exact
   query, date window, available total, retrieved count, coverage, UTC timestamp,
-  and a reproducible URL. `scout.fetch._record_provenance()` writes it on every
+  and a reproducible URL. `gapfinder.fetch._record_provenance()` writes it on every
   fetch. Step 01's retrieval log in the UI must read from this, not hardcoded text.
 - **Never read `data/corpus_*.json` directly.** One fetch, two views:
   `load_production()` is every year 2005–2026 (79,940 papers) and is what the
@@ -203,7 +203,7 @@ show the retrieval log instead.
   `load_corpus(window)` is the VALIDATION view, split strictly at 2018
   (43,353 build / 36,587 score, zero overlap). Both apply the year filter on
   every read, because the raw files contain records from the wrong side.
-- `scout.fetch.spot_check(window, n)` re-fetches n random records live and compares
+- `gapfinder.fetch.spot_check(window, n)` re-fetches n random records live and compares
   titles and MeSH UIs against the local cache. 30/30 matched on 2026-10-24.
   Re-run before the demo; it is the answer to "how do we know your data is real".
 - Every paper is citable at `https://pubmed.ncbi.nlm.nih.gov/<pmid>/`. Show the

@@ -1,18 +1,18 @@
 # Repo structure and build order
 
 ```
-scout/
+gapfinder/
   fetch.py      PubMed retrieval -> data/corpus_{past,future}.json      [DONE]
   mesh.py       tree numbers, axis rules, build_axes()                   [DONE]
   phrases.py    MeSH name -> OpenAlex search phrase                      [DONE]
   grid.py       co-occurrence, mechanistic bridges, IDF ranking          [phase 1]
-  labs.py       OpenAlex MA institution lookup (port probes/scout_openalex4) [phase 1]
+  labs.py       OpenAlex MA institution lookup (port probes/openalex4) [phase 1]
   verify.py     the four-step claim gate                                 [phase 3]
   brief.py      assembles the one-pager                                  [phase 4]
 app.py          FastAPI: serves static/index.html + 6 endpoints          [phase 2]
 
 data/           caches + committed precomputed JSON (corpus_*.json gitignored,
-                regenerate with `python -m scout.fetch`, ~3 min)
+                regenerate with `python -m gapfinder.fetch`, ~3 min)
 probes/         the 11 exploratory scripts behind every number in README.md
 static/         index.html — the designed frontend, already working as a mockup
 starter/        the two provided Hackachusetts datasets, extracted
