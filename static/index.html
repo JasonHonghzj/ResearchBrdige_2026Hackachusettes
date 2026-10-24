@@ -340,16 +340,24 @@ h3.sec{
   <!-- ============ 01 ============ -->
   <section class="panel" id="p1" role="tabpanel">
     <div class="phead">
-      <h2>State a goal, not a search query</h2>
-      <p>The scout turns a goal into a bounded corpus. It does not search the whole of PubMed — it builds a field it can measure, then reports exactly what it holds.</p>
+      <h2>Check any pairing against PubMed</h2>
+      <p>Name a disease and a method. Four live queries come back in about a second: how often that method is already applied to that disease, and how often for detecting it early. Both are single PubMed searches you can re-run yourself.</p>
     </div>
     <div class="grid2">
       <div class="card">
-        <h3 class="sec">Goal</h3>
+        <h3 class="sec">Novelty check <span class="live">live</span></h3>
         <div class="goalbox">
-          <input class="goalin" value="a project in early diagnostics" aria-label="Research goal">
-          <button class="btn" id="rebuild">Build corpus</button>
+          <input class="goalin" id="ckProblem" list="dlProblems" placeholder="Disease — e.g. Parkinson Disease" aria-label="Disease, as a MeSH descriptor">
+          <input class="goalin" id="ckMethod" list="dlMethods" placeholder="Method — e.g. Mass Spectrometry" aria-label="Method, as a MeSH descriptor">
+          <button class="btn" id="ckRun">Check</button>
         </div>
+        <datalist id="dlProblems"></datalist>
+        <datalist id="dlMethods"></datalist>
+        <p style="margin:9px 0 0;font-size:11.5px;color:var(--ink-3)">
+          Terms are MeSH descriptor names — start typing for the 82 on the grid. MeSH inverts some of
+          them: it is <span class="mono">Spectrum Analysis, Raman</span>, not “Raman Spectrum Analysis”.
+        </p>
+        <div id="ckOut" style="margin-top:14px"></div>
         <h3 class="sec" style="margin-top:22px">Retrieval log <span class="live">live</span></h3>
         <ul class="pipe" id="plog"><li><span class="lbl">loading…</span></li></ul>
       </div>
@@ -889,7 +897,9 @@ document.getElementById('map').addEventListener('click', e => {
   const c = e.target.closest('.cell');
   if (!c || c.dataset.f !== '1') return;
   const i = S.gaps.findIndex(x => x.problem === c.dataset.p && x.method === c.dataset.m);
-  if (i >= 0) { S.pick = i; renderGrid(); renderGap(); renderBrief(); }
+  if (i >= 0) { S.pick = i; renderGrid(); renderGap(); renderBrief();
+    document.getElementById('ckProblem').value = c.dataset.p;
+    document.getElementById('ckMethod').value = c.dataset.m; }
   goto('p3');
 });
 
@@ -932,7 +942,65 @@ function drawBars(){
 }
 
 /* ---------- goal box ---------- */
-document.getElementById('rebuild').addEventListener('click', () => goto('p2'));
+/* ---------- 01 live novelty check ---------- */
+function ckRender(html){ document.getElementById('ckOut').innerHTML = html; }
+
+async function runCheck(){
+  const problem = document.getElementById('ckProblem').value.trim();
+  const method  = document.getElementById('ckMethod').value.trim();
+  if (problem.length < 2 || method.length < 2){
+    return ckRender('<div class="err">Enter both a disease and a method.</div>');
+  }
+  const btn = document.getElementById('ckRun');
+  btn.disabled = true;
+  ckRender('<p style="color:var(--ink-3);font-size:13px">querying PubMed…</p>');
+  const qs = '?problem=' + encodeURIComponent(problem) + '&method=' + encodeURIComponent(method);
+  try {
+    const r = await fetch('/api/scout/check' + qs);
+    const d = await r.json();
+    if (!r.ok){
+      /* 422 carries the engine's own reason in detail - show that, not a generic error */
+      const det = d.detail || {};
+      ckRender('<div class="err"><b>' + esc(det.error || 'Rejected.') + '</b>' +
+        (det.detail ? '<br>' + esc(det.detail) : '') + '</div>');
+      return;
+    }
+    const col = d.real_gap ? 'var(--good)' : 'var(--critical)';
+    ckRender(
+      '<div class="ev" style="border-left-color:' + col + '"><q style="font-style:normal">' +
+        esc(d.verdict) + '</q><cite>' + (d.cached ? 'cached' : 'live, ' + d.elapsed_s + 's') +
+        ' &middot; checked ' + esc(d.checked_utc) + '</cite></div>' +
+      '<dl class="kv" style="margin-top:14px">' +
+        '<dt>Applied to this disease</dt><dd>' + fmt(d.maturity) + ' papers</dd>' +
+        '<dt>…for early detection</dt><dd><b style="color:' + col + '">' + d.gap_papers +
+          '</b> <span style="color:var(--ink-3)">· tolerance ' + d.tolerance + '</span></dd>' +
+        '<dt>Verdict</dt><dd>' + (d.real_gap ? 'unexplored for early detection' : 'already studied') +
+          '</dd></dl>' +
+      '<p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Reproduce it:</p>' +
+      '<div class="src mono" style="font-size:11.5px;margin-top:5px">' +
+        esc(d.queries.maturity) + '<br><br>' + esc(d.queries.gap) + '</div>');
+  } catch (e) {
+    ckRender('<div class="err"><b>Could not reach the API.</b> ' + esc(e.message) + '</div>');
+  } finally {
+    btn.disabled = false;
+  }
+}
+document.getElementById('ckRun').addEventListener('click', runCheck);
+['ckProblem', 'ckMethod'].forEach(id =>
+  document.getElementById(id).addEventListener('keydown', e => {
+    if (e.key === 'Enter') runCheck();
+  }));
+
+async function loadTerms(){
+  try {
+    const t = await get('/api/scout/terms');
+    const fill = (el, xs) => el.innerHTML =
+      xs.map(x => '<option value="' + esc(x) + '"></option>').join('');
+    fill(document.getElementById('dlProblems'), t.problems);
+    fill(document.getElementById('dlMethods'), t.methods);
+  } catch (e) { console.error(e); }
+}
+loadTerms();
 
 /* ---------- engine switch ---------- */
 const engineTabs = [...document.querySelectorAll('.engines button')];

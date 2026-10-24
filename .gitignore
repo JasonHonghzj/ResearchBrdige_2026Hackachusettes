@@ -11,3 +11,6 @@ venv/
 
 # large regenerable corpora (python -m scout.fetch rebuilds in ~3 min)
 data/corpus_*.json
+
+# interactive check cache (regenerable, one query pair per entry)
+data/check_cache.json

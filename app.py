@@ -476,6 +476,43 @@ def scout_integrity() -> dict:
     return _json.loads(path.read_text(encoding="utf-8"))
 
 
+@app.get("/api/scout/terms")
+def scout_terms() -> dict:
+    """The exact MeSH descriptor names the axes use, for input suggestions.
+
+    Nobody should be expected to guess that the descriptor is
+    "Spectrum Analysis, Raman" rather than "Raman Spectrum Analysis" - MeSH
+    inverts names for alphabetisation. Serving the real strings turns a
+    rejection that looks like a bug into an autocomplete.
+    """
+    g = _scout_file("grid.json")
+    return {"problems": [p["name"] for p in g["problems"]],
+            "methods": [m["name"] for m in g["methods"]]}
+
+
+@app.get("/api/scout/check")
+def scout_check(problem: str = Query(..., min_length=2, max_length=100),
+                method: str = Query(..., min_length=2, max_length=100),
+                fresh: bool = False) -> dict:
+    """Verify ANY problem/method pairing live against full PubMed, in ~1.5s.
+
+    The whole product in one request: four queries, a maturity count, a gap
+    count, and a verdict a reviewer can reproduce in a browser. It answers for
+    pairings outside the precomputed grid, which is what makes this a tool
+    rather than a viewer.
+
+    An unrecognised descriptor is reported as unrecognised. That guard is not
+    cosmetic - a misspelled disease matches no papers, so without it both counts
+    return 0 and the verdict reads like a pristine gap for something that does
+    not exist.
+    """
+    from scout.confirm import check_pair
+    out = check_pair(problem, method, use_cache=not fresh)
+    if not out.get("ok"):
+        raise HTTPException(422, detail=out)
+    return {"scope": SCOUT_SCOPE, **out}
+
+
 @app.get("/", include_in_schema=False)
 def index_page() -> FileResponse:
     return FileResponse(STATIC / "index.html")
