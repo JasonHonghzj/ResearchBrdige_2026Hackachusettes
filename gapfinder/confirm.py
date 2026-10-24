@@ -48,24 +48,38 @@ THROTTLE = 0.11 if NCBI_KEY else 0.36
 
 #: allow a few stragglers from before the descriptors existed
 GAP_TOLERANCE = 2
+CHECK_BUDGET = 18.0  # Finish before the browser's 25-second request timeout.
 
 _session = requests.Session()
 _session.headers.update({"User-Agent": f"ResearchBridge ({CONTACT})"})
 
 
-def _count(term: str) -> int | None:
+def _count(term: str, *, deadline: float | None = None) -> int | None:
     params = {"db": "pubmed", "term": term, "retmode": "json", "retmax": 0,
               "email": CONTACT, "tool": "ResearchBridge"}
     if NCBI_KEY:
         params["api_key"] = NCBI_KEY
-    for attempt in range(3):
+    for attempt in range(2):
+        remaining = deadline - time.monotonic() if deadline is not None else 16.0
+        if remaining < 0.1:
+            return None
         try:
-            r = _session.get(BASE, params=params, timeout=90)
+            r = _session.get(BASE, params=params,
+                             timeout=(min(3.0, remaining / 2), min(5.0, remaining / 2)))
             if r.status_code == 200:
                 return int(r.json()["esearchresult"]["count"])
+            if r.status_code not in {429, 500, 502, 503, 504}:
+                return None
+        except requests.exceptions.ProxyError:
+            # Retrying a blocked proxy does not make the request usable.
+            return None
         except (requests.RequestException, ValueError, KeyError):
             pass
-        time.sleep(1.5 * (attempt + 1))
+        if attempt == 0:
+            remaining = deadline - time.monotonic() if deadline is not None else 1.0
+            if remaining <= 0:
+                return None
+            time.sleep(min(0.5, remaining))
     return None
 
 
@@ -89,6 +103,43 @@ def _read_check_cache() -> dict:
     return {}
 
 
+def _normal_name(term: str) -> str:
+    return " ".join(term.split())
+
+
+def _cached_item(cache: dict, problem: str, method: str) -> dict | None:
+    key = f"{problem}|{method}".casefold()
+    for name, row in cache.items():
+        if _normal_name(name).casefold() == key:
+            return row
+    return None
+
+
+def _queries(problem: str, method: str) -> dict:
+    pair = f"{_term_query(problem)} AND {_term_query(method)}"
+    return {"maturity": pair, "gap": f"{pair} AND {TOPIC}"}
+
+
+def _saved_check(cache: dict, problem: str, method: str) -> dict | None:
+    row = _cached_item(cache, problem, method)
+    if row and row.get("ok"):
+        return {**row, "cached": True}
+    # The committed query-count cache includes successful and rejected candidates.
+    # It has no per-pair timestamp, so never invent a date or call it a live check.
+    row = _cached_item(_load(), problem, method)
+    if row is not None and isinstance(row.get("maturity"), int) and isinstance(row.get("gap_papers"), int):
+        return {"ok": True, "problem": problem, "method": method,
+                "problem_papers": None, "method_papers": None,
+                "maturity": row["maturity"], "gap_papers": row["gap_papers"],
+                "real_gap": row["gap_papers"] <= GAP_TOLERANCE,
+                "tolerance": GAP_TOLERANCE, "queries": _queries(problem, method),
+                "cached": True, "data_source": "saved_verification",
+                "checked_utc": None, "elapsed_s": 0,
+                "verdict": f'Saved PubMed counts: {row["maturity"]:,} overall papers; '
+                           f'{row["gap_papers"]:,} early-detection papers.'}
+    return None
+
+
 def check_pair(problem: str, method: str, *, use_cache: bool = True) -> dict:
     """Verify one problem/method pairing live, in about a second.
 
@@ -104,7 +155,7 @@ def check_pair(problem: str, method: str, *, use_cache: bool = True) -> dict:
     verdict reads like a pristine research gap for a disease that does not
     exist. An unrecognised term is reported as unrecognised, never as a gap.
     """
-    problem, method = problem.strip(), method.strip()
+    problem, method = _normal_name(problem), _normal_name(method)
     for label, term in (("problem", problem), ("method", method)):
         if not TERM_OK.match(term):
             return {"ok": False, "problem": problem, "method": method,
@@ -112,17 +163,30 @@ def check_pair(problem: str, method: str, *, use_cache: bool = True) -> dict:
 
     key = f"{problem}|{method}"
     cache = _read_check_cache()
-    if use_cache and key in cache:
-        return {**cache[key], "cached": True}
+    saved = _saved_check(cache, problem, method)
+    if use_cache and saved:
+        return saved
+
+    def unavailable() -> dict:
+        if saved:
+            return {**saved, "refresh_failed": True,
+                    "refresh_error": "The PubMed refresh could not complete. Showing the saved check; these counts have not been refreshed."}
+        return {"ok": False, "problem": problem, "method": method,
+                "error_code": "pubmed_unavailable", "retryable": True,
+                "error": "PubMed could not be reached. This pairing has not been evaluated.",
+                "detail": "Retry the check or open the exact PubMed searches directly.",
+                "queries": _queries(problem, method)}
 
     started = time.time()
-    p_alone = _count(_term_query(problem))
+    deadline = time.monotonic() + CHECK_BUDGET
+    p_alone = _count(_term_query(problem), deadline=deadline)
+    if p_alone is None:
+        return unavailable()
     time.sleep(THROTTLE)
-    m_alone = _count(_term_query(method))
+    m_alone = _count(_term_query(method), deadline=deadline)
     time.sleep(THROTTLE)
-    if p_alone is None or m_alone is None:
-        return {"ok": False, "problem": problem, "method": method,
-                "error": "PubMed did not respond"}
+    if m_alone is None:
+        return unavailable()
 
     unknown = [l for l, n in (("problem", p_alone), ("method", m_alone)) if n == 0]
     if unknown:
@@ -134,12 +198,13 @@ def check_pair(problem: str, method: str, *, use_cache: bool = True) -> dict:
                            "results here is a spelling problem, not a gap.")}
 
     pair = f"{_term_query(problem)} AND {_term_query(method)}"
-    maturity = _count(pair)
+    maturity = _count(pair, deadline=deadline)
+    if maturity is None:
+        return unavailable()
     time.sleep(THROTTLE)
-    gap = _count(f"{pair} AND {TOPIC}")
-    if maturity is None or gap is None:
-        return {"ok": False, "problem": problem, "method": method,
-                "error": "PubMed did not respond"}
+    gap = _count(f"{pair} AND {TOPIC}", deadline=deadline)
+    if gap is None:
+        return unavailable()
 
     low = problem.lower()
     real_gap = gap <= GAP_TOLERANCE
@@ -166,7 +231,11 @@ def check_pair(problem: str, method: str, *, use_cache: bool = True) -> dict:
            "elapsed_s": round(time.time() - started, 2),
            "checked_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     cache[key] = out
-    CHECK_CACHE.write_text(json.dumps(cache, indent=1), encoding="utf-8")
+    try:
+        CHECK_CACHE.write_text(json.dumps(cache, indent=1), encoding="utf-8")
+    except OSError:
+        # A successful query should still be delivered if persistence is unavailable.
+        pass
     return {**out, "cached": False}
 
 

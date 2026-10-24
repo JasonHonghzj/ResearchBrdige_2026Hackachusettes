@@ -509,7 +509,7 @@ def gap_check(problem: str = Query(..., min_length=2, max_length=100),
     from gapfinder.confirm import check_pair
     out = check_pair(problem, method, use_cache=not fresh)
     if not out.get("ok"):
-        raise HTTPException(422, detail=out)
+        raise HTTPException(503 if out.get("error_code") == "pubmed_unavailable" else 422, detail=out)
     return {"scope": GAP_SCOPE, **out}
 
 

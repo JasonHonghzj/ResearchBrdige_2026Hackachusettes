@@ -20,8 +20,9 @@ def counts(monkeypatch, tmp_path):
     """Route every PubMed count through a dict, and isolate the cache."""
     table: dict[str, int] = {}
     monkeypatch.setattr(confirm, "CHECK_CACHE", tmp_path / "check.json")
+    monkeypatch.setattr(confirm, "CACHE", tmp_path / "saved-counts.json")
     monkeypatch.setattr(confirm, "THROTTLE", 0)
-    monkeypatch.setattr(confirm, "_count", lambda term: table.get(term, 0))
+    monkeypatch.setattr(confirm, "_count", lambda term, **kwargs: table.get(term, 0))
     return table
 
 
@@ -128,3 +129,91 @@ def test_terms_endpoint_offers_the_real_descriptor_spellings():
     # MeSH inverts names; the endpoint must serve the inverted form, not prose
     assert "Spectrum Analysis, Raman" in t["methods"]
     assert "Raman Spectrum Analysis" not in t["methods"]
+
+
+def test_cached_pair_ignores_case_and_repeated_spaces(counts, monkeypatch):
+    counts[q("Stroke")] = 200_000
+    counts[q("Machine Learning")] = 100_000
+    counts[pair("Stroke", "Machine Learning")] = 1452
+    counts[f'{pair("Stroke", "Machine Learning")} AND {confirm.TOPIC}'] = 13
+    client.get("/api/gap/check", params={"problem": "Stroke", "method": "Machine Learning"})
+
+    def no_network(*args, **kwargs):
+        pytest.fail("A differently capitalized saved pairing must not need PubMed")
+
+    monkeypatch.setattr(confirm, "_count", no_network)
+    response = client.get("/api/gap/check", params={"problem": " stroke ", "method": "Machine   learning"})
+    assert response.status_code == 200
+    assert response.json()["cached"] is True
+    assert response.json()["gap_papers"] == 13
+
+
+def test_saved_verification_works_offline_for_already_studied_pair(counts, monkeypatch):
+    import json
+    confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
+
+    def no_network(*args, **kwargs):
+        pytest.fail("Committed query counts should work offline")
+
+    monkeypatch.setattr(confirm, "_count", no_network)
+    response = client.get("/api/gap/check", params={"problem": "Stroke", "method": "Machine learning"})
+    assert response.status_code == 200
+    data = response.json()
+    assert data["data_source"] == "saved_verification" and data["cached"] is True
+    assert data["checked_utc"] is None and data["real_gap"] is False
+
+
+def test_pubmed_outage_is_service_error_not_invalid_pair(counts, monkeypatch):
+    calls = []
+
+    def unavailable(term, **kwargs):
+        calls.append(term)
+        return None
+
+    monkeypatch.setattr(confirm, "_count", unavailable)
+    response = client.get("/api/gap/check", params={"problem": "Stomach Neoplasms", "method": "Breath Tests"})
+    assert response.status_code == 503
+    data = response.json()["detail"]
+    assert data["error_code"] == "pubmed_unavailable" and data["retryable"] is True
+    assert "real_gap" not in data and len(calls) == 1
+    assert data["queries"]["maturity"] == pair("Stomach Neoplasms", "Breath Tests")
+
+
+def test_failed_refresh_returns_explicitly_labeled_saved_result(counts, monkeypatch):
+    import json
+    confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
+    monkeypatch.setattr(confirm, "_count", lambda *args, **kwargs: None)
+    response = client.get("/api/gap/check", params={"problem": "Stroke", "method": "Machine Learning", "fresh": True})
+    assert response.status_code == 200
+    data = response.json()
+    assert data["refresh_failed"] is True and data["cached"] is True
+    assert data["gap_papers"] == 13 and data["checked_utc"] is None
+    assert "not been refreshed" in data["refresh_error"]
+
+
+def test_explicit_refresh_queries_pubmed_instead_of_snapshot(counts):
+    import json
+    confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
+    counts[q("Stroke")] = 200_000
+    counts[q("Machine Learning")] = 100_000
+    counts[pair("Stroke", "Machine Learning")] = 1500
+    counts[f'{pair("Stroke", "Machine Learning")} AND {confirm.TOPIC}'] = 14
+    data = client.get("/api/gap/check", params={"problem": "Stroke", "method": "Machine Learning", "fresh": True}).json()
+    assert data["cached"] is False and data["gap_papers"] == 14
+    assert data["checked_utc"]
+
+
+def test_pubmed_count_stops_at_shared_deadline(monkeypatch):
+    now = [0.0]
+    calls = []
+    monkeypatch.setattr(confirm.time, "monotonic", lambda: now[0])
+    monkeypatch.setattr(confirm.time, "sleep", lambda seconds: now.__setitem__(0, now[0] + seconds))
+
+    def timeout(*args, **kwargs):
+        calls.append(kwargs["timeout"])
+        now[0] += sum(kwargs["timeout"])
+        raise confirm.requests.Timeout()
+
+    monkeypatch.setattr(confirm._session, "get", timeout)
+    assert confirm._count(q("Stroke"), deadline=1.0) is None
+    assert len(calls) == 1 and now[0] <= 1.0

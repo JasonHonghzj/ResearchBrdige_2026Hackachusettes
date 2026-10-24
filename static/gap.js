@@ -93,7 +93,7 @@ function outcome(x){
   return {label:'Candidate for review', note:'The overall pairing appears in the literature, with few results for early detection. Review the papers, synonyms and feasibility with a specialist.'};
 }
 function sourceLabel(x){
-  if (x.source === 'map') return 'Saved map counts · collected during the build';
+  if (x.source === 'map' || x.data_source === 'saved_verification') return 'Saved map counts · collected during the build';
   const date = x.checked_utc ? new Date(x.checked_utc).toLocaleString(undefined, {dateStyle:'medium', timeStyle:'short'}) : '';
   return (x.cached ? 'Cached PubMed check' : 'Fresh PubMed check') + (date ? ' · ' + date : '');
 }
@@ -103,6 +103,7 @@ function renderCheckResult(){
   const o = outcome(x), q = queriesFor(x);
   $('ckOut').innerHTML = `<div class="source-details">
     <div class="result-head"><strong>${esc(o.label)}</strong><span class="scope-badge">${esc(sourceLabel(x))}</span></div>
+    ${x.refresh_failed ? `<div class="err" role="alert">${esc(x.refresh_error)}</div>` : ''}
     <dl class="kv"><dt>Overall pairing</dt><dd>${fmt(x.maturity)} papers</dd><dt>For early detection</dt><dd>${fmt(x.gap_papers)} papers</dd><dt>Candidate threshold</dt><dd>≤${x.tolerance} early-detection papers</dd></dl>
     <p class="source-note">${esc(o.note)}</p>${queryLinks(x)}
     <div class="actions"><button class="btn" data-nav="brief">Build this brief →</button><button class="btn ghost" data-fresh>Refresh PubMed</button></div>
@@ -214,7 +215,7 @@ function renderValidation(){
 
 function briefContent(x){
   const q = queriesFor(x), o = outcome(x);
-  return `# ${x.method} × ${x.problem}\n\nResearchBridge · Literature check brief\n\n## Result\n\n${o.label}. The overall PubMed MeSH search returns ${fmt(x.maturity)} papers; restricting it to early detection returns ${fmt(x.gap_papers)}. The candidate threshold is at most ${x.tolerance} early-detection papers.\n\n${o.note}\n\n## Evidence source\n\n${sourceLabel(x)}${x.checked_utc ? '\n\nRecorded check time: '+x.checked_utc : '\n\nThe map snapshot does not record a check time for each pairing. Refresh PubMed for a dated check.'}\n\n## Reproduce the searches\n\nOverall pairing:\n${q.maturity}\n${pubmed(q.maturity)}\n\nEarly detection:\n${q.gap}\n${pubmed(q.gap)}\n\n## What to review next\n\nRead the returned papers and broaden the search with alternative terms, titles and abstracts. Ask a domain specialist whether the low result count reflects a useful question, an indexing gap or a known feasibility constraint.\n\n## Limits\n\nThese are counts of indexed papers, not evidence that a method works. A MeSH query can miss recent or differently indexed work. Low counts do not establish worldwide novelty, feasibility or clinical effectiveness. The early-detection topic is defined as Early Detection of Cancer OR Early Diagnosis. This brief does not include a collaborator recommendation.\n`;
+  return `# ${x.method} × ${x.problem}\n\nResearchBridge · Literature check brief\n\n## Result\n\n${o.label}. The overall PubMed MeSH search returns ${fmt(x.maturity)} papers; restricting it to early detection returns ${fmt(x.gap_papers)}. The candidate threshold is at most ${x.tolerance} early-detection papers.\n\n${o.note}\n\n## Evidence source\n\n${sourceLabel(x)}${x.refresh_failed ? '\n\n'+x.refresh_error : ''}${x.checked_utc ? '\n\nRecorded check time: '+x.checked_utc : '\n\nThe map snapshot does not record a check time for each pairing. Refresh PubMed for a dated check.'}\n\n## Reproduce the searches\n\nOverall pairing:\n${q.maturity}\n${pubmed(q.maturity)}\n\nEarly detection:\n${q.gap}\n${pubmed(q.gap)}\n\n## What to review next\n\nRead the returned papers and broaden the search with alternative terms, titles and abstracts. Ask a domain specialist whether the low result count reflects a useful question, an indexing gap or a known feasibility constraint.\n\n## Limits\n\nThese are counts of indexed papers, not evidence that a method works. A MeSH query can miss recent or differently indexed work. Low counts do not establish worldwide novelty, feasibility or clinical effectiveness. The early-detection topic is defined as Early Detection of Cancer OR Early Diagnosis. This brief does not include a collaborator recommendation.\n`;
 }
 function renderBrief(){
   const x = S.selected;
@@ -228,7 +229,7 @@ function renderBrief(){
   const o = outcome(x), q = queriesFor(x);
   S.briefMarkdown = briefContent(x);
   $('brief').className = 'brief';
-  $('brief').innerHTML = `<div class="bh"><span class="el">ResearchBridge · Literature check brief</span><h3>${esc(x.method)} × ${esc(x.problem)}</h3><p class="source-note">${esc(sourceLabel(x))}</p></div><span class="scope-badge">${esc(o.label)}</span><h4>The research question</h4><p>What is known about ${esc(x.method)} for early detection of ${esc(x.problem)}?</p><h4>What the searches return</h4><p><b>${fmt(x.maturity)}</b> papers match the overall disease–method pairing. With the early-detection topic added, the same pairing returns <b>${fmt(x.gap_papers)}</b>. The candidate threshold is at most ${x.tolerance} early-detection papers.</p><p>${esc(o.note)}</p><h4>Reproduce the evidence</h4>${queryLinks(x)}<details class="source-details"><summary>View exact queries</summary><div class="src mono" style="margin-top:10px">${esc(q.maturity)}<br><br>${esc(q.gap)}</div></details><h4>Next research discussion</h4><p>Review the returned papers and broaden the search with synonyms, titles and abstracts. Ask a specialist whether the low count reflects a useful question, an indexing gap or a known feasibility constraint.</p><h4>Scope and limitations</h4><p>These counts show indexed research, not that a method is effective. MeSH indexing and the search definition can miss relevant work. Low counts do not establish worldwide novelty, feasibility or clinical effectiveness.</p><p>The topic uses <i>Early Detection of Cancer</i> or <i>Early Diagnosis</i>. ${x.source === 'map' ? 'These are saved map counts; refresh PubMed for a dated check.' : 'The recorded check time is '+esc(x.checked_utc || 'unavailable')+'.'}</p>`;
+  $('brief').innerHTML = `<div class="bh"><span class="el">ResearchBridge · Literature check brief</span><h3>${esc(x.method)} × ${esc(x.problem)}</h3><p class="source-note">${esc(sourceLabel(x))}</p></div>${x.refresh_failed ? `<div class="err">${esc(x.refresh_error)}</div>` : ''}<span class="scope-badge">${esc(o.label)}</span><h4>The research question</h4><p>What is known about ${esc(x.method)} for early detection of ${esc(x.problem)}?</p><h4>What the searches return</h4><p><b>${fmt(x.maturity)}</b> papers match the overall disease–method pairing. With the early-detection topic added, the same pairing returns <b>${fmt(x.gap_papers)}</b>. The candidate threshold is at most ${x.tolerance} early-detection papers.</p><p>${esc(o.note)}</p><h4>Reproduce the evidence</h4>${queryLinks(x)}<details class="source-details"><summary>View exact queries</summary><div class="src mono" style="margin-top:10px">${esc(q.maturity)}<br><br>${esc(q.gap)}</div></details><h4>Next research discussion</h4><p>Review the returned papers and broaden the search with synonyms, titles and abstracts. Ask a specialist whether the low count reflects a useful question, an indexing gap or a known feasibility constraint.</p><h4>Scope and limitations</h4><p>These counts show indexed research, not that a method is effective. MeSH indexing and the search definition can miss relevant work. Low counts do not establish worldwide novelty, feasibility or clinical effectiveness.</p><p>The topic uses <i>Early Detection of Cancer</i> or <i>Early Diagnosis</i>. ${x.source === 'map' || x.data_source === 'saved_verification' ? 'These are saved map counts; refresh PubMed for a dated check.' : 'The recorded check time is '+esc(x.checked_utc || 'unavailable')+'.'}</p>`;
 }
 $('downloadBrief').addEventListener('click', () => {
   if (!S.selected) return;
@@ -258,13 +259,17 @@ async function runCheck(fresh = false){
     if (!response.ok){
       const detail = data.detail;
       const message = typeof detail === 'string' ? detail : detail?.error || 'This pairing could not be checked.';
-      throw new Error(message + (detail?.detail ? ' '+detail.detail : ''));
+      const error = new Error(message + (detail?.detail ? ' '+detail.detail : ''));
+      error.retryable = detail?.retryable;
+      error.queries = detail?.queries;
+      throw error;
     }
     selectPair(data,'check');
   } catch(e){
     if (request !== S.request) return;
-    const message = e.name === 'AbortError' ? 'PubMed is taking longer than expected. Try again, or explore the saved pairings.' : e.message;
-    $('ckOut').innerHTML = `<div class="err">${esc(message)}<div class="actions"><button class="btn ghost" data-nav="map">Explore saved pairings →</button></div></div>`;
+    const message = e.name === 'AbortError' ? 'PubMed did not respond in time. This pairing has not been evaluated. Retry or open the PubMed searches directly.' : e.message;
+    const retryable = e.name === 'AbortError' || e.retryable || e instanceof TypeError;
+    $('ckOut').innerHTML = `<div class="err">${esc(message)}${retryable ? queryLinks({problem,method,queries:e.queries}) : ''}<div class="actions">${retryable ? '<button class="btn ghost" data-retry>Retry this pairing</button>' : ''}<button class="btn ghost" data-nav="map">Explore saved pairings →</button></div></div>`;
   } finally {
     clearTimeout(timeout);
     if (request === S.request){$('ckRun').disabled = false; $('ckRun').textContent = 'Check PubMed'; $('ckOut').removeAttribute('aria-busy'); S.controller = null;}
@@ -284,6 +289,7 @@ document.addEventListener('click', e => {
     if (!pick.closest('#checkExamples')) $('p3').scrollIntoView({behavior:reducedMotion() ? 'instant':'smooth',block:'start'});
   }
   if (e.target.closest('[data-fresh]')) runCheck(true);
+  if (e.target.closest('[data-retry]')) runCheck();
 });
 for (const id of ['gFilter','gAll']) $(id).addEventListener('input', renderGrid);
 $('map').addEventListener('click', e => {
