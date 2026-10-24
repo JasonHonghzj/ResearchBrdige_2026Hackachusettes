@@ -1,0 +1,1213 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41058940",
+  "retrieved_at": "2026-10-24T17:45:34+00:00",
+  "record": {
+    "id": "https://openalex.org/W4403948216",
+    "doi": "https://doi.org/10.1038/s41578-024-00728-4",
+    "title": "Atomically thin bioelectronics",
+    "display_name": "Atomically thin bioelectronics",
+    "publication_year": 2024,
+    "publication_date": "2024-10-31",
+    "ids": {
+      "openalex": "https://openalex.org/W4403948216",
+      "doi": "https://doi.org/10.1038/s41578-024-00728-4",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41058940"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "doi:10.1038/s41578-024-00728-4",
+      "doi": "https://doi.org/10.1038/s41578-024-00728-4",
+      "is_oa": false,
+      "landing_page_url": "https://doi.org/10.1038/s41578-024-00728-4",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2764917516",
+        "display_name": "Nature Reviews Materials",
+        "issn_l": "2058-8437",
+        "issn": [
+          "2058-8437"
+        ],
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": true,
+        "listed_in": [
+          "cwts-core",
+          "dongbi-a",
+          "jufo-1",
+          "ki-jl-1",
+          "norway-1",
+          "poland-200",
+          "russia-white-list-1"
+        ],
+        "host_organization": "https://openalex.org/P4310319908",
+        "host_organization_name": "Nature Portfolio",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310319908",
+          "https://openalex.org/P4310319965"
+        ],
+        "host_organization_lineage_names": [
+          "Nature Portfolio",
+          "Springer Nature"
+        ],
+        "type": "journal"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "Nature Reviews Materials",
+      "raw_type": "journal-article"
+    },
+    "volume": null,
+    "type": "review",
+    "indexed_in": [
+      "crossref",
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "green",
+      "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12499929/pdf/nihms-2114831.pdf",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5010096709",
+          "display_name": "Dmitry Kireev",
+          "orcid": "https://orcid.org/0000-0003-1499-5435",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-1499-5435"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I24603500",
+            "display_name": "University of Massachusetts Amherst",
+            "ror": "https://ror.org/0072zz521",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I24603500"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": true,
+        "raw_author_name": "Dmitry Kireev",
+        "raw_affiliation_strings": [
+          "Department of Biomedical Engineering, University of Massachusetts Amherst, Amherst, MA, USA"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0003-1499-5435",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Biomedical Engineering, University of Massachusetts Amherst, Amherst, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I24603500"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5060751813",
+          "display_name": "Shanmukh Kutagulla",
+          "orcid": "https://orcid.org/0000-0002-4078-8053",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-4078-8053"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I4405271599",
+            "display_name": "Texas Materials Institute",
+            "ror": "https://ror.org/02q1tb011",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I4405271599"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I86519309",
+            "display_name": "The University of Texas at Austin",
+            "ror": "https://ror.org/00hj54h04",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I86519309"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Shanmukh Kutagulla",
+        "raw_affiliation_strings": [
+          "Texas Materials Institute, The University of Texas at Austin, Austin, TX, USA"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0002-4078-8053",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Texas Materials Institute, The University of Texas at Austin, Austin, TX, USA",
+            "institution_ids": [
+              "https://openalex.org/I4405271599",
+              "https://openalex.org/I86519309"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5066241729",
+          "display_name": "Juyeong Hong",
+          "orcid": "https://orcid.org/0000-0001-6525-9783",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-6525-9783"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I193775966",
+            "display_name": "Yonsei University",
+            "ror": "https://ror.org/01wjejq96",
+            "country_code": "KR",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I193775966"
+            ]
+          }
+        ],
+        "countries": [
+          "KR"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Juyeong Hong",
+        "raw_affiliation_strings": [
+          "School of Electrical and Electronic Engineering, Yonsei University, Seoul, Republic of Korea"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0001-6525-9783",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "School of Electrical and Electronic Engineering, Yonsei University, Seoul, Republic of Korea",
+            "institution_ids": [
+              "https://openalex.org/I193775966"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5048310102",
+          "display_name": "Madison N. Wilson",
+          "orcid": "https://orcid.org/0000-0002-9838-0798",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-9838-0798"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I36258959",
+            "display_name": "University of California San Diego",
+            "ror": "https://ror.org/0168r3w48",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Madison N. Wilson",
+        "raw_affiliation_strings": [
+          "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0002-9838-0798",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA",
+            "institution_ids": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5079436752",
+          "display_name": "Mehrdad Ramezani",
+          "orcid": "https://orcid.org/0000-0002-3144-3192",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-3144-3192"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I36258959",
+            "display_name": "University of California San Diego",
+            "ror": "https://ror.org/0168r3w48",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Mehrdad Ramezani",
+        "raw_affiliation_strings": [
+          "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0002-3144-3192",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA",
+            "institution_ids": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5001245730",
+          "display_name": "Duygu Kuzum",
+          "orcid": "https://orcid.org/0000-0002-2125-1285",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-2125-1285"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I36258959",
+            "display_name": "University of California San Diego",
+            "ror": "https://ror.org/0168r3w48",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Duygu Kuzum",
+        "raw_affiliation_strings": [
+          "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, CA, USA",
+            "institution_ids": [
+              "https://openalex.org/I36258959"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5084678270",
+          "display_name": "Jong‐Hyun Ahn",
+          "orcid": "https://orcid.org/0000-0002-8135-7719",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-8135-7719"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I193775966",
+            "display_name": "Yonsei University",
+            "ror": "https://ror.org/01wjejq96",
+            "country_code": "KR",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I193775966"
+            ]
+          }
+        ],
+        "countries": [
+          "KR"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jong-Hyun Ahn",
+        "raw_affiliation_strings": [
+          "School of Electrical and Electronic Engineering, Yonsei University, Seoul, Republic of Korea"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0002-8135-7719",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "School of Electrical and Electronic Engineering, Yonsei University, Seoul, Republic of Korea",
+            "institution_ids": [
+              "https://openalex.org/I193775966"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5063313700",
+          "display_name": "Deji Akinwande",
+          "orcid": "https://orcid.org/0000-0001-7133-5586",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-7133-5586"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I4405271599",
+            "display_name": "Texas Materials Institute",
+            "ror": "https://ror.org/02q1tb011",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I4405271599"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I86519309",
+            "display_name": "The University of Texas at Austin",
+            "ror": "https://ror.org/00hj54h04",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I86519309"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Deji Akinwande",
+        "raw_affiliation_strings": [
+          "Chandra Department of Electrical and Computer Engineering, The University of Texas at Austin, Austin, TX, USA",
+          "Department of Biomedical Engineering, The University of Texas at Austin, Austin, TX, USA",
+          "Texas Materials Institute, The University of Texas at Austin, Austin, TX, USA"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0001-7133-5586",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Chandra Department of Electrical and Computer Engineering, The University of Texas at Austin, Austin, TX, USA",
+            "institution_ids": [
+              "https://openalex.org/I86519309"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Department of Biomedical Engineering, The University of Texas at Austin, Austin, TX, USA",
+            "institution_ids": [
+              "https://openalex.org/I86519309"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Texas Materials Institute, The University of Texas at Austin, Austin, TX, USA",
+            "institution_ids": [
+              "https://openalex.org/I4405271599",
+              "https://openalex.org/I86519309"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 2,
+    "institutions_distinct_count": 5,
+    "corresponding_author_ids": [
+      "https://openalex.org/A5010096709"
+    ],
+    "corresponding_institution_ids": [
+      "https://openalex.org/I24603500"
+    ],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 2.7214,
+    "has_fulltext": true,
+    "cited_by_count": 43,
+    "citation_normalized_percentile": {
+      "value": 0.92631579,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": true
+    },
+    "cited_by_percentile_year": {
+      "min": 99,
+      "max": 100
+    },
+    "biblio": {
+      "volume": "9",
+      "issue": "12",
+      "first_page": "906",
+      "last_page": "922"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T11601",
+      "display_name": "Neuroscience and Neural Engineering",
+      "score": 0.698199987411499,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2804",
+        "display_name": "Cellular and Molecular Neuroscience"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/28",
+        "display_name": "Neuroscience"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/1",
+        "display_name": "Life Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T11601",
+        "display_name": "Neuroscience and Neural Engineering",
+        "score": 0.698199987411499,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2804",
+          "display_name": "Cellular and Molecular Neuroscience"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/28",
+          "display_name": "Neuroscience"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/1",
+          "display_name": "Life Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10338",
+        "display_name": "Advanced Sensor and Energy Harvesting Materials",
+        "score": 0.12280000001192093,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2204",
+          "display_name": "Biomedical Engineering"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/22",
+          "display_name": "Engineering"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10083",
+        "display_name": "Graphene research and applications",
+        "score": 0.08560000360012054,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2505",
+          "display_name": "Materials Chemistry"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/25",
+          "display_name": "Materials Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/bioelectronics",
+        "display_name": "bioelectronics",
+        "score": 0.8650000095367432
+      },
+      {
+        "id": "https://openalex.org/keywords/2d-materials",
+        "display_name": "two-dimensional materials",
+        "score": 0.9670000076293945
+      },
+      {
+        "id": "https://openalex.org/keywords/graphene",
+        "display_name": "graphene",
+        "score": 0.9990000128746033
+      },
+      {
+        "id": "https://openalex.org/keywords/bioelectronic-devices",
+        "display_name": "bioelectronic devices",
+        "score": 0.7070000171661377
+      },
+      {
+        "id": "https://openalex.org/keywords/optical-properties",
+        "display_name": "optical properties",
+        "score": 0.6499999761581421
+      },
+      {
+        "id": "https://openalex.org/keywords/mechanical-properties",
+        "display_name": "mechanical properties",
+        "score": 0.7519999742507935
+      },
+      {
+        "id": "https://openalex.org/keywords/environmental-characteristics",
+        "display_name": "environmental characteristics",
+        "score": 0.44999998807907104
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C60515610",
+        "wikidata": "https://www.wikidata.org/wiki/Q174502",
+        "display_name": "Bioelectronics",
+        "level": 3,
+        "score": 0.9565701484680176
+      },
+      {
+        "id": "https://openalex.org/C171250308",
+        "wikidata": "https://www.wikidata.org/wiki/Q11468",
+        "display_name": "Nanotechnology",
+        "level": 1,
+        "score": 0.5600689053535461
+      },
+      {
+        "id": "https://openalex.org/C192562407",
+        "wikidata": "https://www.wikidata.org/wiki/Q228736",
+        "display_name": "Materials science",
+        "level": 0,
+        "score": 0.47133302688598633
+      },
+      {
+        "id": "https://openalex.org/C2986710310",
+        "wikidata": "https://www.wikidata.org/wiki/Q11456",
+        "display_name": "Electronic materials",
+        "level": 2,
+        "score": 0.4198795557022095
+      },
+      {
+        "id": "https://openalex.org/C160756335",
+        "wikidata": "https://www.wikidata.org/wiki/Q669391",
+        "display_name": "Biosensor",
+        "level": 2,
+        "score": 0.0472758412361145
+      }
+    ],
+    "mesh": [],
+    "locations_count": 4,
+    "locations": [
+      {
+        "id": "doi:10.1038/s41578-024-00728-4",
+        "doi": "https://doi.org/10.1038/s41578-024-00728-4",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1038/s41578-024-00728-4",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S2764917516",
+          "display_name": "Nature Reviews Materials",
+          "issn_l": "2058-8437",
+          "issn": [
+            "2058-8437"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "dongbi-a",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "poland-200",
+            "russia-white-list-1"
+          ],
+          "host_organization": "https://openalex.org/P4310319908",
+          "host_organization_name": "Nature Portfolio",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319908",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Nature Portfolio",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Nature Reviews Materials",
+        "raw_type": "journal-article"
+      },
+      {
+        "id": "pmid:41058940",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41058940",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Nature reviews. Materials",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11308072",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12499929",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12499929/pdf/nihms-2114831.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      },
+      {
+        "id": "pmh:oai:pubmedcentral.nih.gov:12499929",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41058940/",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "Nat Rev Mater",
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "pmh:oai:europepmc.org:11308072",
+      "doi": null,
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12499929",
+      "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12499929/pdf/nihms-2114831.pdf",
+      "source": {
+        "id": "https://openalex.org/S4306400806",
+        "display_name": "Europe PMC (PubMed Central)",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1303153112",
+        "host_organization_name": "European Bioinformatics Institute",
+        "host_organization_lineage": [
+          "https://openalex.org/I1303153112"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "submittedVersion",
+      "is_accepted": false,
+      "is_published": false,
+      "raw_source_name": null,
+      "raw_type": "Text"
+    },
+    "sustainable_development_goals": [],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [],
+    "awards": [
+      {
+        "id": "https://openalex.org/G1371337687",
+        "display_name": null,
+        "funder_award_id": "20012355",
+        "funder_id": "https://openalex.org/F4320321681",
+        "funder_display_name": "Ministry of Trade, Industry and Energy"
+      },
+      {
+        "id": "https://openalex.org/G2394019442",
+        "display_name": "EAGER: APTAMER-INFUSED GRAPHENE TRANSISTOR TATTOOS AS TEMPORARY SWEAT BIOSENSING PLATFORM",
+        "funder_award_id": "2400494",
+        "funder_id": "https://openalex.org/F4320306076",
+        "funder_display_name": "National Science Foundation"
+      },
+      {
+        "id": "https://openalex.org/G2664687111",
+        "display_name": "E-Organoids: Functional Brain Organoids Co-grafted with Transparent Microthreads",
+        "funder_award_id": "1dp2eb030992-01",
+        "funder_id": "https://openalex.org/F4320332161",
+        "funder_display_name": "National Institutes of Health"
+      },
+      {
+        "id": "https://openalex.org/G7422483336",
+        "display_name": null,
+        "funder_award_id": "DP2 EB030992",
+        "funder_id": "https://openalex.org/F4320337363",
+        "funder_display_name": "National Institute of Biomedical Imaging and Bioengineering"
+      },
+      {
+        "id": "https://openalex.org/G8717903593",
+        "display_name": "NCS-FO: Investigation of cortical-hippocampal interaction during memory formation using multimodal recordings",
+        "funder_award_id": "2024776",
+        "funder_id": "https://openalex.org/F4320306076",
+        "funder_display_name": "National Science Foundation"
+      }
+    ],
+    "funders": [
+      {
+        "id": "https://openalex.org/F4320306076",
+        "display_name": "National Science Foundation",
+        "ror": "https://ror.org/021nxhr62"
+      },
+      {
+        "id": "https://openalex.org/F4320321681",
+        "display_name": "Ministry of Trade, Industry and Energy",
+        "ror": "https://ror.org/008nkqk13"
+      },
+      {
+        "id": "https://openalex.org/F4320328359",
+        "display_name": "Ministry of Science and ICT, South Korea",
+        "ror": "https://ror.org/01wpjm123"
+      },
+      {
+        "id": "https://openalex.org/F4320332161",
+        "display_name": "National Institutes of Health",
+        "ror": "https://ror.org/01cwqze88"
+      },
+      {
+        "id": "https://openalex.org/F4320337363",
+        "display_name": "National Institute of Biomedical Imaging and Bioengineering",
+        "ror": "https://ror.org/00372qc85"
+      },
+      {
+        "id": "https://openalex.org/F4320337392",
+        "display_name": "Division of Electrical, Communications and Cyber Systems",
+        "ror": "https://ror.org/01krpsy48"
+      }
+    ],
+    "has_content": {
+      "pdf": true,
+      "grobid_xml": true
+    },
+    "content_urls": {
+      "pdf": "https://content.openalex.org/works/W4403948216.pdf",
+      "grobid_xml": "https://content.openalex.org/works/W4403948216.grobid-xml"
+    },
+    "referenced_works_count": 323,
+    "referenced_works": [
+      "https://openalex.org/W1858384429",
+      "https://openalex.org/W1967437454",
+      "https://openalex.org/W1968388851",
+      "https://openalex.org/W1969314684",
+      "https://openalex.org/W1970308461",
+      "https://openalex.org/W1979345035",
+      "https://openalex.org/W1986895442",
+      "https://openalex.org/W1988779265",
+      "https://openalex.org/W1990672810",
+      "https://openalex.org/W1993509513",
+      "https://openalex.org/W1997230366",
+      "https://openalex.org/W2000792029",
+      "https://openalex.org/W2011512746",
+      "https://openalex.org/W2012212139",
+      "https://openalex.org/W2017871657",
+      "https://openalex.org/W2021733473",
+      "https://openalex.org/W2031985211",
+      "https://openalex.org/W2037594227",
+      "https://openalex.org/W2039418304",
+      "https://openalex.org/W2039962212",
+      "https://openalex.org/W2041184765",
+      "https://openalex.org/W2041311241",
+      "https://openalex.org/W2044169471",
+      "https://openalex.org/W2051105944",
+      "https://openalex.org/W2058122340",
+      "https://openalex.org/W2063583164",
+      "https://openalex.org/W2063994047",
+      "https://openalex.org/W2074306150",
+      "https://openalex.org/W2075686024",
+      "https://openalex.org/W2079851049",
+      "https://openalex.org/W2096421416",
+      "https://openalex.org/W2097773259",
+      "https://openalex.org/W2099664283",
+      "https://openalex.org/W2103291130",
+      "https://openalex.org/W2105685140",
+      "https://openalex.org/W2108102346",
+      "https://openalex.org/W2115786064",
+      "https://openalex.org/W2123756409",
+      "https://openalex.org/W2125284466",
+      "https://openalex.org/W2125585993",
+      "https://openalex.org/W2129515233",
+      "https://openalex.org/W2135522286",
+      "https://openalex.org/W2150315430",
+      "https://openalex.org/W2164799013",
+      "https://openalex.org/W2167267527",
+      "https://openalex.org/W2170589179",
+      "https://openalex.org/W2174636528",
+      "https://openalex.org/W2175102397",
+      "https://openalex.org/W2191472887",
+      "https://openalex.org/W2196734670",
+      "https://openalex.org/W2206837932",
+      "https://openalex.org/W2220679381",
+      "https://openalex.org/W2238139783",
+      "https://openalex.org/W2256857551",
+      "https://openalex.org/W2258565696",
+      "https://openalex.org/W2290066381",
+      "https://openalex.org/W2304116750",
+      "https://openalex.org/W2305946569",
+      "https://openalex.org/W2306241413",
+      "https://openalex.org/W2329945485",
+      "https://openalex.org/W2407949256",
+      "https://openalex.org/W2416108250",
+      "https://openalex.org/W2436587685",
+      "https://openalex.org/W2498106012",
+      "https://openalex.org/W2508920067",
+      "https://openalex.org/W2508979391",
+      "https://openalex.org/W2516109291",
+      "https://openalex.org/W2523843102",
+      "https://openalex.org/W2525312959",
+      "https://openalex.org/W2542924420",
+      "https://openalex.org/W2553169220",
+      "https://openalex.org/W2560834721",
+      "https://openalex.org/W2570166109",
+      "https://openalex.org/W2588350539",
+      "https://openalex.org/W2588689293",
+      "https://openalex.org/W2595392224",
+      "https://openalex.org/W2597054437",
+      "https://openalex.org/W2606123205",
+      "https://openalex.org/W2609205766",
+      "https://openalex.org/W2609844460",
+      "https://openalex.org/W2611393006",
+      "https://openalex.org/W2617770907",
+      "https://openalex.org/W2618342083",
+      "https://openalex.org/W2622398047",
+      "https://openalex.org/W2627001981",
+      "https://openalex.org/W2734584755",
+      "https://openalex.org/W2738103550",
+      "https://openalex.org/W2753168648",
+      "https://openalex.org/W2765934971",
+      "https://openalex.org/W2768256926",
+      "https://openalex.org/W2769688117",
+      "https://openalex.org/W2771720864",
+      "https://openalex.org/W2771797278",
+      "https://openalex.org/W2773549770",
+      "https://openalex.org/W2775596045",
+      "https://openalex.org/W2780185938",
+      "https://openalex.org/W2787593095",
+      "https://openalex.org/W2789630987",
+      "https://openalex.org/W2790329053",
+      "https://openalex.org/W2790531428",
+      "https://openalex.org/W2792418496",
+      "https://openalex.org/W2792573187",
+      "https://openalex.org/W2796826964",
+      "https://openalex.org/W2800161635",
+      "https://openalex.org/W2803345802",
+      "https://openalex.org/W2805002713",
+      "https://openalex.org/W2805654492",
+      "https://openalex.org/W2806954712",
+      "https://openalex.org/W2807679905",
+      "https://openalex.org/W2809506543",
+      "https://openalex.org/W2883729924",
+      "https://openalex.org/W2883986630",
+      "https://openalex.org/W2885353953",
+      "https://openalex.org/W2886385043",
+      "https://openalex.org/W2886638066",
+      "https://openalex.org/W2887185274",
+      "https://openalex.org/W2893370428",
+      "https://openalex.org/W2898251109",
+      "https://openalex.org/W2903936103",
+      "https://openalex.org/W2904785247",
+      "https://openalex.org/W2906329807",
+      "https://openalex.org/W2906641003",
+      "https://openalex.org/W2907538915",
+      "https://openalex.org/W2910656420",
+      "https://openalex.org/W2911702109",
+      "https://openalex.org/W2912648566",
+      "https://openalex.org/W2912895064",
+      "https://openalex.org/W2916802028",
+      "https://openalex.org/W2918664767",
+      "https://openalex.org/W2920085947",
+      "https://openalex.org/W2921785444",
+      "https://openalex.org/W2921873576",
+      "https://openalex.org/W2923516647",
+      "https://openalex.org/W2937876125",
+      "https://openalex.org/W2942434641",
+      "https://openalex.org/W2946364559",
+      "https://openalex.org/W2950634290",
+      "https://openalex.org/W2951405185",
+      "https://openalex.org/W2952680703",
+      "https://openalex.org/W2956741661",
+      "https://openalex.org/W2963786698",
+      "https://openalex.org/W2965424395",
+      "https://openalex.org/W2966232410",
+      "https://openalex.org/W2969828704",
+      "https://openalex.org/W2970454553",
+      "https://openalex.org/W2970466997",
+      "https://openalex.org/W2972647116",
+      "https://openalex.org/W2973687802",
+      "https://openalex.org/W2974623595",
+      "https://openalex.org/W2975458838",
+      "https://openalex.org/W2979249018",
+      "https://openalex.org/W2979575453",
+      "https://openalex.org/W2979990782",
+      "https://openalex.org/W2980625598",
+      "https://openalex.org/W2982324728",
+      "https://openalex.org/W2984881339",
+      "https://openalex.org/W2988432231",
+      "https://openalex.org/W2990367122",
+      "https://openalex.org/W2990605642",
+      "https://openalex.org/W2993127548",
+      "https://openalex.org/W2998744780",
+      "https://openalex.org/W3000319421",
+      "https://openalex.org/W3000943275",
+      "https://openalex.org/W3003128161",
+      "https://openalex.org/W3005223027",
+      "https://openalex.org/W3008874451",
+      "https://openalex.org/W3011673287",
+      "https://openalex.org/W3011852924",
+      "https://openalex.org/W3011943416",
+      "https://openalex.org/W3012097348",
+      "https://openalex.org/W3013735104",
+      "https://openalex.org/W3016989585",
+      "https://openalex.org/W3036387549",
+      "https://openalex.org/W3037605932",
+      "https://openalex.org/W3040263581",
+      "https://openalex.org/W3040455431",
+      "https://openalex.org/W3040932193",
+      "https://openalex.org/W3040955223",
+      "https://openalex.org/W3041770184",
+      "https://openalex.org/W3047806070",
+      "https://openalex.org/W3049657765",
+      "https://openalex.org/W3049663482",
+      "https://openalex.org/W3080777925",
+      "https://openalex.org/W3092743927",
+      "https://openalex.org/W3092891558",
+      "https://openalex.org/W3093328009",
+      "https://openalex.org/W3093607369",
+      "https://openalex.org/W3099166974",
+      "https://openalex.org/W3100477776",
+      "https://openalex.org/W3104640863",
+      "https://openalex.org/W3106615441",
+      "https://openalex.org/W3110294643",
+      "https://openalex.org/W3114133151",
+      "https://openalex.org/W3114230465",
+      "https://openalex.org/W3114640633",
+      "https://openalex.org/W3115979315",
+      "https://openalex.org/W3116782659",
+      "https://openalex.org/W3121095423",
+      "https://openalex.org/W3124053148",
+      "https://openalex.org/W3129065909",
+      "https://openalex.org/W3131923730",
+      "https://openalex.org/W3132552794",
+      "https://openalex.org/W3133430358",
+      "https://openalex.org/W3136132782",
+      "https://openalex.org/W3137997212",
+      "https://openalex.org/W3145463162",
+      "https://openalex.org/W3147892047",
+      "https://openalex.org/W3151059581",
+      "https://openalex.org/W3155494946",
+      "https://openalex.org/W3155756166",
+      "https://openalex.org/W3157352703",
+      "https://openalex.org/W3158168623",
+      "https://openalex.org/W3158288566",
+      "https://openalex.org/W3163932346",
+      "https://openalex.org/W3164438890",
+      "https://openalex.org/W3166278644",
+      "https://openalex.org/W3167660118",
+      "https://openalex.org/W3170157348",
+      "https://openalex.org/W3170991037",
+      "https://openalex.org/W3171459113",
+      "https://openalex.org/W3177283875",
+      "https://openalex.org/W3183234446",
+      "https://openalex.org/W3192073258",
+      "https://openalex.org/W3195620099",
+      "https://openalex.org/W3196767449",
+      "https://openalex.org/W3198336736",
+      "https://openalex.org/W3201607961",
+      "https://openalex.org/W3203138682",
+      "https://openalex.org/W3210415351",
+      "https://openalex.org/W3214207992",
+      "https://openalex.org/W3214592529",
+      "https://openalex.org/W3214807145",
+      "https://openalex.org/W3215142653",
+      "https://openalex.org/W3215882649",
+      "https://openalex.org/W4200000840",
+      "https://openalex.org/W4200118264",
+      "https://openalex.org/W4206612495",
+      "https://openalex.org/W4210768658",
+      "https://openalex.org/W4211210177",
+      "https://openalex.org/W4213419022",
+      "https://openalex.org/W4214650038",
+      "https://openalex.org/W4220672248",
+      "https://openalex.org/W4220720590",
+      "https://openalex.org/W4220751861",
+      "https://openalex.org/W4220856163",
+      "https://openalex.org/W4220925813",
+      "https://openalex.org/W4223904523",
+      "https://openalex.org/W4223967672",
+      "https://openalex.org/W4224260135",
+      "https://openalex.org/W4225329124",
+      "https://openalex.org/W4235021740",
+      "https://openalex.org/W4247234299",
+      "https://openalex.org/W4251857280",
+      "https://openalex.org/W4281610279",
+      "https://openalex.org/W4281641541",
+      "https://openalex.org/W4282838770",
+      "https://openalex.org/W4282944997",
+      "https://openalex.org/W4283167194",
+      "https://openalex.org/W4283257145",
+      "https://openalex.org/W4283813694",
+      "https://openalex.org/W4285093147",
+      "https://openalex.org/W4288080538",
+      "https://openalex.org/W4288437883",
+      "https://openalex.org/W4288686001",
+      "https://openalex.org/W4289260927",
+      "https://openalex.org/W4289745525",
+      "https://openalex.org/W4293379505",
+      "https://openalex.org/W4294755896",
+      "https://openalex.org/W4295309333",
+      "https://openalex.org/W4295441317",
+      "https://openalex.org/W4301395834",
+      "https://openalex.org/W4307716640",
+      "https://openalex.org/W4308496860",
+      "https://openalex.org/W4309035153",
+      "https://openalex.org/W4309659862",
+      "https://openalex.org/W4311364426",
+      "https://openalex.org/W4312091546",
+      "https://openalex.org/W4312106941",
+      "https://openalex.org/W4312197807",
+      "https://openalex.org/W4312220079",
+      "https://openalex.org/W4313277420",
+      "https://openalex.org/W4317242238",
+      "https://openalex.org/W4317794266",
+      "https://openalex.org/W4319333258",
+      "https://openalex.org/W4321015130",
+      "https://openalex.org/W4321437486",
+      "https://openalex.org/W4323653529",
+      "https://openalex.org/W4327738112",
+      "https://openalex.org/W4327898869",
+      "https://openalex.org/W4328049246",
+      "https://openalex.org/W4353032087",
+      "https://openalex.org/W4360945735",
+      "https://openalex.org/W4360991254",
+      "https://openalex.org/W4361270446",
+      "https://openalex.org/W4366245263",
+      "https://openalex.org/W4366758307",
+      "https://openalex.org/W4367320959",
+      "https://openalex.org/W4367598830",
+      "https://openalex.org/W4376615135",
+      "https://openalex.org/W4377089445",
+      "https://openalex.org/W4379600408",
+      "https://openalex.org/W4382680133",
+      "https://openalex.org/W4384927833",
+      "https://openalex.org/W4385302618",
+      "https://openalex.org/W4385607100",
+      "https://openalex.org/W4386142648",
+      "https://openalex.org/W4386157295",
+      "https://openalex.org/W4386718951",
+      "https://openalex.org/W4387298804",
+      "https://openalex.org/W4387972832",
+      "https://openalex.org/W4388017337",
+      "https://openalex.org/W4388341859",
+      "https://openalex.org/W4388671701",
+      "https://openalex.org/W4389058228",
+      "https://openalex.org/W4389376592",
+      "https://openalex.org/W4390750720",
+      "https://openalex.org/W4390750727",
+      "https://openalex.org/W4391110835",
+      "https://openalex.org/W4391746476",
+      "https://openalex.org/W4391883418",
+      "https://openalex.org/W4391920802",
+      "https://openalex.org/W4392817916",
+      "https://openalex.org/W4414280262"
+    ],
+    "related_works": [
+      "https://openalex.org/W4206236766",
+      "https://openalex.org/W4231294436",
+      "https://openalex.org/W4282560622",
+      "https://openalex.org/W4212972631",
+      "https://openalex.org/W2181431438",
+      "https://openalex.org/W4210512253",
+      "https://openalex.org/W4211066815",
+      "https://openalex.org/W2317714859",
+      "https://openalex.org/W4401035813",
+      "https://openalex.org/W2464811097"
+    ],
+    "abstract_inverted_index": null,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 24
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 19
+      }
+    ],
+    "updated_date": "2026-10-23T09:35:12.469056",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}

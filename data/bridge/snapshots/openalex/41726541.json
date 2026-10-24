@@ -1,0 +1,1715 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41726541",
+  "retrieved_at": "2026-10-24T17:45:27+00:00",
+  "record": {
+    "id": "https://openalex.org/W7131191100",
+    "doi": null,
+    "title": "Developing a User-Centered Mobile Application Prototype: Bridging Lower-Limb Fracture Care from Skilled Nursing Facility and Back to the Community.",
+    "display_name": "Developing a User-Centered Mobile Application Prototype: Bridging Lower-Limb Fracture Care from Skilled Nursing Facility and Back to the Community.",
+    "publication_year": 2024,
+    "publication_date": "2024-01-01",
+    "ids": {
+      "openalex": "https://openalex.org/W7131191100",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41726541"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "pmid:41726541",
+      "doi": null,
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41726541",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "AMIA ... Annual Symposium proceedings. AMIA Symposium",
+      "raw_type": "Journal Article"
+    },
+    "volume": null,
+    "type": "conference-paper",
+    "indexed_in": [
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "oa_url": null,
+      "any_repository_has_fulltext": false
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5124700528",
+          "display_name": "Min-Jeoung Kang",
+          "orcid": "https://orcid.org/0000-0001-9130-3741",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-9130-3741"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Min-Jeoung Kang",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+          "Harvard Medical School, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5002374694",
+          "display_name": "Veysel Karani Barış",
+          "orcid": "https://orcid.org/0000-0001-5322-4081",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-5322-4081"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Veysel Karani Baris",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5017073444",
+          "display_name": "Alice Kim",
+          "orcid": "https://orcid.org/0000-0001-9874-6166",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-9874-6166"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Alice Kim",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5034899205",
+          "display_name": "Kumiko O. Schnock",
+          "orcid": "https://orcid.org/0000-0002-1107-6399",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-1107-6399"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Kumiko O Schnock",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+          "Harvard Medical School, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5088496274",
+          "display_name": "Pamela M. Garabedian",
+          "orcid": "https://orcid.org/0000-0002-4346-7968",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-4346-7968"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I48633490",
+            "display_name": "Mass General Brigham",
+            "ror": "https://ror.org/04py2rh25",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I48633490"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Pamela M Garabedian",
+        "raw_affiliation_strings": [
+          "Research Information Science & Computing, Mass General Brigham, Boston, Massachusetts, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Research Information Science & Computing, Mass General Brigham, Boston, Massachusetts, USA",
+            "institution_ids": [
+              "https://openalex.org/I48633490"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5111955083",
+          "display_name": "Nancy K. Latham",
+          "orcid": "https://orcid.org/0000-0002-8516-0016",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-8516-0016"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Nancy K Latham",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+          "Harvard Medical School, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5034996737",
+          "display_name": "Denise Orwig",
+          "orcid": "https://orcid.org/0000-0003-4095-5795",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-4095-5795"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I126744593",
+            "display_name": "University of Maryland, Baltimore",
+            "ror": "https://ror.org/04rq5mt64",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Denise Orwig",
+        "raw_affiliation_strings": [
+          "University of Maryland School of Medicine, Baltimore, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Maryland School of Medicine, Baltimore, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5051446799",
+          "display_name": "Jay Magaziner",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I126744593",
+            "display_name": "University of Maryland, Baltimore",
+            "ror": "https://ror.org/04rq5mt64",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jay Magaziner",
+        "raw_affiliation_strings": [
+          "University of Maryland School of Medicine, Baltimore, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Maryland School of Medicine, Baltimore, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5014526047",
+          "display_name": "Rodrigo J. Valderrábano",
+          "orcid": "https://orcid.org/0000-0002-4910-3997",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-4910-3997"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Rodrigo Valderrábano",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+          "Harvard Medical School, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5112695500",
+          "display_name": "Ling Tang",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I126744593",
+            "display_name": "University of Maryland, Baltimore",
+            "ror": "https://ror.org/04rq5mt64",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Ling Tang",
+        "raw_affiliation_strings": [
+          "University of Maryland School of Medicine, Baltimore, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Maryland School of Medicine, Baltimore, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5121014085",
+          "display_name": "Elizabeth A. Dennis",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I126744593",
+            "display_name": "University of Maryland, Baltimore",
+            "ror": "https://ror.org/04rq5mt64",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Elizabeth Dennis",
+        "raw_affiliation_strings": [
+          "University of Maryland School of Medicine, Baltimore, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Maryland School of Medicine, Baltimore, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5059637363",
+          "display_name": "Jason R. Falvey",
+          "orcid": "https://orcid.org/0000-0002-9063-0617",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-9063-0617"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I126744593",
+            "display_name": "University of Maryland, Baltimore",
+            "ror": "https://ror.org/04rq5mt64",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Jason Falvey",
+        "raw_affiliation_strings": [
+          "University of Maryland School of Medicine, Baltimore, MD, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Maryland School of Medicine, Baltimore, MD, USA",
+            "institution_ids": [
+              "https://openalex.org/I126744593"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5055661680",
+          "display_name": "Patricia C. Dykes",
+          "orcid": "https://orcid.org/0000-0003-4597-0732",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-4597-0732",
+            "https://orcid.org/0009-0003-2546-2092"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1283280774",
+            "display_name": "Brigham and Women's Hospital",
+            "ror": "https://ror.org/04b6nzv94",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I121934306",
+              "https://openalex.org/I1283280774",
+              "https://openalex.org/I48633490"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Patricia C Dykes",
+        "raw_affiliation_strings": [
+          "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+          "Harvard Medical School, Boston, MA, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Department of Medicine, Brigham and Women's Hospital, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I1283280774"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, MA, USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 1,
+    "institutions_distinct_count": 4,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 0.0,
+    "has_fulltext": false,
+    "cited_by_count": 0,
+    "citation_normalized_percentile": {
+      "value": 0.82317189,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": null,
+    "biblio": {
+      "volume": "2024",
+      "issue": null,
+      "first_page": "566",
+      "last_page": "574"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T11446",
+      "display_name": "Mobile Health and mHealth Applications",
+      "score": 0.9682999849319458,
+      "subfield": {
+        "id": "https://openalex.org/subfields/3600",
+        "display_name": "General Health Professions"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/36",
+        "display_name": "Health Professions"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T11446",
+        "display_name": "Mobile Health and mHealth Applications",
+        "score": 0.9682999849319458,
+        "subfield": {
+          "id": "https://openalex.org/subfields/3600",
+          "display_name": "General Health Professions"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/36",
+          "display_name": "Health Professions"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T11977",
+        "display_name": "Technology Use by Older Adults",
+        "score": 0.019500000402331352,
+        "subfield": {
+          "id": "https://openalex.org/subfields/3317",
+          "display_name": "Demography"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/33",
+          "display_name": "Social Sciences"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10071",
+        "display_name": "Bone health and osteoporosis research",
+        "score": 0.003100000089034438,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2732",
+          "display_name": "Orthopedics and Sports Medicine"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/mobile-health-apps",
+        "display_name": "mobile health apps",
+        "score": 0.8930000066757202
+      },
+      {
+        "id": "https://openalex.org/keywords/lower-limb-fractures",
+        "display_name": "lower limb fractures",
+        "score": 0.7960000038146973
+      },
+      {
+        "id": "https://openalex.org/keywords/skilled-nursing-facilities",
+        "display_name": "skilled nursing facilities",
+        "score": 0.7839999794960022
+      },
+      {
+        "id": "https://openalex.org/keywords/community-reintegration",
+        "display_name": "community reintegration",
+        "score": 0.7369999885559082
+      },
+      {
+        "id": "https://openalex.org/keywords/older-adults",
+        "display_name": "older adults",
+        "score": 0.9559999704360962
+      },
+      {
+        "id": "https://openalex.org/keywords/fracture-prevention",
+        "display_name": "fracture prevention",
+        "score": 0.8489999771118164
+      },
+      {
+        "id": "https://openalex.org/keywords/exercise-adherence",
+        "display_name": "exercise adherence",
+        "score": 0.4699999988079071
+      },
+      {
+        "id": "https://openalex.org/keywords/supported-self-management",
+        "display_name": "self-management support",
+        "score": 0.6880000233650208
+      },
+      {
+        "id": "https://openalex.org/keywords/motivational-messaging",
+        "display_name": "motivational messaging",
+        "score": 0.7860000133514404
+      },
+      {
+        "id": "https://openalex.org/keywords/progress-monitoring",
+        "display_name": "progress monitoring",
+        "score": 0.8989999890327454
+      },
+      {
+        "id": "https://openalex.org/keywords/bone-health",
+        "display_name": "bone health",
+        "score": 0.6800000071525574
+      },
+      {
+        "id": "https://openalex.org/keywords/nutrition",
+        "display_name": "nutrition",
+        "score": 0.5799999833106995
+      },
+      {
+        "id": "https://openalex.org/keywords/treatment-adherence",
+        "display_name": "medication adherence",
+        "score": 0.7590000033378601
+      },
+      {
+        "id": "https://openalex.org/keywords/usability",
+        "display_name": "usability",
+        "score": 0.48500001430511475
+      },
+      {
+        "id": "https://openalex.org/keywords/user-centered-design",
+        "display_name": "user-centered design",
+        "score": 0.7450000047683716
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C174348530",
+        "wikidata": "https://www.wikidata.org/wiki/Q188635",
+        "display_name": "Bridging (networking)",
+        "level": 2,
+        "score": 0.6825000047683716
+      },
+      {
+        "id": "https://openalex.org/C170130773",
+        "wikidata": "https://www.wikidata.org/wiki/Q216378",
+        "display_name": "Usability",
+        "level": 2,
+        "score": 0.649399995803833
+      },
+      {
+        "id": "https://openalex.org/C2988145974",
+        "wikidata": "https://www.wikidata.org/wiki/Q620615",
+        "display_name": "Mobile apps",
+        "level": 2,
+        "score": 0.6363999843597412
+      },
+      {
+        "id": "https://openalex.org/C2908916198",
+        "wikidata": "https://www.wikidata.org/wiki/Q837142",
+        "display_name": "Skilled Nursing Facility",
+        "level": 2,
+        "score": 0.4984000027179718
+      },
+      {
+        "id": "https://openalex.org/C71924100",
+        "wikidata": "https://www.wikidata.org/wiki/Q11190",
+        "display_name": "Medicine",
+        "level": 0,
+        "score": 0.482699990272522
+      },
+      {
+        "id": "https://openalex.org/C159110408",
+        "wikidata": "https://www.wikidata.org/wiki/Q121176",
+        "display_name": "Nursing",
+        "level": 1,
+        "score": 0.4607999920845032
+      },
+      {
+        "id": "https://openalex.org/C160735492",
+        "wikidata": "https://www.wikidata.org/wiki/Q31207",
+        "display_name": "Health care",
+        "level": 2,
+        "score": 0.398499995470047
+      },
+      {
+        "id": "https://openalex.org/C2775936607",
+        "wikidata": "https://www.wikidata.org/wiki/Q466845",
+        "display_name": "Tracking (education)",
+        "level": 2,
+        "score": 0.36320000886917114
+      },
+      {
+        "id": "https://openalex.org/C545542383",
+        "wikidata": "https://www.wikidata.org/wiki/Q2751242",
+        "display_name": "Medical emergency",
+        "level": 1,
+        "score": 0.33559998869895935
+      },
+      {
+        "id": "https://openalex.org/C186967261",
+        "wikidata": "https://www.wikidata.org/wiki/Q5082128",
+        "display_name": "Mobile device",
+        "level": 2,
+        "score": 0.33009999990463257
+      },
+      {
+        "id": "https://openalex.org/C3008058167",
+        "wikidata": "https://www.wikidata.org/wiki/Q84263196",
+        "display_name": "Coronavirus disease 2019 (COVID-19)",
+        "level": 4,
+        "score": 0.3199000060558319
+      },
+      {
+        "id": "https://openalex.org/C2779473830",
+        "wikidata": "https://www.wikidata.org/wiki/Q1540899",
+        "display_name": "MEDLINE",
+        "level": 2,
+        "score": 0.287200003862381
+      },
+      {
+        "id": "https://openalex.org/C509550671",
+        "wikidata": "https://www.wikidata.org/wiki/Q126945",
+        "display_name": "Medical education",
+        "level": 1,
+        "score": 0.2824000120162964
+      },
+      {
+        "id": "https://openalex.org/C2779891985",
+        "wikidata": "https://www.wikidata.org/wiki/Q46994",
+        "display_name": "Telemedicine",
+        "level": 3,
+        "score": 0.28040000796318054
+      },
+      {
+        "id": "https://openalex.org/C2780433410",
+        "wikidata": "https://www.wikidata.org/wiki/Q5276090",
+        "display_name": "Digital health",
+        "level": 3,
+        "score": 0.27480000257492065
+      },
+      {
+        "id": "https://openalex.org/C2984889486",
+        "wikidata": "https://www.wikidata.org/wiki/Q121176",
+        "display_name": "Nursing care",
+        "level": 2,
+        "score": 0.26159998774528503
+      },
+      {
+        "id": "https://openalex.org/C15744967",
+        "wikidata": "https://www.wikidata.org/wiki/Q9418",
+        "display_name": "Psychology",
+        "level": 0,
+        "score": 0.2563999891281128
+      }
+    ],
+    "mesh": [
+      {
+        "descriptor_ui": "D000086825",
+        "descriptor_name": "User-Centered Design",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000086825",
+        "descriptor_name": "User-Centered Design",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000086825",
+        "descriptor_name": "User-Centered Design",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000086825",
+        "descriptor_name": "User-Centered Design",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D000368",
+        "descriptor_name": "Aged",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D012866",
+        "descriptor_name": "Skilled Nursing Facilities",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D035002",
+        "descriptor_name": "Lower Extremity",
+        "qualifier_ui": "Q000293",
+        "qualifier_name": "injuries",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D050723",
+        "descriptor_name": "Fractures, Bone",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D058866",
+        "descriptor_name": "Osteoporotic Fractures",
+        "qualifier_ui": "Q000517",
+        "qualifier_name": "prevention & control",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D063731",
+        "descriptor_name": "Mobile Applications",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      }
+    ],
+    "locations_count": 1,
+    "locations": [
+      {
+        "id": "pmid:41726541",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41726541",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "AMIA ... Annual Symposium proceedings. AMIA Symposium",
+        "raw_type": "Journal Article"
+      }
+    ],
+    "best_oa_location": null,
+    "sustainable_development_goals": [
+      {
+        "id": "https://metadata.un.org/sdg/3",
+        "display_name": "Good health and well-being",
+        "score": 0.98580002784729
+      }
+    ],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [],
+    "awards": [],
+    "funders": [],
+    "has_content": {
+      "grobid_xml": false,
+      "pdf": false
+    },
+    "content_urls": null,
+    "referenced_works_count": 0,
+    "referenced_works": [],
+    "related_works": [],
+    "abstract_inverted_index": {
+      "This": [
+        0
+      ],
+      "study": [
+        1
+      ],
+      "is": [
+        2
+      ],
+      "part": [
+        3
+      ],
+      "of": [
+        4
+      ],
+      "the": [
+        5,
+        31,
+        125
+      ],
+      "OsteoPorotic": [
+        6
+      ],
+      "fracTure": [
+        7
+      ],
+      "preventION": [
+        8
+      ],
+      "System": [
+        9
+      ],
+      "(OPTIONS)": [
+        10
+      ],
+      "project": [
+        11
+      ],
+      "which": [
+        12
+      ],
+      "aims": [
+        13
+      ],
+      "to": [
+        14,
+        30,
+        46,
+        112
+      ],
+      "develop": [
+        15
+      ],
+      "an": [
+        16
+      ],
+      "evidence-based": [
+        17
+      ],
+      "mobile": [
+        18
+      ],
+      "application": [
+        19
+      ],
+      "for": [
+        20,
+        122,
+        132
+      ],
+      "older": [
+        21,
+        123
+      ],
+      "adults": [
+        22
+      ],
+      "transitioning": [
+        23
+      ],
+      "from": [
+        24
+      ],
+      "skilled": [
+        25
+      ],
+      "nursing": [
+        26
+      ],
+      "facilities": [
+        27
+      ],
+      "(SNFs)": [
+        28
+      ],
+      "back": [
+        29
+      ],
+      "community": [
+        32
+      ],
+      "after": [
+        33
+      ],
+      "lower": [
+        34
+      ],
+      "limb": [
+        35
+      ],
+      "fractures.": [
+        36,
+        49
+      ],
+      "The": [
+        37,
+        86
+      ],
+      "app": [
+        38,
+        55,
+        89,
+        126
+      ],
+      "promotes": [
+        39
+      ],
+      "exercise,": [
+        40
+      ],
+      "nutrition,": [
+        41
+      ],
+      "and": [
+        42,
+        65,
+        77,
+        101,
+        106
+      ],
+      "bone": [
+        43
+      ],
+      "health": [
+        44,
+        134
+      ],
+      "medications": [
+        45
+      ],
+      "prevent": [
+        47
+      ],
+      "future": [
+        48
+      ],
+      "Using": [
+        50
+      ],
+      "a": [
+        51,
+        128
+      ],
+      "Design": [
+        52
+      ],
+      "science": [
+        53
+      ],
+      "framework,": [
+        54
+      ],
+      "requirements": [
+        56
+      ],
+      "were": [
+        57
+      ],
+      "identified": [
+        58
+      ],
+      "by": [
+        59
+      ],
+      "synthesizing": [
+        60
+      ],
+      "scientific": [
+        61
+      ],
+      "knowledge,": [
+        62
+      ],
+      "clinical": [
+        63
+      ],
+      "expertise,": [
+        64
+      ],
+      "end-user": [
+        66,
+        84
+      ],
+      "needs.": [
+        67
+      ],
+      "An": [
+        68
+      ],
+      "initial": [
+        69
+      ],
+      "mockup": [
+        70
+      ],
+      "was": [
+        71
+      ],
+      "developed": [
+        72
+      ],
+      "based": [
+        73
+      ],
+      "on": [
+        74
+      ],
+      "these": [
+        75
+      ],
+      "specifications": [
+        76
+      ],
+      "iteratively": [
+        78
+      ],
+      "refined": [
+        79
+      ],
+      "through": [
+        80,
+        116
+      ],
+      "design": [
+        81
+      ],
+      "sessions": [
+        82
+      ],
+      "incorporating": [
+        83
+      ],
+      "feedback.": [
+        85
+      ],
+      "final": [
+        87
+      ],
+      "OPTIONS": [
+        88
+      ],
+      "features": [
+        90
+      ],
+      "four": [
+        91
+      ],
+      "core": [
+        92
+      ],
+      "functions:": [
+        93
+      ],
+      "(1)": [
+        94
+      ],
+      "task-based": [
+        95
+      ],
+      "self-management": [
+        96
+      ],
+      "support,": [
+        97
+      ],
+      "(2)": [
+        98
+      ],
+      "personalized": [
+        99
+      ],
+      "exercises": [
+        100
+      ],
+      "education,": [
+        102
+      ],
+      "(3)": [
+        103
+      ],
+      "motivational": [
+        104
+      ],
+      "messaging,": [
+        105
+      ],
+      "(4)": [
+        107
+      ],
+      "progress": [
+        108,
+        115
+      ],
+      "tracking": [
+        109
+      ],
+      "allowing": [
+        110
+      ],
+      "users": [
+        111
+      ],
+      "monitor": [
+        113
+      ],
+      "their": [
+        114
+      ],
+      "visualizations.": [
+        117
+      ],
+      "By": [
+        118
+      ],
+      "addressing": [
+        119
+      ],
+      "usability": [
+        120
+      ],
+      "challenges": [
+        121
+      ],
+      "adults,": [
+        124
+      ],
+      "provides": [
+        127
+      ],
+      "personalized,": [
+        129
+      ],
+      "engaging": [
+        130
+      ],
+      "experience": [
+        131
+      ],
+      "continuous": [
+        133
+      ],
+      "management.": [
+        135
+      ]
+    },
+    "counts_by_year": [],
+    "updated_date": "2026-10-12T09:40:04.860316",
+    "created_date": "2026-02-24T00:00:00"
+  }
+}

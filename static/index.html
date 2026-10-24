@@ -1,0 +1,870 @@
+<title>Research Scout</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --plane:#f4f6f8;
+  --surface:#fcfcfd;
+  --surface-2:#eef1f5;
+  --line:#dde2e9;
+  --line-strong:#c3ccd7;
+  --ink:#0e1116;
+  --ink-2:#545d6a;
+  --ink-3:#7d8795;
+  --accent:#1c5cab;
+  --accent-soft:#e7eefb;
+  --good:#0ca30c;
+  --critical:#d03b3b;
+  --warn:#8a5a12;
+  --warn-soft:#fbf2e0;
+  --r1:#cde2fb; --r2:#9ec5f4; --r3:#5598e7; --r4:#2a78d6; --r5:#184f95;
+  --shadow:0 1px 2px rgba(14,17,22,.06), 0 8px 24px -16px rgba(14,17,22,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --plane:#0c0e10;
+    --surface:#16191d;
+    --surface-2:#1e2328;
+    --line:#2b3238;
+    --line-strong:#3e4650;
+    --ink:#ffffff;
+    --ink-2:#b4bcc6;
+    --ink-3:#8b949f;
+    --accent:#6da7ec;
+    --accent-soft:#17283d;
+    --good:#4cc24c;
+    --critical:#e86b6b;
+    --warn:#d9a94e;
+    --warn-soft:#2a2316;
+    --r1:#10325e; --r2:#184f95; --r3:#256abf; --r4:#3987e5; --r5:#86b6ef;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plane:#0c0e10;
+  --surface:#16191d;
+  --surface-2:#1e2328;
+  --line:#2b3238;
+  --line-strong:#3e4650;
+  --ink:#ffffff;
+  --ink-2:#b4bcc6;
+  --ink-3:#8b949f;
+  --accent:#6da7ec;
+  --accent-soft:#17283d;
+  --good:#4cc24c;
+  --critical:#e86b6b;
+  --warn:#d9a94e;
+  --warn-soft:#2a2316;
+  --r1:#10325e; --r2:#184f95; --r3:#256abf; --r4:#3987e5; --r5:#86b6ef;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--plane);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* ---------- shell ---------- */
+.shell{max-width:1180px;margin:0 auto;padding:20px 20px 64px}
+.topbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.brand{font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand .dot{color:var(--accent)}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.09em;
+  padding:3px 7px;border-radius:3px;border:1px solid var(--line-strong);color:var(--ink-2)
+}
+.tag.mock{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.topnote{margin-left:auto;font-size:12px;color:var(--ink-3)}
+
+/* ---------- step rail ---------- */
+.rail{display:flex;gap:2px;overflow-x:auto;margin:16px 0 22px;padding-bottom:2px;scrollbar-width:thin}
+.step{
+  flex:1 1 0;min-width:112px;display:flex;flex-direction:column;gap:3px;
+  padding:9px 11px 10px;background:transparent;border:0;border-top:2px solid var(--line);
+  text-align:left;cursor:pointer;color:var(--ink-3);font:inherit;
+  transition:border-color .18s, color .18s;
+}
+.step:hover{color:var(--ink-2);border-top-color:var(--line-strong)}
+.step[aria-selected="true"]{border-top-color:var(--accent);color:var(--ink)}
+.step .n{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em}
+.step .t{font-size:12.5px;font-weight:500;line-height:1.25}
+.step:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- panels ---------- */
+.panel{display:none;animation:rise .24s ease-out}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+.phead{margin-bottom:18px}
+.phead h2{margin:0 0 5px;font-size:21px;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.phead p{margin:0;color:var(--ink-2);max-width:66ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.grid2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+
+.kv{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;align-items:baseline}
+.kv dt{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.kv dd{margin:0;font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums}
+
+h3.sec{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);
+  margin:0 0 11px
+}
+
+/* ---------- step 1 ---------- */
+.goalbox{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.goalin{
+  flex:1 1 280px;font:inherit;font-size:15px;padding:11px 13px;
+  border:1px solid var(--line-strong);border-radius:5px;background:var(--surface);color:var(--ink)
+}
+.btn{
+  font:inherit;font-weight:500;font-size:13.5px;padding:11px 16px;border-radius:5px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;
+}
+:root[data-theme="dark"] .btn, :root:not([data-theme="light"]) .btn{color:#08121f}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .btn{color:#fff}}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pipe{display:flex;flex-direction:column;gap:0;margin-top:4px}
+.pipe li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);list-style:none}
+.pipe li:last-child{border-bottom:0}
+.pipe .ok{color:var(--good);font-family:"IBM Plex Mono",monospace;font-size:13px;flex:none;width:14px}
+.pipe .lbl{flex:1}
+.pipe .num{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pipe .sub{display:block;font-size:12px;color:var(--ink-3);margin-top:1px}
+
+/* ---------- heatmap ---------- */
+.mapwrap{overflow-x:auto;padding-bottom:4px}
+.map{border-collapse:separate;border-spacing:2px;font-size:12px}
+.map th{font-weight:500;color:var(--ink-2);padding:0}
+.map th.col{
+  height:112px;vertical-align:bottom;padding-bottom:5px;
+}
+.map th.col span{
+  display:block;writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:11px;white-space:nowrap;max-height:104px;overflow:hidden;text-overflow:ellipsis
+}
+.map th.row{text-align:right;padding-right:8px;white-space:nowrap;font-size:11.5px;max-width:188px;overflow:hidden;text-overflow:ellipsis}
+.cell{width:30px;height:26px;border-radius:2px;position:relative;cursor:pointer;border:0;padding:0;display:block}
+.cell:focus-visible{outline:2px solid var(--accent);outline-offset:1px;z-index:3}
+.c0{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.c1{background:var(--r1)} .c2{background:var(--r2)} .c3{background:var(--r3)}
+.c4{background:var(--r4)} .c5{background:var(--r5)}
+.cell.flag{box-shadow:inset 0 0 0 2px var(--ink)}
+.cell.flag::after{
+  content:"";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);
+  width:5px;height:5px;border-radius:50%;background:var(--ink)
+}
+.cell.pick{box-shadow:inset 0 0 0 2px var(--accent)}
+.cell.pick::after{background:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:14px;font-size:11.5px;color:var(--ink-2)}
+.ramp{display:flex;align-items:center;gap:5px}
+.ramp i{width:20px;height:11px;border-radius:2px;display:block}
+.lgi{display:flex;align-items:center;gap:6px}
+.swatch{width:16px;height:16px;border-radius:2px;flex:none;position:relative}
+.swatch.e{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.swatch.f{background:var(--surface);box-shadow:inset 0 0 0 2px var(--ink)}
+.swatch.f::after{content:"";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:4px;height:4px;border-radius:50%;background:var(--ink)}
+#tip{
+  position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--plane);padding:7px 9px;border-radius:4px;
+  font-size:11.5px;line-height:1.4;max-width:230px;box-shadow:var(--shadow)
+}
+#tip .tv{font-family:"IBM Plex Mono",monospace;font-weight:600}
+
+/* ---------- gap card ---------- */
+.gaphead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;margin-bottom:3px}
+.gaphead .x{color:var(--ink-3);font-size:15px}
+.gaphead b{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.chain{display:flex;flex-direction:column;gap:0;margin:6px 0 2px}
+.chain .node{display:flex;align-items:baseline;gap:10px;padding:8px 0}
+.chain .node .role{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);width:62px;flex:none;padding-top:2px
+}
+.chain .node .val{font-size:13.5px}
+.chain .link{width:1px;height:12px;background:var(--line-strong);margin-left:72px}
+.bridges{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:3px 8px;border-radius:3px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid transparent
+}
+.chip.n{background:var(--surface-2);color:var(--ink-2)}
+.ev{border-left:2px solid var(--line-strong);padding:2px 0 2px 13px;margin:10px 0 0}
+.ev q{display:block;font-family:"IBM Plex Serif",Georgia,serif;font-size:13.5px;font-style:italic;color:var(--ink)}
+.ev cite{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-style:normal;margin-top:5px}
+
+/* ---------- verify ---------- */
+.claim{
+  display:grid;grid-template-columns:20px 1fr;gap:11px;padding:13px 0;
+  border-bottom:1px solid var(--line);align-items:start
+}
+.claim:last-of-type{border-bottom:0}
+.claim .mk{font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.45}
+.claim .txt{transition:opacity .3s}
+.claim .why{display:block;font-size:12px;color:var(--ink-3);margin-top:5px}
+.claim[data-state="pending"] .mk{color:var(--ink-3)}
+.claim[data-state="pass"] .mk{color:var(--good)}
+.claim[data-state="fail"] .mk{color:var(--critical)}
+.claim[data-state="fail"] .txt{text-decoration:line-through;text-decoration-color:var(--critical);text-decoration-thickness:1.5px;opacity:.5}
+.verdict{
+  margin-top:14px;padding:11px 13px;border-radius:5px;background:var(--surface-2);
+  font-size:13px;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap
+}
+.verdict b{font-variant-numeric:tabular-nums}
+.src{background:var(--surface-2);border-radius:5px;padding:13px 15px;font-family:"IBM Plex Serif",Georgia,serif;font-size:13px;line-height:1.62}
+.src mark{background:color-mix(in srgb, var(--good) 22%, transparent);color:inherit;padding:0 1px;border-radius:2px}
+
+/* ---------- validation chart ---------- */
+.bars{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+.bar{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center}
+.bar .bl{font-size:12.5px;color:var(--ink-2)}
+.bar .track{height:22px;background:var(--surface-2);border-radius:3px;position:relative;overflow:hidden}
+.bar .fill{height:100%;border-radius:0 4px 4px 0;background:var(--r2);transition:width .6s cubic-bezier(.2,.7,.3,1)}
+.bar.key .fill{background:var(--r4)}
+.bar .bv{font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums;min-width:72px;text-align:right}
+.bar .bv small{color:var(--ink-3);font-size:11px}
+@media (prefers-reduced-motion:reduce){.bar .fill{transition:none}}
+.axisnote{font-size:11.5px;color:var(--ink-3);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.caveat{
+  margin-top:14px;padding:12px 14px;border-radius:5px;background:var(--warn-soft);
+  color:var(--warn);font-size:12.5px;line-height:1.55
+}
+.caveat b{color:var(--warn)}
+
+/* ---------- brief ---------- */
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 30px;box-shadow:var(--shadow);max-width:720px}
+.brief .bh{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.brief .bh .el{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.brief .bh h3{font-family:"IBM Plex Serif",Georgia,serif;font-size:22px;font-weight:600;margin:5px 0 0;letter-spacing:-.01em;text-wrap:balance}
+.brief h4{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--ink-3);margin:22px 0 8px
+}
+.brief p{font-family:"IBM Plex Serif",Georgia,serif;font-size:14px;line-height:1.68;margin:0 0 10px;max-width:62ch}
+.labs{display:flex;flex-direction:column;gap:0}
+.lab{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.lab:last-child{border-bottom:0}
+.lab .ln{font-weight:500;font-size:13.5px}
+.lab .lr{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);display:block;margin-top:2px}
+.lab .lc{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.half{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--accent-soft);color:var(--accent);margin-right:7px;vertical-align:1px}
+.email{background:var(--surface-2);border-radius:5px;padding:15px 17px;font-size:13px;line-height:1.62;white-space:pre-wrap;font-family:"IBM Plex Mono",monospace}
+
+.foot{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);max-width:76ch}
+.foot b{color:var(--ink-2)}
+
+/* ---------- engine switch ---------- */
+.engines{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--line-strong);border-radius:5px;background:var(--surface-2)}
+.engines button{font:inherit;font-size:12.5px;font-weight:500;padding:5px 11px;border:0;border-radius:3px;background:transparent;color:var(--ink-2);cursor:pointer}
+.engines button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.engines button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+[hidden]{display:none !important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ---------- evidence explorer (ResearchBridge engine) ---------- */
+.scope{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:16px 0 0;padding:11px 14px;border-radius:5px;background:var(--surface-2);font-size:12.5px;color:var(--ink-2)}
+.scope b{color:var(--ink)}
+.scope label{margin-left:auto;display:flex;gap:7px;align-items:center}
+.field{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--ink-3)}
+.sel,.txtarea{font:inherit;font-size:13.5px;padding:9px 11px;border:1px solid var(--line-strong);border-radius:5px;background:var(--surface);color:var(--ink)}
+.txtarea{width:100%;min-height:120px;resize:vertical}
+.btn.sm{padding:6px 11px;font-size:12.5px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.kbtn{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:4px 9px;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid transparent;cursor:pointer}
+.kbtn:hover{border-color:var(--accent)}
+.kbtn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.status{font-size:12.5px;color:var(--ink-2);margin:12px 0 0}
+.status.err{color:var(--critical)}
+.plist{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.paper .ph{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.paper h4{margin:0;font-size:14.5px;font-weight:600;line-height:1.4}
+.paper .meta{margin:5px 0 0;font-size:11.5px;color:var(--ink-3)}
+.paper .links{display:flex;gap:14px;margin:12px 0 0;font-size:12.5px}
+.paper a,.bmd a{color:var(--accent)}
+.insts{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:11.5px;color:var(--ink-3)}
+.exp{display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end;margin-top:14px}
+.tbl-wrap{overflow-x:auto}
+.tbl{border-collapse:collapse;width:100%;font-size:12.5px}
+.tbl th{text-align:left;font-weight:600;color:var(--ink-2);padding:7px 10px;border-bottom:1px solid var(--line-strong)}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.claim[data-state="review"] .mk{color:var(--warn)}
+.srcpick{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow:auto;font-size:12.5px}
+.srcpick label{display:flex;gap:8px;align-items:flex-start}
+.bmd .ev{margin:6px 0 12px}
+.bmd ul{margin:0 0 10px;padding-left:18px;font-size:13.5px}
+.bmd .mail{white-space:pre-wrap}
+</style>
+
+<div class="shell">
+
+  <div class="topbar">
+    <span class="brand">Research Scout<span class="dot">.</span></span>
+    <div class="engines" role="tablist" aria-label="Engine">
+      <button role="tab" aria-selected="true" aria-controls="view-scout" data-view="view-scout">Gap finder</button>
+      <button role="tab" aria-selected="false" aria-controls="view-bridge" data-view="view-bridge">Evidence explorer</button>
+    </div>
+    <span class="tag mock scout-only">Illustrative mockup</span>
+    <span class="topnote scout-only">Corpus figures are real measurements. Gap example, institutions and quotes are examples.</span>
+    <span class="tag bridge-only" hidden>Live · starter set</span>
+  </div>
+
+  <div id="view-scout">
+  <div class="rail" role="tablist" aria-label="Pipeline stage">
+    <button class="step" role="tab" aria-selected="false" data-p="p1"><span class="n">01</span><span class="t">Goal &amp; corpus</span></button>
+    <button class="step" role="tab" aria-selected="true"  data-p="p2"><span class="n">02</span><span class="t">Field map</span></button>
+    <button class="step" role="tab" aria-selected="false" data-p="p3"><span class="n">03</span><span class="t">Gap &amp; bridges</span></button>
+    <button class="step" role="tab" aria-selected="false" data-p="p4"><span class="n">04</span><span class="t">Claim check</span></button>
+    <button class="step" role="tab" aria-selected="false" data-p="p5"><span class="n">05</span><span class="t">Does it beat chance?</span></button>
+    <button class="step" role="tab" aria-selected="false" data-p="p6"><span class="n">06</span><span class="t">Opportunity brief</span></button>
+  </div>
+
+  <!-- ============ 01 ============ -->
+  <section class="panel" id="p1" role="tabpanel">
+    <div class="phead">
+      <h2>State a goal, not a search query</h2>
+      <p>The scout turns a goal into a bounded corpus. It does not search the whole of PubMed — it builds a field it can measure, then reports exactly what it holds.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="sec">Goal</h3>
+        <div class="goalbox">
+          <input class="goalin" value="a project in early diagnostics" aria-label="Research goal">
+          <button class="btn" id="rebuild">Build corpus</button>
+        </div>
+        <h3 class="sec" style="margin-top:22px">Retrieval log</h3>
+        <ul class="pipe" id="plog">
+          <li><span class="ok">✓</span><span class="lbl">MeSH query resolved
+            <span class="sub mono">("Early Detection of Cancer"[MeSH] OR "Early Diagnosis"[MeSH])</span></span><span class="num">73,759 avail.</span></li>
+          <li><span class="ok">✓</span><span class="lbl">Training window fetched<span class="sub">publication year ≤ 2018</span></span><span class="num">9,999</span></li>
+          <li><span class="ok">✓</span><span class="lbl">Date-drift records dropped<span class="sub">print/electronic year disagreed with filter</span></span><span class="num">−802</span></li>
+          <li><span class="ok">✓</span><span class="lbl">Holdout window fetched<span class="sub">2019–2026, used only for scoring</span></span><span class="num">14,000</span></li>
+          <li><span class="ok">✓</span><span class="lbl">MeSH + abstract coverage</span><span class="num">100%</span></li>
+          <li><span class="ok">✓</span><span class="lbl">Descriptors placed in MeSH tree</span><span class="num">946</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="sec">Corpus held</h3>
+        <dl class="kv">
+          <dt>Training papers</dt><dd>9,197</dd>
+          <dt>Holdout papers</dt><dd>14,000</dd>
+          <dt>Problem terms</dt><dd>50 <span style="color:var(--ink-3)">· MeSH tree C</span></dd>
+          <dt>Method terms</dt><dd>30 <span style="color:var(--ink-3)">· E05.393 + L01</span></dd>
+          <dt>Bridge vocabulary</dt><dd>159 <span style="color:var(--ink-3)">· trees D, G</span></dd>
+          <dt>Grid density</dt><dd>58%</dd>
+        </dl>
+        <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
+        <p style="margin:0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E01</span> Diagnosis procedures — colonoscopy, mammography and colposcopy are defined by the organ they examine, so they can never transfer to another one. Leaving them in produced “breast cancer × colonoscopy” as a top result.
+        </p>
+        <p style="margin:10px 0 0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section class="panel on" id="p2" role="tabpanel">
+    <div class="phead">
+      <h2>A map of what the field has and hasn’t tried</h2>
+      <p>Every cell is a problem crossed with a method, shaded by how many papers do both. Empty cells are candidates; the ringed cells are the few that survive the bridge test. Hover any cell.</p>
+    </div>
+    <div class="card">
+      <div class="mapwrap">
+        <table class="map" id="map"></table>
+      </div>
+      <div class="legend">
+        <span class="ramp">
+          <span style="color:var(--ink-3)">papers</span>
+          <i style="background:var(--r1)"></i><i style="background:var(--r2)"></i><i style="background:var(--r3)"></i><i style="background:var(--r4)"></i><i style="background:var(--r5)"></i>
+          <span class="mono">1 → 400+</span>
+        </span>
+        <span class="lgi"><i class="swatch e"></i> no papers</span>
+        <span class="lgi"><i class="swatch f"></i> flagged gap — shares ≥2 mechanistic bridges</span>
+      </div>
+      <div class="axisnote">
+        Showing 12 × 10 of the full 50 × 30 grid. Of 1,500 cells, <b class="mono">569</b> are empty and <b class="mono">328</b> carry at least two shared mechanistic bridge terms.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section class="panel" id="p3" role="tabpanel">
+    <div class="phead">
+      <h2>Why this hole is interesting</h2>
+      <p>An empty cell on its own means nothing. This one is ranked because two literatures that never cite each other both run through the same mechanistic terms — Swanson’s ABC pattern, with the B-terms restricted to substances and physiological processes.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="gaphead">
+          <b>Pancreatic Neoplasms</b><span class="x">×</span><b>Breath Tests</b>
+          <span class="tag mock">example gap</span>
+        </div>
+        <p style="color:var(--ink-2);margin:2px 0 16px;font-size:13px">
+          <span class="mono">214</span> papers on the problem · <span class="mono">96</span> on the method · <span class="mono">0</span> on both, in papers up to 2018.
+        </p>
+        <div class="chain">
+          <div class="node"><span class="role">Problem A</span><span class="val">Pancreatic Neoplasms <span class="mono" style="color:var(--ink-3)">C04.588.274.761</span></span></div>
+          <div class="link"></div>
+          <div class="node"><span class="role">Bridges B</span><span class="val"><span class="bridges">
+            <span class="chip">Volatile Organic Compounds</span><span class="chip">Polyamines</span><span class="chip">Exhaled Breath Condensate</span><span class="chip">Gas Chromatography-Mass Spectrometry</span>
+          </span></span></div>
+          <div class="link"></div>
+          <div class="node"><span class="role">Method C</span><span class="val">Breath Tests <span class="mono" style="color:var(--ink-3)">E05.393.183</span></span></div>
+        </div>
+        <div class="ev">
+          <q>Exhaled volatile organic compound profiles discriminated gastric and oesophageal cancer from benign disease with an area under the curve of 0.85.</q>
+          <cite>Method half · PMID 00000000 (example) · 2017</cite>
+        </div>
+        <div class="ev">
+          <q>Polyamine concentrations were elevated in pancreatic ductal adenocarcinoma relative to chronic pancreatitis controls.</q>
+          <cite>Problem half · PMID 00000000 (example) · 2016</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="sec">Ranking</h3>
+        <dl class="kv">
+          <dt>Shared bridges</dt><dd>4</dd>
+          <dt>Bridge score (IDF)</dt><dd>21.4</dd>
+          <dt>Rank among flagged</dt><dd>7 / 328</dd>
+          <dt>Direct co-citation</dt><dd>none</dd>
+        </dl>
+        <h3 class="sec" style="margin-top:22px">Rejected nearby — 241 cells</h3>
+        <p style="margin:0 0 10px;color:var(--ink-2);font-size:12.5px">The reject pile is shown because it is the only honest way to read the shortlist.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:12.5px;color:var(--ink-2)"><b style="color:var(--ink)">Breast Neoplasms × Colonoscopy</b><br><span style="color:var(--ink-3)">method is organ-bound — cannot transfer</span></div>
+          <div style="font-size:12.5px;color:var(--ink-2)"><b style="color:var(--ink)">Cervical Neoplasms × Early Diagnosis</b><br><span style="color:var(--ink-3)">sibling MeSH terms — indexing artifact, not a gap</span></div>
+          <div style="font-size:12.5px;color:var(--ink-2)"><b style="color:var(--ink)">Parkinson Disease × Mass Spectrometry</b><br><span style="color:var(--ink-3)">only 1 shared bridge, below threshold</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section class="panel" id="p4" role="tabpanel">
+    <div class="phead">
+      <h2>Every sentence checked against its source</h2>
+      <p>A general-purpose model wrote the three claims below from the same two abstracts. The scout checks each one against the source text and deletes what isn’t supported. This runs in code, not in the model.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="sec">Draft claims — unverified model output</h3>
+        <div id="claims">
+          <div class="claim" data-state="pending" data-v="pass">
+            <span class="mk">·</span>
+            <span><span class="txt">Exhaled VOC profiles separated upper-GI cancer from benign disease with an AUC of 0.85.</span><span class="why"></span></span>
+          </div>
+          <div class="claim" data-state="pending" data-v="pass">
+            <span class="mk">·</span>
+            <span><span class="txt">Polyamines were elevated in pancreatic ductal adenocarcinoma versus chronic pancreatitis.</span><span class="why"></span></span>
+          </div>
+          <div class="claim" data-state="pending" data-v="fail">
+            <span class="mk">·</span>
+            <span><span class="txt">Breath testing has been validated for pancreatic cancer screening in a multi-centre trial.</span><span class="why"></span></span>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
+          <button class="btn" id="runv">Check against sources</button>
+          <button class="btn ghost" id="resetv">Reset</button>
+        </div>
+        <div class="verdict" id="verdict" hidden>
+          <span><b>2</b> of <b>3</b> claims supported.</span>
+          <span style="color:var(--ink-3)">1 deleted before it reached the brief.</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="sec">Source abstract — method half</h3>
+        <div class="src" id="srcbox">Patients undergoing upper gastrointestinal endoscopy provided exhaled breath samples analysed by selected-ion flow-tube mass spectrometry. <span data-hl>Exhaled volatile organic compound profiles discriminated gastric and oesophageal cancer from benign disease with an area under the curve of 0.85.</span> No pancreatic cases were included in this cohort, and no multi-centre validation has been undertaken.</div>
+        <p style="margin:11px 0 0;font-size:12px;color:var(--ink-3)">
+          The third claim fails on two counts: the cohort contains no pancreatic cases, and the abstract states explicitly that no multi-centre validation exists. Nothing in either source supports it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section class="panel" id="p5" role="tabpanel">
+    <div class="phead">
+      <h2>Do the flagged gaps actually get filled?</h2>
+      <p>The grid was built from papers up to 2018 only. We then asked which flagged gaps appear in 2019–2026 papers — a window the ranking never saw.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 class="sec">Share of empty cells filled in the holdout window</h3>
+        <div class="bars" id="bars">
+          <div class="bar key" data-w="17"><span class="bl">Flagged by bridges<br><span style="color:var(--ink-3);font-size:11.5px">n = 328</span></span><span class="track"><span class="fill" style="width:0"></span></span><span class="bv">17%<br><small>55 filled</small></span></div>
+          <div class="bar" data-w="9"><span class="bl">Popularity-matched<br><span style="color:var(--ink-3);font-size:11.5px">n = 328</span></span><span class="track"><span class="fill" style="width:0"></span></span><span class="bv">9%<br><small>31 filled</small></span></div>
+          <div class="bar" data-w="8"><span class="bl">Unflagged empty cells<br><span style="color:var(--ink-3);font-size:11.5px">n = 241</span></span><span class="track"><span class="fill" style="width:0"></span></span><span class="bv">8%<br><small>20 filled</small></span></div>
+        </div>
+        <div class="axisnote">Scale 0–20%. “Filled” means at least one 2019–2026 paper carries both MeSH terms. The popularity-matched control draws unflagged cells from the same problem- and method-frequency deciles, so the lift is not just “popular topics get studied.”</div>
+      </div>
+      <div class="card">
+        <h3 class="sec">What this supports</h3>
+        <dl class="kv">
+          <dt>Lift vs unflagged</dt><dd>2.0×</dd>
+          <dt>Lift vs matched</dt><dd>1.8×</dd>
+          <dt>Precision @ 328</dt><dd>17%</dd>
+        </dl>
+        <div class="caveat">
+          <b>And what it doesn’t.</b> Raise the bar to three or more holdout papers and the signal disappears — 6 of 328 flagged, which the matched control matches. So this ranks candidates roughly twice as well as chance. It does not predict breakthroughs, and we don’t claim it does.
+        </div>
+        <p style="margin:14px 0 0;font-size:12.5px;color:var(--ink-2)">
+          Prior art worth naming: Swanson &amp; Smalheiser’s <span class="mono">Arrowsmith</span> has done literature-based discovery since the 1990s. What’s new here is the measured lift, the per-claim verification, and the handoff to named local labs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 ============ -->
+  <section class="panel" id="p6" role="tabpanel">
+    <div class="phead">
+      <h2>The deliverable</h2>
+      <p>One page a researcher can act on: the gap, the evidence that survived checking, who holds each half in Massachusetts, and a first message.</p>
+    </div>
+    <div class="brief">
+      <div class="bh">
+        <span class="el">Opportunity brief · early diagnostics · <span class="mono">example</span></span>
+        <h3>Breath-based volatile profiling for pancreatic cancer detection</h3>
+      </div>
+
+      <h4>The gap</h4>
+      <p>Exhaled volatile organic compound analysis is an active method in upper-gastrointestinal cancer detection, with 96 papers up to 2018. Pancreatic neoplasms carry 214 early-detection papers over the same period. No paper in the training corpus does both, yet the two literatures share four mechanistic terms — polyamines, volatile organic compounds, exhaled breath condensate, and GC-MS.</p>
+
+      <h4>Evidence that survived checking</h4>
+      <p>Two of three drafted claims were supported by their cited abstracts and are reproduced with sources. One claim — that breath testing has been validated for pancreatic screening in a multi-centre trial — was deleted; the cited cohort contained no pancreatic cases and the abstract states no such validation exists.</p>
+
+      <h4>Confidence</h4>
+      <p>Gaps ranked this way are filled in later literature about twice as often as comparable empty cells. This is a prioritisation signal, not a prediction. Treat the brief as a starting hypothesis to take to a specialist, not a finding.</p>
+
+      <h4>Who holds each half — Massachusetts</h4>
+      <div class="labs">
+        <div class="lab">
+          <span><span class="ln"><span class="half">Method</span>Massachusetts General Hospital</span><span class="lr">Boston · breath &amp; VOC analysis</span></span>
+          <span class="lc">18 papers</span>
+        </div>
+        <div class="lab">
+          <span><span class="ln"><span class="half">Method</span>Boston University</span><span class="lr">Boston · GC-MS, sensor arrays</span></span>
+          <span class="lc">11 papers</span>
+        </div>
+        <div class="lab">
+          <span><span class="ln"><span class="half">Problem</span>Dana-Farber Cancer Institute</span><span class="lr">Boston · pancreatic early detection</span></span>
+          <span class="lc">34 papers</span>
+        </div>
+        <div class="lab">
+          <span><span class="ln"><span class="half">Problem</span>UMass Chan Medical School</span><span class="lr">Worcester · pancreatic cohorts</span></span>
+          <span class="lc">9 papers</span>
+        </div>
+      </div>
+      <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--ink-3);margin:9px 0 0">
+        Institution names are real; the counts shown are example figures. In the built product these come from live OpenAlex institution queries, not the 135-row starter CSV.
+      </p>
+
+      <h4>Draft first message</h4>
+      <div class="email">Subject: VOC breath profiling for pancreatic early detection — possible collaboration
+
+Dear Dr. ———,
+
+Your group's work on exhaled volatile profiling in upper-GI cancer detection
+caught my attention while I was mapping early-diagnostics literature in
+Massachusetts. The mapping turned up something I wanted to put to you: the
+VOC-profiling and pancreatic early-detection literatures share four
+mechanistic terms — polyamines, VOCs, exhaled breath condensate and GC-MS —
+but I could not find a paper that applies the method to the problem.
+
+Two groups at Dana-Farber and UMass Chan hold pancreatic cohorts. If the
+absence reflects an untried combination rather than a known dead end, I would
+value fifteen minutes to hear why.
+
+I've attached the two-page brief with sources, including one claim our check
+removed as unsupported.</div>
+    </div>
+  </section>
+
+  <p class="foot">
+    <b>What is real in this mockup:</b> corpus counts, coverage rates, the 802 dropped date-drift records, grid density, the 569/328/241 cell split, and the 17% / 9% / 8% fill rates with their 2.0× and 1.8× lifts — all measured against PubMed on 24 October 2026.
+    <b>What is invented:</b> the pancreatic/breath-test gap and its ranking figures, the abstract excerpts and PMIDs, and the per-institution paper counts.
+  </p>
+  </div><!-- /view-scout -->
+
+  <!-- ================= Evidence explorer: ResearchBridge engine ================= -->
+  <div id="view-bridge" hidden>
+    <div class="scope" role="note">
+      <span><b>Separate engine, separate claims.</b>
+        <span id="b-stats">Loading…</span>
+        Scores are text relevance (TF-IDF), not probability, evidence quality, or a validated research gap.</span>
+      <label><span data-t="language">Language</span>
+        <select class="sel" id="b-lang" aria-label="Interface language">
+          <option value="en">English</option><option value="zh">繁體中文</option><option value="es">Español</option>
+        </select></label>
+    </div>
+
+    <div class="rail" role="tablist" aria-label="Evidence explorer section">
+      <button class="step" role="tab" aria-selected="true"  data-p="b1"><span class="n">01</span><span class="t" data-t="tab_search">Paper explorer</span></button>
+      <button class="step" role="tab" aria-selected="false" data-p="b2"><span class="n">02</span><span class="t" data-t="tab_bridges">Methods &amp; Bridges</span></button>
+      <button class="step" role="tab" aria-selected="false" data-p="b3"><span class="n">03</span><span class="t" data-t="tab_compare">Compare papers</span> <span class="mono" id="b-count">(0)</span></button>
+      <button class="step" role="tab" aria-selected="false" data-p="b4"><span class="n">04</span><span class="t" data-t="tab_check">Source check</span></button>
+      <button class="step" role="tab" aria-selected="false" data-p="b5"><span class="n">05</span><span class="t" data-t="tab_brief">Opportunity brief</span></button>
+      <button class="step" role="tab" aria-selected="false" data-p="b6"><span class="n">06</span><span class="t" data-t="tab_directory">Institutions</span></button>
+    </div>
+
+    <!-- 01 search -->
+    <section class="panel on" id="b1" role="tabpanel">
+      <div class="phead"><h2 data-t="start">Start with a research goal</h2><p data-t="score_explained"></p></div>
+      <div class="card">
+        <form class="goalbox" id="b-search-form">
+          <input class="goalin" id="b-q" maxlength="200" data-tp="query_placeholder" aria-label="Research goal or keywords">
+          <select class="sel" id="b-mode" aria-label="Retrieval method">
+            <option value="tfidf" data-t="tfidf">TF-IDF keywords</option>
+            <option value="hybrid" data-t="hybrid">Hybrid: TF-IDF + LSA</option>
+          </select>
+          <button class="btn" type="submit" data-t="search">Search papers</button>
+        </form>
+        <h3 class="sec" style="margin-top:18px" data-t="keywords">Keywords supported by this corpus</h3>
+        <div class="bridges" id="b-keywords"></div>
+        <p class="status" id="b-search-status" role="status" aria-live="polite"></p>
+        <div class="exp" id="b-search-export" hidden></div>
+      </div>
+      <div class="plist" id="b-results"></div>
+    </section>
+
+    <!-- 02 bridges -->
+    <section class="panel" id="b2" role="tabpanel">
+      <div class="phead"><h2 data-t="bridge_title">From method C to bridges that interest you</h2><p data-t="bridge_intro"></p></div>
+      <div class="grid2">
+        <div class="card">
+          <h3 class="sec" data-t="recommended">Methods related to your goal</h3>
+          <div class="bridges" id="b-recs"></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+            <label class="field"><span data-t="choose_method">Candidate method C</span><select class="sel" id="b-method"></select></label>
+            <label class="field"><span data-t="choose_bridge">Bridge cue of interest</span><select class="sel" id="b-cue"></select></label>
+          </div>
+          <div class="chain" style="margin-top:16px">
+            <div class="node"><span class="role" data-t="goal_a">Goal A</span><span class="val" id="b-chain-a">—</span></div><div class="link"></div>
+            <div class="node"><span class="role" data-t="bridge_b">Bridge B</span><span class="val" id="b-chain-b">—</span></div><div class="link"></div>
+            <div class="node"><span class="role" data-t="method_c">Method C</span><span class="val" id="b-chain-c">—</span></div>
+          </div>
+          <p class="status" id="b-bridge-status" role="status" aria-live="polite"></p>
+          <div class="exp" id="b-bridge-export" hidden></div>
+        </div>
+        <div class="card">
+          <h3 class="sec" data-t="bridge_pair_title">Relatedness between Bridge results</h3>
+          <p style="margin:0 0 10px;font-size:12.5px;color:var(--ink-2)" data-t="comparison_formula"></p>
+          <div class="tbl-wrap" id="b-pairs"></div>
+          <div class="caveat" data-t="bridge_note"></div>
+        </div>
+      </div>
+      <div class="plist" id="b-bridge-results"></div>
+    </section>
+
+    <!-- 03 compare -->
+    <section class="panel" id="b3" role="tabpanel">
+      <div class="phead"><h2 data-t="compare_title">Compare sources</h2><p data-t="compare_note"></p></div>
+      <div class="card" id="b-compare"></div>
+    </section>
+
+    <!-- 04 source check -->
+    <section class="panel" id="b4" role="tabpanel">
+      <div class="phead"><h2 data-t="check_title">Check statements against source text</h2><p data-t="check_note"></p></div>
+      <div class="grid2">
+        <div class="card">
+          <label class="field"><span data-t="claims">Statements to check</span>
+            <textarea class="txtarea" id="b-claims" maxlength="10000"></textarea></label>
+          <p style="margin:6px 0 0;font-size:11.5px;color:var(--ink-3)">One statement per line, up to 20. Statements shorter than 16 characters are never matched.</p>
+          <div style="margin-top:14px"><button class="btn" id="b-check" data-t="check_button">Check sources</button></div>
+          <div id="b-check-out" style="margin-top:8px"></div>
+        </div>
+        <div class="card">
+          <h3 class="sec" data-t="check_sources">Sources to check</h3>
+          <div class="srcpick" id="b-check-src"></div>
+          <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Draws on your comparison list plus the current search results. This literal check is Bridge’s tool; the Gap finder’s claim gate (step 04) is a separate, stricter one.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 brief -->
+    <section class="panel" id="b5" role="tabpanel">
+      <div class="phead"><h2 data-t="brief_title">Turn exploration into a discussion brief</h2><p data-t="brief_note"></p></div>
+      <p class="status" id="b-brief-status" role="status" aria-live="polite"></p>
+      <div class="exp" id="b-brief-export" hidden></div>
+      <div class="brief bmd" id="b-brief" style="margin-top:14px" hidden></div>
+    </section>
+
+    <!-- 06 directory -->
+    <section class="panel" id="b6" role="tabpanel">
+      <div class="phead"><h2 data-t="directory_title">Original institution directory</h2><p data-t="directory_note"></p></div>
+      <div class="card">
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <label class="field" style="flex:1 1 240px"><span data-t="institution_name">Institution name</span><input class="goalin" id="b-dir-name" maxlength="100" style="font-size:13.5px;padding:9px 11px"></label>
+          <label class="field"><span data-t="city">City</span><select class="sel" id="b-dir-city"></select></label>
+        </div>
+        <p class="status" id="b-dir-status" role="status" aria-live="polite"></p>
+        <div class="exp" id="b-dir-export"></div>
+        <div class="tbl-wrap" id="b-dir" style="margin-top:12px"></div>
+      </div>
+    </section>
+
+    <p class="foot"><b>Evidence explorer</b> runs the ResearchBridge engine on the 60-paper Hackachusetts starter set (Massachusetts affiliation, 2024). Excerpts are verbatim official abstract text; nothing here is model-generated. Institution links are recorded OpenAlex affiliations, not proof of current expertise or willingness to collaborate.</p>
+  </div><!-- /view-bridge -->
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- panel switching ---------- */
+const steps = [...document.querySelectorAll('#view-scout .step')];
+steps.forEach(s => s.addEventListener('click', () => {
+  steps.forEach(o => o.setAttribute('aria-selected', String(o === s)));
+  document.querySelectorAll('#view-scout .panel').forEach(p => p.classList.toggle('on', p.id === s.dataset.p));
+  if (s.dataset.p === 'p5') drawBars();
+}));
+function goto(id){ const s = steps.find(x => x.dataset.p === id); if (s) s.click(); }
+
+/* ---------- heatmap ---------- */
+const PROBLEMS = ['Breast Neoplasms','Colorectal Neoplasms','Lung Neoplasms','Uterine Cervical Neoplasms',
+  'Prostatic Neoplasms','Stomach Neoplasms','Carcinoma, Hepatocellular','Pancreatic Neoplasms',
+  'Ovarian Neoplasms','Esophageal Neoplasms','Alzheimer Disease','Diabetic Retinopathy'];
+const METHODS = ['Polymerase Chain Reaction','Methylation Analysis','Liquid Biopsy','Mass Spectrometry',
+  'Sequencing, High-Throughput','Immunoassay','Machine Learning','Metabolomics','Raman Spectrum Analysis','Breath Tests'];
+/* counts; -1 marks a flagged gap (count is 0) */
+const COUNTS = [
+  [112, 268, 141,  46,  88, 134, 203,  31,   7,   0],
+  [ 97, 412, 128,  38,  74, 196, 151,  44,  11,  12],
+  [ 86, 159, 174,  52,  96, 118, 231,  27,   6,  19],
+  [143,  96,  22,   9,  48,  87,  64,  12,  -1,   0],
+  [ 71,  83,  66,  29,  41, 152,  98,  23,   0,   5],
+  [ 54,  77,  43,  31,  36,  94,  61,  18,   4,  28],
+  [ 62,  91,  88,  24,  33,  76,  47,  21,   0,  -1],
+  [ 48,  69,  74,  36,  29,  58,  52,  26,   3,  -1],
+  [ 39,  44,  57,  18,  26,  81,  35,  14,  -1,   0],
+  [ 27,  36,  31,  22,  19,  33,  29,  11,   0,  -1],
+  [ 18,  26,  14,  41,  23,  47,  73,  34,   0,   0],
+  [  9,   7,   6,   5,  12,  16,  86,   8,  -1,   0],
+];
+const PICK = [7, 9]; /* Pancreatic Neoplasms x Breath Tests */
+
+function bucket(n){
+  if (n <= 0) return 0;
+  if (n < 10) return 1;
+  if (n < 40) return 2;
+  if (n < 100) return 3;
+  if (n < 200) return 4;
+  return 5;
+}
+(function buildMap(){
+  const t = document.getElementById('map');
+  let h = '<thead><tr><th></th>';
+  METHODS.forEach(m => h += `<th class="col" scope="col"><span>${m}</span></th>`);
+  h += '</tr></thead><tbody>';
+  PROBLEMS.forEach((p, i) => {
+    h += `<tr><th class="row" scope="row" title="${p}">${p}</th>`;
+    METHODS.forEach((m, j) => {
+      const raw = COUNTS[i][j];
+      const flag = raw === -1;
+      const n = flag ? 0 : raw;
+      const pick = (i === PICK[0] && j === PICK[1]);
+      const cls = ['cell', 'c' + bucket(n), flag ? (pick ? 'pick' : 'flag') : ''].join(' ');
+      const label = flag
+        ? `${p} × ${m} — no papers, flagged gap`
+        : (n === 0 ? `${p} × ${m} — no papers` : `${p} × ${m} — ${n} papers`);
+      h += `<td><button class="${cls}" data-p="${p}" data-m="${m}" data-n="${n}" data-f="${flag ? 1 : 0}" aria-label="${label}"></button></td>`;
+    });
+    h += '</tr>';
+  });
+  t.innerHTML = h + '</tbody>';
+})();
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById('tip');
+function showTip(el, ev){
+  const n = +el.dataset.n, f = el.dataset.f === '1';
+  tip.innerHTML = `<strong>${el.dataset.p}</strong><br>× ${el.dataset.m}<br>`
+    + (f ? `<span class="tv">flagged gap</span> · 0 papers · 4 shared bridges`
+         : `<span class="tv">${n}</span> paper${n === 1 ? '' : 's'}`);
+  tip.style.opacity = '1';
+  const r = el.getBoundingClientRect();
+  let x = r.left + r.width / 2 - 115, y = r.top - 8;
+  x = Math.max(8, Math.min(x, innerWidth - 246));
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+  tip.style.transform = 'translateY(-100%)';
+}
+document.getElementById('map').addEventListener('mouseover', e => {
+  const c = e.target.closest('.cell'); if (c) showTip(c, e);
+});
+document.getElementById('map').addEventListener('focusin', e => {
+  const c = e.target.closest('.cell'); if (c) showTip(c, e);
+});
+document.getElementById('map').addEventListener('mouseout', () => tip.style.opacity = '0');
+document.getElementById('map').addEventListener('focusout', () => tip.style.opacity = '0');
+document.getElementById('map').addEventListener('click', e => {
+  const c = e.target.closest('.cell');
+  if (c && c.dataset.f === '1') goto('p3');
+});
+
+/* ---------- claim verification ---------- */
+const claims = [...document.querySelectorAll('.claim')];
+const WHY = {
+  pass: 'Matched to source sentence · quote verified',
+  fail: 'No supporting sentence in either source · claim removed'
+};
+document.getElementById('runv').addEventListener('click', () => {
+  const hl = document.querySelector('#srcbox [data-hl]');
+  claims.forEach((c, i) => setTimeout(() => {
+    const v = c.dataset.v;
+    c.dataset.state = v;
+    c.querySelector('.mk').textContent = v === 'pass' ? '✓' : '✕';
+    c.querySelector('.why').textContent = WHY[v];
+    if (i === 0 && hl) hl.outerHTML = '<mark>' + hl.innerHTML + '</mark>';
+    if (i === claims.length - 1) document.getElementById('verdict').hidden = false;
+  }, 420 * (i + 1)));
+});
+document.getElementById('resetv').addEventListener('click', () => {
+  claims.forEach(c => {
+    c.dataset.state = 'pending';
+    c.querySelector('.mk').textContent = '·';
+    c.querySelector('.why').textContent = '';
+  });
+  document.getElementById('verdict').hidden = true;
+  const m = document.querySelector('#srcbox mark');
+  if (m) m.outerHTML = '<span data-hl>' + m.innerHTML + '</span>';
+});
+
+/* ---------- bars ---------- */
+let drawn = false;
+function drawBars(){
+  if (drawn) return; drawn = true;
+  document.querySelectorAll('#bars .bar').forEach((b, i) => {
+    const pct = +b.dataset.w / 20 * 100;
+    setTimeout(() => b.querySelector('.fill').style.width = pct + '%', 90 * i);
+  });
+}
+
+/* ---------- goal box ---------- */
+document.getElementById('rebuild').addEventListener('click', () => goto('p2'));
+
+/* ---------- engine switch ---------- */
+const engineTabs = [...document.querySelectorAll('.engines button')];
+function showEngine(id){
+  engineTabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.view === id)));
+  ['view-scout', 'view-bridge'].forEach(v => document.getElementById(v).hidden = v !== id);
+  document.querySelectorAll('.scout-only').forEach(e => e.hidden = id !== 'view-scout');
+  document.querySelectorAll('.bridge-only').forEach(e => e.hidden = id !== 'view-bridge');
+  if (id === 'view-bridge' && window.Bridge) window.Bridge.init();
+  history.replaceState(null, '', id === 'view-bridge' ? '#explorer' : location.pathname);
+}
+engineTabs.forEach(b => b.addEventListener('click', () => showEngine(b.dataset.view)));
+if (location.hash === '#explorer') showEngine('view-bridge');
+</script>
+<script src="/static/bridge.js"></script>

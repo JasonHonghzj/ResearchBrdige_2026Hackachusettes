@@ -1,0 +1,1381 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41509880",
+  "retrieved_at": "2026-10-24T17:45:33+00:00",
+  "record": {
+    "id": "https://openalex.org/W7120271935",
+    "doi": null,
+    "title": "Web-based Interventions for Substance Use Disorders and Mental Health: Preliminary findings from a Scoping Review.",
+    "display_name": "Web-based Interventions for Substance Use Disorders and Mental Health: Preliminary findings from a Scoping Review.",
+    "publication_year": 2024,
+    "publication_date": "2024-01-01",
+    "ids": {
+      "openalex": "https://openalex.org/W7120271935",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41509880"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "pmid:41509880",
+      "doi": null,
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41509880",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "AMIA ... Annual Symposium proceedings. AMIA Symposium",
+      "raw_type": "Journal Article"
+    },
+    "volume": null,
+    "type": "conference-paper",
+    "indexed_in": [
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "green",
+      "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12778349/",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5022760712",
+          "display_name": "Yuri Quintana",
+          "orcid": "https://orcid.org/0000-0001-6583-0257",
+          "observed_orcids": [
+            "https://orcid.org/0000-0001-6583-0257"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1316535847",
+            "display_name": "Beth Israel Deaconess Medical Center",
+            "ror": "https://ror.org/04drvxt59",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1316535847"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I136199984",
+            "display_name": "Harvard University",
+            "ror": "https://ror.org/03vek6s52",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I136199984"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I212119943",
+            "display_name": "University of Victoria",
+            "ror": "https://ror.org/04s5mat29",
+            "country_code": "CA",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I212119943"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210144802",
+            "display_name": "Homewood Research Institute",
+            "ror": "https://ror.org/04e2hkj02",
+            "country_code": "CA",
+            "type": "nonprofit",
+            "lineage": [
+              "https://openalex.org/I4210144802"
+            ]
+          }
+        ],
+        "countries": [
+          "CA",
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Yuri Quintana",
+        "raw_affiliation_strings": [
+          "School of Health Information Science, University of Victoria, Canada",
+          "Homewood Research Institute, Guelph, Ontario, Canada",
+          "Division of Clinical Informatics, Beth Israel Deaconess Medical Center, Boston, Massachusetts, USA",
+          "Harvard Medical School, Boston, Massachusetts USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "School of Health Information Science, University of Victoria, Canada",
+            "institution_ids": [
+              "https://openalex.org/I212119943"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Homewood Research Institute, Guelph, Ontario, Canada",
+            "institution_ids": [
+              "https://openalex.org/I4210144802"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Division of Clinical Informatics, Beth Israel Deaconess Medical Center, Boston, Massachusetts, USA",
+            "institution_ids": [
+              "https://openalex.org/I1316535847"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Harvard Medical School, Boston, Massachusetts USA",
+            "institution_ids": [
+              "https://openalex.org/I136199984"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5009773245",
+          "display_name": "Amanda L. Joseph",
+          "orcid": "https://orcid.org/0000-0002-5869-037X",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-5869-037X"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I212119943",
+            "display_name": "University of Victoria",
+            "ror": "https://ror.org/04s5mat29",
+            "country_code": "CA",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I212119943"
+            ]
+          },
+          {
+            "id": "https://openalex.org/I4210144802",
+            "display_name": "Homewood Research Institute",
+            "ror": "https://ror.org/04e2hkj02",
+            "country_code": "CA",
+            "type": "nonprofit",
+            "lineage": [
+              "https://openalex.org/I4210144802"
+            ]
+          }
+        ],
+        "countries": [
+          "CA"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Amanda L Joseph",
+        "raw_affiliation_strings": [
+          "School of Health Information Science, University of Victoria, Canada",
+          "Homewood Research Institute, Guelph, Ontario, Canada"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "School of Health Information Science, University of Victoria, Canada",
+            "institution_ids": [
+              "https://openalex.org/I212119943"
+            ]
+          },
+          {
+            "raw_affiliation_string": "Homewood Research Institute, Guelph, Ontario, Canada",
+            "institution_ids": [
+              "https://openalex.org/I4210144802"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5126545070",
+          "display_name": "Gyana Srivastava",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I1316535847",
+            "display_name": "Beth Israel Deaconess Medical Center",
+            "ror": "https://ror.org/04drvxt59",
+            "country_code": "US",
+            "type": "healthcare",
+            "lineage": [
+              "https://openalex.org/I1316535847"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Gyana Srivastava",
+        "raw_affiliation_strings": [
+          "Division of Clinical Informatics, Beth Israel Deaconess Medical Center, Boston, Massachusetts, USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Division of Clinical Informatics, Beth Israel Deaconess Medical Center, Boston, Massachusetts, USA",
+            "institution_ids": [
+              "https://openalex.org/I1316535847"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 2,
+    "institutions_distinct_count": 4,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 0.0,
+    "has_fulltext": false,
+    "cited_by_count": 0,
+    "citation_normalized_percentile": {
+      "value": 0.58122206,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": null,
+    "biblio": {
+      "volume": "2024",
+      "issue": null,
+      "first_page": "940",
+      "last_page": "949"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T11519",
+      "display_name": "Digital Mental Health Interventions",
+      "score": 0.9937000274658203,
+      "subfield": {
+        "id": "https://openalex.org/subfields/3202",
+        "display_name": "Applied Psychology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/32",
+        "display_name": "Psychology"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T11519",
+        "display_name": "Digital Mental Health Interventions",
+        "score": 0.9937000274658203,
+        "subfield": {
+          "id": "https://openalex.org/subfields/3202",
+          "display_name": "Applied Psychology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/32",
+          "display_name": "Psychology"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10043",
+        "display_name": "Substance Abuse Treatment and Outcomes",
+        "score": 0.005400000140070915,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2713",
+          "display_name": "Epidemiology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10912",
+        "display_name": "Telemedicine and Telehealth Implementation",
+        "score": 9.999999747378752e-05,
+        "subfield": {
+          "id": "https://openalex.org/subfields/2739",
+          "display_name": "Public Health, Environmental and Occupational Health"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/27",
+          "display_name": "Medicine"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/4",
+          "display_name": "Health Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/web-based-intervention",
+        "display_name": "online intervention",
+        "score": 1.0
+      },
+      {
+        "id": "https://openalex.org/keywords/substance-use-disorders",
+        "display_name": "substance use disorders",
+        "score": 0.8899999856948853
+      },
+      {
+        "id": "https://openalex.org/keywords/mental-health",
+        "display_name": "mental health",
+        "score": 0.9760000109672546
+      },
+      {
+        "id": "https://openalex.org/keywords/digital-health",
+        "display_name": "digital health",
+        "score": 0.4950000047683716
+      },
+      {
+        "id": "https://openalex.org/keywords/posttraumatic-stress-disorder",
+        "display_name": "post-traumatic stress disorder",
+        "score": 0.5649999976158142
+      },
+      {
+        "id": "https://openalex.org/keywords/depression",
+        "display_name": "depression",
+        "score": 1.0
+      },
+      {
+        "id": "https://openalex.org/keywords/anxiety",
+        "display_name": "anxiety",
+        "score": 1.0
+      },
+      {
+        "id": "https://openalex.org/keywords/emotion-regulation",
+        "display_name": "emotion regulation",
+        "score": 0.9980000257492065
+      },
+      {
+        "id": "https://openalex.org/keywords/help-seeking",
+        "display_name": "help-seeking",
+        "score": 0.9959999918937683
+      },
+      {
+        "id": "https://openalex.org/keywords/quality-of-life",
+        "display_name": "quality of life",
+        "score": 0.9729999899864197
+      },
+      {
+        "id": "https://openalex.org/keywords/treatment-accessibility",
+        "display_name": "treatment accessibility",
+        "score": 0.7609999775886536
+      },
+      {
+        "id": "https://openalex.org/keywords/underserved-populations",
+        "display_name": "underserved populations",
+        "score": 0.7519999742507935
+      },
+      {
+        "id": "https://openalex.org/keywords/cost-effectiveness",
+        "display_name": "cost-effectiveness",
+        "score": 0.6589999794960022
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C27415008",
+        "wikidata": "https://www.wikidata.org/wiki/Q7256382",
+        "display_name": "Psychological intervention",
+        "level": 2,
+        "score": 0.8434000015258789
+      },
+      {
+        "id": "https://openalex.org/C134362201",
+        "wikidata": "https://www.wikidata.org/wiki/Q317309",
+        "display_name": "Mental health",
+        "level": 2,
+        "score": 0.6937999725341797
+      },
+      {
+        "id": "https://openalex.org/C2991912374",
+        "wikidata": "https://www.wikidata.org/wiki/Q400711",
+        "display_name": "Substance use",
+        "level": 2,
+        "score": 0.6320000290870667
+      },
+      {
+        "id": "https://openalex.org/C71924100",
+        "wikidata": "https://www.wikidata.org/wiki/Q11190",
+        "display_name": "Medicine",
+        "level": 0,
+        "score": 0.5846999883651733
+      },
+      {
+        "id": "https://openalex.org/C118552586",
+        "wikidata": "https://www.wikidata.org/wiki/Q7867",
+        "display_name": "Psychiatry",
+        "level": 1,
+        "score": 0.4641000032424927
+      },
+      {
+        "id": "https://openalex.org/C138816342",
+        "wikidata": "https://www.wikidata.org/wiki/Q189603",
+        "display_name": "Public health",
+        "level": 2,
+        "score": 0.4194999933242798
+      },
+      {
+        "id": "https://openalex.org/C2779951463",
+        "wikidata": "https://www.wikidata.org/wiki/Q7268788",
+        "display_name": "Quality of life (healthcare)",
+        "level": 2,
+        "score": 0.3831999897956848
+      },
+      {
+        "id": "https://openalex.org/C168563851",
+        "wikidata": "https://www.wikidata.org/wiki/Q1436668",
+        "display_name": "Randomized controlled trial",
+        "level": 2,
+        "score": 0.3815000057220459
+      },
+      {
+        "id": "https://openalex.org/C2780665704",
+        "wikidata": "https://www.wikidata.org/wiki/Q959298",
+        "display_name": "Intervention (counseling)",
+        "level": 2,
+        "score": 0.37770000100135803
+      },
+      {
+        "id": "https://openalex.org/C2779530757",
+        "wikidata": "https://www.wikidata.org/wiki/Q1207505",
+        "display_name": "Quality (philosophy)",
+        "level": 2,
+        "score": 0.36550000309944153
+      },
+      {
+        "id": "https://openalex.org/C40010229",
+        "wikidata": "https://www.wikidata.org/wiki/Q3184856",
+        "display_name": "Substance abuse",
+        "level": 2,
+        "score": 0.3564999997615814
+      },
+      {
+        "id": "https://openalex.org/C2779943754",
+        "wikidata": "https://www.wikidata.org/wiki/Q5570863",
+        "display_name": "Global mental health",
+        "level": 3,
+        "score": 0.35589998960494995
+      },
+      {
+        "id": "https://openalex.org/C160735492",
+        "wikidata": "https://www.wikidata.org/wiki/Q31207",
+        "display_name": "Health care",
+        "level": 2,
+        "score": 0.3434000015258789
+      },
+      {
+        "id": "https://openalex.org/C2779473830",
+        "wikidata": "https://www.wikidata.org/wiki/Q1540899",
+        "display_name": "MEDLINE",
+        "level": 2,
+        "score": 0.3416000008583069
+      },
+      {
+        "id": "https://openalex.org/C15744967",
+        "wikidata": "https://www.wikidata.org/wiki/Q9418",
+        "display_name": "Psychology",
+        "level": 0,
+        "score": 0.3154999911785126
+      },
+      {
+        "id": "https://openalex.org/C70410870",
+        "wikidata": "https://www.wikidata.org/wiki/Q199906",
+        "display_name": "Clinical psychology",
+        "level": 1,
+        "score": 0.28929999470710754
+      },
+      {
+        "id": "https://openalex.org/C189708586",
+        "wikidata": "https://www.wikidata.org/wiki/Q1504425",
+        "display_name": "Systematic review",
+        "level": 3,
+        "score": 0.2728999853134155
+      },
+      {
+        "id": "https://openalex.org/C204787440",
+        "wikidata": "https://www.wikidata.org/wiki/Q188504",
+        "display_name": "Alternative medicine",
+        "level": 2,
+        "score": 0.26350000500679016
+      },
+      {
+        "id": "https://openalex.org/C2776674806",
+        "wikidata": "https://www.wikidata.org/wiki/Q12135",
+        "display_name": "Mental illness",
+        "level": 3,
+        "score": 0.25870001316070557
+      }
+    ],
+    "mesh": [
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D000079382",
+        "descriptor_name": "Internet-Based Intervention",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D001523",
+        "descriptor_name": "Mental Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D006801",
+        "descriptor_name": "Humans",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D008603",
+        "descriptor_name": "Mental Health",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D008603",
+        "descriptor_name": "Mental Health",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D008603",
+        "descriptor_name": "Mental Health",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D008603",
+        "descriptor_name": "Mental Health",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D008603",
+        "descriptor_name": "Mental Health",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": false
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D019966",
+        "descriptor_name": "Substance-Related Disorders",
+        "qualifier_ui": "Q000628",
+        "qualifier_name": "therapy",
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      },
+      {
+        "descriptor_ui": "D020407",
+        "descriptor_name": "Internet",
+        "qualifier_ui": null,
+        "qualifier_name": null,
+        "is_major_topic": true
+      }
+    ],
+    "locations_count": 2,
+    "locations": [
+      {
+        "id": "pmid:41509880",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41509880",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "AMIA ... Annual Symposium proceedings. AMIA Symposium",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:pubmedcentral.nih.gov:12778349",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12778349/",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "other-oa",
+        "license_id": "https://openalex.org/licenses/other-oa",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "AMIA Annu Symp Proc",
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "pmh:oai:pubmedcentral.nih.gov:12778349",
+      "doi": null,
+      "is_oa": true,
+      "landing_page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12778349/",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2764455111",
+        "display_name": "PubMed Central",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": true,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": "other-oa",
+      "license_id": "https://openalex.org/licenses/other-oa",
+      "version": "submittedVersion",
+      "is_accepted": false,
+      "is_published": false,
+      "raw_source_name": "AMIA Annu Symp Proc",
+      "raw_type": "Text"
+    },
+    "sustainable_development_goals": [
+      {
+        "id": "https://metadata.un.org/sdg/3",
+        "display_name": "Good health and well-being",
+        "score": 1.0
+      }
+    ],
+    "sustainable_development_goals_aurora": [
+      {
+        "id": "https://metadata.un.org/sdg/3",
+        "display_name": "Good health and well-being",
+        "score": 0.7810750007629395
+      }
+    ],
+    "study_designs": [],
+    "awards": [],
+    "funders": [],
+    "has_content": {
+      "pdf": false,
+      "grobid_xml": false
+    },
+    "content_urls": null,
+    "referenced_works_count": 0,
+    "referenced_works": [],
+    "related_works": [],
+    "abstract_inverted_index": {
+      "This": [
+        0
+      ],
+      "scoping": [
+        1
+      ],
+      "review": [
+        2
+      ],
+      "evaluated": [
+        3
+      ],
+      "the": [
+        4,
+        75,
+        88,
+        91,
+        131
+      ],
+      "efficacy": [
+        5
+      ],
+      "and": [
+        6,
+        15,
+        27,
+        48,
+        54,
+        83,
+        116,
+        120,
+        142,
+        151
+      ],
+      "potential": [
+        7,
+        132
+      ],
+      "of": [
+        8,
+        56,
+        85,
+        93,
+        124
+      ],
+      "web-based": [
+        9,
+        61,
+        94,
+        125
+      ],
+      "interventions": [
+        10,
+        31,
+        62,
+        95,
+        126
+      ],
+      "for": [
+        11,
+        103,
+        145
+      ],
+      "substance": [
+        12,
+        37,
+        148
+      ],
+      "use": [
+        13,
+        149
+      ],
+      "disorders": [
+        14,
+        150
+      ],
+      "mental": [
+        16,
+        41,
+        152
+      ],
+      "health": [
+        17,
+        42,
+        137,
+        153
+      ],
+      "conditions.": [
+        18,
+        154
+      ],
+      "The": [
+        19,
+        122
+      ],
+      "studies": [
+        20,
+        59
+      ],
+      "comprise": [
+        21
+      ],
+      "randomized": [
+        22
+      ],
+      "controlled": [
+        23
+      ],
+      "trials,": [
+        24,
+        26
+      ],
+      "pilot": [
+        25
+      ],
+      "effectiveness": [
+        28,
+        119
+      ],
+      "trials.": [
+        29
+      ],
+      "Web-based": [
+        30
+      ],
+      "consistently": [
+        32
+      ],
+      "demonstrated": [
+        33
+      ],
+      "significant": [
+        34
+      ],
+      "reductions": [
+        35
+      ],
+      "in": [
+        36,
+        40,
+        50,
+        74,
+        96
+      ],
+      "use,": [
+        38
+      ],
+      "improvements": [
+        39
+      ],
+      "outcomes": [
+        43,
+        144
+      ],
+      "(e.g.,": [
+        44
+      ],
+      "PTSD,": [
+        45
+      ],
+      "depression,": [
+        46
+      ],
+      "anxiety),": [
+        47
+      ],
+      "enhancements": [
+        49
+      ],
+      "emotion": [
+        51
+      ],
+      "regulation,": [
+        52
+      ],
+      "help-seeking,": [
+        53
+      ],
+      "quality": [
+        55
+      ],
+      "life.": [
+        57
+      ],
+      "Several": [
+        58
+      ],
+      "found": [
+        60
+      ],
+      "to": [
+        63,
+        68,
+        99,
+        133
+      ],
+      "be": [
+        64
+      ],
+      "non-inferior": [
+        65
+      ],
+      "or": [
+        66
+      ],
+      "superior": [
+        67
+      ],
+      "traditional": [
+        69
+      ],
+      "face-to-face": [
+        70
+      ],
+      "treatments.": [
+        71
+      ],
+      "Despite": [
+        72
+      ],
+      "limitations": [
+        73
+      ],
+      "current": [
+        76
+      ],
+      "evidence": [
+        77
+      ],
+      "base,": [
+        78
+      ],
+      "such": [
+        79
+      ],
+      "as": [
+        80
+      ],
+      "methodological": [
+        81
+      ],
+      "issues": [
+        82
+      ],
+      "lack": [
+        84
+      ],
+      "long-term": [
+        86,
+        118
+      ],
+      "follow-up,": [
+        87
+      ],
+      "findings": [
+        89
+      ],
+      "highlight": [
+        90
+      ],
+      "promise": [
+        92
+      ],
+      "expanding": [
+        97
+      ],
+      "access": [
+        98
+      ],
+      "evidence-based": [
+        100
+      ],
+      "care,": [
+        101
+      ],
+      "particularly": [
+        102
+      ],
+      "underserved": [
+        104
+      ],
+      "populations.": [
+        105
+      ],
+      "Future": [
+        106
+      ],
+      "research": [
+        107
+      ],
+      "should": [
+        108
+      ],
+      "focus": [
+        109
+      ],
+      "on": [
+        110
+      ],
+      "refining": [
+        111
+      ],
+      "interventions,": [
+        112
+      ],
+      "exploring": [
+        113
+      ],
+      "novel": [
+        114
+      ],
+      "technologies,": [
+        115
+      ],
+      "evaluating": [
+        117
+      ],
+      "cost-effectiveness.": [
+        121
+      ],
+      "integration": [
+        123
+      ],
+      "into": [
+        127
+      ],
+      "healthcare": [
+        128
+      ],
+      "systems": [
+        129
+      ],
+      "has": [
+        130
+      ],
+      "significantly": [
+        134
+      ],
+      "impact": [
+        135
+      ],
+      "public": [
+        136
+      ],
+      "by": [
+        138
+      ],
+      "increasing": [
+        139
+      ],
+      "treatment": [
+        140
+      ],
+      "accessibility": [
+        141
+      ],
+      "improving": [
+        143
+      ],
+      "individuals": [
+        146
+      ],
+      "with": [
+        147
+      ]
+    },
+    "counts_by_year": [],
+    "updated_date": "2026-10-12T09:40:04.860316",
+    "created_date": "2026-01-10T00:00:00"
+  }
+}

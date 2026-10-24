@@ -1,0 +1,1100 @@
+{
+  "source": "https://api.openalex.org/works/pmid:41049045",
+  "retrieved_at": "2026-10-24T17:45:29+00:00",
+  "record": {
+    "id": "https://openalex.org/W4404526286",
+    "doi": "https://doi.org/10.1103/prxlife.2.043013",
+    "title": "Jointly Embedding Protein Structures and Sequences through Residue Level Alignment",
+    "display_name": "Jointly Embedding Protein Structures and Sequences through Residue Level Alignment",
+    "publication_year": 2024,
+    "publication_date": "2024-11-19",
+    "ids": {
+      "openalex": "https://openalex.org/W4404526286",
+      "doi": "https://doi.org/10.1103/prxlife.2.043013",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/41049045"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "doi:10.1103/prxlife.2.043013",
+      "doi": "https://doi.org/10.1103/prxlife.2.043013",
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1103/prxlife.2.043013",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4387291267",
+        "display_name": "PRX Life",
+        "issn_l": "2835-8279",
+        "issn": [
+          "2835-8279"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_core": true,
+        "listed_in": [
+          "cwts-core",
+          "doaj"
+        ],
+        "host_organization": "https://openalex.org/P4310320261",
+        "host_organization_name": "American Physical Society",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310320261"
+        ],
+        "host_organization_lineage_names": [
+          "American Physical Society"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "PRX Life",
+      "raw_type": "journal-article"
+    },
+    "volume": null,
+    "type": "article",
+    "indexed_in": [
+      "crossref",
+      "doaj",
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "diamond",
+      "oa_url": "https://doi.org/10.1103/prxlife.2.043013",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5079589863",
+          "display_name": "Foster Birnbaum",
+          "orcid": "https://orcid.org/0000-0002-6062-2296",
+          "observed_orcids": [
+            "https://orcid.org/0000-0002-6062-2296"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I63966007",
+            "display_name": "Massachusetts Institute of Technology",
+            "ror": "https://ror.org/042nb2s44",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Foster Birnbaum",
+        "raw_affiliation_strings": [
+          "Massachusetts Institute of Technology"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0002-6062-2296",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Massachusetts Institute of Technology",
+            "institution_ids": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5102487928",
+          "display_name": "Saachi Jain",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I63966007",
+            "display_name": "Massachusetts Institute of Technology",
+            "ror": "https://ror.org/042nb2s44",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Saachi Jain",
+        "raw_affiliation_strings": [
+          "Massachusetts Institute of Technology"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Massachusetts Institute of Technology",
+            "institution_ids": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5032574693",
+          "display_name": "Aleksander Mądry",
+          "orcid": "https://orcid.org/0000-0003-0536-0323",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-0536-0323"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I63966007",
+            "display_name": "Massachusetts Institute of Technology",
+            "ror": "https://ror.org/042nb2s44",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Aleksander Madry",
+        "raw_affiliation_strings": [
+          "Massachusetts Institute of Technology"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Massachusetts Institute of Technology",
+            "institution_ids": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": "https://openalex.org/A5068168068",
+          "display_name": "Amy E. Keating",
+          "orcid": "https://orcid.org/0000-0003-4074-8980",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-4074-8980"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I63966007",
+            "display_name": "Massachusetts Institute of Technology",
+            "ror": "https://ror.org/042nb2s44",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Amy E. Keating",
+        "raw_affiliation_strings": [
+          "Massachusetts Institute of Technology"
+        ],
+        "raw_orcid": "https://orcid.org/0000-0003-4074-8980",
+        "affiliations": [
+          {
+            "raw_affiliation_string": "Massachusetts Institute of Technology",
+            "institution_ids": [
+              "https://openalex.org/I63966007"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 1,
+    "institutions_distinct_count": 1,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [
+      "https://openalex.org/I63966007"
+    ],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 0.5776,
+    "has_fulltext": true,
+    "cited_by_count": 5,
+    "citation_normalized_percentile": {
+      "value": 0.61573612,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": {
+      "min": 93,
+      "max": 98
+    },
+    "biblio": {
+      "volume": "2",
+      "issue": "4",
+      "first_page": null,
+      "last_page": null
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T10044",
+      "display_name": "Protein Structure and Dynamics",
+      "score": 0.9042999744415283,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1312",
+        "display_name": "Molecular Biology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/13",
+        "display_name": "Biochemistry, Genetics and Molecular Biology"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/1",
+        "display_name": "Life Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T10044",
+        "display_name": "Protein Structure and Dynamics",
+        "score": 0.9042999744415283,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1312",
+          "display_name": "Molecular Biology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/13",
+          "display_name": "Biochemistry, Genetics and Molecular Biology"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/1",
+          "display_name": "Life Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T12254",
+        "display_name": "Machine Learning in Bioinformatics",
+        "score": 0.044599998742341995,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1312",
+          "display_name": "Molecular Biology"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/13",
+          "display_name": "Biochemistry, Genetics and Molecular Biology"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/1",
+          "display_name": "Life Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T10211",
+        "display_name": "Computational Drug Discovery Methods",
+        "score": 0.0203000009059906,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1703",
+          "display_name": "Computational Theory and Mathematics"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/self-supervised-learning",
+        "display_name": "self-supervised learning",
+        "score": 0.800000011920929
+      },
+      {
+        "id": "https://openalex.org/keywords/binder-design",
+        "display_name": "binder design",
+        "score": 0.8980000019073486
+      },
+      {
+        "id": "https://openalex.org/keywords/protein-structure-prediction",
+        "display_name": "protein structure prediction",
+        "score": 0.34299999475479126
+      },
+      {
+        "id": "https://openalex.org/keywords/latent-space-alignment",
+        "display_name": "latent space alignment",
+        "score": 0.5189999938011169
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C2781338088",
+        "wikidata": "https://www.wikidata.org/wiki/Q903495",
+        "display_name": "Residue (chemistry)",
+        "level": 2,
+        "score": 0.652653157711029
+      },
+      {
+        "id": "https://openalex.org/C41608201",
+        "wikidata": "https://www.wikidata.org/wiki/Q980509",
+        "display_name": "Embedding",
+        "level": 2,
+        "score": 0.6371588706970215
+      },
+      {
+        "id": "https://openalex.org/C41008148",
+        "wikidata": "https://www.wikidata.org/wiki/Q21198",
+        "display_name": "Computer science",
+        "level": 0,
+        "score": 0.47933468222618103
+      },
+      {
+        "id": "https://openalex.org/C154945302",
+        "wikidata": "https://www.wikidata.org/wiki/Q11660",
+        "display_name": "Artificial intelligence",
+        "level": 1,
+        "score": 0.24248036742210388
+      },
+      {
+        "id": "https://openalex.org/C86803240",
+        "wikidata": "https://www.wikidata.org/wiki/Q420",
+        "display_name": "Biology",
+        "level": 0,
+        "score": 0.17587563395500183
+      },
+      {
+        "id": "https://openalex.org/C55493867",
+        "wikidata": "https://www.wikidata.org/wiki/Q7094",
+        "display_name": "Biochemistry",
+        "level": 1,
+        "score": 0.08714824914932251
+      }
+    ],
+    "mesh": [],
+    "locations_count": 4,
+    "locations": [
+      {
+        "id": "doi:10.1103/prxlife.2.043013",
+        "doi": "https://doi.org/10.1103/prxlife.2.043013",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1103/prxlife.2.043013",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4387291267",
+          "display_name": "PRX Life",
+          "issn_l": "2835-8279",
+          "issn": [
+            "2835-8279"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj"
+          ],
+          "host_organization": "https://openalex.org/P4310320261",
+          "host_organization_name": "American Physical Society",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320261"
+          ],
+          "host_organization_lineage_names": [
+            "American Physical Society"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "PRX Life",
+        "raw_type": "journal-article"
+      },
+      {
+        "id": "pmid:41049045",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41049045",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "PRX life",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11301214",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12490763",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12490763/pdf/nihms-2062694.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      },
+      {
+        "id": "pmh:oai:pubmedcentral.nih.gov:12490763",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/41049045/",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "PRX Life",
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "doi:10.1103/prxlife.2.043013",
+      "doi": "https://doi.org/10.1103/prxlife.2.043013",
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1103/prxlife.2.043013",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4387291267",
+        "display_name": "PRX Life",
+        "issn_l": "2835-8279",
+        "issn": [
+          "2835-8279"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_core": true,
+        "listed_in": [
+          "cwts-core",
+          "doaj"
+        ],
+        "host_organization": "https://openalex.org/P4310320261",
+        "host_organization_name": "American Physical Society",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310320261"
+        ],
+        "host_organization_lineage_names": [
+          "American Physical Society"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "PRX Life",
+      "raw_type": "journal-article"
+    },
+    "sustainable_development_goals": [],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [],
+    "awards": [
+      {
+        "id": "https://openalex.org/G5041538719",
+        "display_name": null,
+        "funder_award_id": "GM149227",
+        "funder_id": "https://openalex.org/F4320337354",
+        "funder_display_name": "National Institute of General Medical Sciences"
+      },
+      {
+        "id": "https://openalex.org/G9000901720",
+        "display_name": "Computational and Experimental Investigation and Design of Protein Interaction Specificity",
+        "funder_award_id": "R35GM149227",
+        "funder_id": "https://openalex.org/F4320337354",
+        "funder_display_name": "National Institute of General Medical Sciences"
+      }
+    ],
+    "funders": [
+      {
+        "id": "https://openalex.org/F4320332161",
+        "display_name": "National Institutes of Health",
+        "ror": "https://ror.org/01cwqze88"
+      },
+      {
+        "id": "https://openalex.org/F4320337354",
+        "display_name": "National Institute of General Medical Sciences",
+        "ror": "https://ror.org/04q48ey07"
+      }
+    ],
+    "has_content": {
+      "pdf": false,
+      "grobid_xml": false
+    },
+    "content_urls": null,
+    "referenced_works_count": 29,
+    "referenced_works": [
+      "https://openalex.org/W1907442748",
+      "https://openalex.org/W1938743025",
+      "https://openalex.org/W2047544230",
+      "https://openalex.org/W2102245393",
+      "https://openalex.org/W2143210482",
+      "https://openalex.org/W2148895983",
+      "https://openalex.org/W2161151688",
+      "https://openalex.org/W2330066387",
+      "https://openalex.org/W2420141398",
+      "https://openalex.org/W2508425869",
+      "https://openalex.org/W2898210859",
+      "https://openalex.org/W2980789587",
+      "https://openalex.org/W2990138404",
+      "https://openalex.org/W3146944767",
+      "https://openalex.org/W3177828909",
+      "https://openalex.org/W3186179742",
+      "https://openalex.org/W3186243460",
+      "https://openalex.org/W3198923619",
+      "https://openalex.org/W4220765272",
+      "https://openalex.org/W4280590826",
+      "https://openalex.org/W4296032638",
+      "https://openalex.org/W4309506674",
+      "https://openalex.org/W4310159409",
+      "https://openalex.org/W4312116066",
+      "https://openalex.org/W4327550249",
+      "https://openalex.org/W4375856225",
+      "https://openalex.org/W4375858802",
+      "https://openalex.org/W4383957026",
+      "https://openalex.org/W4384820649"
+    ],
+    "related_works": [
+      "https://openalex.org/W4391375266",
+      "https://openalex.org/W2899084033",
+      "https://openalex.org/W2748952813",
+      "https://openalex.org/W2081900870",
+      "https://openalex.org/W2390279801",
+      "https://openalex.org/W4391913857",
+      "https://openalex.org/W2358668433",
+      "https://openalex.org/W4396701345",
+      "https://openalex.org/W2376932109",
+      "https://openalex.org/W2001405890"
+    ],
+    "abstract_inverted_index": {
+      "The": [
+        0
+      ],
+      "relationships": [
+        1
+      ],
+      "between": [
+        2,
+        93
+      ],
+      "protein": [
+        3,
+        36
+      ],
+      "sequences,": [
+        4
+      ],
+      "structures,": [
+        5
+      ],
+      "and": [
+        6,
+        61,
+        68,
+        96,
+        141,
+        163
+      ],
+      "functions": [
+        7
+      ],
+      "are": [
+        8,
+        28,
+        38,
+        41,
+        126,
+        131
+      ],
+      "determined": [
+        9
+      ],
+      "by": [
+        10,
+        98,
+        115
+      ],
+      "complex": [
+        11
+      ],
+      "codes": [
+        12
+      ],
+      "that": [
+        13
+      ],
+      "scientists": [
+        14
+      ],
+      "aim": [
+        15
+      ],
+      "to": [
+        16,
+        32,
+        89,
+        160
+      ],
+      "decipher.": [
+        17
+      ],
+      "While": [
+        18
+      ],
+      "structures": [
+        19
+      ],
+      "contain": [
+        20
+      ],
+      "key": [
+        21
+      ],
+      "information": [
+        22,
+        149
+      ],
+      "about": [
+        23
+      ],
+      "proteins'": [
+        24
+      ],
+      "biochemical": [
+        25
+      ],
+      "functions,": [
+        26
+      ],
+      "they": [
+        27,
+        130
+      ],
+      "often": [
+        29
+      ],
+      "experimentally": [
+        30
+      ],
+      "difficult": [
+        31
+      ],
+      "obtain.": [
+        33
+      ],
+      "In": [
+        34,
+        47
+      ],
+      "contrast,": [
+        35
+      ],
+      "sequences": [
+        37
+      ],
+      "abundant": [
+        39
+      ],
+      "but": [
+        40
+      ],
+      "a": [
+        42,
+        94,
+        171
+      ],
+      "step": [
+        43
+      ],
+      "removed": [
+        44
+      ],
+      "from": [
+        45,
+        119
+      ],
+      "function.": [
+        46
+      ],
+      "this": [
+        48
+      ],
+      "paper,": [
+        49
+      ],
+      "we": [
+        50
+      ],
+      "propose": [
+        51
+      ],
+      "residue": [
+        52
+      ],
+      "level": [
+        53
+      ],
+      "alignment": [
+        54
+      ],
+      "(RLA)-a": [
+        55
+      ],
+      "self-supervised": [
+        56
+      ],
+      "objective": [
+        57
+      ],
+      "for": [
+        58,
+        112,
+        176
+      ],
+      "aligning": [
+        59
+      ],
+      "sequence": [
+        60,
+        67,
+        79,
+        95,
+        144
+      ],
+      "structure": [
+        62,
+        69,
+        97,
+        137
+      ],
+      "embedding": [
+        63
+      ],
+      "spaces.": [
+        64
+      ],
+      "By": [
+        65
+      ],
+      "situating": [
+        66
+      ],
+      "encoders": [
+        70
+      ],
+      "within": [
+        71
+      ],
+      "the": [
+        72,
+        78,
+        91,
+        135,
+        139,
+        148
+      ],
+      "same": [
+        73
+      ],
+      "latent": [
+        74
+      ],
+      "space,": [
+        75
+      ],
+      "RLA": [
+        76,
+        101,
+        106,
+        124,
+        157
+      ],
+      "enriches": [
+        77
+      ],
+      "encoder": [
+        80
+      ],
+      "with": [
+        81
+      ],
+      "spatial": [
+        82
+      ],
+      "information.": [
+        83
+      ],
+      "Moreover,": [
+        84
+      ],
+      "our": [
+        85
+      ],
+      "framework": [
+        86
+      ],
+      "enables": [
+        87
+      ],
+      "us": [
+        88
+      ],
+      "measure": [
+        90
+      ],
+      "similarity": [
+        92,
+        107
+      ],
+      "comparing": [
+        99
+      ],
+      "their": [
+        100
+      ],
+      "embeddings.": [
+        102
+      ],
+      "We": [
+        103
+      ],
+      "show": [
+        104
+      ],
+      "how": [
+        105
+      ],
+      "scores": [
+        108,
+        125
+      ],
+      "can": [
+        109
+      ],
+      "be": [
+        110
+      ],
+      "used": [
+        111
+      ],
+      "binder": [
+        113,
+        140,
+        143,
+        154,
+        177
+      ],
+      "design": [
+        114,
+        155,
+        178
+      ],
+      "selecting": [
+        116
+      ],
+      "true": [
+        117
+      ],
+      "binders": [
+        118
+      ],
+      "sets": [
+        120
+      ],
+      "of": [
+        121,
+        138,
+        166
+      ],
+      "designed": [
+        122
+      ],
+      "binders.": [
+        123
+      ],
+      "informative": [
+        127
+      ],
+      "even": [
+        128
+      ],
+      "when": [
+        129
+      ],
+      "calculated": [
+        132
+      ],
+      "given": [
+        133
+      ],
+      "only": [
+        134
+      ],
+      "backbone": [
+        136
+      ],
+      "no": [
+        142
+      ],
+      "information,": [
+        145
+      ],
+      "which": [
+        146
+      ],
+      "simulates": [
+        147
+      ],
+      "available": [
+        150
+      ],
+      "in": [
+        151
+      ],
+      "many": [
+        152
+      ],
+      "early-stage": [
+        153
+      ],
+      "libraries.": [
+        156
+      ],
+      "performs": [
+        158
+      ],
+      "similarly": [
+        159
+      ],
+      "benchmark": [
+        161
+      ],
+      "methods": [
+        162
+      ],
+      "is": [
+        164
+      ],
+      "orders": [
+        165
+      ],
+      "magnitude": [
+        167
+      ],
+      "faster,": [
+        168
+      ],
+      "making": [
+        169
+      ],
+      "it": [
+        170
+      ],
+      "valuable": [
+        172
+      ],
+      "new": [
+        173
+      ],
+      "screening": [
+        174
+      ],
+      "tool": [
+        175
+      ],
+      "pipelines.": [
+        179
+      ]
+    },
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 4
+      }
+    ],
+    "updated_date": "2026-10-15T10:00:46.086208",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}

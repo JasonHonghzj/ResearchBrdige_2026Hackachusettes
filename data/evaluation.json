@@ -1,0 +1,228 @@
+{
+  "scope": "Fixed development cases; not held-out research or clinical evaluation.",
+  "executed_at": "2026-10-24T19:25:08+00:00",
+  "summary": [
+    {
+      "方法": "tfidf",
+      "案例數": 8,
+      "預期文獻在第一筆": 7,
+      "預期文獻在前五筆": 8,
+      "MRR@5": 0.9
+    },
+    {
+      "方法": "hybrid",
+      "案例數": 8,
+      "預期文獻在第一筆": 7,
+      "預期文獻在前五筆": 8,
+      "MRR@5": 0.9
+    }
+  ],
+  "details": [
+    {
+      "mode": "tfidf",
+      "query": "用藥素養",
+      "expanded": "medication literacy chatbot",
+      "expected_pmid": "41726533",
+      "returned_pmids": [
+        "41726533"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "骨折 行動應用",
+      "expanded": "mobile application fracture",
+      "expected_pmid": "41726541",
+      "returned_pmids": [
+        "41726541",
+        "41726533"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "large language models caregiver",
+      "expanded": "large language models caregiver",
+      "expected_pmid": "41726516",
+      "returned_pmids": [
+        "41726433",
+        "40964651",
+        "40963721",
+        "41031082",
+        "41726516"
+      ],
+      "rank": 5
+    },
+    {
+      "mode": "tfidf",
+      "query": "蛋白質",
+      "expanded": "protein structure sequence",
+      "expected_pmid": "41049045",
+      "returned_pmids": [
+        "41049045",
+        "41084634",
+        "41103975",
+        "41358251",
+        "40969155"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "產後 保險",
+      "expanded": "insurance coverage postpartum",
+      "expected_pmid": "41001595",
+      "returned_pmids": [
+        "41001595",
+        "41001597",
+        "42877566"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "clinical trials skull base",
+      "expanded": "clinical trials skull base",
+      "expected_pmid": "41140426",
+      "returned_pmids": [
+        "41140426",
+        "41140419",
+        "41509880",
+        "41726465",
+        "41001600"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "dementia adversarial text",
+      "expanded": "dementia adversarial text",
+      "expected_pmid": "40964651",
+      "returned_pmids": [
+        "40964651",
+        "41415726",
+        "40933079",
+        "41122737",
+        "41367960"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "tfidf",
+      "query": "隱私 大型語言模型",
+      "expanded": "large language models LLM privacy preserving",
+      "expected_pmid": "40963721",
+      "returned_pmids": [
+        "40963721",
+        "40964651",
+        "41726433",
+        "41031082",
+        "41726516"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "用藥素養",
+      "expanded": "medication literacy chatbot",
+      "expected_pmid": "41726533",
+      "returned_pmids": [
+        "41726533"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "骨折 行動應用",
+      "expanded": "mobile application fracture",
+      "expected_pmid": "41726541",
+      "returned_pmids": [
+        "41726541",
+        "41726533"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "large language models caregiver",
+      "expanded": "large language models caregiver",
+      "expected_pmid": "41726516",
+      "returned_pmids": [
+        "40964651",
+        "41726433",
+        "41031082",
+        "40963721",
+        "41726516"
+      ],
+      "rank": 5
+    },
+    {
+      "mode": "hybrid",
+      "query": "蛋白質",
+      "expanded": "protein structure sequence",
+      "expected_pmid": "41049045",
+      "returned_pmids": [
+        "41049045",
+        "41084634",
+        "41103975",
+        "40969155",
+        "41358251"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "產後 保險",
+      "expanded": "insurance coverage postpartum",
+      "expected_pmid": "41001595",
+      "returned_pmids": [
+        "41001595",
+        "41001597",
+        "42877566"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "clinical trials skull base",
+      "expanded": "clinical trials skull base",
+      "expected_pmid": "41140426",
+      "returned_pmids": [
+        "41140426",
+        "41140419",
+        "41001600",
+        "41509880",
+        "41726465"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "dementia adversarial text",
+      "expanded": "dementia adversarial text",
+      "expected_pmid": "40964651",
+      "returned_pmids": [
+        "40964651",
+        "40933079",
+        "41415726",
+        "41122737",
+        "41367960"
+      ],
+      "rank": 1
+    },
+    {
+      "mode": "hybrid",
+      "query": "隱私 大型語言模型",
+      "expanded": "large language models LLM privacy preserving",
+      "expected_pmid": "40963721",
+      "returned_pmids": [
+        "40963721",
+        "40964651",
+        "41726433",
+        "41031082",
+        "41726516"
+      ],
+      "rank": 1
+    }
+  ]
+}

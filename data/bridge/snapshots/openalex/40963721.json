@@ -1,0 +1,1154 @@
+{
+  "source": "https://api.openalex.org/works/pmid:40963721",
+  "retrieved_at": "2026-10-24T17:45:30+00:00",
+  "record": {
+    "id": "https://openalex.org/W4408326109",
+    "doi": "https://doi.org/10.1109/globecom52923.2024.10901426",
+    "title": "Exploiting Privacy Preserving Prompt Techniques for Online Large Language Model Usage",
+    "display_name": "Exploiting Privacy Preserving Prompt Techniques for Online Large Language Model Usage",
+    "publication_year": 2024,
+    "publication_date": "2024-12-08",
+    "ids": {
+      "openalex": "https://openalex.org/W4408326109",
+      "doi": "https://doi.org/10.1109/globecom52923.2024.10901426",
+      "pmid": "https://pubmed.ncbi.nlm.nih.gov/40963721"
+    },
+    "language": "en",
+    "primary_location": {
+      "id": "doi:10.1109/globecom52923.2024.10901426",
+      "doi": "https://doi.org/10.1109/globecom52923.2024.10901426",
+      "is_oa": false,
+      "landing_page_url": "https://doi.org/10.1109/globecom52923.2024.10901426",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4210205019",
+        "display_name": "Globecom",
+        "issn_l": "1930-529X",
+        "issn": [
+          "1930-529X",
+          "2576-764X"
+        ],
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": true,
+        "listed_in": [
+          "cwts-core"
+        ],
+        "host_organization": "https://openalex.org/P4310319808",
+        "host_organization_name": "Institute of Electrical and Electronics Engineers",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310319808"
+        ],
+        "host_organization_lineage_names": [
+          "Institute of Electrical and Electronics Engineers"
+        ],
+        "type": "conference"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true,
+      "raw_source_name": "GLOBECOM 2024 - 2024 IEEE Global Communications Conference",
+      "raw_type": "proceedings-article"
+    },
+    "volume": null,
+    "type": "conference-paper",
+    "indexed_in": [
+      "crossref",
+      "pubmed"
+    ],
+    "open_access": {
+      "is_oa": true,
+      "oa_status": "green",
+      "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12439101/pdf/nihms-2109262.pdf",
+      "any_repository_has_fulltext": true
+    },
+    "authorships": [
+      {
+        "author_position": "first",
+        "author": {
+          "id": "https://openalex.org/A5010382904",
+          "display_name": "Youxiang Zhu",
+          "orcid": "https://orcid.org/0009-0000-7294-1596",
+          "observed_orcids": [
+            "https://orcid.org/0009-0000-7294-1596"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I33434090",
+            "display_name": "University of Massachusetts Boston",
+            "ror": "https://ror.org/04ydmy275",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Youxiang Zhu",
+        "raw_affiliation_strings": [
+          "University of Massachusetts,Department of Computer Science,Boston,MA,USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Massachusetts,Department of Computer Science,Boston,MA,USA",
+            "institution_ids": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": null,
+          "display_name": "Ning Gao",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I33434090",
+            "display_name": "University of Massachusetts Boston",
+            "ror": "https://ror.org/04ydmy275",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Ning Gao",
+        "raw_affiliation_strings": [
+          "University of Massachusetts,Department of Computer Science,Boston,MA,USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Massachusetts,Department of Computer Science,Boston,MA,USA",
+            "institution_ids": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "middle",
+        "author": {
+          "id": "https://openalex.org/A5101655447",
+          "display_name": "Xiaohui Liang",
+          "orcid": "https://orcid.org/0000-0003-4064-2393",
+          "observed_orcids": [
+            "https://orcid.org/0000-0003-4064-2393",
+            "https://orcid.org/0000-0001-6351-2538"
+          ]
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I33434090",
+            "display_name": "University of Massachusetts Boston",
+            "ror": "https://ror.org/04ydmy275",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Xiaohui Liang",
+        "raw_affiliation_strings": [
+          "University of Massachusetts,Department of Computer Science,Boston,MA,USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Massachusetts,Department of Computer Science,Boston,MA,USA",
+            "institution_ids": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ]
+      },
+      {
+        "author_position": "last",
+        "author": {
+          "id": null,
+          "display_name": "Honggang Zhang",
+          "orcid": null,
+          "observed_orcids": []
+        },
+        "institutions": [
+          {
+            "id": "https://openalex.org/I33434090",
+            "display_name": "University of Massachusetts Boston",
+            "ror": "https://ror.org/04ydmy275",
+            "country_code": "US",
+            "type": "education",
+            "lineage": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ],
+        "countries": [
+          "US"
+        ],
+        "is_corresponding": false,
+        "raw_author_name": "Honggang Zhang",
+        "raw_affiliation_strings": [
+          "University of Massachusetts,Department of Computer Science,Boston,MA,USA"
+        ],
+        "raw_orcid": null,
+        "affiliations": [
+          {
+            "raw_affiliation_string": "University of Massachusetts,Department of Computer Science,Boston,MA,USA",
+            "institution_ids": [
+              "https://openalex.org/I33434090"
+            ]
+          }
+        ]
+      }
+    ],
+    "institutions": [],
+    "countries_distinct_count": 1,
+    "institutions_distinct_count": 1,
+    "corresponding_author_ids": [],
+    "corresponding_institution_ids": [
+      "https://openalex.org/I33434090"
+    ],
+    "apc_list": null,
+    "apc_paid": null,
+    "fwci": 1.1747,
+    "has_fulltext": true,
+    "cited_by_count": 4,
+    "citation_normalized_percentile": {
+      "value": 0.81848122,
+      "is_in_top_1_percent": false,
+      "is_in_top_10_percent": false
+    },
+    "cited_by_percentile_year": {
+      "min": 90,
+      "max": 98
+    },
+    "biblio": {
+      "volume": "2024",
+      "issue": null,
+      "first_page": "4304",
+      "last_page": "4309"
+    },
+    "is_retracted": false,
+    "is_paratext": false,
+    "is_xpac": false,
+    "primary_topic": {
+      "id": "https://openalex.org/T10764",
+      "display_name": "Privacy-Preserving Technologies in Data",
+      "score": 0.9932000041007996,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1702",
+        "display_name": "Artificial Intelligence"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    "topics": [
+      {
+        "id": "https://openalex.org/T10764",
+        "display_name": "Privacy-Preserving Technologies in Data",
+        "score": 0.9932000041007996,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T11045",
+        "display_name": "Privacy, Security, and Data Protection",
+        "score": 0.005799999926239252,
+        "subfield": {
+          "id": "https://openalex.org/subfields/3312",
+          "display_name": "Sociology and Political Science"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/33",
+          "display_name": "Social Sciences"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/2",
+          "display_name": "Social Sciences"
+        }
+      },
+      {
+        "id": "https://openalex.org/T11689",
+        "display_name": "Adversarial Robustness in Machine Learning",
+        "score": 0.00019999999494757503,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      }
+    ],
+    "keywords": [
+      {
+        "id": "https://openalex.org/keywords/prompt-rewriting",
+        "display_name": "prompt rewriting",
+        "score": 0.6050000190734863
+      },
+      {
+        "id": "https://openalex.org/keywords/privacy-utility-trade-off",
+        "display_name": "privacy-utility trade-off",
+        "score": 0.7940000295639038
+      }
+    ],
+    "concepts": [
+      {
+        "id": "https://openalex.org/C41008148",
+        "wikidata": "https://www.wikidata.org/wiki/Q21198",
+        "display_name": "Computer science",
+        "level": 0,
+        "score": 0.7566910982131958
+      },
+      {
+        "id": "https://openalex.org/C123201435",
+        "wikidata": "https://www.wikidata.org/wiki/Q456632",
+        "display_name": "Information privacy",
+        "level": 2,
+        "score": 0.4478302597999573
+      },
+      {
+        "id": "https://openalex.org/C67186912",
+        "wikidata": "https://www.wikidata.org/wiki/Q367664",
+        "display_name": "Data modeling",
+        "level": 2,
+        "score": 0.4189548194408417
+      },
+      {
+        "id": "https://openalex.org/C137293760",
+        "wikidata": "https://www.wikidata.org/wiki/Q3621696",
+        "display_name": "Language model",
+        "level": 2,
+        "score": 0.41266492009162903
+      },
+      {
+        "id": "https://openalex.org/C108827166",
+        "wikidata": "https://www.wikidata.org/wiki/Q175975",
+        "display_name": "Internet privacy",
+        "level": 1,
+        "score": 0.3980858027935028
+      },
+      {
+        "id": "https://openalex.org/C38652104",
+        "wikidata": "https://www.wikidata.org/wiki/Q3510521",
+        "display_name": "Computer security",
+        "level": 1,
+        "score": 0.3820527493953705
+      },
+      {
+        "id": "https://openalex.org/C204321447",
+        "wikidata": "https://www.wikidata.org/wiki/Q30642",
+        "display_name": "Natural language processing",
+        "level": 1,
+        "score": 0.2663624882698059
+      },
+      {
+        "id": "https://openalex.org/C77088390",
+        "wikidata": "https://www.wikidata.org/wiki/Q8513",
+        "display_name": "Database",
+        "level": 1,
+        "score": 0.1711561679840088
+      }
+    ],
+    "mesh": [],
+    "locations_count": 4,
+    "locations": [
+      {
+        "id": "doi:10.1109/globecom52923.2024.10901426",
+        "doi": "https://doi.org/10.1109/globecom52923.2024.10901426",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1109/globecom52923.2024.10901426",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4210205019",
+          "display_name": "Globecom",
+          "issn_l": "1930-529X",
+          "issn": [
+            "1930-529X",
+            "2576-764X"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core"
+          ],
+          "host_organization": "https://openalex.org/P4310319808",
+          "host_organization_name": "Institute of Electrical and Electronics Engineers",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319808"
+          ],
+          "host_organization_lineage_names": [
+            "Institute of Electrical and Electronics Engineers"
+          ],
+          "type": "conference"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "GLOBECOM 2024 - 2024 IEEE Global Communications Conference",
+        "raw_type": "proceedings-article"
+      },
+      {
+        "id": "pmid:40963721",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/40963721",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306525036",
+          "display_name": "PubMed",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "... IEEE Global Communications Conference. IEEE Global Communications Conference",
+        "raw_type": "Journal Article"
+      },
+      {
+        "id": "pmh:oai:europepmc.org:11249014",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12439101",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12439101/pdf/nihms-2109262.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306400806",
+          "display_name": "Europe PMC (PubMed Central)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1303153112",
+          "host_organization_name": "European Bioinformatics Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/I1303153112"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Text"
+      },
+      {
+        "id": "pmh:oai:pubmedcentral.nih.gov:12439101",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12439101/",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "IEEE Glob Commun Conf",
+        "raw_type": "Text"
+      }
+    ],
+    "best_oa_location": {
+      "id": "pmh:oai:europepmc.org:11249014",
+      "doi": null,
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/12439101",
+      "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12439101/pdf/nihms-2109262.pdf",
+      "source": {
+        "id": "https://openalex.org/S4306400806",
+        "display_name": "Europe PMC (PubMed Central)",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_core": false,
+        "listed_in": [],
+        "host_organization": "https://openalex.org/I1303153112",
+        "host_organization_name": "European Bioinformatics Institute",
+        "host_organization_lineage": [
+          "https://openalex.org/I1303153112"
+        ],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "submittedVersion",
+      "is_accepted": false,
+      "is_published": false,
+      "raw_source_name": null,
+      "raw_type": "Text"
+    },
+    "sustainable_development_goals": [],
+    "sustainable_development_goals_aurora": [],
+    "study_designs": [],
+    "awards": [
+      {
+        "id": "https://openalex.org/G2196515114",
+        "display_name": null,
+        "funder_award_id": "R01 AG067416",
+        "funder_id": "https://openalex.org/F4320337337",
+        "funder_display_name": "National Institute on Aging"
+      }
+    ],
+    "funders": [
+      {
+        "id": "https://openalex.org/F4320332161",
+        "display_name": "National Institutes of Health",
+        "ror": "https://ror.org/01cwqze88"
+      },
+      {
+        "id": "https://openalex.org/F4320337337",
+        "display_name": "National Institute on Aging",
+        "ror": "https://ror.org/049v75w11"
+      }
+    ],
+    "has_content": {
+      "pdf": true,
+      "grobid_xml": true
+    },
+    "content_urls": {
+      "pdf": "https://content.openalex.org/works/W4408326109.pdf",
+      "grobid_xml": "https://content.openalex.org/works/W4408326109.grobid-xml"
+    },
+    "referenced_works_count": 20,
+    "referenced_works": [
+      "https://openalex.org/W2970641574",
+      "https://openalex.org/W3112689365",
+      "https://openalex.org/W3130178918",
+      "https://openalex.org/W4292973636",
+      "https://openalex.org/W4367595583",
+      "https://openalex.org/W4378510501",
+      "https://openalex.org/W4384918448",
+      "https://openalex.org/W4386556330",
+      "https://openalex.org/W4386977707",
+      "https://openalex.org/W4388894889",
+      "https://openalex.org/W4389713789",
+      "https://openalex.org/W4391107696",
+      "https://openalex.org/W4391710050",
+      "https://openalex.org/W4392677962",
+      "https://openalex.org/W4399848680",
+      "https://openalex.org/W4412130408",
+      "https://openalex.org/W6854866820",
+      "https://openalex.org/W6856622439",
+      "https://openalex.org/W6861280010",
+      "https://openalex.org/W7133218973"
+    ],
+    "related_works": [
+      "https://openalex.org/W2584827882",
+      "https://openalex.org/W3195097297",
+      "https://openalex.org/W4225340788",
+      "https://openalex.org/W3038106605",
+      "https://openalex.org/W2513267613",
+      "https://openalex.org/W3049084372",
+      "https://openalex.org/W2528109871",
+      "https://openalex.org/W2940702331",
+      "https://openalex.org/W2905822832",
+      "https://openalex.org/W2240244939"
+    ],
+    "abstract_inverted_index": {
+      "Online": [
+        0
+      ],
+      "Large": [
+        1
+      ],
+      "Language": [
+        2
+      ],
+      "Models": [
+        3
+      ],
+      "(LLMs)": [
+        4
+      ],
+      "are": [
+        5
+      ],
+      "widely": [
+        6
+      ],
+      "employed": [
+        7
+      ],
+      "across": [
+        8
+      ],
+      "various": [
+        9
+      ],
+      "tasks,": [
+        10
+      ],
+      "including": [
+        11,
+        122
+      ],
+      "privacy-sensitive": [
+        12
+      ],
+      "ones": [
+        13
+      ],
+      "like": [
+        14
+      ],
+      "financial": [
+        15
+      ],
+      "advice": [
+        16
+      ],
+      "or": [
+        17
+      ],
+      "paragraph": [
+        18
+      ],
+      "rewriting.": [
+        19
+      ],
+      "Presently,": [
+        20
+      ],
+      "users": [
+        21,
+        54,
+        210
+      ],
+      "directly": [
+        22
+      ],
+      "submit": [
+        23
+      ],
+      "prompts": [
+        24,
+        64,
+        82,
+        156,
+        184,
+        196,
+        217
+      ],
+      "to": [
+        25,
+        37,
+        59,
+        83,
+        109,
+        128,
+        175,
+        185,
+        214,
+        218
+      ],
+      "online": [
+        26,
+        99,
+        139,
+        187,
+        231
+      ],
+      "LLM": [
+        27,
+        70,
+        100,
+        140,
+        148,
+        232
+      ],
+      "servers,": [
+        28
+      ],
+      "inadvertently": [
+        29
+      ],
+      "revealing": [
+        30
+      ],
+      "sensitive": [
+        31,
+        86,
+        112
+      ],
+      "keywords": [
+        32,
+        113
+      ],
+      "and": [
+        33,
+        65,
+        88,
+        117,
+        126,
+        154,
+        157,
+        164,
+        197,
+        207
+      ],
+      "facilitating": [
+        34
+      ],
+      "server": [
+        35
+      ],
+      "tracking": [
+        36
+      ],
+      "build": [
+        38
+      ],
+      "user": [
+        39
+      ],
+      "profiles.": [
+        40
+      ],
+      "In": [
+        41,
+        167
+      ],
+      "this": [
+        42
+      ],
+      "paper,": [
+        43
+      ],
+      "we": [
+        44,
+        103,
+        142,
+        169
+      ],
+      "propose": [
+        45,
+        105,
+        170
+      ],
+      "a": [
+        46,
+        56,
+        106,
+        171,
+        225
+      ],
+      "local": [
+        47
+      ],
+      "privacy-preserving": [
+        48
+      ],
+      "prompt": [
+        49,
+        116,
+        153
+      ],
+      "assistant": [
+        50
+      ],
+      "(LPPA)": [
+        51
+      ],
+      "that": [
+        52,
+        199
+      ],
+      "provides": [
+        53
+      ],
+      "with": [
+        55,
+        161,
+        211
+      ],
+      "usable": [
+        57
+      ],
+      "method": [
+        58
+      ],
+      "balance": [
+        60
+      ],
+      "privacy": [
+        61,
+        107,
+        120,
+        221
+      ],
+      "in": [
+        62,
+        114,
+        230
+      ],
+      "the": [
+        63,
+        66,
+        69,
+        76,
+        81,
+        85,
+        93,
+        98,
+        111,
+        115,
+        130,
+        136,
+        147,
+        151,
+        159,
+        177,
+        183,
+        186,
+        193,
+        200,
+        204
+      ],
+      "utility": [
+        67,
+        95,
+        137,
+        172,
+        178,
+        229
+      ],
+      "of": [
+        68,
+        92,
+        97,
+        138,
+        150,
+        228
+      ],
+      "output.": [
+        71,
+        101
+      ],
+      "The": [
+        72
+      ],
+      "LPPA": [
+        73,
+        191
+      ],
+      "will": [
+        74
+      ],
+      "analyze": [
+        75
+      ],
+      "users'": [
+        77,
+        195
+      ],
+      "prompts,": [
+        78
+      ],
+      "suggest": [
+        79
+      ],
+      "modifying": [
+        80
+      ],
+      "protect": [
+        84
+      ],
+      "keywords,": [
+        87
+      ],
+      "provide": [
+        89
+      ],
+      "an": [
+        90
+      ],
+      "inference": [
+        91,
+        173
+      ],
+      "potential": [
+        94
+      ],
+      "impact": [
+        96,
+        145,
+        179
+      ],
+      "Specifically,": [
+        102
+      ],
+      "first": [
+        104
+      ],
+      "module": [
+        108
+      ],
+      "identify": [
+        110
+      ],
+      "adopt": [
+        118
+      ],
+      "four": [
+        119
+      ],
+      "techniques,": [
+        121
+      ],
+      "remove,": [
+        123
+      ],
+      "mask,": [
+        124
+      ],
+      "replace,": [
+        125
+      ],
+      "rewrite": [
+        127
+      ],
+      "hide": [
+        129
+      ],
+      "keywords.": [
+        131
+      ],
+      "While": [
+        132
+      ],
+      "these": [
+        133
+      ],
+      "techniques": [
+        134
+      ],
+      "affect": [
+        135
+      ],
+      "output,": [
+        141
+      ],
+      "measure": [
+        143
+      ],
+      "such": [
+        144
+      ],
+      "using": [
+        146
+      ],
+      "output": [
+        149
+      ],
+      "original": [
+        152
+      ],
+      "modified": [
+        155
+      ],
+      "discuss": [
+        158
+      ],
+      "cases": [
+        160
+      ],
+      "high,": [
+        162
+      ],
+      "median,": [
+        163
+      ],
+      "low": [
+        165
+      ],
+      "impact.": [
+        166
+      ],
+      "addition,": [
+        168
+      ],
+      "model": [
+        174
+      ],
+      "infer": [
+        176
+      ],
+      "locally": [
+        180
+      ],
+      "without": [
+        181
+      ],
+      "disclosing": [
+        182
+      ],
+      "LLM.": [
+        188
+      ],
+      "We": [
+        189
+      ],
+      "evaluated": [
+        190
+      ],
+      "on": [
+        192
+      ],
+      "real-world": [
+        194
+      ],
+      "showed": [
+        198
+      ],
+      "remove": [
+        201
+      ],
+      "technique": [
+        202
+      ],
+      "achieves": [
+        203
+      ],
+      "best": [
+        205
+      ],
+      "performance,": [
+        206
+      ],
+      "it": [
+        208
+      ],
+      "empowers": [
+        209
+      ],
+      "meaningful": [
+        212
+      ],
+      "ways": [
+        213
+      ],
+      "adjust": [
+        215
+      ],
+      "their": [
+        216,
+        220
+      ],
+      "safeguard": [
+        219
+      ],
+      "while": [
+        222
+      ],
+      "still": [
+        223
+      ],
+      "maintaining": [
+        224
+      ],
+      "satisfactory": [
+        226
+      ],
+      "level": [
+        227
+      ],
+      "usage.": [
+        233
+      ]
+    },
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      }
+    ],
+    "updated_date": "2026-10-16T09:59:22.235173",
+    "created_date": "2025-10-10T00:00:00"
+  }
+}
