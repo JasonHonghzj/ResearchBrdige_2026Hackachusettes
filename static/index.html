@@ -182,6 +182,40 @@ h3.sec{
 }
 .tag.live-tag{background:transparent;border-color:var(--good);color:var(--good)}
 .err{background:var(--warn-soft);color:var(--warn);border-radius:5px;padding:11px 13px;font-size:12.5px;line-height:1.55}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav button{
+  font:inherit;font-size:13.5px;font-weight:500;padding:7px 13px;border:0;border-radius:5px;
+  background:transparent;color:var(--ink-3);cursor:pointer;transition:background .15s,color .15s
+}
+.nav button:hover{color:var(--ink-2);background:var(--surface-2)}
+.nav button[aria-selected="true"]{background:var(--ink);color:var(--plane)}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.selbar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0 18px;
+  padding:9px 13px;background:var(--accent-soft);border-radius:6px;font-size:13px
+}
+.sel-l{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent)
+}
+.sel-v{font-weight:500}
+.sel-go{
+  margin-left:auto;font:inherit;font-size:11.5px;background:transparent;border:0;
+  color:var(--accent);cursor:pointer;text-decoration:underline
+}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.chips button{
+  font:inherit;font-size:12px;padding:5px 10px;border-radius:14px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2)
+}
+.chips button:hover{border-color:var(--accent);color:var(--accent)}
+.scope{
+  display:inline-flex;align-items:center;gap:5px;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;letter-spacing:.05em;padding:2px 6px;border-radius:3px;
+  background:var(--surface-2);color:var(--ink-3);white-space:nowrap
+}
+.scope.verified{color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.scope.unvalidated{color:var(--warn);background:var(--warn-soft)}
 #tip{
   position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
   background:var(--ink);color:var(--plane);padding:7px 9px;border-radius:4px;
@@ -318,23 +352,21 @@ h3.sec{
 
   <div class="topbar">
     <span class="brand">Research Scout<span class="dot">.</span></span>
-    <div class="engines" role="tablist" aria-label="Engine">
-      <button role="tab" aria-selected="true" aria-controls="view-scout" data-view="view-scout">Gap finder</button>
-      <button role="tab" aria-selected="false" aria-controls="view-bridge" data-view="view-bridge">Evidence explorer</button>
-    </div>
-    <span class="tag live-tag scout-only">Live data</span>
-    <span class="topnote scout-only">Corpus figures are real measurements. Gap example, institutions and quotes are examples.</span>
-    <span class="tag bridge-only" hidden>Live · starter set</span>
+    <nav class="nav" role="tablist" aria-label="Sections">
+      <button role="tab" aria-selected="true"  data-dest="check">Check</button>
+      <button role="tab" aria-selected="false" data-dest="map">Map</button>
+      <button role="tab" aria-selected="false" data-dest="library">Library</button>
+      <button role="tab" aria-selected="false" data-dest="brief">Brief</button>
+      <button role="tab" aria-selected="false" data-dest="method">Method</button>
+    </nav>
+    <span class="topnote" id="destnote">Verify a pairing against PubMed in about a second.</span>
   </div>
 
   <div id="view-scout">
-  <div class="rail" role="tablist" aria-label="Pipeline stage">
-    <button class="step" role="tab" aria-selected="false" data-p="p1"><span class="n">01</span><span class="t">Goal &amp; corpus</span></button>
-    <button class="step" role="tab" aria-selected="true"  data-p="p2"><span class="n">02</span><span class="t">Field map</span></button>
-    <button class="step" role="tab" aria-selected="false" data-p="p3"><span class="n">03</span><span class="t">Gap &amp; bridges</span></button>
-    <button class="step" role="tab" aria-selected="false" data-p="p4"><span class="n">04</span><span class="t">Claim check</span></button>
-    <button class="step" role="tab" aria-selected="false" data-p="p5"><span class="n">05</span><span class="t">Does it beat chance?</span></button>
-    <button class="step" role="tab" aria-selected="false" data-p="p6"><span class="n">06</span><span class="t">Opportunity brief</span></button>
+  <div class="selbar" id="selbar" hidden>
+    <span class="sel-l">Selected</span>
+    <span class="sel-v" id="selval">nothing yet</span>
+    <button class="sel-go" id="selclear" title="Clear selection">clear</button>
   </div>
 
   <!-- ============ 01 ============ -->
@@ -361,18 +393,6 @@ h3.sec{
         <h3 class="sec" style="margin-top:22px">Retrieval log <span class="live">live</span></h3>
         <ul class="pipe" id="plog"><li><span class="lbl">loading…</span></li></ul>
       </div>
-      <div class="card">
-        <h3 class="sec">Corpus held <span class="live">live</span></h3>
-        <dl class="kv" id="corpuskv"><dt>loading…</dt><dd>—</dd></dl>
-        <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
-        <p style="margin:0;color:var(--ink-2);font-size:12.5px">
-          <span class="chip n">E01</span> Diagnosis procedures — colonoscopy, mammography and colposcopy are defined by the organ they examine, so they can never transfer to another one. Leaving them in produced “breast cancer × colonoscopy” as a top result.
-        </p>
-        <p style="margin:10px 0 0;color:var(--ink-2);font-size:12.5px">
-          <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
-        </p>
-      </div>
-    </div>
   </section>
 
   <!-- ============ 02 ============ -->
@@ -403,7 +423,7 @@ h3.sec{
   <!-- ============ 03 ============ -->
   <section class="panel" id="p3" role="tabpanel">
     <div class="phead">
-      <h2>Proven method, never used to detect it early</h2>
+      <h2>The selected pairing</h2>
       <p>An empty cell on its own means nothing — checked against full PubMed, our first eight ranked “gaps” had up to 1,485 papers each. So every candidate below passed two live queries, and carries the count of how often the method is already used on that disease. A high count is the point: the capability demonstrably works, and nobody has aimed it at early detection.</p>
     </div>
     <div class="grid2">
@@ -421,7 +441,7 @@ h3.sec{
   <!-- ============ 04 ============ -->
   <section class="panel" id="p4" role="tabpanel">
     <div class="phead">
-      <h2>Every sentence checked against its source</h2>
+      <h2>Walkthrough: the verification gate</h2>
       <p>A general-purpose model wrote the three claims below from the same two abstracts. The scout checks each one against the source text and deletes what isn’t supported. This runs in code, not in the model.</p>
     </div>
     <div class="grid2">
@@ -463,8 +483,27 @@ h3.sec{
   <!-- ============ 05 ============ -->
   <section class="panel" id="p5" role="tabpanel">
     <div class="phead">
-      <h2>Do the flagged gaps actually get filled?</h2>
+      <h2>What is measured, and what we withdrew</h2>
       <p>The grid was built from papers up to 2018 only. We then asked which flagged gaps appear in 2019–2026 papers — a window the ranking never saw.</p>
+    </div>
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="card">
+        <h3 class="sec">Corpus held <span class="live">live</span></h3>
+        <dl class="kv" id="corpuskv"><dt>loading…</dt><dd>—</dd></dl>
+        <h3 class="sec" style="margin-top:22px">Excluded on purpose</h3>
+        <p style="margin:0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E01</span> Diagnosis procedures — colonoscopy, mammography and colposcopy are defined by the organ they examine, so they can never transfer to another one. Leaving them in produced “breast cancer × colonoscopy” as a top result.
+        </p>
+        <p style="margin:10px 0 0;color:var(--ink-2);font-size:12.5px">
+          <span class="chip n">E05.318</span> Statistics — <span class="mono">Logistic Models</span>, <span class="mono">Odds Ratio</span> and <span class="mono">Area Under Curve</span> are not methods anyone “applies to a disease.”
+        </p>
+      </div>
+    </div>
+      <div class="card">
+        <h3 class="sec">Verification gate</h3>
+        <p style="margin:0 0 10px;color:var(--ink-2);font-size:12.5px">Step through the claim check on a fixed example in <b>Walkthrough</b> below. The gate is code: a quoted sentence must be findable in the abstract and every numeral in the claim must appear in the source. Accepting arbitrary input is not built yet, so this one example is scripted and labelled as such.</p>
+        <button class="btn ghost" id="gotoGate">Open the walkthrough</button>
+      </div>
     </div>
     <div class="grid2">
       <div class="card">
@@ -486,7 +525,7 @@ h3.sec{
   <!-- ============ 06 ============ -->
   <section class="panel" id="p6" role="tabpanel">
     <div class="phead">
-      <h2>The deliverable</h2>
+      <h2>Opportunity brief</h2>
       <p>One page a researcher can act on: the gap, the evidence that survived checking, who holds each half in Massachusetts, and a first message.</p>
     </div>
     <div class="brief" id="brief"><p style="color:var(--ink-3)">loading…</p></div>
@@ -495,9 +534,9 @@ h3.sec{
   <p class="foot" id="foot">
     <b>Everything in this view is served live</b> from the Scout API — the grid, the confirmed gaps,
     their maturity counts and the reject pile all come from <span class="mono">/api/scout/*</span> over
-    79,940 PubMed papers, so the figures change if the data does. The claim check in step 04 is a
-    scripted walkthrough of the verification gate on a fixed example; accepting arbitrary input is the
-    one piece still to build, as is the Massachusetts lab lookup.
+    79,940 PubMed papers, so the figures change if the data does. The verification gate under
+    Method is a scripted walkthrough on a fixed example; accepting arbitrary claim text is still to
+    build, as is the Massachusetts lab lookup.
   </p>
   </div><!-- /view-scout -->
 
@@ -591,7 +630,7 @@ h3.sec{
         <div class="card">
           <h3 class="sec" data-t="check_sources">Sources to check</h3>
           <div class="srcpick" id="b-check-src"></div>
-          <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Draws on your comparison list plus the current search results. This literal check is Bridge’s tool; the Gap finder’s claim gate (step 04) is a separate, stricter one.</p>
+          <p style="margin:12px 0 0;font-size:11.5px;color:var(--ink-3)">Draws on your comparison list plus the current search results. This literal check is Bridge’s tool; the gap checker’s gate, under Method, is a separate and stricter one.</p>
         </div>
       </div>
     </section>
@@ -625,14 +664,101 @@ h3.sec{
 <div id="tip" role="status" aria-live="polite"></div>
 
 <script>
-/* ---------- panel switching ---------- */
-const steps = [...document.querySelectorAll('#view-scout .step')];
-steps.forEach(s => s.addEventListener('click', () => {
-  steps.forEach(o => o.setAttribute('aria-selected', String(o === s)));
-  document.querySelectorAll('#view-scout .panel').forEach(p => p.classList.toggle('on', p.id === s.dataset.p));
-  if (s.dataset.p === 'p5') drawBars();
-}));
-function goto(id){ const s = steps.find(x => x.dataset.p === id); if (s) s.click(); }
+/* ---------- destinations ----------
+   Five flat destinations instead of two engines x thirteen tabs. Each one owns a
+   set of existing panels, so the DOM did not have to be rebuilt. Scope badges on
+   the data carry the engine distinction, which means a user never has to learn
+   there are two of them. */
+const DEST = {
+  check:   { panels:['p1'], note:'Verify a pairing against PubMed in about a second.' },
+  map:     { panels:['p2','p3'], note:'50 diseases x 32 transferable methods. Ringed cells are verified gaps.' },
+  library: { panels:[], bridge:true, note:'Retrieval over the 60-paper starter set. Not a validated ranking.' },
+  brief:   { panels:['p6'], note:'One page for the selected pairing, with queries anyone can re-run.' },
+  method:  { panels:['p5','p4'], note:'Where the data comes from, what is measured, and what we withdrew.' },
+};
+const navBtns = [...document.querySelectorAll('.nav button')];
+let dest = 'check';
+
+function showDest(id){
+  if (!DEST[id]) id = 'check';
+  dest = id;
+  const d = DEST[id];
+  navBtns.forEach(b => b.setAttribute('aria-selected', String(b.dataset.dest === id)));
+  document.getElementById('view-scout').hidden = !!d.bridge;
+  document.getElementById('view-bridge').hidden = !d.bridge;
+  document.querySelectorAll('#view-scout .panel').forEach(pn =>
+    pn.classList.toggle('on', d.panels.includes(pn.id)));
+  document.getElementById('destnote').textContent = d.note;
+  if (d.panels.includes('p5')) drawBars();
+  if (d.bridge && window.Bridge) window.Bridge.init();
+  renderSelbar();
+  history.replaceState(null, '', '#' + id);
+}
+navBtns.forEach(b => b.addEventListener('click', () => showDest(b.dataset.dest)));
+
+/* kept so existing callers keep working: a panel id resolves to its destination */
+function goto(panelId){
+  const hit = Object.keys(DEST).find(k => DEST[k].panels.includes(panelId));
+  showDest(hit || 'check');
+}
+
+/* ---------- selection bar ----------
+   Brief and Map both act on "the current pairing". Without showing it, Brief
+   looks arbitrary and the grid selection is invisible once you navigate away. */
+function selection(){
+  const pr = document.getElementById('ckProblem').value.trim();
+  const me = document.getElementById('ckMethod').value.trim();
+  if (pr && me) return { problem: pr, method: me, source: 'typed' };
+  const g = S.gaps && S.gaps[S.pick];
+  return g ? { problem: g.problem, method: g.method, source: 'map' } : null;
+}
+function renderSelbar(){
+  const bar = document.getElementById('selbar');
+  const sel = selection();
+  const show = !!sel && (dest === 'map' || dest === 'brief' || dest === 'check');
+  bar.hidden = !show;
+  if (!show) return;
+  document.getElementById('selval').textContent = sel.problem + '  ×  ' + sel.method;
+  bar.querySelector('.sel-l').textContent = sel.source === 'typed' ? 'You typed' : 'From the map';
+  /* 'clear' only clears what was typed. Showing it when the selection comes from
+     the map made it a dead click: the inputs emptied and the bar stayed, because
+     the grid pick is still a selection. */
+  document.getElementById('selclear').hidden = sel.source !== 'typed';
+}
+document.getElementById('selclear').addEventListener('click', () => {
+  document.getElementById('ckProblem').value = '';
+  document.getElementById('ckMethod').value = '';
+  ckRender('');
+  renderSelbar();
+});
+
+/* ---------- example chips ----------
+   A first-time user should get a real answer before understanding the product,
+   so the landing offers three verified pairings as one click each. */
+const EXAMPLES = [
+  ['Obesity', 'Polymerase Chain Reaction'],
+  ['Sepsis', 'Metabolomics'],
+  ['Parkinson Disease', 'Mass Spectrometry'],
+];
+(function chips(){
+  const host = document.getElementById('ckOut');
+  if (!host) return;
+  const box = document.createElement('div');
+  box.className = 'chips';
+  box.innerHTML = '<span style="font-size:11.5px;color:var(--ink-3);align-self:center">' +
+    'try:</span>' + EXAMPLES.map((e, i) =>
+    '<button data-ex="' + i + '">' + e[0] + ' × ' + e[1] + '</button>').join('');
+  host.parentNode.insertBefore(box, host);
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    const [pr, me] = EXAMPLES[+b.dataset.ex];
+    document.getElementById('ckProblem').value = pr;
+    document.getElementById('ckMethod').value = me;
+    renderSelbar();
+    runCheck();
+  });
+})();
 
 /* ---------- live data from the Scout API ---------- */
 const S = { grid:null, gaps:null, rejects:null, val:null, scope:null, pick:0 };
@@ -732,7 +858,7 @@ function renderGap(){
   const col = x.gap_papers === 0 ? 'var(--good)' : 'var(--warn)';
   document.getElementById('gapcard').innerHTML =
     '<div class="gaphead"><b>' + esc(x.problem) + '</b><span class="x">&times;</span><b>' +
-      esc(x.method) + '</b></div>' +
+      esc(x.method) + '</b><span class="scope verified">PubMed 79,940 &middot; verified</span></div>' +
     '<p style="color:var(--ink-2);margin:2px 0 16px;font-size:13px"><span class="mono">' +
       fmt(x.problem_papers) + '</span> papers on the problem &middot; <span class="mono">' +
       fmt(x.method_papers) + '</span> on the method, within our corpus.</p>' +
@@ -990,6 +1116,8 @@ document.getElementById('ckRun').addEventListener('click', runCheck);
   document.getElementById(id).addEventListener('keydown', e => {
     if (e.key === 'Enter') runCheck();
   }));
+['ckProblem', 'ckMethod'].forEach(id =>
+  document.getElementById(id).addEventListener('input', renderSelbar));
 
 async function loadTerms(){
   try {
@@ -1002,17 +1130,12 @@ async function loadTerms(){
 }
 loadTerms();
 
-/* ---------- engine switch ---------- */
-const engineTabs = [...document.querySelectorAll('.engines button')];
-function showEngine(id){
-  engineTabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.view === id)));
-  ['view-scout', 'view-bridge'].forEach(v => document.getElementById(v).hidden = v !== id);
-  document.querySelectorAll('.scout-only').forEach(e => e.hidden = id !== 'view-scout');
-  document.querySelectorAll('.bridge-only').forEach(e => e.hidden = id !== 'view-bridge');
-  if (id === 'view-bridge' && window.Bridge) window.Bridge.init();
-  history.replaceState(null, '', id === 'view-bridge' ? '#explorer' : location.pathname);
-}
-engineTabs.forEach(b => b.addEventListener('click', () => showEngine(b.dataset.view)));
-if (location.hash === '#explorer') showEngine('view-bridge');
+/* ---------- open on the hash, else on Check ----------
+   #explorer kept so links made before the redesign still land somewhere sane. */
+document.getElementById('gotoGate').addEventListener('click', () => {
+  document.getElementById('p4').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+const h = location.hash.replace('#', '');
+showDest(h === 'explorer' ? 'library' : (DEST[h] ? h : 'check'));
 </script>
 <script src="/static/bridge.js"></script>
