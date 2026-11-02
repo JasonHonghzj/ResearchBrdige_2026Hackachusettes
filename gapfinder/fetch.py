@@ -1,6 +1,6 @@
 """PubMed retrieval for ResearchBridge.
 
-Stores title, journal, year, MeSH descriptors AND abstract text — the probes
+Stores title, journal, year, MeSH descriptors AND abstract text — the first pass
 only kept year+mesh, which left claim verification and evidence quotes dead.
 
 Uses ElementTree rather than regex: abstracts arrive as several <AbstractText>
@@ -10,7 +10,9 @@ either concatenates them wrongly or misses the labelled variants entirely.
 from __future__ import annotations
 
 import json
+import hashlib
 import os
+import tempfile
 import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -75,7 +77,7 @@ def _year(article: ET.Element) -> int | None:
 
     Scoped to Journal/JournalIssue/PubDate on purpose — a loose search picks up
     other PubDate elements and leaks later years into an earlier window. That
-    bug put 802 post-2018 records inside a '2005:2018' fetch during the probes.
+    bug put 802 post-2018 records inside a '2005:2018' fetch.
     """
     for path in (".//Article/Journal/JournalIssue/PubDate/Year",
                  ".//Article/ArticleDate/Year"):
@@ -120,6 +122,80 @@ def _parse(xml_text: str) -> dict:
 
 
 PROVENANCE = DATA / "provenance.json"
+WINDOW_YEARS = {"past": range(2005, 2019), "future": range(2019, 2027)}
+
+
+class CorpusIntegrityError(RuntimeError):
+    """A corpus cannot support a completeness claim without a verified manifest."""
+
+
+def _atomic_text(path: Path, text: str) -> None:
+    """Publish one complete file; an interrupted write never becomes a cache hit."""
+    fd, name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as stream:
+            stream.write(text)
+        os.replace(name, path)
+    finally:
+        if os.path.exists(name):
+            os.unlink(name)
+
+
+def _pmids_hash(pmids) -> str:
+    return hashlib.sha256("\n".join(sorted(pmids)).encode("utf-8")).hexdigest()
+
+
+def _manifest_path(cache: Path) -> Path:
+    return cache.with_suffix(".meta.json")
+
+
+def _validated_cache(cache: Path, *, topic_query: str, years) -> tuple[dict, dict]:
+    """Validate the exact bytes and all year slices before reusing a full cache.
+
+    Legacy files are preserved, but cannot be silently upgraded to complete:
+    their old provenance did not record requested/fetched PMID reconciliation.
+    """
+    manifest = _manifest_path(cache)
+    hint = "Run `python -m gapfinder.fetch --refresh` to rebuild verified full caches."
+    try:
+        raw = cache.read_bytes()
+        recs = json.loads(raw)
+        meta = json.loads(manifest.read_text(encoding="utf-8"))
+        slices = list(years)
+        if (not isinstance(recs, dict) or meta.get("schema_version") != 1
+                or meta.get("complete") is not True
+                or meta.get("cache") != cache.name
+                or meta.get("topic_query") != topic_query
+                or meta.get("year_slices") != slices
+                or meta.get("corpus_sha256") != hashlib.sha256(raw).hexdigest()
+                or meta.get("retrieved_unique") != len(recs)
+                or meta.get("requested_unique_count") != len(recs)
+                or meta.get("requested_pmids_sha256") != _pmids_hash(recs)):
+            raise ValueError("corpus/manifest identity or completeness mismatch")
+        per_year = meta["per_year"]
+        if set(per_year) != {str(y) for y in slices}:
+            raise ValueError("missing year slices")
+        requested = set()
+        for stats in per_year.values():
+            count = stats["available_count"]
+            ids = stats["pmids"]
+            if (type(count) is not int or count < 0
+                    or stats["requested_count"] != count
+                    or stats["retrieved_count"] != count
+                    or not isinstance(ids, list)
+                    or any(not isinstance(pmid, str) or not pmid.isdigit() for pmid in ids)
+                    or len(ids) != count or len(set(ids)) != count
+                    or stats.get("pmids_sha256") != _pmids_hash(ids)):
+                raise ValueError("incomplete year slice")
+            requested.update(ids)
+        if requested != set(recs) or not isinstance(meta.get("retrieved_utc"), str):
+            raise ValueError("requested PMID union or retrieval timestamp mismatch")
+        if any(not isinstance(v, dict) or "year" not in v or "mesh" not in v
+               for v in recs.values()):
+            raise ValueError("invalid corpus record")
+        return recs, meta
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+        raise CorpusIntegrityError(f"Unverified corpus {cache.name}: {exc}. {hint}") from exc
 
 
 def _record_provenance(entry: dict) -> None:
@@ -130,11 +206,12 @@ def _record_provenance(entry: dict) -> None:
     if PROVENANCE.exists():
         try:
             log = json.loads(PROVENANCE.read_text(encoding="utf-8"))
-        except ValueError:
-            log = []
-    log = [e for e in log if e.get("cache") != entry.get("cache")]
+        except ValueError as exc:
+            raise CorpusIntegrityError("Refusing to replace an unreadable provenance log") from exc
+    if not isinstance(log, list):
+        raise CorpusIntegrityError("Refusing to replace a non-list provenance log")
     log.append(entry)
-    PROVENANCE.write_text(json.dumps(log, indent=1), encoding="utf-8")
+    _atomic_text(PROVENANCE, json.dumps(log, indent=1))
 
 
 def provenance() -> list[dict]:
@@ -143,17 +220,41 @@ def provenance() -> list[dict]:
     return json.loads(PROVENANCE.read_text(encoding="utf-8"))
 
 
-def _read(window: str) -> dict:
-    """Prefer the complete year-sliced corpus over the capped range fetch."""
+def _read_window(window: str) -> tuple[dict, dict, Path]:
+    if window not in WINDOW_YEARS:
+        raise ValueError("window must be 'past' or 'future'")
     full = DATA / f"corpus_{window}_full.json"
     part = DATA / f"corpus_{window}.json"
-    if full.exists():
-        return json.loads(full.read_text(encoding="utf-8"))
-    if part.exists():
-        print(f"[fetch] WARNING: using {part.name}, which is capped at ~22% of "
-              f"the result set. Run gapfinder.fetch.fetch_years() for the full span.")
-        return json.loads(part.read_text(encoding="utf-8"))
-    raise FileNotFoundError(f"no corpus for window {window!r}")
+    if not full.exists():
+        legacy = f" The capped legacy file {part.name} is not a production source." if part.exists() else ""
+        raise FileNotFoundError(f"Missing {full.name}.{legacy} Run `python -m gapfinder.fetch`.")
+    recs, meta = _validated_cache(full, topic_query=TOPIC, years=WINDOW_YEARS[window])
+    return recs, meta, full
+
+
+def _read(window: str) -> dict:
+    """Read a verified full window; capped and unverified legacy files are refused."""
+    return _read_window(window)[0]
+
+
+def _dated_production(recs: dict) -> dict:
+    """The query may match an electronic date outside the journal-year scope."""
+    years = [year for window in WINDOW_YEARS.values() for year in window]
+    first, last = min(years), max(years)
+    return {k: v for k, v in recs.items()
+            if isinstance(v.get("year"), int) and first <= v["year"] <= last}
+
+
+def _production_snapshot() -> tuple[dict, list[dict]]:
+    recs, sources = {}, []
+    for window in WINDOW_YEARS:
+        rows, meta, cache = _read_window(window)
+        recs.update(rows)
+        sources.append({"cache": cache.name, "path": str(cache.resolve()),
+                        "sha256": meta["corpus_sha256"],
+                        "metadata_sha256": hashlib.sha256(_manifest_path(cache).read_bytes()).hexdigest(),
+                        "retrieved_utc": meta["retrieved_utc"], "records": len(rows)})
+    return _dated_production(recs), sources
 
 
 def load_production(cutoff: int | None = None) -> dict:
@@ -162,13 +263,7 @@ def load_production(cutoff: int | None = None) -> dict:
     A researcher wants gaps that are open now, so nothing is held back here.
     `cutoff` exists only for the validation view below.
     """
-    recs = {}
-    for window in ("past", "future"):
-        try:
-            recs.update(_read(window))
-        except FileNotFoundError:
-            continue
-    recs = {k: v for k, v in recs.items() if v["year"]}
+    recs, _sources = _production_snapshot()
     if cutoff is not None:
         recs = {k: v for k, v in recs.items() if v["year"] <= cutoff}
     return recs
@@ -182,10 +277,12 @@ def load_corpus(window: str, cutoff: int = 2018) -> dict:
     electronic dates disagree, so the raw window files contain records from the
     wrong side (801 post-2018 records arrived inside a 2005:2018 range fetch).
 
-    Deriving both views from `load_production` would be equivalent; these stay
-    window-scoped so the validation never silently widens its training set.
+    Both views are derived from the same merged production corpus, so changing
+    the cutoff cannot discard years that arrived in the other retrieval file.
     """
-    recs = _read(window)
+    if window not in WINDOW_YEARS:
+        raise ValueError("window must be 'past' or 'future'")
+    recs = load_production()
     if window == "past":
         return {k: v for k, v in recs.items() if v["year"] and v["year"] <= cutoff}
     return {k: v for k, v in recs.items() if v["year"] and v["year"] > cutoff}
@@ -194,23 +291,34 @@ def load_corpus(window: str, cutoff: int = 2018) -> dict:
 def spot_check(window: str = "past", n: int = 20, seed: int = 0) -> dict:
     """Re-fetch n random records live and compare against what we stored.
 
-    An integrity check we can run in front of anyone: it proves the local cache
-    is faithful to PubMed rather than something we edited.
+    Sample the same verified production sources the grid uses. A failed batch
+    or absent PMID is an incomplete check, never a passing comparison.
     """
     import random
-    recs = json.loads((DATA / f"corpus_{window}.json").read_text(encoding="utf-8"))
+    if window not in {*WINDOW_YEARS, "production"} or n < 1:
+        raise ValueError("choose past/future/production and a positive sample size")
+    started = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    recs, sources = _production_snapshot()
+    if window == "past":
+        recs, _ = split_strict(recs, 2018)
+    elif window == "future":
+        _, recs = split_strict(recs, 2018)
     rng = random.Random(seed)
     sample = rng.sample(sorted(recs), min(n, len(recs)))
     title_ok = mesh_ok = checked = 0
     mismatches = []
+    missing, unavailable = [], []
     for i in range(0, len(sample), 50):
         chunk = sample[i:i + 50]
         r = _get("efetch.fcgi", db="pubmed", id=",".join(chunk), retmode="xml")
         if r is None:
+            missing.extend(chunk)
+            unavailable.extend(chunk)
             continue
         live = _parse(r.text)
         for pmid in chunk:
             if pmid not in live:
+                missing.append(pmid)
                 continue
             checked += 1
             stored = recs[pmid]
@@ -222,7 +330,15 @@ def spot_check(window: str = "past", n: int = 20, seed: int = 0) -> dict:
             if not (t_ok and m_ok):
                 mismatches.append(pmid)
         time.sleep(THROTTLE)
-    return {"checked": checked, "titles_match": title_ok,
+    passed = bool(sample) and checked == len(sample) and not mismatches and not missing
+    status = "pass" if passed else ("unavailable" if unavailable and not checked else "fail")
+    return {"status": status, "ok": passed, "window": window, "seed": seed,
+            "requested_sample_size": n, "sample_size": len(sample),
+            "sampled_pmids": sample, "missing_pmids": missing,
+            "unavailable_pmids": unavailable, "sources": sources,
+            "snapshot_pmids_sha256": _pmids_hash(recs),
+            "started_utc": started,
+            "checked": checked, "titles_match": title_ok,
             "mesh_match": mesh_ok, "mismatches": mismatches,
             "verified_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
 
@@ -296,54 +412,85 @@ def fetch_window(topic_query: str, date_range: str, cap: int = 9800,
 
 def fetch_years(topic_query: str, years: range, cache_name: str,
                 refresh: bool = False) -> dict:
-    """Fetch a multi-year span COMPLETELY, by slicing into per-year queries.
+    """Fetch and reconcile every yearly PMID before publishing a full corpus.
 
-    Why this exists: esearch returns at most 9,999 ids no matter what `retmax`
-    says, and efetch-over-history will not page past the same point. A single
-    2005:2018 query reports 44,156 results and hands back 9,800 — 22%. Every
-    individual year is well under the cap (largest is 5,758), so year-by-year
-    retrieval gets the whole span.
-
-    Per-year counts sum to 50,078 against the range query's 44,156 because a
-    record with a 2017 electronic and 2018 print date is returned for both
-    years. That double counting is the same mechanism that leaked 801 post-2018
-    records into the earlier range fetch. Dedupe is by PMID, so it is harmless.
+    Any failed search, truncated ID list, missing batch or unparseable record
+    raises without replacing an existing cache or marking the attempt complete.
+    A manifest records each requested PMID and the hash of the corpus bytes.
     """
     cache = DATA / cache_name
+    slices = list(years)
+    if not slices or any(type(y) is not int for y in slices) or len(set(slices)) != len(slices):
+        raise ValueError("years must contain distinct integer year slices")
     if cache.exists() and not refresh:
-        recs = json.loads(cache.read_text(encoding="utf-8"))
-        print(f"[{cache.name}] cached: {len(recs)} records")
+        recs, _meta = _validated_cache(cache, topic_query=topic_query, years=slices)
+        print(f"[{cache.name}] verified cache: {len(recs)} records")
         return recs
 
     recs: dict = {}
     per_year: dict[int, int] = {}
-    for year in years:
+    reconciliation = {}
+    requested = set()
+    for year in slices:
         query = f"{topic_query} AND {year}[dp]"
         r = _get("esearch.fcgi", db="pubmed", term=query,
                  retmode="json", retmax=10000)
         if r is None:
-            print(f"   {year}: esearch failed, skipping")
-            continue
-        res = r.json()["esearchresult"]
-        ids = res.get("idlist", [])
-        per_year[year] = int(res["count"])
-        if len(ids) < per_year[year]:
-            print(f"   {year}: WARNING only {len(ids)} of {per_year[year]} ids "
-                  f"returned — slice this year further")
+            raise CorpusIntegrityError(f"{year}: esearch failed; full cache was not replaced")
+        try:
+            res = r.json()["esearchresult"]
+            ids, count = res["idlist"], int(res["count"])
+            if (not isinstance(ids, list) or count < 0
+                    or any(not isinstance(pmid, str) or not pmid.isdigit() for pmid in ids)
+                    or len(ids) != count or len(set(ids)) != count):
+                raise ValueError("reported count does not match unique returned PMID list")
+        except (ValueError, KeyError, TypeError) as exc:
+            raise CorpusIntegrityError(
+                f"{year}: invalid or truncated esearch results; slice this year further. "
+                "Full cache was not replaced") from exc
+        per_year[year] = count
         time.sleep(THROTTLE)
 
         before = len(recs)
+        year_recs = {}
         for i in range(0, len(ids), 200):
-            rr = _get("efetch.fcgi", db="pubmed", id=",".join(ids[i:i + 200]),
+            chunk = ids[i:i + 200]
+            rr = _get("efetch.fcgi", db="pubmed", id=",".join(chunk),
                       retmode="xml")
             if rr is None:
-                continue
-            recs.update(_parse(rr.text))
+                raise CorpusIntegrityError(f"{year}: efetch batch {i} failed; full cache was not replaced")
+            parsed = _parse(rr.text)
+            if set(parsed) != set(chunk):
+                raise CorpusIntegrityError(
+                    f"{year}: efetch batch {i} PMID mismatch "
+                    f"({len(parsed)}/{len(chunk)}); full cache was not replaced")
+            year_recs.update(parsed)
             time.sleep(THROTTLE)
+        requested.update(ids)
+        recs.update(year_recs)
+        reconciliation[str(year)] = {
+            "available_count": count, "requested_count": len(ids),
+            "retrieved_count": len(year_recs), "pmids": sorted(ids),
+            "pmids_sha256": _pmids_hash(ids),
+        }
         print(f"   {year}: {per_year[year]:>6} found, "
               f"+{len(recs) - before:>5} new, total {len(recs):,}")
 
-    cache.write_text(json.dumps(recs), encoding="utf-8")
+    if set(recs) != requested:
+        raise CorpusIntegrityError("Fetched PMID union differs from searches; full cache was not replaced")
+    corpus_text = json.dumps(recs)
+    retrieved_utc = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    meta = {"schema_version": 1, "complete": True, "cache": cache.name,
+            "topic_query": topic_query, "year_slices": slices,
+            "per_year": reconciliation, "requested_unique_count": len(requested),
+            "requested_pmids_sha256": _pmids_hash(requested),
+            "retrieved_unique": len(recs),
+            "corpus_sha256": hashlib.sha256(corpus_text.encode("utf-8")).hexdigest(),
+            "retrieved_utc": retrieved_utc}
+    # Publish the manifest last. If interrupted between replacements, its hash
+    # will reject the changed corpus on the next read rather than bless it.
+    _atomic_text(cache, corpus_text)
+    _atomic_text(_manifest_path(cache), json.dumps(meta, indent=1))
     with_abs = sum(1 for v in recs.values() if v["abstract"])
     with_mesh = sum(1 for v in recs.values() if v["mesh"])
     _record_provenance({
@@ -352,16 +499,18 @@ def fetch_years(topic_query: str, years: range, cache_name: str,
         "endpoints": [f"{BASE}/esearch.fcgi", f"{BASE}/efetch.fcgi"],
         "query": f"{topic_query} AND <year>[dp]",
         "strategy": "per-year slices, deduplicated by PMID",
-        "years": [min(years), max(years) if years else None],
+        "years": [min(slices), max(slices)],
         "per_year_counts": per_year,
         "per_year_sum": sum(per_year.values()),
         "retrieved_unique": len(recs),
         "abstract_coverage": round(with_abs / max(len(recs), 1), 4),
         "mesh_coverage": round(with_mesh / max(len(recs), 1), 4),
-        "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "retrieved_utc": retrieved_utc,
+        "complete": True,
+        "corpus_sha256": meta["corpus_sha256"],
+        "manifest": _manifest_path(cache).name,
         "api_key_used": bool(NCBI_KEY),
-        "note": ("Complete span. esearch caps at 9,999 ids regardless of retmax, "
-                 "so a single range query returns ~22% of a 44k result set."),
+        "note": "Complete requested year slices: every searched PMID was fetched and reconciled.",
     })
     print(f"[{cache.name}] {len(recs):,} unique records | "
           f"abstract {with_abs/max(len(recs),1):.0%} | "
@@ -380,18 +529,26 @@ def split_strict(recs: dict, cutoff: int) -> tuple[dict, dict]:
 TOPIC = ('("Early Detection of Cancer"[MeSH Terms] '
          'OR "Early Diagnosis"[MeSH Terms])')
 
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    global DATA, PROVENANCE
+    parser = argparse.ArgumentParser(description="Build verified, year-sliced PubMed corpora.")
+    parser.add_argument("--refresh", action="store_true", help="replace caches only after every PMID is fetched")
+    parser.add_argument("--data-dir", type=Path,
+                        help="Store a separate retrieval run here instead of the demo data directory")
+    args = parser.parse_args(argv)
+    if args.data_dir is not None:
+        DATA = args.data_dir.resolve()
+        DATA.mkdir(parents=True, exist_ok=True)
+        PROVENANCE = DATA / "provenance.json"
+    recs = {}
+    for window, years in WINDOW_YEARS.items():
+        recs.update(fetch_years(TOPIC, years, f"corpus_{window}_full.json", refresh=args.refresh))
+    past, future = split_strict(_dated_production(recs), 2018)
+    print(f"\nproduction: {len(past) + len(future):,} dated records; "
+          f"validation split: {len(past):,} <=2018 / {len(future):,} >2018")
+    return 0
+
+
 if __name__ == "__main__":
-    import sys
-    refresh = "--refresh" in sys.argv
-    past = fetch_window(TOPIC, "2005:2018", cache_name="corpus_past.json",
-                        refresh=refresh)
-    future = fetch_window(TOPIC, "2019:2026", cache_name="corpus_future.json",
-                          refresh=refresh)
-    p, _ = split_strict(past, 2018)
-    _, f = split_strict(future, 2018)
-    print(f"\nstrict split: past(<=2018) {len(p)} | future(>2018) {len(f)}")
-    print(f"  leaked out of past window: {len(past) - len(p)}")
-    ex = next((v for v in p.values() if v["abstract"]), None)
-    if ex:
-        print(f"\nsample abstract ({len(ex['abstract'])} chars):")
-        print("  " + ex["abstract"][:260] + "…")
+    raise SystemExit(main())

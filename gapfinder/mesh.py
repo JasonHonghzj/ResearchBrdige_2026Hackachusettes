@@ -25,7 +25,7 @@ Branch rules, each one earned by a failed probe (see README):
               (Vaginal Smears is in both E01.370 and E05.200), so filtering on
               the branch letter alone is not sufficient.
 
-On the full 79,940-paper corpus these rules yield 50 problems x 30 methods.
+The production grid requests the top 50 problems x 32 methods on the full corpus.
 """
 from __future__ import annotations
 
@@ -283,8 +283,15 @@ NONSPECIFIC_PROBLEM = {
 }
 
 
-def build_axes(corpus: dict, min_problem: int = 25, min_method: int = 15,
-               n_problems: int = 50, n_methods: int = 30):
+PRODUCTION_AXIS_OPTIONS = {
+    "min_problem": 60, "min_method": 40, "n_problems": 50, "n_methods": 32,
+}
+
+
+def build_axes(corpus: dict, min_problem: int = PRODUCTION_AXIS_OPTIONS["min_problem"],
+               min_method: int = PRODUCTION_AXIS_OPTIONS["min_method"],
+               n_problems: int = PRODUCTION_AXIS_OPTIONS["n_problems"],
+               n_methods: int = PRODUCTION_AXIS_OPTIONS["n_methods"]):
     """Returns (problems, methods, freq, name_of, trees) from a corpus dict."""
     from collections import Counter
     freq, name_of = Counter(), {}
@@ -309,18 +316,22 @@ def build_axes(corpus: dict, min_problem: int = 25, min_method: int = 15,
     return problems, methods, freq, name_of, trees
 
 
-if __name__ == "__main__":
-    import sys
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    corpus = json.loads((DATA / "corpus_past.json").read_text(encoding="utf-8"))
-    corpus = {k: v for k, v in corpus.items() if v["year"] and v["year"] <= 2018}
-    problems, methods, freq, name_of, trees = build_axes(corpus)
+def main() -> int:
+    from gapfinder.fetch import load_production
+    corpus = load_production()
+    problems, methods, freq, name_of, trees = build_axes(corpus, **PRODUCTION_AXIS_OPTIONS)
 
-    print(f"\ncorpus: {len(corpus)} papers (<=2018)")
+    print(f"\nproduction corpus: {len(corpus):,} dated papers (all retrieval windows)")
     print(f"\nPROBLEM axis — {len(problems)} terms")
     for u in problems[:12]:
         print(f"   {freq[u]:>5}  {name_of[u]}")
-    print(f"\nMETHOD axis — {len(methods)} terms (E05.393 + L01, "
-          f"E01/E05.200/E05.318 excluded)")
+    print(f"\nMETHOD axis — {len(methods)} transferable terms (production rules)")
     for u in methods:
         print(f"   {freq[u]:>5}  {name_of[u]:<46} {(trees.get(u) or [''])[0]}")
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    raise SystemExit(main())

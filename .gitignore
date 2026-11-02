@@ -1,16 +1,19 @@
 __pycache__/
 *.pyc
+.pytest_cache/
 .venv/
 venv/
 .env
-.env.local
+.env.*
 !.env.example
 .DS_Store
 .ipynb_checkpoints/
 *.log
+.test-tmp/
 
-# large regenerable corpora (python -m scout.fetch rebuilds in ~3 min)
+# Local verified raw corpus and manifests; distribute in the separate corpus ZIP.
 data/corpus_*.json
-
-# interactive check cache (regenerable, one query pair per entry)
+# Interactive checks are local; committed full-pair counts remain available offline.
 data/check_cache.json
+# Generated archives, HTTP downloads, audit staging and tool runtimes.
+output/

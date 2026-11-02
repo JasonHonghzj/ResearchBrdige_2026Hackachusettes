@@ -93,7 +93,7 @@ function outcome(x){
   return {label:'Candidate for review', note:'The overall pairing appears in the literature, with few results for early detection. Review the papers, synonyms and feasibility with a specialist.'};
 }
 function sourceLabel(x){
-  if (x.source === 'map' || x.data_source === 'saved_verification') return 'Saved map counts · collected during the build';
+  if (x.source === 'map' || x.data_source === 'saved_verification') return 'Saved PubMed counts · not a fresh query';
   const date = x.checked_utc ? new Date(x.checked_utc).toLocaleString(undefined, {dateStyle:'medium', timeStyle:'short'}) : '';
   return (x.cached ? 'Cached PubMed check' : 'Fresh PubMed check') + (date ? ' · ' + date : '');
 }
@@ -124,6 +124,11 @@ function renderCorpus(){
     `<li><span class="ok">✓</span><span class="lbl">${fmt(S.scope.cells_checked)} candidate pairings checked<span class="sub">Saved counts from overall and early-detection PubMed searches. The map corpus is deduplicated across year boundaries.</span></span></li>`;
   const g = S.grid;
   $('corpuskv').innerHTML = `<dt>Papers</dt><dd>${fmt(g.n_papers)}</dd><dt>Disease terms</dt><dd>${g.problems.length}</dd><dt>Method terms</dt><dd>${g.methods.length}</dd><dt>Studied cells</dt><dd>${fmt(g.filled)} / ${fmt(g.cells)}</dd><dt>Low-result pairings</dt><dd>${fmt(S.scope.confirmed_gaps)} / ${fmt(S.scope.cells_checked)} checked</dd>`;
+  if (S.scope.snapshot) {
+    const snapshot = S.scope.snapshot;
+    $('corpuskv').innerHTML += `<dt>Corpus retrieved</dt><dd>${esc(snapshot.retrieved_on)}</dd>`;
+    $('plog').innerHTML += `<li><span class="lbl">Pairing-count scope<span class="sub">${esc(snapshot.pairing_counts.note)}</span></span></li>`;
+  }
 }
 
 const SYNONYM = {
@@ -208,7 +213,7 @@ function renderValidation(){
     return {label,real:+match[1],n:+match[2],pct:Math.round(+match[1]/+match[2]*100)};
   }).filter(Boolean) : [];
   $('bars').innerHTML = rows.length ? rows.map(r => `<div class="bar"><span class="bl">${esc(r.label)}<br><small>n = ${fmt(r.n)}</small></span><span class="track"><span class="fill" style="width:${r.pct}%"></span></span><span class="bv">${r.pct}%<br><small>${r.real} pairings</small></span></div>`).join('') : '<p class="source-note">Ranking evaluation is unavailable.</p>';
-  $('barnote').textContent = neg ? `Scale 0–100%. The bridge score did not improve selection (lift ${neg.lift}×). The product therefore orders candidates by their overall paper counts. These counts do not predict future discoveries.` : 'The prototype makes no prediction-performance claim.';
+  $('barnote').textContent = neg ? `Historical snapshot comparison${neg.recorded_date ? ' ('+neg.recorded_date+')' : ''}. Scale 0–100%. The bridge score did not improve selection (lift ${neg.lift}×). Candidates are ordered by their overall paper counts. This is not an evaluation of a new build or a prediction of future discoveries.` : 'The prototype makes no prediction-performance claim.';
   $('valkv').innerHTML = `<dt>Pairings checked</dt><dd>${fmt(S.scope.cells_checked)}</dd><dt>With ≤2 results</dt><dd>${fmt(S.scope.confirmed_gaps)}</dd><dt>Candidate order</dt><dd>Overall paper count</dd><dt>Historical validation</dt><dd>Pending remeasurement</dd>`;
   $('valcaveat').textContent = v.status === 'pending_remeasurement' ? 'The earlier 2× historical lift was withdrawn after changes to the corpus, axes and gap definition. Corrected historical validation is pending.' : 'See the saved analysis for the applicable validation status.';
 }

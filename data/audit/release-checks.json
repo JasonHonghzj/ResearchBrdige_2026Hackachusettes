@@ -1,0 +1,40 @@
+{
+  "verified_on": "2026-11-02",
+  "python_tests": {
+    "passed": 193,
+    "failures": 0,
+    "errors": 0,
+    "deprecation_warnings_as_errors": true
+  },
+  "frontend_tests": {
+    "passed": 8,
+    "syntax": "pass"
+  },
+  "http_exports": {
+    "status": "pass",
+    "cases": 45,
+    "languages": [
+      "en",
+      "zh",
+      "es"
+    ]
+  },
+  "default_http": {
+    "papers": 80025,
+    "checked_pairs": 534,
+    "candidate_pairs": 425,
+    "scientific_validation": "pending_remeasurement",
+    "old_pipeline_removed": true
+  },
+  "source_manifests": "pass",
+  "git_diff_whitespace": "pass (CRLF-aware)",
+  "browser_visual_verification": "Partial historical review only; remaining manual steps in docs/VERIFICATION.md",
+  "files": {
+    "data/grid.json": "e5053edc06aee0cf8675ae238e6187b9e44e25e2f1cf6b3e2dea29f569b77277",
+    "data/confirmed.json": "6fabb1b43ed24132d569dbe2736ccf59964881a905fcf483b22b05e2104b8e16",
+    "data/snapshot.json": "d59b2d52261d061f789875ee71b0714f5445471fc870775895ba31554442d72c",
+    "data/mesh_trees.json": "51e54eb6891fa0e1d8c56bd1fa547c6cf0ddfead7b352b2b9f2a1dae4bc6fe53",
+    "data/provenance.json": "96fb27377fdf8b486f98294b35edf949eafb5d3fd1df9215d4406a69069c123f",
+    "requirements-tested.txt": "199c866b7ff11eb52b23f2025a13c38e238e51eab4bf86381f610696300caf2d"
+  }
+}

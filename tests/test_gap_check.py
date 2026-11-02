@@ -7,12 +7,8 @@ disease that does not exist. That is the single most embarrassing thing this
 tool could do, so it is pinned here.
 """
 import pytest
-from fastapi.testclient import TestClient
 
-from app import app
 from gapfinder import confirm
-
-client = TestClient(app)
 
 
 @pytest.fixture
@@ -34,7 +30,7 @@ def pair(p, m):
     return f"{q(p)} AND {q(m)}"
 
 
-def test_established_method_with_no_early_detection_use_is_a_gap(counts):
+def test_established_method_with_no_early_detection_use_is_a_gap(counts, client):
     counts[q("Obesity")] = 200_000
     counts[q("Polymerase Chain Reaction")] = 400_000
     counts[pair("Obesity", "Polymerase Chain Reaction")] = 2403
@@ -50,7 +46,7 @@ def test_established_method_with_no_early_detection_use_is_a_gap(counts):
     assert "Early Detection of Cancer" in d["queries"]["gap"]
 
 
-def test_already_studied_pairing_is_not_a_gap(counts):
+def test_already_studied_pairing_is_not_a_gap(counts, client):
     counts[q("Breast Neoplasms")] = 300_000
     counts[q("Mammography")] = 40_000
     counts[pair("Breast Neoplasms", "Mammography")] = 29_166
@@ -61,7 +57,7 @@ def test_already_studied_pairing_is_not_a_gap(counts):
     assert d["verdict"].startswith("Not a gap")
 
 
-def test_unrecognised_disease_is_not_reported_as_a_gap(counts):
+def test_unrecognised_disease_is_not_reported_as_a_gap(counts, client):
     """A misspelling must not read as pristine territory."""
     counts[q("Mass Spectrometry")] = 100_000
     # nothing registered for the misspelled problem, so it counts 0
@@ -74,7 +70,7 @@ def test_unrecognised_disease_is_not_reported_as_a_gap(counts):
     assert "real_gap" not in detail
 
 
-def test_unrecognised_method_is_rejected_too(counts):
+def test_unrecognised_method_is_rejected_too(counts, client):
     counts[q("Sepsis")] = 90_000
     r = client.get("/api/gap/check",
                    params={"problem": "Sepsis", "method": "Raman Spectrum Analysis"})
@@ -88,12 +84,12 @@ def test_unrecognised_method_is_rejected_too(counts):
     "a",                               # too short for the endpoint
     "x" * 101,                         # too long for the endpoint
 ])
-def test_terms_that_could_rewrite_the_query_are_refused(counts, bad):
+def test_terms_that_could_rewrite_the_query_are_refused(counts, bad, client):
     r = client.get("/api/gap/check", params={"problem": bad, "method": "Mass Spectrometry"})
     assert r.status_code == 422
 
 
-def test_zero_maturity_is_flagged_as_untried_not_promising(counts):
+def test_zero_maturity_is_flagged_as_untried_not_promising(counts, client):
     counts[q("Parkinson Disease")] = 100_000
     counts[q("Breath Tests")] = 9_000
     # both terms exist but have never been combined at all
@@ -103,7 +99,7 @@ def test_zero_maturity_is_flagged_as_untried_not_promising(counts):
     assert "at all" in d["verdict"] and "there may be a reason" in d["verdict"]
 
 
-def test_thin_evidence_is_called_thin(counts):
+def test_thin_evidence_is_called_thin(counts, client):
     counts[q("Sepsis")] = 90_000
     counts[q("Metabolomics")] = 30_000
     counts[pair("Sepsis", "Metabolomics")] = 12
@@ -112,7 +108,7 @@ def test_thin_evidence_is_called_thin(counts):
     assert d["real_gap"] is True and d["verdict"].startswith("Thin")
 
 
-def test_second_identical_check_is_served_from_cache(counts):
+def test_second_identical_check_is_served_from_cache(counts, client):
     counts[q("Obesity")] = 200_000
     counts[q("Genomics")] = 50_000
     counts[pair("Obesity", "Genomics")] = 500
@@ -123,7 +119,7 @@ def test_second_identical_check_is_served_from_cache(counts):
     assert client.get("/api/gap/check", params={**p, "fresh": "true"}).json()["cached"] is False
 
 
-def test_terms_endpoint_offers_the_real_descriptor_spellings():
+def test_terms_endpoint_offers_the_real_descriptor_spellings(client):
     t = client.get("/api/gap/terms").json()
     assert len(t["problems"]) == 50 and len(t["methods"]) == 32
     # MeSH inverts names; the endpoint must serve the inverted form, not prose
@@ -131,7 +127,7 @@ def test_terms_endpoint_offers_the_real_descriptor_spellings():
     assert "Raman Spectrum Analysis" not in t["methods"]
 
 
-def test_cached_pair_ignores_case_and_repeated_spaces(counts, monkeypatch):
+def test_cached_pair_ignores_case_and_repeated_spaces(counts, monkeypatch, client):
     counts[q("Stroke")] = 200_000
     counts[q("Machine Learning")] = 100_000
     counts[pair("Stroke", "Machine Learning")] = 1452
@@ -148,7 +144,7 @@ def test_cached_pair_ignores_case_and_repeated_spaces(counts, monkeypatch):
     assert response.json()["gap_papers"] == 13
 
 
-def test_saved_verification_works_offline_for_already_studied_pair(counts, monkeypatch):
+def test_saved_verification_works_offline_for_already_studied_pair(counts, monkeypatch, client):
     import json
     confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
 
@@ -163,7 +159,7 @@ def test_saved_verification_works_offline_for_already_studied_pair(counts, monke
     assert data["checked_utc"] is None and data["real_gap"] is False
 
 
-def test_pubmed_outage_is_service_error_not_invalid_pair(counts, monkeypatch):
+def test_pubmed_outage_is_service_error_not_invalid_pair(counts, monkeypatch, client):
     calls = []
 
     def unavailable(term, **kwargs):
@@ -179,7 +175,7 @@ def test_pubmed_outage_is_service_error_not_invalid_pair(counts, monkeypatch):
     assert data["queries"]["maturity"] == pair("Stomach Neoplasms", "Breath Tests")
 
 
-def test_failed_refresh_returns_explicitly_labeled_saved_result(counts, monkeypatch):
+def test_failed_refresh_returns_explicitly_labeled_saved_result(counts, monkeypatch, client):
     import json
     confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
     monkeypatch.setattr(confirm, "_count", lambda *args, **kwargs: None)
@@ -191,7 +187,7 @@ def test_failed_refresh_returns_explicitly_labeled_saved_result(counts, monkeypa
     assert "not been refreshed" in data["refresh_error"]
 
 
-def test_explicit_refresh_queries_pubmed_instead_of_snapshot(counts):
+def test_explicit_refresh_queries_pubmed_instead_of_snapshot(counts, client):
     import json
     confirm.CACHE.write_text(json.dumps({"Stroke|Machine Learning": {"maturity": 1452, "gap_papers": 13}}))
     counts[q("Stroke")] = 200_000

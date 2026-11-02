@@ -1,8 +1,8 @@
 """MeSH descriptor name -> OpenAlex search phrase.
 
 OpenAlex has no MeSH filter, so a grid term cannot be carried across directly.
-Hand-mapped in data/phrases.json for every axis term; `normalize()` is the
-fallback for anything unmapped.
+Hand-mapped where available in data/phrases.json; `normalize()` is the fallback
+for unmapped descriptors. The CLI reports coverage for the production axes.
 """
 from __future__ import annotations
 
@@ -44,14 +44,11 @@ def coverage(axis_names, kind: str = "problem"):
     return mapped, unmapped
 
 
-if __name__ == "__main__":
-    import sys
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    from gapfinder.mesh import build_axes, DATA as MDATA
-
-    corpus = json.loads((MDATA / "corpus_past.json").read_text(encoding="utf-8"))
-    corpus = {k: v for k, v in corpus.items() if v["year"] and v["year"] <= 2018}
-    P, M, freq, name_of, trees = build_axes(corpus)
+def main() -> int:
+    from gapfinder.fetch import load_production
+    from gapfinder.mesh import build_axes, PRODUCTION_AXIS_OPTIONS
+    corpus = load_production()
+    P, M, freq, name_of, trees = build_axes(corpus, **PRODUCTION_AXIS_OPTIONS)
 
     for axis, ids, kind in (("PROBLEM", P, "problem"), ("METHOD", M, "method")):
         names = [name_of[u] for u in ids]
@@ -60,3 +57,10 @@ if __name__ == "__main__":
               f"mapped {len(mapped)} | unmapped {len(unmapped)}")
         for n in unmapped:
             print(f"   UNMAPPED  {n:<46} -> fallback: \"{normalize(n)}\"")
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    raise SystemExit(main())

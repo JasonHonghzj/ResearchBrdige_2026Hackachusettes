@@ -416,8 +416,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 }
 @media(prefers-reduced-motion:reduce){.loading::before{animation:none}html{scroll-behavior:auto}}
 @media print{
+  :root,:root[data-theme]{color-scheme:light;--plane:#fff;--surface:#fff;--surface-2:#fff;--ink:#111;--ink-2:#333;--ink-3:#555;--accent:#075985;--accent-soft:#fff;--line:#bbb;--line-strong:#999}
   body{background:#fff;color:#111}.shell{max-width:none;padding:0}.topbar,.selbar,.foot,#view-bridge,#view-gap>.panel:not(#p6),.brief-toolbar,#tip{display:none!important}
-  #view-gap,#p6{display:block!important}.brief{border:0;box-shadow:none;max-width:none;padding:0}.brief p,.brief h4,.brief a{color:#111}.brief a::after{content:" (" attr(href) ")";font-size:10px;overflow-wrap:anywhere}
+  #view-gap,#p6{display:block!important}.brief{background:#fff;color:#111;border:0;box-shadow:none;max-width:none;padding:0}.brief p,.brief h4,.brief a{color:#111}.brief a::after{content:" (" attr(href) ")";font-size:10px;overflow-wrap:anywhere}
 }
 </style>
 </head>

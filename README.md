@@ -1,211 +1,180 @@
 # ResearchBridge
 
-Explore early-detection research, check disease–method pairings against PubMed,
-and take a reproducible literature brief into a research discussion.
+Check a disease–method pairing against PubMed, explore an early-detection map,
+and export a reproducible literature brief for research discussion.
 
-Hackachusetts 2026 · Track H4, Accelerating Biotechnology Innovation
+Hackachusetts 2026 · Track H4, Accelerating Biotechnology Innovation.
 
-## Run the demo
+## Run
 
-Use Python 3.12 or newer. From the repository root:
+Tested with Python 3.12.14 on Windows. From the repository root:
 
 ```powershell
-python -m pip install -r requirements.txt
-python -m uvicorn app:app --host 127.0.0.1 --port 8000
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-tested.txt
+.venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 
-Open [ResearchBridge](http://127.0.0.1:8000). On Windows, `run.cmd` runs the same
-FastAPI app, preferring `.venv` when present and otherwise using `python` on PATH.
-The app binds to localhost. No API key or corpus rebuild is required for the demo.
+Open [ResearchBridge](http://127.0.0.1:8000). On Windows, `run.cmd` starts the
+same application and prefers `.venv`. On macOS/Linux, use `.venv/bin/python`.
+The UI is the working application, and its saved examples are selectable inputs.
+The default map now uses the verified **2026-10-30 retrieval**, promoted on
+2026-11-02. There is one maintained UI: FastAPI with HTML/JavaScript.
 
-## What is implemented
+`requirements-tested.txt` pins the tested main application and test environment.
+`requirements.txt` lists direct dependency requirements for a fresh resolution.
+For the commands below, use the virtual environment's Python when it is not activated.
 
-- **Check:** enter exact MeSH disease and method names, or choose a saved example.
-  New checks query PubMed; repeated checks can use a saved result. A fresh check
-  displays its recorded timestamp. Unknown terms are rejected rather than called gaps.
-- **Map:** saved counts over 79,940 deduplicated PubMed papers (2005–2026), with
-  50 disease × 32 method axes. A shortlist shows the highest overall paper counts
-  across distinct diseases. Ringed cells have ≤2 results in the saved full-PubMed
-  early-detection search; that threshold does not establish scientific novelty.
-- **Brief:** the exact selected pairing, counts, evidence source, reproducible
-  PubMed searches and limitations. Download Markdown or print / save as PDF.
-  Editing the inputs clears the previous checked selection until another check succeeds.
-- **Library:** a separate 60-paper starter set, 56 official abstracts and 135
-  institutions. Search, save up to four papers, compare, check literal source text,
-  and export a discussion brief. These relevance scores are text similarity.
-- **Method:** corpus coverage, the withdrawn historical lift, the negative result
-  for bridge ranking, and a clearly labeled illustrative claim-check walkthrough.
+Dependencies need Internet access to install. The committed map, Library and
+saved examples run offline afterwards. New or refreshed PubMed checks require
+Internet access. Optional `NCBI_API_KEY`, `CONTACT_EMAIL` and `OPENALEX_API_KEY`
+settings belong in `.env` (copy the empty `.env.example`); process environment
+variables take precedence. Keep `.env` private. No LLM API key is required.
 
-The saved map, examples, briefs and Library work offline once the local server
-is running. New or refreshed PubMed checks require Internet access. External PubMed
-links also require a connection. No claim-checking model is called by the walkthrough.
+## What works
 
-**Future work:** verified Massachusetts collaborator matching, a general claim
-verification gate, and corrected historical validation. The earlier 2× lift was
-withdrawn. Paper counts indicate indexed use, not effectiveness or feasibility.
+- **Check:** choose a saved example or enter exact MeSH disease/method names.
+  Check PubMed queries the overall pairing and the same pairing restricted to
+  early detection. Refresh PubMed requests a new check. Saved results are labeled;
+  failed refreshes show an explicit saved fallback when available.
+- **Map:** browse 50 diseases × 32 methods. Empty corpus cells are checked against
+  the broader PubMed query. A ringed candidate has at most two early-detection
+  results in its saved count. Shortlists order by overall pairing counts.
+- **Brief:** the selected pairing, both counts, source status, exact PubMed
+  searches and limitations. Download Markdown or print/save PDF. Editing the
+  query clears the previous selection until another check succeeds.
+- **Library:** a separate 60-paper starter collection, with 56 official abstracts
+  and 135 institutions. Search, save up to four papers, compare, check literal
+  source text, and export CSV/HTML/PDF. TF-IDF/LSA scores measure text relevance.
+- **Method:** corpus coverage, evidence limitations, the withdrawn historical
+  performance claim and a clearly labeled scripted claim-check illustration.
+  The illustration does not call a verification model.
 
-See [DEMO.md](DEMO.md) for the three-minute walkthrough and rehearsal checks.
-The historical Streamlit interface is retained as `streamlit_app.py`; its older
-notes in `README_RESEARCHBRIDGE.md` do not describe the primary demo UI.
+A low count is a lead for specialist review, not proof of novelty, feasibility
+or clinical effectiveness. Verified collaborator recommendations and a general
+scientific claim-verification service remain future work.
+
+## Current saved snapshot
+
+| Item | Value |
+|---|---:|
+| Retrieval date | 2026-10-30 |
+| Production papers, stored publication year 2005–2026 | **80,025** |
+| Disease × method axes | **50 × 32** |
+| Filled / empty cells | 1,066 / 534 |
+| Pairings with confirmation counts | 534 |
+| Low-result candidate pairings (≤2) | **425** |
+| MeSH / abstract coverage | 100% / 86.24% |
+| Strict ≤2018 / >2018 split | 43,353 / 36,672; no overlap |
+
+The raw windows contain 44,156 and 36,684 unique PMIDs, with 803 shared PMIDs.
+Their union has 80,037 records; 12 with stored publication year 2027 are excluded.
+The sample audit independently re-fetched 60 different PMIDs and matched titles
+and MeSH IDs. It did not inspect every record or abstract.
+
+**Pairing-count timing:** 533 pairings reuse historical count caches; one missing
+pairing was queried during the 2026-10-30 build. The 425 candidates are not a
+claim that every pairing was re-queried on that date. The UI exposes this boundary.
+
+The earlier **2× lift remains withdrawn**. The separate retrospective evaluation
+uses training-only axes and 171 matched pairs; its results do not support restoring
+that claim. It uses current MeSH assignments rather than an as-of-2018 index.
+Validation remains `pending_remeasurement`. See [verification and limitations](docs/VERIFICATION.md).
 
 ## Verify
 
 ```powershell
-python -m pytest tests --ignore=tests/test_app.py -q -p no:cacheprovider
+python -m pytest tests -q -p no:cacheprovider -W error::DeprecationWarning
 node --check static/gap.js
 node --check static/bridge.js
+node --test tests/frontend_bridge_state.test.cjs
 ```
 
-`tests/test_app.py` covers the retained Streamlit interface and additionally
-requires `streamlit`. The FastAPI demo does not use Streamlit. Browser rehearsal
-is necessary: API tests alone do not verify navigation, responsive layout or brief selection.
+The current suite covers the maintained application; Streamlit is no longer required.
+For real localhost HTTP responses and 45 three-language export combinations,
+start the app and run:
 
----
+```powershell
+python -m scripts.verify_live_http --base-url http://127.0.0.1:8000 --output output/http-verification
+```
 
-## Measured findings (2026-10-24)
+This checks responses, IDs, counts and exported contents. Native print preview,
+390px layout and complete visual review require the manual checks in
+[docs/VERIFICATION.md](docs/VERIFICATION.md#manual-browser-checks).
 
-These are real measurements against PubMed and OpenAlex, not estimates.
+## Sources and rebuilding
 
-### Corpus — complete, 2005–2026
-| | |
-|---|---|
-| Production corpus | **79,940 papers** (2005–2026, deduplicated) |
-| Validation build / score | 43,353 (≤2018) / 36,587 (>2018), zero overlap |
-| MeSH coverage | 100% |
-| Abstract coverage | 83% pre-2018, 90% post |
-| All-time results for the topic | 83,291 — so this is ~96% of the literature |
+Committed JSON and the Library SQLite database are enough to start the app.
+Large raw corpus files and their manifests are local, ignored by Git and excluded
+from the clean source ZIP. They are required to rebuild or audit the map.
 
-**esearch caps at 9,999 ids regardless of `retmax`.** A single `2005:2018` query
-reports 44,156 results and returns 9,800 — 22%. Slicing per year (largest year is
-5,758) and deduping by PMID recovers 44,156/44,156. Per-year counts sum to 50,078
-because a record with a 2017 electronic and 2018 print date is returned for both
-years — the same mechanism that leaked 801 post-2018 records into the range fetch.
+Retrieve complete raw files when absent (network required):
 
-The topic descriptors have birthdays: `Early Diagnosis` 2004, `Early Detection of
-Cancer` 2009. Pre-2005 is 4% of all-time results and inconsistently back-indexed,
-so 2005 is the natural floor.
+```powershell
+python -m gapfinder.fetch
+```
 
-### One fetch, two views
-`load_production()` — every year, what the product uses, because a researcher
-wants gaps that are open now. `load_corpus(window)` — the validation view, split
-strictly at 2018 so the ranking cannot see the window it is scored against.
+Retrieval uses annual slices, reconciles all searched/fetched PMIDs and writes
+`data/corpus_past_full.json` and `data/corpus_future_full.json`, each with a
+SHA-256 completeness manifest. Add `--refresh` to replace a verified retrieval.
+PubMed indexing changes, so a new retrieval may produce different totals.
 
-### A tree-lookup bug that silently crippled every axis
-Batched `esummary db=mesh` fails for newer 9-digit descriptors: `D000069550`
-(Machine Learning) maps to uid `68000069550`, answered with *"cannot get document
-summary"*. **500 descriptors — 6% of the vocabulary and the most modern 6% —** had
-empty tree lists and were dropped from all three axes and the bridge vocabulary:
-Machine Learning (1,034 papers), COVID-19 (1,106), Deep Learning (711), Liquid
-Biopsy (507), Cell-Free Nucleic Acids (327), Circulating Tumor DNA (304).
-The rules were correct; the lookup was broken. `https://id.nlm.nih.gov/mesh/<UI>.json`
-returns `treeNumber` directly — 500/500 recovered.
+Audit and build into a **fresh** output directory before replacing serving data:
 
-### Gap detection: the naive rules fail
-Measured on the earlier 50 × 30 grid before the axis rules were tightened. The
-failure modes are the durable finding here, not the counts.
+```powershell
+python -m scripts.audit_corpus --corpus-dir data --output-dir output/audit-new --spot-check --emit
+python -m scripts.serve_snapshot --data-dir output/audit-new/serving --port 8001
+```
 
-| Ranking rule | Candidates from 1,500 cells | Top result |
-|---|---|---|
-| "busy method × busy problem, empty" | **673 of 673 holes** — no discrimination | Cervical Cancer × Early Diagnosis |
-| + shared neighbours (naive Swanson) | 932 | Breast × Colonoscopy |
-| + mechanistic bridges, IDF-weighted | **59** | Breast × Colonoscopy |
+The audit is offline unless `--spot-check` or `--emit` is supplied; `--audit-only`
+suppresses both network stages. Emission uses saved pairing counts and queries
+missing ones. Required failures stop publication. The isolated server changes
+Map data; the Library and immediate Check cache retain their own sources.
+After review, copy the generated serving JSON and matching caches/provenance into
+`data/`, update `data/snapshot.json`, and restart the app. A rebuild does not
+establish a predictive performance claim.
 
-Root cause of the surviving junk: the method axis contained **organ-bound procedures**.
-Colonoscopy and mammography are defined by the organ they examine, so they can never
-transfer. Fix is a tree-prefix rule, not a blocklist:
+To run the separate retrospective evaluation with its frozen reference ontology:
 
-- **keep** `E05.393` (molecular/genetic), `E05.196` (analytical chemistry — mass
-  spec, Raman, NMR, chromatography), `L01.224.050` (artificial intelligence)
-- **drop** `E01` (diagnostic procedures — mostly organ-bound)
-- **drop** `E05.318` (statistics — Logistic Models, Odds Ratio, Area Under Curve)
-- **watch** `E05.200` mirrors `E01`; a term can sit in several branches at once
-  (`Vaginal Smears` is in both), so branch-letter filtering alone is not enough
-- plain `L01` admits Internet, Telephone, Reminder Systems, Software;
-  plain `G17` admits Odds Ratio. Both rejected.
-- `METHOD_ALLOW` restores what the tree cannot reach: Metabolomics and Proteomics
-  are `H01` disciplines; Liquid Biopsy and Breath Tests are `E01` but not
-  organ-bound. `METHOD_DENY` drops therapeutics like `Genetic Therapy`.
+```powershell
+python -m scripts.evaluate_history --data-dir data --trees data/audit/history_mesh_trees.json --output output/history-evaluation.json
+```
 
-Resulting axes on the full corpus: **50 problems × 30 methods**, now including
-Machine Learning, Deep Learning, Liquid Biopsy, Proteomics, Metabolomics,
-Biosensing, Raman and mass spectrometry.
+To rebuild only the Library database from committed seeds and source snapshots:
 
-### Time-sliced validation: 2× lift — ⚠️ STALE, MUST BE RE-MEASURED
-**Do not pitch these numbers.** They were measured on the 9,800-paper (22%) corpus
-with the old 14-term method axis. The corpus is now 4.5× larger and the axis has
-30 terms including Machine Learning, Liquid Biopsy and mass spectrometry — none of
-which existed on the axis when this ran. Phase 1 re-runs it; the figures below are
-recorded only as the prior result and the shape of what to expect.
+```powershell
+python -c "from researchbridge.core import build_database; print(build_database())"
+```
 
-Grid built from papers ≤2018, scored against 2019–2026.
+## Package
 
-| Pile | Filled later |
-|---|---|
-| Flagged (≥2 mechanistic bridges), n=328 | **17%** |
-| Popularity-matched control, n=328 | 9% |
-| Unflagged empty cells, n=241 | 8% |
+```powershell
+python -m scripts.package_project
+python -m scripts.package_corpus
+```
 
-Lift **2.0×** vs unflagged, **1.8×** vs popularity-matched.
-
-**Honest ceiling:** at a threshold of ≥3 holdout papers the signal disappears
-(6 of 328; matched control equals it). So this ranks candidates ~2× better than chance.
-It does **not** predict breakthroughs — do not claim that.
-
-### OpenAlex: works, with traps
-- **No MeSH filter** exists (225 filterable fields, none for MeSH) — map terms to search phrases
-- `authorships.institutions.geo.region` filters **works, not institutions**. Grouping by
-  institution then returns every co-author institution. A first attempt confidently listed
-  University of Manchester, UCL and AstraZeneca (Sweden) as Massachusetts labs.
-  **A second verification pass per institution is mandatory.**
-- `pmid` OR-lists cap at 50 (100 silently returns 97)
-- Parent universities (Harvard, MIT) swamp the useful units (MGH, Brigham, Dana-Farber, Broad)
-- Two queries for two jobs: **MeSH for gap detection, OpenAlex topic search for collaborators.**
-  Joining on corpus PMIDs gives counts of 1–3 and is useless for ranking.
-
-Verified output for `pancreatic cancer early detection`, Massachusetts, 2015+:
-MGH 58 · Brigham 37 · Beth Israel Deaconess 24 · Broad 13.
-
-### Starter datasets: seeds only
-- `starter/pubmed` — 60 rows, **not a topic set**. README: "Massachusetts affiliation,
-  2024 publication date." Contents span autism policy, bilingual speech assessment,
-  reading difficulties, dialysis timing, biosensing, a stiffness treadmill. No abstracts.
-  No field to map.
-- `starter/openalex` — 135 rows, **education institutions only**, so no MGH, Brigham,
-  Dana-Farber or Broad — the four that are actually the answer. Carries noise
-  (high schools, 0-work entries). The `works` column is useful for size normalisation.
-
-Use both as seeds and as the demo's entry point. Fetch live. Say so openly.
-
----
+`output/researchbridge-clean.zip` contains current code, docs, tests, saved map and
+Library sources. It excludes credentials, virtual environments, generated output
+and raw corpora. The separate `output/researchbridge-corpus.zip` preserves local
+raw corpora and current audit evidence, with verified member hashes. Generated
+ZIPs are local artifacts and are not pushed into Git history.
 
 ## Layout
 
 ```text
-app.py                  FastAPI app; /api/gap/* and /api/bridge/*
-gapfinder/              PubMed fetch, MeSH axes, grid and query confirmation
-researchbridge/         Starter-set retrieval, comparison, reports and exports
-static/index.html       Responsive UI, no framework or build step
-static/gap.js           Pairing selection, checks, map and novelty brief
-static/bridge.js        Starter-set Library UI
-data/                   Saved map / checks and Bridge database / snapshots
-starter/                Original Hackachusetts datasets
-streamlit_app.py        Retained earlier interface
-probes/                 Exploratory measurement scripts
+app.py                 FastAPI, UI and both API engines
+static/                Current HTML/CSS/JavaScript UI
+gapfinder/             PubMed retrieval, MeSH axes, grid, query confirmation
+researchbridge/        Starter Library, SQLite, search, reports and exports
+data/                  Current serving JSON, Library database and source snapshots
+  snapshot.json        Current snapshot date, counts, hash and cache boundaries
+  audit/               Current corpus audit and retrospective evaluation evidence
+starter/               Extracted original CSV seeds and their retrieval scripts
+scripts/               Audit, evaluation, isolated serving, HTTP checks and packaging
+tests/                 Maintained Python and frontend state regression tests
+docs/VERIFICATION.md   Verification scope, cleanup record and remaining limitations
 ```
 
-## Reproduce any number here
-```bash
-python -m gapfinder.fetch        # rebuild both corpora via year slicing
-python -m gapfinder.mesh         # print the axes
-python -m gapfinder.phrases      # phrase-map coverage
-python -c "from gapfinder.fetch import spot_check; print(spot_check('past', 30))"
-```
-
-## Prior art to acknowledge
-Swanson & Smalheiser's **Arrowsmith** has done literature-based discovery since the 1990s
-(Swanson's fish-oil / Raynaud's result, 1986). What is new here is the measured lift,
-per-claim code verification, and the handoff to named local labs.
-
-## Caveat worth stating in the pitch
-NLM moved from human to largely automated MeSH indexing around 2022. The holdout window
-(2019–2026) straddles that change, so some "gap filled" signal could be an indexing shift.
+Source bytes are preserved with `.gitattributes` because provenance hashes must
+match across checkouts. Acknowledge Swanson & Smalheiser's Arrowsmith and prior
+literature-based discovery work when presenting the prototype.

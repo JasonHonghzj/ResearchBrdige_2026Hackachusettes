@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-30T21:56:43+00:00",
+  "run_kind": "current_retrieval_audit",
+  "does_not_restore_saved_snapshot": true,
+  "corpus_dir": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\raw",
+  "output_dir": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit",
+  "audit_only": false,
+  "spot_checks": [
+    {
+      "window": "production",
+      "status": "pass",
+      "ok": true,
+      "artifact": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\spot_check_production.json",
+        "bytes": 1803,
+        "sha256": "7b998b6de86fb781c8660a0d38d439f91bd1020c8e7a3d6235f7f409291fa609"
+      }
+    },
+    {
+      "window": "past",
+      "status": "pass",
+      "ok": true,
+      "artifact": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\spot_check_past.json",
+        "bytes": 1557,
+        "sha256": "ff395ffd22436ac89779d44a07b203830efe1efac7e64007d7675c4dde031847"
+      }
+    },
+    {
+      "window": "future",
+      "status": "pass",
+      "ok": true,
+      "artifact": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\spot_check_future.json",
+        "bytes": 1559,
+        "sha256": "1d94aa90016225c7c6f4fd0a204baeccae6a3ebd72546962563d375920fcce08"
+      }
+    }
+  ],
+  "end_to_end": {
+    "status": "pass",
+    "scope": "Real grid.emit and serving-file consistency; HTTP/browser behavior is separate.",
+    "serving_dir": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving",
+    "source_kind": "current retrieval; confirmation cache reuse recorded separately",
+    "cache_time_note": "Copied saved counts have no per-pair timestamps; only missing pairs are queried in this run.",
+    "all_counts_refreshed_live": false,
+    "copied_caches": [
+      {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\data\\mesh_trees.json",
+        "bytes": 487020,
+        "sha256": "9bd129504f5678402dd8b068e9fc4f982ed5ae5c7fd55e4d81ffccb81dccd9a5"
+      },
+      {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\data\\gap_confirm.json",
+        "bytes": 49583,
+        "sha256": "7d34936b3b68b6df8b0d4a7c0af307c77a74d5820393ff682d77a0afde53cfe3"
+      }
+    ],
+    "papers": 80025,
+    "cells": 1600,
+    "filled": 1066,
+    "empty": 534,
+    "checked": 534,
+    "cached_pairs": 533,
+    "newly_queried_pairs": 1,
+    "confirmed_gaps": 425,
+    "historical_validation_status": "pending_remeasurement",
+    "files": {
+      "confirmed.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\confirmed.json",
+        "bytes": 325164,
+        "sha256": "6fabb1b43ed24132d569dbe2736ccf59964881a905fcf483b22b05e2104b8e16"
+      },
+      "gaps.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\gaps.json",
+        "bytes": 307687,
+        "sha256": "59658e1d4271953d7963dfb850ba7b0e1686e72826489423c005fac6d16fff72"
+      },
+      "grid.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\grid.json",
+        "bytes": 42078,
+        "sha256": "e5053edc06aee0cf8675ae238e6187b9e44e25e2f1cf6b3e2dea29f569b77277"
+      },
+      "integrity_check.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\integrity_check.json",
+        "bytes": 1803,
+        "sha256": "7b998b6de86fb781c8660a0d38d439f91bd1020c8e7a3d6235f7f409291fa609"
+      },
+      "provenance.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\provenance.json",
+        "bytes": 2136,
+        "sha256": "96fb27377fdf8b486f98294b35edf949eafb5d3fd1df9215d4406a69069c123f"
+      },
+      "validation.json": {
+        "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\serving\\validation.json",
+        "bytes": 12588,
+        "sha256": "2fc25a82a0ca202ceb2c7ab2baf80b021a827d2b382495be59701d4cd6848efb"
+      }
+    },
+    "live_query_log": {
+      "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\live_query_log.jsonl",
+      "bytes": 382,
+      "sha256": "3f2dfe976c23b0fad23a442bc61b68e32ab7dfb88779a9f43a4aab81a2144901"
+    }
+  },
+  "source_audit": {
+    "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\audit\\corpus_audit.json",
+    "bytes": 26399,
+    "sha256": "35e63b22fe842766af6129ddec17f17e3bfe7bac96ecd8662ed3f4a7cf53f6d1"
+  },
+  "status": "pass",
+  "saved_demo_json_unchanged": true,
+  "completed_utc": "2026-10-30T21:56:59+00:00"
+}

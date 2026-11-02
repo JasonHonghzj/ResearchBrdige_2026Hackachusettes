@@ -169,10 +169,12 @@ def bridge_search(
     every interface language."""
     index = _bridge().index
     effective = canonical_query(q.strip())
-    results, expanded, matched = index.search(effective, mode=mode, limit=limit)
+    results, expanded, matched = index.search(effective, mode=mode, limit=len(index.papers))
+    shown = results[:limit]
     return {"scope": _scope(), "query": q, "effective_query": effective,
             "expanded_query": expanded, "lexicon_matches": matched, "mode": mode,
-            "count": len(results), "results": [_paper_view(p, effective) for p in results]}
+            "count": len(results), "total_count": len(results), "shown_count": len(shown),
+            "results": [_paper_view(p, effective) for p in shown]}
 
 
 @app.get("/api/bridge/keywords")
@@ -351,7 +353,7 @@ def bridge_export(body: ExportBody) -> Response:
 #
 #   Bridge  60 curated papers, TF-IDF retrieval, validated: False.
 #           Answers "what work EXISTS on this?"
-#   Gap     79,940 PubMed papers, MeSH axes, gaps verified against FULL PubMed.
+#   Gap     saved production corpus, MeSH axes and full-PubMed pairing counts.
 #           Answers "what work DOESN'T exist?"
 #
 # A gap found only inside a corpus is not a research gap. Ranking empty cells of
@@ -366,20 +368,38 @@ DATA = ROOT / "data"
 
 GAP_SCOPE = {
     "engine": "gapfinder",
-    "corpus": "79,940 PubMed papers, 2005-2026, complete per-year retrieval",
     "vocabulary": "MeSH descriptors; 50 disease x 32 transferable-method axes",
-    "gap_test": ("live PubMed: maturity = problem AND method for any purpose; "
+    "gap_test": ("PubMed searches (saved counts unless explicitly refreshed): "
+                 "maturity = problem AND method for any purpose; "
                  "gap_papers = the same pair AND the early-detection topic, "
                  "which must be <= 2"),
-    "validated": True,
+    "validated": False,
 }
 
 
 def _gap_file(name: str):
     path = DATA / name
     if not path.exists():
-        raise HTTPException(503, f"{name} not generated - run `python -m gapfinder.grid`")
-    return _json.loads(path.read_text(encoding="utf-8"))
+        raise HTTPException(503, f"{name} not generated. Retrieve the raw corpora with "
+                            "`python -m gapfinder.fetch`, then publish the map with "
+                            "`python -m gapfinder.grid --emit`. Restart the API after rebuilding.")
+    try:
+        return _json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise HTTPException(503, f"{name} is unreadable; restore the saved snapshot "
+                            "or rebuild with `python -m gapfinder.grid --emit`.") from exc
+
+
+def _gap_scope_info(grid: dict | None = None) -> dict:
+    """Describe the saved map actually being served, including after a rebuild."""
+    grid = grid if grid is not None else _gap_file("grid.json")
+    metadata = _gap_file("snapshot.json") if (DATA / "snapshot.json").exists() else None
+    return {**GAP_SCOPE,
+            "corpus": f"{grid['n_papers']:,} PubMed papers in the saved production map",
+            "vocabulary": (f"MeSH descriptors; {len(grid['problems'])} disease x "
+                           f"{len(grid['methods'])} transferable-method axes"),
+            "historical_validation": "pending_remeasurement",
+            "snapshot": metadata}
 
 
 @lru_cache(maxsize=1)
@@ -390,7 +410,7 @@ def _confirmed() -> tuple:
 @app.get("/api/gap/scope")
 def gap_scope() -> dict:
     rows = _confirmed()
-    return {**GAP_SCOPE,
+    return {**_gap_scope_info(),
             "cells_checked": len(rows),
             "confirmed_gaps": sum(1 for r in rows if r.get("real_gap")),
             "provenance": _gap_file("provenance.json")}
@@ -399,7 +419,8 @@ def gap_scope() -> dict:
 @app.get("/api/gap/grid")
 def gap_grid() -> dict:
     """The field map: diseases against transferable methods, cells are paper counts."""
-    return {"scope": GAP_SCOPE, **_gap_file("grid.json")}
+    grid = _gap_file("grid.json")
+    return {"scope": _gap_scope_info(grid), **grid}
 
 
 @app.get("/api/gap/gaps")
@@ -424,7 +445,7 @@ def gap_list(limit: int = Query(50, ge=1, le=500),
             if r.get("real_gap") and r.get("maturity", 0) >= min_maturity]
     field = "maturity" if order == "maturity" else "score"
     rows.sort(key=lambda r: -r.get(field, 0))
-    return {"scope": GAP_SCOPE, "ranking": order,
+    return {"scope": _gap_scope_info(), "ranking": order,
             "total_confirmed": sum(1 for r in _confirmed() if r.get("real_gap")),
             "total_checked": len(_confirmed()),
             "count": min(len(rows), limit), "gaps": rows[:limit]}
@@ -436,7 +457,7 @@ def gap_rejected(limit: int = Query(50, ge=1, le=500)) -> dict:
     next to what was discarded, and a judge will ask for it."""
     rows = [dict(r) for r in _confirmed() if not r.get("real_gap")]
     rows.sort(key=lambda r: -r.get("gap_papers", 0))
-    return {"scope": GAP_SCOPE, "count": min(len(rows), limit),
+    return {"scope": _gap_scope_info(), "count": min(len(rows), limit),
             "rejected": rows[:limit]}
 
 
@@ -450,20 +471,8 @@ def gap_validation() -> dict:
     would repeat exactly the overreach the bridge ranking already cost us.
     """
     path = DATA / "validation.json"
-    if path.exists():
-        return _json.loads(path.read_text(encoding="utf-8"))
-    return {"status": "pending_remeasurement",
-            "withdrawn_claim": "2.0x lift of flagged gaps over unflagged",
-            "withdrawn_because": ["corpus was 22% of the result set",
-                                  "method axis had 14 terms, now 32",
-                                  "gap definition was corpus-scoped; 0 of 8 top "
-                                  "gaps were real in full PubMed"],
-            "established_negative_result": {
-                "claim": "mechanistic bridge score predicts a real gap",
-                "verdict": False,
-                "flagged_real": "368/475 = 77%",
-                "rejected_real": "56/58 = 97%",
-                "lift": 0.80}}
+    from gapfinder.validation import serving_validation
+    return serving_validation(_gap_file("validation.json") if path.exists() else None)
 
 
 @app.get("/api/gap/integrity")
@@ -473,7 +482,12 @@ def gap_integrity() -> dict:
     if not path.exists():
         raise HTTPException(503, "no integrity check recorded - run "
                                  "gapfinder.fetch.spot_check()")
-    return _json.loads(path.read_text(encoding="utf-8"))
+    recorded = _gap_file("integrity_check.json")
+    if not recorded.get("sources"):
+        return {**recorded, "status": "legacy_unscoped", "ok": None,
+                "scope_warning": "Historical sample without source hashes or sampled PMIDs; "
+                                 "it does not verify the current complete production corpus."}
+    return recorded
 
 
 @app.get("/api/gap/terms")
@@ -510,7 +524,7 @@ def gap_check(problem: str = Query(..., min_length=2, max_length=100),
     out = check_pair(problem, method, use_cache=not fresh)
     if not out.get("ok"):
         raise HTTPException(503 if out.get("error_code") == "pubmed_unavailable" else 422, detail=out)
-    return {"scope": GAP_SCOPE, **out}
+    return {"scope": _gap_scope_info(), **out}
 
 
 # The pages change often during development and a browser that caches one shows
@@ -525,7 +539,7 @@ NO_STORE = {"Cache-Control": "no-store, must-revalidate", "Pragma": "no-cache"}
 async def _no_cache_frontend(request, call_next):
     response = await call_next(request)
     path = request.url.path
-    if path == "/" or path == "/pipeline" or path.startswith("/static/"):
+    if path == "/" or path.startswith("/static/"):
         response.headers["Cache-Control"] = "no-store, must-revalidate"
         response.headers["Pragma"] = "no-cache"
     return response
@@ -534,8 +548,3 @@ async def _no_cache_frontend(request, call_next):
 @app.get("/", include_in_schema=False)
 def index_page() -> FileResponse:
     return FileResponse(STATIC / "index.html", headers=NO_STORE)
-
-
-@app.get("/pipeline", include_in_schema=False)
-def pipeline_page() -> FileResponse:
-    return FileResponse(STATIC / "pipeline.html", headers=NO_STORE)

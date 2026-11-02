@@ -5,7 +5,7 @@ set "DEMO_PYTHON=python"
 if exist ".venv\Scripts\python.exe" set "DEMO_PYTHON=.venv\Scripts\python.exe"
 "%DEMO_PYTHON%" -c "import fastapi, uvicorn, sklearn, reportlab" >nul 2>&1
 if errorlevel 1 (
-    echo Install Python and dependencies first: python -m pip install -r requirements.txt
+    echo Install Python and dependencies first: "%DEMO_PYTHON%" -m pip install -r requirements-tested.txt
     echo See README.md for setup instructions.
     pause
     exit /b 1

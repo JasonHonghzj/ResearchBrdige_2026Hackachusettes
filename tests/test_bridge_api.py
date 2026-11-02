@@ -4,20 +4,24 @@ Expected PMIDs come from the teammate's own fixed development cases
 (researchbridge/evaluate.py), so these tests check the merge did not change
 retrieval behaviour, not just that the endpoint returns 200.
 """
+import csv
+import io
 import json
 import sqlite3
 from contextlib import closing
 
 import pytest
-from fastapi.testclient import TestClient
 
-from app import app
 from researchbridge.core import DB_PATH, build_database
 
-client = TestClient(app)
+
+def test_http_client_uses_supported_transport(client):
+    import httpx2
+
+    assert isinstance(client, httpx2.Client)
 
 
-def test_search_returns_expected_top_paper():
+def test_search_returns_expected_top_paper(client):
     r = client.get("/api/bridge/search", params={"q": "medication literacy"})
     assert r.status_code == 200
     body = r.json()
@@ -26,14 +30,32 @@ def test_search_returns_expected_top_paper():
     assert body["results"][0]["pmid"] == "41726533"
 
 
+@pytest.mark.parametrize("mode", ["tfidf", "hybrid"])
+def test_search_total_matches_export_when_display_is_limited(mode, client):
+    """The real starter set has 32 'study' matches, beyond the UI's 20 cards."""
+    body = client.get("/api/bridge/search", params={
+        "q": "study", "mode": mode, "limit": 20}).json()
+    full = client.get("/api/bridge/search", params={
+        "q": "study", "mode": mode, "limit": 60}).json()
+    exported = client.post("/api/bridge/export", json={
+        "kind": "search", "format": "csv", "q": "study", "mode": mode})
+    assert exported.status_code == 200
+    rows = list(csv.DictReader(io.StringIO(exported.content.decode("utf-8-sig"))))
+    assert body["count"] == body["total_count"] == full["total_count"] == len(rows) == 32
+    assert body["shown_count"] == len(body["results"]) == 20
+    assert full["shown_count"] == len(full["results"]) == 32
+    assert body["results"] == full["results"][:20]
+    assert [p["pmid"] for p in full["results"]] == [p["pmid"] for p in rows]
+
+
 @pytest.mark.parametrize("q", ["用藥素養", "medication literacy", "alfabetización sobre medicamentos"])
-def test_same_concept_same_ranking_in_every_language(q):
+def test_same_concept_same_ranking_in_every_language(q, client):
     body = client.get("/api/bridge/search", params={"q": q}).json()
     assert body["effective_query"] == "medication literacy chatbot"
     assert body["results"][0]["pmid"] == "41726533"
 
 
-def test_excerpt_is_verbatim_source_text():
+def test_excerpt_is_verbatim_source_text(client):
     body = client.get("/api/bridge/search", params={"q": "protein structure"}).json()
     hit = next(p for p in body["results"] if p["excerpt"])
     record = sqlite3.connect(DB_PATH).execute(
@@ -42,13 +64,14 @@ def test_excerpt_is_verbatim_source_text():
         assert sentence.rstrip(".") in record
 
 
-def test_nonsense_query_reports_no_results():
+def test_nonsense_query_reports_no_results(client):
     body = client.get("/api/bridge/search", params={"q": "zzxq987654xyz"}).json()
-    assert body["count"] == 0 and body["results"] == []
+    assert body["count"] == body["total_count"] == body["shown_count"] == 0
+    assert body["results"] == []
 
 
 @pytest.mark.parametrize("params", [{"q": ""}, {"q": "x", "mode": "bm25"}, {"q": "x", "limit": 0}])
-def test_bad_input_is_rejected(params):
+def test_bad_input_is_rejected(params, client):
     assert client.get("/api/bridge/search", params=params).status_code == 422
 
 
@@ -69,7 +92,7 @@ def test_repointed_paths_rebuild_identical_database(tmp_path):
 
 # ---------------------------------------------------------------- full surface
 
-def test_meta_serves_teammate_strings_per_language():
+def test_meta_serves_teammate_strings_per_language(client):
     zh = client.get("/api/bridge/meta", params={"lang": "zh"}).json()
     en = client.get("/api/bridge/meta", params={"lang": "en"}).json()
     assert zh["text"]["tab_search"] == "文獻探索" and en["text"]["tab_search"] == "Paper explorer"
@@ -77,7 +100,7 @@ def test_meta_serves_teammate_strings_per_language():
     assert client.get("/api/bridge/meta", params={"lang": "fr"}).status_code == 422
 
 
-def test_bridge_results_carry_verbatim_evidence_for_each_side():
+def test_bridge_results_carry_verbatim_evidence_for_each_side(client):
     body = client.get("/api/bridge/bridges", params={
         "q": "medication literacy", "method": "llm", "cue": "medication"}).json()
     assert body["method"]["id"] == "llm" and body["cue"]["id"] == "medication"
@@ -86,14 +109,31 @@ def test_bridge_results_carry_verbatim_evidence_for_each_side():
         assert p["method_evidence"] and p["bridge_evidence"]
 
 
-def test_auto_method_uses_top_recommendation():
+def test_auto_method_uses_top_recommendation(client):
     body = client.get("/api/bridge/bridges", params={"q": "medication literacy"}).json()
     assert body["method"]["id"] == body["recommended_methods"][0]["id"]
     n = len(body["results"])
     assert len(body["pairs"]) == n * (n - 1) // 2
 
 
-def test_compare_scores_are_bounded_and_pairs_unique():
+def test_auto_method_goal_change_requires_a_different_cue(client):
+    """Real-data counterpart of the frontend's stale privacy-cue regression."""
+    old = client.get("/api/bridge/bridges", params={
+        "q": "medication literacy", "method": "auto", "cue": "privacy"}).json()
+    stale = client.get("/api/bridge/bridges", params={
+        "q": "protein structure", "method": "auto", "cue": "privacy"}).json()
+    corrected = client.get("/api/bridge/bridges", params={
+        "q": "protein structure", "method": "auto", "cue": "all"}).json()
+    assert old["method"]["id"] == "llm"
+    assert {p["pmid"] for p in old["results"]} == {"40963721", "41726516"}
+    assert stale["method"]["id"] == "protein"
+    assert {c["id"] for c in stale["cues"]} == {"biomarker", "genomics"}
+    assert stale["count"] == 0
+    assert corrected["cue"]["id"] == "all"
+    assert [p["pmid"] for p in corrected["results"]] == ["41049045"]
+
+
+def test_compare_scores_are_bounded_and_pairs_unique(client):
     ids = [p["pmid"] for p in client.get("/api/bridge/search", params={"q": "large language models"}).json()["results"][:3]]
     assert len(ids) == 3
     body = client.post("/api/bridge/compare", json={"pmids": ids}).json()
@@ -101,7 +141,7 @@ def test_compare_scores_are_bounded_and_pairs_unique():
     assert all(0 <= p["score"] <= 1 for p in body["pairs"])
 
 
-def test_check_literal_match_and_review_required():
+def test_check_literal_match_and_review_required(client):
     pmid = "41726533"
     abstract = sqlite3.connect(DB_PATH).execute("SELECT abstract FROM papers WHERE pmid=?", (pmid,)).fetchone()[0]
     real = abstract.split("\n\n")[0].split(": ", 1)[1][:80]
@@ -111,24 +151,24 @@ def test_check_literal_match_and_review_required():
     assert statuses == ["literal_match", "review_required"]
 
 
-def test_brief_prefers_saved_papers():
+def test_brief_prefers_saved_papers(client):
     body = client.post("/api/bridge/brief", json={"goal": "protein", "pmids": ["41726533"]}).json()
     assert "41726533" in body["markdown"]
 
 
-def test_brief_without_matching_papers_is_a_clear_error():
+def test_brief_without_matching_papers_is_a_clear_error(client):
     r = client.post("/api/bridge/brief", json={"goal": "zzxq987654xyz"})
     assert r.status_code == 422
 
 
-def test_directory_filters():
+def test_directory_filters(client):
     body = client.get("/api/bridge/directory", params={"city": "Worcester"}).json()
     assert body["count"] >= 1 and all(r["city"] == "Worcester" for r in body["institutions"])
 
 
 @pytest.mark.parametrize("kind", ["search", "bridges", "compare", "brief", "directory"])
 @pytest.mark.parametrize("fmt", ["csv", "html", "pdf"])
-def test_every_export_kind_and_format(kind, fmt):
+def test_every_export_kind_and_format(kind, fmt, client):
     r = client.post("/api/bridge/export", json={
         "kind": kind, "format": fmt, "q": "medication literacy", "pmids": ["41726533", "40963721"]})
     if r.status_code == 501:   # PDF needs Windows' Microsoft JhengHei; graceful elsewhere
@@ -141,14 +181,14 @@ def test_every_export_kind_and_format(kind, fmt):
         assert r.content.startswith(b"%PDF")
 
 
-def test_csv_export_neutralises_formula_injection():
+def test_csv_export_neutralises_formula_injection(client):
     """A goal starting with '=' must not become a live spreadsheet formula."""
     r = client.post("/api/bridge/export", json={"kind": "search", "format": "csv", "q": "=chatbot"})
     assert r.status_code == 200
     assert b",=chatbot" not in r.content and b"'=chatbot" in r.content
 
 
-def test_html_export_escapes_user_input():
+def test_html_export_escapes_user_input(client):
     r = client.post("/api/bridge/export", json={"kind": "brief", "format": "html",
                                                  "q": "<script>alert(1)</script> chatbot"})
     assert r.status_code == 200
@@ -156,18 +196,18 @@ def test_html_export_escapes_user_input():
 
 
 @pytest.mark.parametrize("call", [
-    lambda: client.get("/api/bridge/bridges", params={"method": "nope"}),
-    lambda: client.get("/api/bridge/bridges", params={"cue": "nope"}),
-    lambda: client.post("/api/bridge/compare", json={"pmids": ["1"]}),
-    lambda: client.post("/api/bridge/compare", json={"pmids": ["1", "2", "3", "4", "5"]}),
-    lambda: client.post("/api/bridge/compare", json={"pmids": ["../etc"]}),
-    lambda: client.post("/api/bridge/export", json={"kind": "search", "format": "exe", "q": "x"}),
+    lambda client: client.get("/api/bridge/bridges", params={"method": "nope"}),
+    lambda client: client.get("/api/bridge/bridges", params={"cue": "nope"}),
+    lambda client: client.post("/api/bridge/compare", json={"pmids": ["1"]}),
+    lambda client: client.post("/api/bridge/compare", json={"pmids": ["1", "2", "3", "4", "5"]}),
+    lambda client: client.post("/api/bridge/compare", json={"pmids": ["../etc"]}),
+    lambda client: client.post("/api/bridge/export", json={"kind": "search", "format": "exe", "q": "x"}),
 ])
-def test_invalid_requests_are_rejected(call):
-    assert call().status_code == 422
+def test_invalid_requests_are_rejected(call, client):
+    assert call(client).status_code == 422
 
 
-def test_frontend_assets_served():
+def test_frontend_assets_served(client):
     page = client.get("/")
     assert page.status_code == 200 and 'id="view-bridge"' in page.text
     assert client.get("/static/bridge.js").status_code == 200

@@ -7,19 +7,20 @@ Ranking rule, and the two rules it replaced (see README for the measurements):
   rejected  shared-neighbour counting over all terms — every bridge came back
             `Humans, Female, Male, Middle Aged`, so it just re-measured
             popularity.
-  in use    shared MECHANISTIC bridges only (MeSH trees D and G), restricted to
+  exploratory shared MECHANISTIC bridges only (MeSH trees D and G), restricted to
             rare terms and weighted by IDF. Swanson's B-terms were physiological
             — fish oil -> blood viscosity, platelet aggregation -> Raynaud's —
             not demographics.
 
-An empty cell is never evidence on its own. What earns a cell a place on the
-shortlist is two literatures that run through the same specific biology and have
-still never met.
+An empty cell is a candidate for a full-PubMed count check. Mechanistic scores
+are retained for historical inspection; serving candidates are ordered by their
+overall pairing counts after confirmation, not by these experimental scores.
 """
 from __future__ import annotations
 
 import json
 import math
+import tempfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -232,10 +233,31 @@ def validate(cutoff: int = 2018, *, seed: int = 0, verbose: bool = True) -> dict
 
 
 def emit(outdir: Path = DATA, verbose: bool = True) -> dict:
-    """Write what the app serves: the production grid, its gaps, the validation."""
+    """Build and confirm every empty cell before publishing serving snapshots.
+
+    Network/count failures leave existing serving snapshots in place. The count
+    cache may retain successful partial progress so the next attempt can resume.
+    Restart the API process after a successful rebuild to reload its cached rows.
+    """
     from gapfinder.fetch import load_production
+    from gapfinder.confirm import confirm, GAP_TOLERANCE
+    from gapfinder.validation import pending_validation
 
     prod = rank_gaps(build(load_production(), verbose=verbose))
+    if not prod.n_papers or not prod.problems or not prod.methods:
+        raise ValueError("A non-empty production corpus and both axes are required.")
+    candidates = prod.gaps + prod.rejects
+    confirmed = confirm(candidates, verbose=verbose)
+    expected = {(r["problem"], r["method"]) for r in candidates}
+    actual = {(r["problem"], r["method"]) for r in confirmed}
+    if len(confirmed) != len(candidates) or actual != expected:
+        raise RuntimeError("Confirmation is incomplete; serving snapshots were not replaced. "
+                           "Retry python -m gapfinder.grid --emit when PubMed is available.")
+    if any(type(row.get(field)) is not int or row[field] < 0
+           for row in confirmed for field in ("maturity", "gap_papers")):
+        raise ValueError("Confirmation contains invalid counts; serving snapshots were not replaced.")
+    if any(row.get("real_gap") is not (row["gap_papers"] <= GAP_TOLERANCE) for row in confirmed):
+        raise ValueError("Confirmation verdicts do not match the count threshold.")
     grid_json = {
         "n_papers": prod.n_papers,
         "problems": [{"ui": u, "name": prod.name[u], "papers": prod.freq[u]}
@@ -247,21 +269,43 @@ def emit(outdir: Path = DATA, verbose: bool = True) -> dict:
                    if p in set(prod.problems) and m in set(prod.methods)],
         "cells": prod.n_cells, "filled": prod.n_filled,
     }
-    (outdir / "grid.json").write_text(json.dumps(grid_json), encoding="utf-8")
-    (outdir / "gaps.json").write_text(
-        json.dumps({"gaps": prod.gaps, "rejects": prod.rejects[:400],
-                    "n_rejects": len(prod.rejects)}, indent=1), encoding="utf-8")
-    val = validate(verbose=verbose)
-    (outdir / "validation.json").write_text(json.dumps(val, indent=1), encoding="utf-8")
+    val = pending_validation(validate(verbose=verbose))
+    payloads = {
+        "grid.json": grid_json,
+        "gaps.json": {"gaps": prod.gaps, "rejects": prod.rejects,
+                      "n_rejects": len(prod.rejects)},
+        "confirmed.json": confirmed,
+        "validation.json": val,
+    }
+    outdir.mkdir(parents=True, exist_ok=True)
+    # Serialize everything first; failed counts/validation never publish a new map.
+    with tempfile.TemporaryDirectory(prefix=".rebuild-", dir=outdir) as staging:
+        stage = Path(staging)
+        for name, payload in payloads.items():
+            (stage / name).write_text(json.dumps(payload, indent=1), encoding="utf-8")
+        for name in payloads:
+            (stage / name).replace(outdir / name)
     if verbose:
-        print(f"[grid] wrote grid.json, gaps.json, validation.json")
-    return {"grid": grid_json, "gaps": prod, "validation": val}
+        print("[grid] wrote grid.json, gaps.json, confirmed.json, validation.json")
+    return {"grid": grid_json, "gaps": prod, "confirmed": confirmed, "validation": val}
 
 
 if __name__ == "__main__":
+    import argparse
     import sys
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     from gapfinder.fetch import load_production
+
+    parser = argparse.ArgumentParser(description="Inspect or rebuild the production map.")
+    parser.add_argument("--emit", action="store_true",
+                        help="Confirm all empty cells and publish serving JSON; may query PubMed")
+    args = parser.parse_args()
+    if args.emit:
+        try:
+            emit()
+        except (OSError, ValueError, RuntimeError) as exc:
+            parser.exit(1, f"Rebuild failed: {exc}\n")
+        raise SystemExit(0)
 
     g = rank_gaps(build(load_production()))
     print(f"\ngrid: {g.n_cells} cells | {g.n_filled} filled "

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "retrieved_on": "2026-10-30",
+  "promoted_on": "2026-11-02",
+  "papers": 80025,
+  "year_scope": [
+    2005,
+    2026
+  ],
+  "disease_axes": 50,
+  "method_axes": 32,
+  "cells_checked": 534,
+  "candidate_pairs": 425,
+  "pairing_counts": {
+    "cached_pairs": 533,
+    "newly_queried_pairs": 1,
+    "note": "533 historical saved count pairs; 1 newly queried during the 2026-10-30 build. Cached pairs have no per-pair timestamps; use Refresh PubMed for a fresh check."
+  },
+  "source_audit": "audit/corpus_audit.json",
+  "production_sample": "audit/spot_check_production.json",
+  "retrospective_evaluation": "audit/history-evaluation.json",
+  "grid_sha256": "e5053edc06aee0cf8675ae238e6187b9e44e25e2f1cf6b3e2dea29f569b77277",
+  "raw_corpora_shipped_in_git": false,
+  "validation": "pending_remeasurement"
+}

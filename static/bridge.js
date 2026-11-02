@@ -139,6 +139,9 @@
 
   /* ---------- export ---------- */
   function exportControls(id, kind, params) {
+    // Keep the download tied to the result that created these controls.
+    const snapshot = { lang: state.lang, ...params };
+    if (snapshot.pmids) snapshot.pmids = [...snapshot.pmids];
     const box = $(id); box.hidden = false;
     box.innerHTML = `<label class="field"><span>${esc(t('export_format'))}</span>
         <select class="sel"><option value="csv">CSV</option><option value="html">HTML</option><option value="pdf">PDF</option></select></label>
@@ -147,11 +150,12 @@
     const sel = box.querySelector('select'), btn = box.querySelector('button'), msg = box.querySelector('.status');
     sel.addEventListener('change', () => btn.textContent = t('export_download', { format: sel.value.toUpperCase() }));
     btn.addEventListener('click', async () => {
+      const format = sel.value;
       btn.disabled = true; msg.textContent = ''; msg.classList.remove('err');
       try {
-        const r = await api('/api/bridge/export', { kind, format: sel.value, lang: state.lang, ...params() });
+        const r = await api('/api/bridge/export', { kind, format, ...snapshot });
         const url = URL.createObjectURL(await r.blob());
-        const a = Object.assign(document.createElement('a'), { href: url, download: `researchbridge_${kind}_${state.lang}.${sel.value}` });
+        const a = Object.assign(document.createElement('a'), { href: url, download: `researchbridge_${kind}_${snapshot.lang}.${format}` });
         document.body.append(a); a.click(); a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       } catch (e) { msg.textContent = e.message; msg.classList.add('err'); }
@@ -169,11 +173,12 @@
     }));
   }
 
-  let searchRequest = 0;
+  let searchRequest = 0, bridgeRequest = 0;
   async function search() {
     const request = ++searchRequest;
+    ++bridgeRequest; // A changed goal or ranking invalidates an in-flight Bridge view.
     state.q = $('b-q').value.trim(); state.mode = $('b-mode').value;
-    const q = state.q, mode = state.mode;
+    const q = state.q, mode = state.mode, lang = state.lang;
     state.lastResults = [];
     $('b-search-export').hidden = true;
     $('b-results').innerHTML = '';
@@ -183,34 +188,45 @@
       const r = await getJSON('/api/bridge/search', { q, mode, limit: 20 });
       if (request !== searchRequest) return;
       state.lastResults = r.results;
-      let msg = r.count ? (state.lang === 'en' ? `${r.count} ${r.count === 1 ? 'paper matches' : 'papers match'}; showing ${r.results.length}.` : t('results', { total: r.count, shown: r.results.length })) : t('empty');
+      const total = r.total_count ?? r.count, shown = r.shown_count ?? r.results.length;
+      let msg = total ? (lang === 'en' ? `${total} ${total === 1 ? 'paper matches' : 'papers match'}; showing ${shown}.` : t('results', { total, shown })) : t('empty');
       if (r.lexicon_matches.length || r.effective_query !== r.query) msg += ' ' + t('expansion', { query: r.expanded_query });
       setStatus('b-search-status', msg);
       $('b-results').innerHTML = r.results.map((p, i) => paperCard(p, i + 1)).join('');
       bindSaves($('b-results'));
-      if (r.count) exportControls('b-search-export', 'search', () => ({ q, mode }));
+      if (total) exportControls('b-search-export', 'search', { q, mode, lang });
       else $('b-search-export').hidden = true;
     } catch (e) { if (request === searchRequest) setStatus('b-search-status', e.message, true); }
   }
 
   /* ---------- 02 bridges ---------- */
   async function bridges() {
+    const request = ++bridgeRequest;
     state.method = $('b-method').value || 'auto';
+    const params = { q: state.q, mode: state.mode, method: state.method, cue: state.cue, limit: 10, lang: state.lang };
+    $('b-bridge-export').hidden = true;
     setStatus('b-bridge-status', '…');
     try {
-      const r = await getJSON('/api/bridge/bridges', { q: state.q, mode: state.mode, method: state.method, cue: state.cue, limit: 10, lang: state.lang });
+      let r = await getJSON('/api/bridge/bridges', params);
+      if (request !== bridgeRequest) return;
+      // Auto can resolve to a different method after the goal changes. Fetch the
+      // fallback before changing the cue control or rendering any of its results.
+      if (params.cue !== 'all' && !r.cues.some(c => c.id === params.cue)) {
+        params.cue = 'all';
+        r = await getJSON('/api/bridge/bridges', params);
+        if (request !== bridgeRequest) return;
+      }
+      state.cue = params.cue;
       $('b-recs').innerHTML = r.recommended_methods.length
         ? r.recommended_methods.map(m => `<button class="kbtn" type="button" data-m="${esc(m.id)}" title="${esc(t('method_support', { count: m.count, score: m.score }))}">${esc(m.label)} · ${m.count}</button>`).join('')
         : `<span class="status" style="margin:0">${esc(t('no_methods'))}</span>`;
       $('b-recs').querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => {
         $('b-method').value = b.dataset.m; state.cue = 'all'; bridges();
       }));
-      // Cue options depend on the resolved method; keep 'all' if the old cue no longer applies.
-      if (state.cue !== 'all' && !r.cues.some(c => c.id === state.cue)) state.cue = 'all';
       $('b-cue').innerHTML = `<option value="all">${esc(t('all_cues'))}</option>` + r.cues.map(c =>
         `<option value="${esc(c.id)}">${esc(c.label)} — ${esc(t(c.shared ? 'shared_cue' : 'extension_cue'))} (${c.method_count})</option>`).join('');
       $('b-cue').value = state.cue;
-      $('b-chain-a').textContent = state.q || '—';
+      $('b-chain-a').textContent = params.q || '—';
       $('b-chain-b').textContent = r.cue.label || t('all_cues');
       $('b-chain-c').textContent = r.method.label;
       setStatus('b-bridge-status', (r.count ? t('results', { total: r.count, shown: r.results.length }) : t('bridge_empty')) + ' ' + t('bridge_query', { query: r.bridge_query }));
@@ -222,18 +238,21 @@
         : `<p class="status">${esc(t('bridge_pair_minimum'))}</p>`;
       $('b-bridge-results').innerHTML = r.results.map((p, i) => paperCard(p, i + 1, { bridge: true })).join('');
       bindSaves($('b-bridge-results'));
-      if (r.count) exportControls('b-bridge-export', 'bridges', () => ({ q: state.q, mode: state.mode, method: state.method, cue: state.cue }));
+      if (r.count) exportControls('b-bridge-export', 'bridges', {
+        q: params.q, mode: params.mode, method: r.method.id, cue: r.cue.id, lang: params.lang,
+      });
       else $('b-bridge-export').hidden = true;
-    } catch (e) { setStatus('b-bridge-status', e.message, true); }
+    } catch (e) { if (request === bridgeRequest) setStatus('b-bridge-status', e.message, true); }
   }
 
   /* ---------- 03 compare ---------- */
   async function compare() {
     const box = $('b-compare');
     if (!state.saved.length) { box.innerHTML = `<p class="status" style="margin:0">${esc(t('compare_empty'))}</p>`; return; }
+    const params = { pmids: [...state.saved], lang: state.lang };
     box.innerHTML = '<p class="status" style="margin:0">…</p>';
     try {
-      const r = await postJSON('/api/bridge/compare', { pmids: state.saved, lang: state.lang });
+      const r = await postJSON('/api/bridge/compare', params);
       let h = `<div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">PMID</th><th scope="col">${esc(t('paper_title'))}</th><th scope="col">${esc(t('tags'))}</th><th scope="col">${esc(t('fields'))}</th><th scope="col">${esc(t('methods'))}</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>` +
         r.papers.map(p => `<tr><td class="num">${link(p.source_url, p.pmid)}</td><td>${esc(p.title)}</td><td>${esc(p.tags)}</td><td>${esc(p.fields)}</td><td>${esc(p.methods)}</td><td><button class="btn ghost sm" data-save="${esc(p.pmid)}" aria-pressed="true">${esc(t('remove'))}</button></td></tr>`).join('') +
         `</tbody></table></div><p class="meta">${esc(t('profile_note'))}</p>`;
@@ -243,7 +262,7 @@
         : `<p class="status">${esc(t('pair_minimum'))}</p>`;
       box.innerHTML = h + '<div class="exp" id="b-compare-export"></div>';
       box.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => { toggleSaved(b.dataset.save); compare(); }));
-      exportControls('b-compare-export', 'compare', () => ({ pmids: state.saved }));
+      exportControls('b-compare-export', 'compare', params);
     } catch (e) { box.innerHTML = `<p class="status err" style="margin:0">${esc(e.message)}</p>`; }
   }
 
@@ -295,11 +314,13 @@
 
   async function brief() {
     setStatus('b-brief-status', state.saved.length ? t('brief_selection', { count: state.saved.length }) : t('brief_current'));
-    const params = { goal: state.q, mode: state.mode, method: state.method, cue: state.cue, pmids: state.saved, lang: state.lang };
+    const params = { goal: state.q, mode: state.mode, method: state.method, cue: state.cue, pmids: [...state.saved], lang: state.lang };
     try {
       const r = await postJSON('/api/bridge/brief', params);
       $('b-brief').innerHTML = renderBrief(r.markdown); $('b-brief').hidden = false;
-      exportControls('b-brief-export', 'brief', () => ({ q: state.q, mode: state.mode, method: state.method, cue: state.cue, pmids: state.saved }));
+      exportControls('b-brief-export', 'brief', {
+        q: params.goal, mode: params.mode, method: params.method, cue: params.cue, pmids: params.pmids, lang: params.lang,
+      });
     } catch (e) {
       setStatus('b-brief-status', e.message, true); $('b-brief').hidden = true; $('b-brief-export').hidden = true;
     }
@@ -308,7 +329,7 @@
   /* ---------- 06 directory ---------- */
   let dirTimer;
   async function directory() {
-    const name = $('b-dir-name').value, city = $('b-dir-city').value || '';
+    const name = $('b-dir-name').value, city = $('b-dir-city').value || '', lang = state.lang;
     try {
       const r = await getJSON('/api/bridge/directory', { name, city });
       if ($('b-dir-city').options.length <= 1) {
@@ -316,10 +337,10 @@
         $('b-dir-city').value = city;
       }
       setStatus('b-dir-status', t('directory_results', { count: r.count }));
-      const n = v => Number(v).toLocaleString(state.lang === 'zh' ? 'zh-TW' : state.lang);
+      const n = v => Number(v).toLocaleString(lang === 'zh' ? 'zh-TW' : lang);
       $('b-dir').innerHTML = `<table class="tbl"><thead><tr><th scope="col">${esc(t('institution_name'))}</th><th scope="col">${esc(t('city'))}</th><th scope="col">${esc(t('works'))}</th><th scope="col">${esc(t('citations'))}</th></tr></thead><tbody>` +
         r.institutions.map(i => `<tr><td>${esc(i.name)}</td><td>${esc(i.city)}</td><td class="num">${n(i.works)}</td><td class="num">${n(i.cited_by)}</td></tr>`).join('') + '</tbody></table>';
-      exportControls('b-dir-export', 'directory', () => ({ name: $('b-dir-name').value, city: $('b-dir-city').value || '' }));
+      exportControls('b-dir-export', 'directory', { name, city, lang });
     } catch (e) { setStatus('b-dir-status', e.message, true); }
   }
 
@@ -344,6 +365,7 @@
   $('b-dir-name').addEventListener('input', () => { clearTimeout(dirTimer); dirTimer = setTimeout(directory, 200); });
   $('b-dir-city').addEventListener('change', directory);
   $('b-lang').addEventListener('change', async () => {
+    ++searchRequest; ++bridgeRequest;
     try {
       await loadMeta($('b-lang').value);
       $('b-dir-city').innerHTML = '';      // relabel "All cities"

@@ -2130,5 +2130,9 @@
  "Kidney Diseases|Gas Chromatography-Mass Spectrometry": {
   "maturity": 283,
   "gap_papers": 0
+ },
+ "Parkinson Disease|Spectrum Analysis, Raman": {
+  "maturity": 21,
+  "gap_papers": 1
  }
 }

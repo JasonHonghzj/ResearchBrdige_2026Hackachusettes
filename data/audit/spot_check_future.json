@@ -1,0 +1,52 @@
+{
+  "status": "pass",
+  "ok": true,
+  "window": "future",
+  "seed": 20261030,
+  "requested_sample_size": 15,
+  "sample_size": 15,
+  "sampled_pmids": [
+    "42425573",
+    "34537003",
+    "37658722",
+    "39467913",
+    "30996373",
+    "41731567",
+    "35605172",
+    "35841117",
+    "32516778",
+    "37812407",
+    "36368293",
+    "39483461",
+    "32866530",
+    "32986366",
+    "33217055"
+  ],
+  "missing_pmids": [],
+  "unavailable_pmids": [],
+  "sources": [
+    {
+      "cache": "corpus_past_full.json",
+      "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\raw\\corpus_past_full.json",
+      "sha256": "7db9e7d6bb77d640cb41d8620766a0bc4606c24a48f141868764b7ec359d9000",
+      "metadata_sha256": "2978502f96c1ad0acfe91d6b95b1954283e551d85d14f7044afc55d739d77df3",
+      "retrieved_utc": "2026-10-30T21:45:07Z",
+      "records": 44156
+    },
+    {
+      "cache": "corpus_future_full.json",
+      "path": "C:\\Users\\acer\\Desktop\\DS+X real\\output\\live-verification-20261030\\raw\\corpus_future_full.json",
+      "sha256": "cb4cf2f8acab39c8423b047865d647678b00a9c9b005e530f6f794c73d291f52",
+      "metadata_sha256": "5a7d5239fe2c785d978ee2eeb058090857a592fde3799138e56d3812a92474cf",
+      "retrieved_utc": "2026-10-30T21:55:30Z",
+      "records": 36684
+    }
+  ],
+  "snapshot_pmids_sha256": "a8f0af63c3c30527988d6f2f620360d02a531dbc5d19d63cf02ea714ecc62bba",
+  "started_utc": "2026-10-30T21:56:49Z",
+  "checked": 15,
+  "titles_match": 15,
+  "mesh_match": 15,
+  "mismatches": [],
+  "verified_utc": "2026-10-30T21:56:51Z"
+}
